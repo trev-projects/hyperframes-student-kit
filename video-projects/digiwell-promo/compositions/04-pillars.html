@@ -1,0 +1,201 @@
+<template id="04-pillars-template">
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&display=block" rel="stylesheet" />
+
+  <div
+    data-composition-id="04-pillars"
+    data-start="0"
+    data-duration="5.5"
+    data-width="1920"
+    data-height="1080"
+  >
+    <div class="stage">
+      <div class="grid-floor"></div>
+      <div class="crosshair" style="top: 22%; left: 22%;">+</div>
+      <div class="crosshair" style="top: 22%; left: 78%;">+</div>
+      <div class="crosshair" style="top: 78%; left: 22%;">+</div>
+      <div class="crosshair" style="top: 78%; left: 78%;">+</div>
+
+      <div class="pillars">
+        <div class="pillar pillar-a">
+          <div class="icon-wrap">
+            <svg class="icn" viewBox="0 0 64 64" fill="none" stroke="#f9a72c" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="8" y="18" width="48" height="32" rx="3" pathLength="1" class="draw" />
+              <path d="M8 22 L32 40 L56 22" pathLength="1" class="draw" />
+              <circle cx="48" cy="20" r="5" fill="#f9a72c" stroke="none" opacity="0.9"/>
+            </svg>
+          </div>
+          <div class="label">AI-ASSISTED<br/>NEWSLETTERS</div>
+          <div class="sub">Done-for-you campaigns</div>
+        </div>
+
+        <div class="pillar pillar-b">
+          <div class="icon-wrap">
+            <svg class="icn" viewBox="0 0 64 64" fill="none" stroke="#f9a72c" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M34 8 L18 36 L30 36 L26 56 L46 26 L34 26 Z" pathLength="1" class="draw" />
+            </svg>
+          </div>
+          <div class="label">CRM<br/>AUTOMATION</div>
+          <div class="sub">Warm every lead</div>
+        </div>
+
+        <div class="pillar pillar-c">
+          <div class="icon-wrap">
+            <svg class="icn" viewBox="0 0 64 64" fill="none" stroke="#f9a72c" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="32" r="5" pathLength="1" class="draw" />
+              <circle cx="52" cy="14" r="5" pathLength="1" class="draw" />
+              <circle cx="52" cy="32" r="5" pathLength="1" class="draw" />
+              <circle cx="52" cy="50" r="5" pathLength="1" class="draw" />
+              <path d="M17 32 L47 16" pathLength="1" class="draw" />
+              <path d="M17 32 L47 32" pathLength="1" class="draw" />
+              <path d="M17 32 L47 50" pathLength="1" class="draw" />
+            </svg>
+          </div>
+          <div class="label">SEGMENTED<br/>NURTURE</div>
+          <div class="sub">Flows that convert</div>
+        </div>
+      </div>
+
+      <div class="whip-streak"></div>
+      <div class="vignette"></div>
+      <div class="grain"></div>
+    </div>
+
+    <style>
+      [data-composition-id="04-pillars"] {
+        position: absolute; inset: 0; overflow: hidden;
+        background: #07080c;
+        font-family: "Inter", sans-serif;
+      }
+      [data-composition-id="04-pillars"] .stage { position: absolute; inset: 0; }
+      [data-composition-id="04-pillars"] .grid-floor {
+        position: absolute; inset: 0;
+        transform: perspective(900px) rotateX(60deg) translateY(25%);
+        background:
+          repeating-linear-gradient(0deg,  rgba(249,167,44,0.06) 0 1px, transparent 1px 80px),
+          repeating-linear-gradient(90deg, rgba(249,167,44,0.06) 0 1px, transparent 1px 80px);
+        background-color: #07080c;
+      }
+      [data-composition-id="04-pillars"] .crosshair {
+        position: absolute; transform: translate(-50%, -50%);
+        font: 400 28px/1 monospace; color: rgba(249,167,44,0.30);
+      }
+      [data-composition-id="04-pillars"] .pillars {
+        position: absolute; top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+        display: flex; gap: 56px;
+      }
+      [data-composition-id="04-pillars"] .pillar {
+        width: 480px; height: 520px;
+        background: linear-gradient(135deg,
+          rgba(255,255,255,0.07) 0%,
+          rgba(255,255,255,0.02) 40%,
+          rgba(255,255,255,0.01) 70%,
+          rgba(255,255,255,0.05) 100%);
+        backdrop-filter: blur(14px) saturate(1.12);
+        border-radius: 26px;
+        border: 1px solid rgba(249,167,44,0.26);
+        box-shadow:
+          inset 0 1px 0 rgba(255,255,255,0.20),
+          0 0 72px rgba(249,167,44,0.18);
+        display: flex; flex-direction: column;
+        align-items: center; justify-content: center;
+        gap: 40px;
+        padding: 36px 24px;
+        opacity: 0;
+        transform: translateY(60px);
+      }
+      [data-composition-id="04-pillars"] .icon-wrap {
+        width: 140px; height: 140px;
+        border-radius: 50%;
+        border: 1px solid rgba(249,167,44,0.25);
+        box-shadow: 0 0 40px rgba(249,167,44,0.25), inset 0 0 28px rgba(249,167,44,0.10);
+        display: flex; align-items: center; justify-content: center;
+      }
+      [data-composition-id="04-pillars"] .icn { width: 96px; height: 96px; }
+      [data-composition-id="04-pillars"] .icn .draw {
+        stroke-dasharray: 1; stroke-dashoffset: 1;
+      }
+      [data-composition-id="04-pillars"] .label {
+        font-weight: 700;
+        font-size: 44px;
+        letter-spacing: 0.02em;
+        line-height: 1.1;
+        color: #ffffff;
+        text-align: center;
+        text-shadow: 0 0 22px rgba(249,167,44,0.35);
+      }
+      [data-composition-id="04-pillars"] .sub {
+        font-weight: 500;
+        font-size: 24px;
+        color: #f9a72c;
+        opacity: 0.85;
+        letter-spacing: 0.04em;
+        text-align: center;
+      }
+      [data-composition-id="04-pillars"] .vignette {
+        position: absolute; inset: 0; pointer-events: none;
+        background: radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.95) 95%);
+        opacity: 0.75;
+      }
+      [data-composition-id="04-pillars"] .grain {
+        position: absolute; inset: 0; pointer-events: none; opacity: 0.08;
+        background-image:
+          radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+          radial-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+          radial-gradient(rgba(255,255,255,0.015) 1px, transparent 1px);
+        background-size: 3px 3px, 5px 5px, 7px 7px;
+        background-position: 0 0, 1px 2px, 2px 1px;
+      }
+      [data-composition-id="04-pillars"] .whip-streak {
+        position: absolute; top: 50%; left: 0;
+        width: 70%; height: 14px;
+        background: linear-gradient(90deg, transparent 0%, rgba(249,167,44,0.95) 50%, transparent 100%);
+        filter: blur(10px);
+        transform: translate(-150%, -50%);
+        opacity: 0; z-index: 30;
+      }
+    </style>
+
+    <script>
+      (() => {
+        const SLOT = 5.5;
+        const sel = (q) => `[data-composition-id="04-pillars"] ${q}`;
+        const tl = gsap.timeline({ paused: true });
+
+        tl.to(sel('.grid-floor'),
+          { backgroundPositionY: '-120px', duration: SLOT, ease: 'none' }, 0);
+
+        // Cascade cards in
+        const stagger = [0.10, 1.90, 3.70];
+        ['.pillar-a', '.pillar-b', '.pillar-c'].forEach((cls, i) => {
+          tl.fromTo(sel(cls),
+            { y: 60, opacity: 0 },
+            { y: 0, opacity: 1, duration: 0.60, ease: 'power3.out' }, stagger[i]);
+
+          // Draw icon strokes after card lands
+          tl.to(`${sel(cls)} .draw`,
+            { strokeDashoffset: 0, duration: 0.55, ease: 'power2.out' }, stagger[i] + 0.25);
+        });
+
+        // Subtle continuous drift on held cards
+        tl.to([sel('.pillar-a'), sel('.pillar-b'), sel('.pillar-c')],
+          { y: -10, duration: 1.6, ease: 'sine.inOut', yoyo: true, repeat: 1,
+            stagger: { each: 0.12, from: 'center' } }, 4.30);
+
+        // Exit together
+        tl.to(sel('.pillars'),
+          { y: -40, opacity: 0.15, duration: 0.40, ease: 'power2.in' }, 5.05);
+
+        tl.set(sel('.whip-streak'), { opacity: 1 }, 5.15);
+        tl.fromTo(sel('.whip-streak'),
+          { xPercent: -150, scaleX: 0.5 },
+          { xPercent: 250, scaleX: 1.5, duration: 0.35, ease: 'power3.in' }, 5.15);
+
+        tl.to({}, { duration: SLOT }, 0);
+        window.__timelines = window.__timelines || {};
+        window.__timelines['04-pillars'] = tl;
+      })();
+    </script>
+  </div>
+</template>

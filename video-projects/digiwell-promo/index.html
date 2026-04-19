@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <title>Digiwell Marketing — 30s Promo</title>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&family=JetBrains+Mono:wght@500;600&display=block" rel="stylesheet" />
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body {
+        width: 1920px; height: 1080px;
+        overflow: hidden;
+        background: #07080c;
+        color: #fff;
+      }
+      .beat-layer {
+        position: absolute; top: 0; left: 0;
+        width: 1920px; height: 1080px;
+      }
+      .cap {
+        position: absolute;
+        bottom: 64px;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 14px 28px;
+        border-radius: 16px;
+        background: rgba(7, 8, 12, 0.65);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(249, 167, 44, 0.25);
+        box-shadow: 0 0 24px rgba(249, 167, 44, 0.15);
+        font: 600 30px/1.3 "Inter", sans-serif;
+        color: #ffffff;
+        letter-spacing: 0.01em;
+        z-index: 50;
+        white-space: nowrap;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="digiwell-promo"
+      data-start="0"
+      data-duration="30"
+      data-width="1920"
+      data-height="1080"
+    >
+      <!-- Beat 01 — Hook (0–3.5s) -->
+      <div class="beat-layer"
+        data-composition-id="01-hook"
+        data-composition-src="compositions/01-hook.html"
+        data-start="0" data-duration="3.5" data-track-index="0"
+        data-width="1920" data-height="1080"></div>
+
+      <!-- Beat 02 — Problem cards (3.5–7.5s) -->
+      <div class="beat-layer"
+        data-composition-id="02-problem"
+        data-composition-src="compositions/02-problem.html"
+        data-start="3.5" data-duration="4" data-track-index="0"
+        data-width="1920" data-height="1080"></div>
+
+      <!-- Beat 03 — Brand reveal (7.5–10.5s) -->
+      <div class="beat-layer"
+        data-composition-id="03-turn"
+        data-composition-src="compositions/03-turn.html"
+        data-start="7.5" data-duration="3" data-track-index="0"
+        data-width="1920" data-height="1080"></div>
+
+      <!-- Beat 04 — Three pillars (10.5–16.0s) -->
+      <div class="beat-layer"
+        data-composition-id="04-pillars"
+        data-composition-src="compositions/04-pillars.html"
+        data-start="10.5" data-duration="5.5" data-track-index="0"
+        data-width="1920" data-height="1080"></div>
+
+      <!-- Beat 05 — Proof dashboard (16.0–20.5s) -->
+      <div class="beat-layer"
+        data-composition-id="05-proof"
+        data-composition-src="compositions/05-proof.html"
+        data-start="16" data-duration="4.5" data-track-index="0"
+        data-width="1920" data-height="1080"></div>
+
+      <!-- Beat 06 — Promise transform (20.5–24.5s) -->
+      <div class="beat-layer"
+        data-composition-id="06-promise"
+        data-composition-src="compositions/06-promise.html"
+        data-start="20.5" data-duration="4" data-track-index="0"
+        data-width="1920" data-height="1080"></div>
+
+      <!-- Beat 07 — CTA hold (24.5–30s) -->
+      <div class="beat-layer"
+        data-composition-id="07-cta"
+        data-composition-src="compositions/07-cta.html"
+        data-start="24.5" data-duration="5.5" data-track-index="0"
+        data-width="1920" data-height="1080"></div>
+    </div>
+
+    <!-- Captions (burned-in, body-level — serve as VO placeholder until TTS is wired) -->
+    <div class="cap clip" data-start="0.25"  data-duration="3.0"  data-track-index="30">Your growth engine wasn't built for the AI era.</div>
+    <div class="cap clip" data-start="3.8"   data-duration="3.5"  data-track-index="31">Cold leads. Dead lists. Campaigns that never convert.</div>
+    <div class="cap clip" data-start="7.7"   data-duration="2.6"  data-track-index="32">Digiwell builds growth systems that do.</div>
+    <div class="cap clip" data-start="10.8"  data-duration="5.0"  data-track-index="33">AI-assisted newsletters. CRM automation. Segmented nurture flows.</div>
+    <div class="cap clip" data-start="16.25" data-duration="4.0"  data-track-index="34">47% open rates. Subscribers who actually buy.</div>
+    <div class="cap clip" data-start="20.7"  data-duration="3.6"  data-track-index="35">Cold leads become loyal buyers — in 30 days.</div>
+    <div class="cap clip" data-start="24.8"  data-duration="4.8"  data-track-index="36">Digiwell Marketing — book your free audit at digiwellmarketing.com</div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      tl.to({}, { duration: 30 }, 0);
+      window.__timelines["digiwell-promo"] = tl;
+    </script>
+  </body>
+</html>

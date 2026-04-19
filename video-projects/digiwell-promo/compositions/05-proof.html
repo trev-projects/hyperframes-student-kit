@@ -1,0 +1,259 @@
+<template id="05-proof-template">
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=block" rel="stylesheet" />
+
+  <div
+    data-composition-id="05-proof"
+    data-start="0"
+    data-duration="4.5"
+    data-width="1920"
+    data-height="1080"
+  >
+    <div class="stage">
+      <div class="grid-floor"></div>
+      <div class="crosshair" style="top: 22%; left: 22%;">+</div>
+      <div class="crosshair" style="top: 22%; left: 78%;">+</div>
+      <div class="crosshair" style="top: 78%; left: 22%;">+</div>
+      <div class="crosshair" style="top: 78%; left: 78%;">+</div>
+
+      <div class="dashboard">
+        <div class="stat-card">
+          <div class="stat-label">OPEN RATE</div>
+          <div class="stat-number" id="big-stat">0%</div>
+          <div class="stat-sub">Avg. Digiwell client, last 90 days</div>
+        </div>
+
+        <div class="chart-card">
+          <div class="chart-label">GROWTH — 90 DAYS</div>
+          <svg class="chart" viewBox="0 0 800 360" preserveAspectRatio="none">
+            <!-- grid lines -->
+            <line x1="0" y1="90"  x2="800" y2="90"  stroke="rgba(249,167,44,0.08)" stroke-width="1" stroke-dasharray="4 6"/>
+            <line x1="0" y1="180" x2="800" y2="180" stroke="rgba(249,167,44,0.08)" stroke-width="1" stroke-dasharray="4 6"/>
+            <line x1="0" y1="270" x2="800" y2="270" stroke="rgba(249,167,44,0.08)" stroke-width="1" stroke-dasharray="4 6"/>
+            <!-- baseline (dashed amber) -->
+            <path class="baseline"
+              d="M 0 260 Q 200 245 400 225 Q 600 210 800 200"
+              fill="none"
+              stroke="#f9a72c"
+              stroke-width="3"
+              stroke-dasharray="8 10"
+              pathLength="1"
+              stroke-dashoffset="1" />
+            <!-- growth curve (teal solid) -->
+            <path class="growth"
+              d="M 0 300 Q 200 250 400 170 Q 600 110 800 70"
+              fill="none"
+              stroke="#3de0a6"
+              stroke-width="5"
+              stroke-linecap="round"
+              pathLength="1"
+              stroke-dasharray="1"
+              stroke-dashoffset="1" />
+            <!-- growth curve glow -->
+            <path class="growth-glow"
+              d="M 0 300 Q 200 250 400 170 Q 600 110 800 70"
+              fill="none"
+              stroke="#3de0a6"
+              stroke-width="12"
+              stroke-linecap="round"
+              stroke-opacity="0.35"
+              filter="blur(8px)"
+              pathLength="1"
+              stroke-dasharray="1"
+              stroke-dashoffset="1" />
+          </svg>
+
+          <div class="chip chip-click">
+            <span class="chip-label">CLICK RATE</span>
+            <span class="chip-val">8.6%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="whip-streak"></div>
+      <div class="vignette"></div>
+      <div class="grain"></div>
+    </div>
+
+    <style>
+      [data-composition-id="05-proof"] {
+        position: absolute; inset: 0; overflow: hidden;
+        background: #07080c;
+        font-family: "Inter", sans-serif;
+      }
+      [data-composition-id="05-proof"] .stage { position: absolute; inset: 0; }
+      [data-composition-id="05-proof"] .grid-floor {
+        position: absolute; inset: 0;
+        transform: perspective(900px) rotateX(60deg) translateY(25%);
+        background:
+          repeating-linear-gradient(0deg,  rgba(249,167,44,0.06) 0 1px, transparent 1px 80px),
+          repeating-linear-gradient(90deg, rgba(249,167,44,0.06) 0 1px, transparent 1px 80px);
+        background-color: #07080c;
+      }
+      [data-composition-id="05-proof"] .crosshair {
+        position: absolute; transform: translate(-50%, -50%);
+        font: 400 28px/1 monospace; color: rgba(249,167,44,0.30);
+      }
+      [data-composition-id="05-proof"] .dashboard {
+        position: absolute; top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+        display: flex; gap: 48px; align-items: stretch;
+      }
+      [data-composition-id="05-proof"] .stat-card,
+      [data-composition-id="05-proof"] .chart-card {
+        background: linear-gradient(135deg,
+          rgba(255,255,255,0.07) 0%,
+          rgba(255,255,255,0.02) 40%,
+          rgba(255,255,255,0.01) 70%,
+          rgba(255,255,255,0.05) 100%);
+        backdrop-filter: blur(14px) saturate(1.12);
+        border-radius: 24px;
+        border: 1px solid rgba(249,167,44,0.26);
+        box-shadow:
+          inset 0 1px 0 rgba(255,255,255,0.20),
+          0 0 60px rgba(249,167,44,0.18);
+        padding: 40px 48px;
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      [data-composition-id="05-proof"] .stat-card {
+        width: 540px; display: flex; flex-direction: column;
+        align-items: flex-start; justify-content: center; gap: 16px;
+      }
+      [data-composition-id="05-proof"] .stat-label {
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 600;
+        font-size: 30px;
+        letter-spacing: 0.22em;
+        color: #f9a72c;
+        text-shadow: 0 0 16px rgba(249,167,44,0.4);
+      }
+      [data-composition-id="05-proof"] .stat-number {
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 700;
+        font-size: 240px;
+        line-height: 1;
+        color: #3de0a6;
+        text-shadow: 0 0 32px rgba(61,224,166,0.55);
+        letter-spacing: -0.03em;
+      }
+      [data-composition-id="05-proof"] .stat-sub {
+        font-size: 22px;
+        color: #d9d9de;
+        opacity: 0.8;
+      }
+      [data-composition-id="05-proof"] .chart-card {
+        width: 860px; position: relative;
+        display: flex; flex-direction: column; gap: 20px;
+      }
+      [data-composition-id="05-proof"] .chart-label {
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 600;
+        font-size: 24px;
+        letter-spacing: 0.22em;
+        color: #f9a72c;
+        text-shadow: 0 0 14px rgba(249,167,44,0.3);
+      }
+      [data-composition-id="05-proof"] .chart { width: 100%; height: 360px; display: block; }
+      [data-composition-id="05-proof"] .chip {
+        position: absolute; top: 36px; right: 40px;
+        padding: 10px 22px;
+        background: rgba(61,224,166,0.12);
+        border: 1px solid rgba(61,224,166,0.5);
+        border-radius: 999px;
+        display: flex; align-items: center; gap: 12px;
+        opacity: 0;
+      }
+      [data-composition-id="05-proof"] .chip-label {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 18px;
+        letter-spacing: 0.2em;
+        color: #3de0a6;
+      }
+      [data-composition-id="05-proof"] .chip-val {
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 700;
+        font-size: 28px;
+        color: #3de0a6;
+        text-shadow: 0 0 12px rgba(61,224,166,0.5);
+      }
+      [data-composition-id="05-proof"] .vignette {
+        position: absolute; inset: 0; pointer-events: none;
+        background: radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.95) 95%);
+        opacity: 0.75;
+      }
+      [data-composition-id="05-proof"] .grain {
+        position: absolute; inset: 0; pointer-events: none; opacity: 0.08;
+        background-image:
+          radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+          radial-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+          radial-gradient(rgba(255,255,255,0.015) 1px, transparent 1px);
+        background-size: 3px 3px, 5px 5px, 7px 7px;
+        background-position: 0 0, 1px 2px, 2px 1px;
+      }
+      [data-composition-id="05-proof"] .whip-streak {
+        position: absolute; top: 50%; left: 0;
+        width: 70%; height: 14px;
+        background: linear-gradient(90deg, transparent 0%, rgba(249,167,44,0.95) 50%, transparent 100%);
+        filter: blur(10px);
+        transform: translate(-150%, -50%);
+        opacity: 0; z-index: 30;
+      }
+    </style>
+
+    <script>
+      (() => {
+        const SLOT = 4.5;
+        const sel = (q) => `[data-composition-id="05-proof"] ${q}`;
+        const tl = gsap.timeline({ paused: true });
+
+        tl.to(sel('.grid-floor'),
+          { backgroundPositionY: '-90px', duration: SLOT, ease: 'none' }, 0);
+
+        // Cards enter
+        tl.fromTo(sel('.stat-card'),
+          { y: 40, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.55, ease: 'power3.out' }, 0.10);
+        tl.fromTo(sel('.chart-card'),
+          { y: 40, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.55, ease: 'power3.out' }, 0.30);
+
+        // Count up 0 → 47
+        const statEl = document.querySelector(sel('#big-stat'));
+        const counter = { v: 0 };
+        tl.to(counter, {
+          v: 47, duration: 1.40, ease: 'power2.out',
+          onUpdate: () => { if (statEl) statEl.textContent = Math.round(counter.v) + '%'; }
+        }, 0.55);
+
+        // Draw chart curves
+        tl.to(sel('.baseline'),
+          { strokeDashoffset: 0, duration: 1.40, ease: 'power2.inOut' }, 0.70);
+        tl.to([sel('.growth'), sel('.growth-glow')],
+          { strokeDashoffset: 0, duration: 1.80, ease: 'power2.inOut' }, 0.90);
+
+        // Click chip reveal
+        tl.fromTo(sel('.chip'),
+          { y: 12, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.45, ease: 'back.out(1.4)' }, 2.50);
+
+        // Held state with subtle breathing
+        tl.to(sel('.dashboard'),
+          { scale: 1.02, duration: 1.2, ease: 'sine.inOut', yoyo: true, repeat: 1 }, 3.00);
+
+        // Exit
+        tl.to(sel('.dashboard'),
+          { scale: 1.05, opacity: 0, duration: 0.35, ease: 'power2.in' }, 4.05);
+
+        tl.set(sel('.whip-streak'), { opacity: 1 }, 4.15);
+        tl.fromTo(sel('.whip-streak'),
+          { xPercent: -150, scaleX: 0.5 },
+          { xPercent: 250, scaleX: 1.5, duration: 0.35, ease: 'power3.in' }, 4.15);
+
+        tl.to({}, { duration: SLOT }, 0);
+        window.__timelines = window.__timelines || {};
+        window.__timelines['05-proof'] = tl;
+      })();
+    </script>
+  </div>
+</template>

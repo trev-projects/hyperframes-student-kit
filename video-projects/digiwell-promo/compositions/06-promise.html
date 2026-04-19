@@ -1,0 +1,195 @@
+<template id="06-promise-template">
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&family=JetBrains+Mono:wght@500;600&display=block" rel="stylesheet" />
+
+  <div
+    data-composition-id="06-promise"
+    data-start="0"
+    data-duration="4"
+    data-width="1920"
+    data-height="1080"
+  >
+    <div class="stage">
+      <div class="grid-floor"></div>
+      <div class="crosshair" style="top: 22%; left: 22%;">+</div>
+      <div class="crosshair" style="top: 22%; left: 78%;">+</div>
+      <div class="crosshair" style="top: 78%; left: 22%;">+</div>
+      <div class="crosshair" style="top: 78%; left: 78%;">+</div>
+
+      <div class="transform-scene">
+        <div class="side left">
+          <div class="text-cold">COLD<br/>LEADS</div>
+          <div class="sub-cold">unqualified · cold · ignored</div>
+        </div>
+
+        <svg class="arrow" viewBox="0 0 620 200" preserveAspectRatio="none" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path class="arrow-path"
+            d="M 30 100 Q 200 20 420 100 T 590 100"
+            stroke="#f9a72c" stroke-width="4"
+            pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" />
+          <path class="arrow-glow"
+            d="M 30 100 Q 200 20 420 100 T 590 100"
+            stroke="#f9a72c" stroke-width="14"
+            stroke-opacity="0.35" filter="blur(6px)"
+            pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" />
+          <polygon class="arrow-head" points="576,84 600,100 576,116" fill="#f9a72c" opacity="0"/>
+        </svg>
+
+        <div class="days-label">30 DAYS</div>
+
+        <div class="side right">
+          <div class="text-loyal">LOYAL<br/>BUYERS</div>
+          <div class="sub-loyal">retained · warm · converting</div>
+        </div>
+      </div>
+
+      <div class="vignette"></div>
+      <div class="grain"></div>
+    </div>
+
+    <style>
+      [data-composition-id="06-promise"] {
+        position: absolute; inset: 0; overflow: hidden;
+        background: #07080c;
+        font-family: "Inter", sans-serif;
+      }
+      [data-composition-id="06-promise"] .stage { position: absolute; inset: 0; }
+      [data-composition-id="06-promise"] .grid-floor {
+        position: absolute; inset: 0;
+        transform: perspective(900px) rotateX(60deg) translateY(25%);
+        background:
+          repeating-linear-gradient(0deg,  rgba(249,167,44,0.06) 0 1px, transparent 1px 80px),
+          repeating-linear-gradient(90deg, rgba(249,167,44,0.06) 0 1px, transparent 1px 80px);
+        background-color: #07080c;
+      }
+      [data-composition-id="06-promise"] .crosshair {
+        position: absolute; transform: translate(-50%, -50%);
+        font: 400 28px/1 monospace; color: rgba(249,167,44,0.30);
+      }
+      [data-composition-id="06-promise"] .transform-scene {
+        position: absolute; top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+        width: 1680px; height: 560px;
+        display: flex; align-items: center; justify-content: space-between;
+      }
+      [data-composition-id="06-promise"] .side {
+        width: 440px; display: flex; flex-direction: column; align-items: center; gap: 18px;
+      }
+      [data-composition-id="06-promise"] .text-cold {
+        font-weight: 700;
+        font-size: 84px;
+        letter-spacing: 0.02em;
+        line-height: 1.0;
+        text-align: center;
+        color: #ff8a2a;
+        opacity: 0.55;
+        text-shadow: 0 0 24px rgba(255,138,42,0.3);
+      }
+      [data-composition-id="06-promise"] .sub-cold {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 20px;
+        color: #ff8a2a;
+        opacity: 0.6;
+        letter-spacing: 0.08em;
+      }
+      [data-composition-id="06-promise"] .text-loyal {
+        font-weight: 800;
+        font-size: 108px;
+        letter-spacing: 0.02em;
+        line-height: 1.0;
+        text-align: center;
+        color: #3de0a6;
+        opacity: 0;
+        transform: scale(0.82);
+        text-shadow: 0 0 34px rgba(61,224,166,0.55);
+      }
+      [data-composition-id="06-promise"] .sub-loyal {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 22px;
+        color: #3de0a6;
+        opacity: 0;
+        letter-spacing: 0.08em;
+      }
+      [data-composition-id="06-promise"] .arrow {
+        position: absolute;
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+        width: 620px; height: 200px;
+        pointer-events: none;
+      }
+      [data-composition-id="06-promise"] .days-label {
+        position: absolute;
+        top: 50%; left: 50%;
+        transform: translate(-50%, calc(-50% - 110px));
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 600;
+        font-size: 40px;
+        letter-spacing: 0.24em;
+        color: #f9a72c;
+        opacity: 0;
+        text-shadow: 0 0 20px rgba(249,167,44,0.55);
+      }
+      [data-composition-id="06-promise"] .vignette {
+        position: absolute; inset: 0; pointer-events: none;
+        background: radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.95) 95%);
+        opacity: 0.75;
+      }
+      [data-composition-id="06-promise"] .grain {
+        position: absolute; inset: 0; pointer-events: none; opacity: 0.08;
+        background-image:
+          radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+          radial-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+          radial-gradient(rgba(255,255,255,0.015) 1px, transparent 1px);
+        background-size: 3px 3px, 5px 5px, 7px 7px;
+        background-position: 0 0, 1px 2px, 2px 1px;
+      }
+    </style>
+
+    <script>
+      (() => {
+        const SLOT = 4;
+        const sel = (q) => `[data-composition-id="06-promise"] ${q}`;
+        const tl = gsap.timeline({ paused: true });
+
+        tl.to(sel('.grid-floor'),
+          { backgroundPositionY: '-80px', duration: SLOT, ease: 'none' }, 0);
+
+        // COLD LEADS fades in faint
+        tl.fromTo(sel('.text-cold'),
+          { opacity: 0, x: -60 },
+          { opacity: 0.55, x: 0, duration: 0.55, ease: 'power3.out' }, 0.10);
+        tl.fromTo(sel('.sub-cold'),
+          { opacity: 0 }, { opacity: 0.6, duration: 0.5, ease: 'power2.out' }, 0.35);
+
+        // Arrow draws
+        tl.to([sel('.arrow-path'), sel('.arrow-glow')],
+          { strokeDashoffset: 0, duration: 1.20, ease: 'power2.inOut' }, 0.80);
+        tl.to(sel('.arrow-head'),
+          { opacity: 1, duration: 0.25, ease: 'power2.out' }, 1.90);
+
+        // Days label
+        tl.fromTo(sel('.days-label'),
+          { opacity: 0, y: -8 },
+          { opacity: 1, y: 0, duration: 0.40, ease: 'back.out(1.3)' }, 1.50);
+
+        // LOYAL BUYERS grows in
+        tl.fromTo(sel('.text-loyal'),
+          { scale: 0.8, opacity: 0 },
+          { scale: 1, opacity: 1, duration: 0.70, ease: 'back.out(1.3)' }, 2.15);
+        tl.fromTo(sel('.sub-loyal'),
+          { opacity: 0 }, { opacity: 0.9, duration: 0.5, ease: 'power2.out' }, 2.70);
+
+        // COLD dims further as LOYAL grows
+        tl.to(sel('.text-cold'), { opacity: 0.18, duration: 0.8, ease: 'power2.in' }, 2.15);
+
+        // Exit: blur + lift for CTA entry
+        tl.to(sel('.transform-scene'),
+          { y: -60, filter: 'blur(18px)', duration: 0.45, ease: 'power2.in' }, 3.55);
+
+        tl.to({}, { duration: SLOT }, 0);
+        window.__timelines = window.__timelines || {};
+        window.__timelines['06-promise'] = tl;
+      })();
+    </script>
+  </div>
+</template>

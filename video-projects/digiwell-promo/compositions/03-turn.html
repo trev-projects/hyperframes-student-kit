@@ -1,0 +1,217 @@
+<template id="03-turn-template">
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&display=block" rel="stylesheet" />
+
+  <div
+    data-composition-id="03-turn"
+    data-start="0"
+    data-duration="3"
+    data-width="1920"
+    data-height="1080"
+  >
+    <div class="stage">
+      <div class="grid-floor"></div>
+      <div class="swirl">
+        <div class="ring ring-1"></div>
+        <div class="ring ring-2"></div>
+        <div class="ring ring-3"></div>
+      </div>
+      <div class="particles" id="particles-3"></div>
+
+      <div class="brand">
+        <div class="wordmark">
+          <span class="word-text">Digiwell</span>
+          <div class="shimmer"></div>
+        </div>
+        <div class="tagline">MARKETING</div>
+        <div class="underline"></div>
+      </div>
+
+      <div class="whip-streak"></div>
+      <div class="vignette"></div>
+      <div class="grain"></div>
+    </div>
+
+    <style>
+      [data-composition-id="03-turn"] {
+        position: absolute; inset: 0; overflow: hidden;
+        background: #07080c;
+        font-family: "Inter", sans-serif;
+      }
+      [data-composition-id="03-turn"] .stage { position: absolute; inset: 0; }
+      [data-composition-id="03-turn"] .grid-floor {
+        position: absolute; inset: 0;
+        transform: perspective(900px) rotateX(60deg) translateY(25%);
+        background:
+          repeating-linear-gradient(0deg,  rgba(249,167,44,0.05) 0 1px, transparent 1px 80px),
+          repeating-linear-gradient(90deg, rgba(249,167,44,0.05) 0 1px, transparent 1px 80px);
+        background-color: #07080c;
+      }
+      [data-composition-id="03-turn"] .swirl {
+        position: absolute; top: 50%; left: 50%;
+        width: 1400px; height: 1400px;
+        transform: translate(-50%, -50%);
+        opacity: 0;
+      }
+      [data-composition-id="03-turn"] .ring {
+        position: absolute; top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+        border: 1px dashed rgba(249,167,44,0.20);
+      }
+      [data-composition-id="03-turn"] .ring-1 { width: 600px;  height: 600px; }
+      [data-composition-id="03-turn"] .ring-2 { width: 900px;  height: 900px; border-color: rgba(249,167,44,0.14); }
+      [data-composition-id="03-turn"] .ring-3 { width: 1300px; height: 1300px; border-color: rgba(249,167,44,0.08); }
+      [data-composition-id="03-turn"] .particles {
+        position: absolute; top: 50%; left: 50%;
+        width: 1400px; height: 1400px;
+        transform: translate(-50%, -50%);
+      }
+      [data-composition-id="03-turn"] .particle {
+        position: absolute;
+        width: 6px; height: 6px;
+        border-radius: 50%;
+        background: radial-gradient(circle, #ffd480 0%, #f9a72c 40%, transparent 75%);
+        filter: blur(1px);
+        opacity: 0;
+      }
+      [data-composition-id="03-turn"] .brand {
+        position: absolute; top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        opacity: 0;
+      }
+      [data-composition-id="03-turn"] .wordmark {
+        position: relative;
+        display: inline-block;
+        font-weight: 800;
+        font-size: 200px;
+        letter-spacing: -0.035em;
+        line-height: 1;
+        background: linear-gradient(180deg, #ffffff 0%, #f7d99a 55%, #f9a72c 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        color: transparent;
+        text-shadow: 0 0 40px rgba(249,167,44,0.5);
+        overflow: hidden;
+      }
+      [data-composition-id="03-turn"] .shimmer {
+        position: absolute; top: 0; left: -40%;
+        width: 40%; height: 100%;
+        background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.55) 50%, transparent 100%);
+        filter: blur(12px);
+        mix-blend-mode: screen;
+        pointer-events: none;
+      }
+      [data-composition-id="03-turn"] .tagline {
+        margin-top: 8px;
+        font-weight: 600;
+        font-size: 52px;
+        letter-spacing: 0.42em;
+        color: #f9a72c;
+        opacity: 0.85;
+        text-shadow: 0 0 18px rgba(249,167,44,0.35);
+      }
+      [data-composition-id="03-turn"] .underline {
+        margin: 18px auto 0;
+        width: 320px; height: 2px;
+        background: linear-gradient(90deg, transparent, #f9a72c, transparent);
+        box-shadow: 0 0 12px rgba(249,167,44,0.7);
+        transform: scaleX(0);
+      }
+      [data-composition-id="03-turn"] .vignette {
+        position: absolute; inset: 0; pointer-events: none;
+        background: radial-gradient(ellipse at center, transparent 25%, rgba(0,0,0,0.95) 95%);
+        opacity: 0.75;
+      }
+      [data-composition-id="03-turn"] .grain {
+        position: absolute; inset: 0; pointer-events: none; opacity: 0.08;
+        background-image:
+          radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+          radial-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+          radial-gradient(rgba(255,255,255,0.015) 1px, transparent 1px);
+        background-size: 3px 3px, 5px 5px, 7px 7px;
+        background-position: 0 0, 1px 2px, 2px 1px;
+      }
+      [data-composition-id="03-turn"] .whip-streak {
+        position: absolute; top: 50%; left: 0;
+        width: 70%; height: 14px;
+        background: linear-gradient(90deg, transparent 0%, rgba(249,167,44,0.95) 50%, transparent 100%);
+        filter: blur(10px);
+        transform: translate(-150%, -50%);
+        opacity: 0; z-index: 30;
+      }
+    </style>
+
+    <script>
+      (() => {
+        const SLOT = 3;
+        const sel = (q) => `[data-composition-id="03-turn"] ${q}`;
+        const root = document.querySelector(sel('.particles'));
+
+        // Deterministic particle placement (seeded harmonic hashing)
+        const N = 60;
+        for (let i = 0; i < N; i++) {
+          const p = document.createElement('div');
+          p.className = 'particle';
+          const angle = (i * 137.5) * Math.PI / 180;  // golden-angle spiral
+          const r = 280 + 500 * Math.abs(Math.sin(i * 0.37 + 0.7));
+          const cx = 700 + Math.cos(angle) * r;
+          const cy = 700 + Math.sin(angle) * r * 0.55;
+          const size = 4 + 6 * Math.abs(Math.cos(i * 0.91));
+          p.style.left = (cx - size / 2) + 'px';
+          p.style.top  = (cy - size / 2) + 'px';
+          p.style.width = size + 'px';
+          p.style.height = size + 'px';
+          p.dataset.seed = i;
+          root.appendChild(p);
+        }
+
+        const tl = gsap.timeline({ paused: true });
+
+        tl.to(sel('.grid-floor'),
+          { backgroundPositionY: '-100px', duration: SLOT, ease: 'none' }, 0);
+
+        // Swirl + particles awaken
+        tl.to(sel('.swirl'),
+          { opacity: 1, duration: 0.8, ease: 'power2.out' }, 0);
+        tl.to(sel('.swirl'),
+          { rotation: 90, duration: SLOT, ease: 'none', transformOrigin: '50% 50%' }, 0);
+
+        tl.to(sel('.particles'),
+          { rotation: -60, duration: SLOT, ease: 'none', transformOrigin: '50% 50%' }, 0);
+
+        tl.to(sel('.particle'),
+          { opacity: 1, duration: 0.8, ease: 'power2.out',
+            stagger: { each: 0.015, from: 'center' } }, 0);
+
+        // Brand reveal
+        tl.fromTo(sel('.brand'),
+          { opacity: 0, scale: 0.92 },
+          { opacity: 1, scale: 1, duration: 0.80, ease: 'power3.out' }, 0.40);
+
+        tl.to(sel('.underline'),
+          { scaleX: 1, duration: 0.7, ease: 'power2.out' }, 1.05);
+
+        // Shimmer sweep across wordmark at 1.8s
+        tl.fromTo(sel('.shimmer'),
+          { left: '-40%' },
+          { left: '100%', duration: 0.8, ease: 'power2.inOut' }, 1.80);
+
+        // Hold, then dim for whip
+        tl.to(sel('.brand'),
+          { opacity: 0.4, scale: 0.98, duration: 0.35, ease: 'power2.in' }, 2.60);
+
+        tl.set(sel('.whip-streak'), { opacity: 1 }, 2.65);
+        tl.fromTo(sel('.whip-streak'),
+          { xPercent: -150, scaleX: 0.5 },
+          { xPercent: 250, scaleX: 1.5, duration: 0.35, ease: 'power3.in' }, 2.65);
+
+        tl.to({}, { duration: SLOT }, 0);
+        window.__timelines = window.__timelines || {};
+        window.__timelines['03-turn'] = tl;
+      })();
+    </script>
+  </div>
+</template>
