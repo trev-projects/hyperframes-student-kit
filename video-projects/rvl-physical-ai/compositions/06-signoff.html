@@ -4,9 +4,9 @@
 
   <div data-composition-id="06-signoff" data-start="0" data-duration="4.5" data-width="1920" data-height="1080">
     <div class="stage">
-      <div class="line line-1">SOFTWARE ATE THE WORLD.</div>
+      <div class="line line-1" data-split>SOFTWARE ATE THE WORLD.</div>
       <div class="line line-2">
-        PHYSICAL&nbsp;AI&nbsp;WILL&nbsp;<span class="move">MOVE</span>&nbsp;IT.
+        <span class="prefix" data-split>PHYSICAL AI WILL </span><span class="move">MOVE</span><span class="suffix" data-split> IT.</span>
       </div>
       <div class="grain"></div>
     </div>
@@ -22,17 +22,28 @@
         position: absolute;
         left: 50%;
         transform: translateX(-50%);
-        font-size: 180px;
+        font-size: 108px;
         letter-spacing: -0.035em;
-        line-height: 0.92;
+        line-height: 1;
         white-space: nowrap;
-        opacity: 0;
       }
-      [data-composition-id="06-signoff"] .line-1 { top: 34%; color: #ffffff; }
-      [data-composition-id="06-signoff"] .line-2 { top: 54%; color: #c3f53b; text-shadow: 0 0 44px rgba(195,245,59,0.4); }
+      [data-composition-id="06-signoff"] .line-1 { top: 36%; color: #ffffff; }
+      [data-composition-id="06-signoff"] .line-2 {
+        top: 52%;
+        color: #c3f53b;
+        text-shadow: 0 0 48px rgba(195,245,59,0.45);
+      }
+      [data-composition-id="06-signoff"] .ch {
+        display: inline-block;
+        opacity: 0;
+        transform: translateY(40px) rotate(6deg);
+        will-change: opacity, transform;
+      }
       [data-composition-id="06-signoff"] .move {
         display: inline-block;
         transform-origin: center;
+        opacity: 0;
+        position: relative;
       }
       [data-composition-id="06-signoff"] .grain {
         position: absolute; inset: 0; pointer-events: none; opacity: 0.04;
@@ -48,21 +59,49 @@
       (() => {
         const SLOT = 4.5;
         const sel = (q) => `[data-composition-id="06-signoff"] ${q}`;
+
+        // Per-character split of everything marked [data-split]
+        document.querySelectorAll(sel('[data-split]')).forEach((node) => {
+          const text = node.textContent;
+          node.innerHTML = text.split('').map((c) =>
+            c === ' '
+              ? '<span class="ch space">&nbsp;</span>'
+              : `<span class="ch">${c.replace(/&/g, '&amp;').replace(/</g, '&lt;')}</span>`
+          ).join('');
+        });
+
         const tl = gsap.timeline({ paused: true });
 
-        tl.fromTo(sel('.line-1'),
-          { y: 30, opacity: 0, scale: 1.05 },
-          { y: 0, opacity: 1, scale: 1, duration: 0.45, ease: 'back.out(1.3)' }, 0.10);
+        // Line 1 — per-char drop-in
+        tl.to(sel('.line-1 .ch'),
+          { y: 0, rotate: 0, opacity: 1,
+            duration: 0.35, ease: 'back.out(1.6)',
+            stagger: 0.018 }, 0.10);
 
-        tl.fromTo(sel('.line-2'),
-          { y: 30, opacity: 0, scale: 1.05 },
-          { y: 0, opacity: 1, scale: 1, duration: 0.50, ease: 'back.out(1.3)' }, 1.80);
+        // Line 2 prefix chars
+        tl.to(sel('.line-2 .prefix .ch'),
+          { y: 0, rotate: 0, opacity: 1,
+            duration: 0.32, ease: 'back.out(1.6)',
+            stagger: 0.02 }, 1.60);
 
-        // MOVE wobble
+        // MOVE word — scale-burst entry
+        tl.fromTo(sel('.move'),
+          { scale: 0.5, opacity: 0, rotation: -6 },
+          { scale: 1, opacity: 1, rotation: 0,
+            duration: 0.40, ease: 'back.out(2)' }, 2.15);
+
+        // MOVE word — rotate wobble + scale pulse
         tl.to(sel('.move'),
-          { rotation: 4, duration: 0.25, ease: 'sine.inOut', yoyo: true, repeat: 3 }, 2.50);
+          { rotation: 4, scale: 1.08, duration: 0.18, ease: 'sine.inOut',
+            yoyo: true, repeat: 3 }, 2.55);
 
-        // Exit together — slide down
+        // Line 2 suffix chars (IT.)
+        tl.to(sel('.line-2 .suffix .ch'),
+          { y: 0, rotate: 0, opacity: 1,
+            duration: 0.32, ease: 'back.out(1.6)',
+            stagger: 0.02 }, 2.55);
+
+        // Exit together
         tl.to([sel('.line-1'), sel('.line-2')],
           { y: 180, opacity: 0, duration: 0.45, ease: 'power2.in' }, 4.00);
 

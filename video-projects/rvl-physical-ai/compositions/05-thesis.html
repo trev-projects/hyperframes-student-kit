@@ -8,7 +8,7 @@
         <div class="ln ln1">EVERY</div>
         <div class="ln ln2">TOP FUND</div>
         <div class="ln ln3">NOW HAS A</div>
-        <div class="ln ln4">PHYSICAL AI THESIS.</div>
+        <div class="ln ln4" data-split>PHYSICAL AI THESIS.</div>
       </div>
       <div class="source">SOURCE &mdash; RVL ANALYSIS &bull; 2026</div>
       <div class="wipe"></div>
@@ -29,15 +29,22 @@
         display: flex; flex-direction: column; gap: 0;
       }
       [data-composition-id="05-thesis"] .ln {
-        font-size: 180px;
+        font-size: 160px;
         color: #ffffff;
         letter-spacing: -0.035em;
-        line-height: 0.92;
+        line-height: 0.95;
         opacity: 0;
       }
       [data-composition-id="05-thesis"] .ln4 {
         color: #c3f53b;
         text-shadow: 0 0 44px rgba(195,245,59,0.4);
+        white-space: nowrap;
+      }
+      [data-composition-id="05-thesis"] .ln4 .ch {
+        display: inline-block;
+        opacity: 0;
+        transform: translateY(50px) rotate(8deg);
+        will-change: opacity, transform;
       }
       [data-composition-id="05-thesis"] .source {
         position: absolute;
@@ -69,19 +76,37 @@
       (() => {
         const SLOT = 3.5;
         const sel = (q) => `[data-composition-id="05-thesis"] ${q}`;
+
+        // Split final line into per-char spans
+        document.querySelectorAll(sel('[data-split]')).forEach((node) => {
+          const text = node.textContent;
+          node.innerHTML = text.split('').map((c) =>
+            c === ' '
+              ? '<span class="ch space">&nbsp;</span>'
+              : `<span class="ch">${c}</span>`
+          ).join('');
+        });
+
         const tl = gsap.timeline({ paused: true });
 
-        ['.ln1', '.ln2', '.ln3', '.ln4'].forEach((cls, i) => {
+        // Lines 1-3 slide in
+        ['.ln1', '.ln2', '.ln3'].forEach((cls, i) => {
           tl.fromTo(sel(cls),
             { x: -40, opacity: 0 },
-            { x: 0, opacity: 1, duration: 0.30, ease: 'expo.out' }, 0.08 + i * 0.25);
+            { x: 0, opacity: 1, duration: 0.28, ease: 'expo.out' }, 0.08 + i * 0.22);
         });
+
+        // Line 4 — PHYSICAL AI THESIS per-char burst
+        tl.to(sel('.ln4 .ch'),
+          { y: 0, rotate: 0, opacity: 1,
+            duration: 0.32, ease: 'back.out(1.8)',
+            stagger: 0.022 }, 0.90);
 
         tl.fromTo(sel('.source'),
           { opacity: 0 },
-          { opacity: 0.75, duration: 0.4, ease: 'power2.out' }, 1.40);
+          { opacity: 0.75, duration: 0.4, ease: 'power2.out' }, 1.50);
 
-        // Hold, then rotate/lift
+        // Hold then rotate/lift
         tl.to(sel('.stack'),
           { rotation: -2, y: -80, opacity: 0, duration: 0.45, ease: 'power2.in' }, 2.70);
         tl.to(sel('.source'),
