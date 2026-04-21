@@ -25,83 +25,88 @@
       id="root"
       data-composition-id="rvl-physical-ai"
       data-start="0"
-      data-duration="32.5"
+      data-duration="33.5"
       data-width="1920"
       data-height="1080"
     >
-      <!-- Persistent RVL corner bug (after hook, 2-29.5s) -->
+      <!-- Persistent RVL corner bug (after hook, 3.2-30.5s) -->
       <div class="beat-layer"
         data-composition-id="00-rvl-bug"
         data-composition-src="compositions/00-rvl-bug.html"
-        data-start="2" data-duration="27.5" data-track-index="10"
+        data-start="3.2" data-duration="27.5" data-track-index="10"
         data-width="1920" data-height="1080"></div>
 
-      <!-- Beat 0 — PRE-HOOK TEASER (0–2s) -->
+      <!-- Beat 0 — PRE-HOOK TEASER (0–3.2s) -->
       <div class="beat-layer"
         data-composition-id="00-hook-teaser"
         data-composition-src="compositions/00-hook-teaser.html"
-        data-start="0" data-duration="2" data-track-index="0"
+        data-start="0" data-duration="3.2" data-track-index="0"
         data-width="1920" data-height="1080"></div>
 
-      <!-- Beat 01 — Cold open "PIXELS ARE OUT" (2–4s) -->
+      <!-- Beat 01 — Cold open "PIXELS ARE OUT" (3.2–5.2s) -->
       <div class="beat-layer"
         data-composition-id="01-cold-open"
         data-composition-src="compositions/01-cold-open.html"
-        data-start="2" data-duration="2" data-track-index="0"
+        data-start="3.2" data-duration="2" data-track-index="0"
         data-width="1920" data-height="1080"></div>
 
-      <!-- Beat 02 — Flip "ATOMS ARE IN" (4–5.8s) -->
+      <!-- Beat 02 — Flip "ATOMS ARE IN" (5.2–7s) -->
       <div class="beat-layer"
         data-composition-id="02-flip"
         data-composition-src="compositions/02-flip.html"
-        data-start="4" data-duration="1.8" data-track-index="0"
+        data-start="5.2" data-duration="1.8" data-track-index="0"
         data-width="1920" data-height="1080"></div>
 
-      <!-- Beat 03 — Category land (5.8–13s) -->
+      <!-- Beat 03 — Category land (7–14.2s) -->
       <div class="beat-layer"
         data-composition-id="03-category-land"
         data-composition-src="compositions/03-category-land.html"
-        data-start="5.8" data-duration="7.2" data-track-index="0"
+        data-start="7" data-duration="7.2" data-track-index="0"
         data-width="1920" data-height="1080"></div>
 
-      <!-- Beat 04 — Deal rail (13–21s) -->
+      <!-- Beat 04 — Deal rail (14.2–22.2s) -->
       <div class="beat-layer"
         data-composition-id="04-deal-rail"
         data-composition-src="compositions/04-deal-rail.html"
-        data-start="13" data-duration="8" data-track-index="0"
+        data-start="14.2" data-duration="8" data-track-index="0"
         data-width="1920" data-height="1080"></div>
 
-      <!-- Beat 05 — Thesis (21–25s) -->
+      <!-- Beat 05 — Thesis (22.2–26.2s) -->
       <div class="beat-layer"
         data-composition-id="05-thesis"
         data-composition-src="compositions/05-thesis.html"
-        data-start="21" data-duration="4" data-track-index="0"
+        data-start="22.2" data-duration="4" data-track-index="0"
         data-width="1920" data-height="1080"></div>
 
-      <!-- Beat 06 — Signoff (25–29.5s) -->
+      <!-- Beat 06 — Signoff (26.2–30.7s) -->
       <div class="beat-layer"
         data-composition-id="06-signoff"
         data-composition-src="compositions/06-signoff.html"
-        data-start="25" data-duration="4.5" data-track-index="0"
+        data-start="26.2" data-duration="4.5" data-track-index="0"
         data-width="1920" data-height="1080"></div>
 
-      <!-- Beat 07 — CTA hero outro (29.5–32.5s) -->
+      <!-- Beat 07 — CTA hero outro (30.7–33.5s) -->
       <div class="beat-layer"
         data-composition-id="07-cta"
         data-composition-src="compositions/07-cta.html"
-        data-start="29.5" data-duration="3" data-track-index="0"
+        data-start="30.7" data-duration="2.8" data-track-index="0"
         data-width="1920" data-height="1080"></div>
 
-      <!-- Voiceover (Kokoro-82M, voice am_michael) -->
+      <!-- Voiceover (Kokoro-82M, voice af_heart @ 0.92x) -->
       <audio id="vo"
-        data-start="2.0" data-duration="26.3" data-track-index="20" data-volume="1.0"
+        data-start="3.2" data-duration="28" data-track-index="20" data-volume="1.0"
         src="assets/narration.wav"></audio>
+
+      <!-- Background music bed -->
+      <audio id="bed"
+        data-start="0" data-duration="33.5" data-track-index="21" data-volume="0.18"
+        src="assets/music.wav"></audio>
     </div>
 
     <script>
       window.__timelines = window.__timelines || {};
       const tl = gsap.timeline({ paused: true });
-      tl.to({}, { duration: 32.5 }, 0);
+      tl.to({}, { duration: 33.5 }, 0);
       window.__timelines["rvl-physical-ai"] = tl;
     </script>
   </body>
