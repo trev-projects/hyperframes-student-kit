@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <title>RVL — Physical AI (Weekly-01)</title>
+    <script src="assets/gsap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@500;700&display=block" rel="stylesheet" />
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body {
+        width: 1920px; height: 1080px;
+        overflow: hidden;
+        background: #0a0a0a;
+        color: #ffffff;
+      }
+      .beat-layer {
+        position: absolute; top: 0; left: 0;
+        width: 1920px; height: 1080px;
+      }
+      .cap {
+        position: absolute;
+        bottom: 110px;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 10px 22px;
+        background: rgba(10, 10, 10, 0.72);
+        border: 1px solid rgba(195, 245, 59, 0.5);
+        color: #ffffff;
+        font: 700 28px/1.2 "Space Grotesk", sans-serif;
+        letter-spacing: 0.01em;
+        z-index: 60;
+        white-space: nowrap;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="rvl-physical-ai"
+      data-start="0"
+      data-duration="30"
+      data-width="1920"
+      data-height="1080"
+    >
+      <!-- Persistent RVL corner bug (0–27s, hidden during outro) -->
+      <div class="beat-layer"
+        data-composition-id="00-rvl-bug"
+        data-composition-src="compositions/00-rvl-bug.html"
+        data-start="0" data-duration="27" data-track-index="10"
+        data-width="1920" data-height="1080"></div>
+
+      <!-- Beat 01 — Cold open "PIXELS ARE OUT" (0–2s) -->
+      <div class="beat-layer"
+        data-composition-id="01-cold-open"
+        data-composition-src="compositions/01-cold-open.html"
+        data-start="0" data-duration="2" data-track-index="0"
+        data-width="1920" data-height="1080"></div>
+
+      <!-- Beat 02 — Flip "ATOMS ARE IN" (2–3.8s) -->
+      <div class="beat-layer"
+        data-composition-id="02-flip"
+        data-composition-src="compositions/02-flip.html"
+        data-start="2" data-duration="1.8" data-track-index="0"
+        data-width="1920" data-height="1080"></div>
+
+      <!-- Beat 03 — Category land (3.8–11s) -->
+      <div class="beat-layer"
+        data-composition-id="03-category-land"
+        data-composition-src="compositions/03-category-land.html"
+        data-start="3.8" data-duration="7.2" data-track-index="0"
+        data-width="1920" data-height="1080"></div>
+
+      <!-- Beat 04 — Deal rail (11–19s) -->
+      <div class="beat-layer"
+        data-composition-id="04-deal-rail"
+        data-composition-src="compositions/04-deal-rail.html"
+        data-start="11" data-duration="8" data-track-index="0"
+        data-width="1920" data-height="1080"></div>
+
+      <!-- Beat 05 — Thesis (19–22.5s) -->
+      <div class="beat-layer"
+        data-composition-id="05-thesis"
+        data-composition-src="compositions/05-thesis.html"
+        data-start="19" data-duration="3.5" data-track-index="0"
+        data-width="1920" data-height="1080"></div>
+
+      <!-- Beat 06 — Signoff (22.5–27s) -->
+      <div class="beat-layer"
+        data-composition-id="06-signoff"
+        data-composition-src="compositions/06-signoff.html"
+        data-start="22.5" data-duration="4.5" data-track-index="0"
+        data-width="1920" data-height="1080"></div>
+
+      <!-- Beat 07 — CTA hero outro (27–30s) -->
+      <div class="beat-layer"
+        data-composition-id="07-cta"
+        data-composition-src="compositions/07-cta.html"
+        data-start="27" data-duration="3" data-track-index="0"
+        data-width="1920" data-height="1080"></div>
+    </div>
+
+    <!-- Captions (burned-in stand-in for VO) -->
+    <div class="cap clip" data-start="0.20"  data-duration="1.60" data-track-index="30">Pixels are out.</div>
+    <div class="cap clip" data-start="2.15"  data-duration="1.50" data-track-index="31">Atoms are in.</div>
+    <div class="cap clip" data-start="4.00"  data-duration="6.80" data-track-index="32">Physical AI — humanoids, factory robots, self-driving — just became its own investment category.</div>
+    <div class="cap clip" data-start="11.20" data-duration="7.60" data-track-index="33">Figure $1.5B. Physical Intelligence $400M. Skild AI $300M.</div>
+    <div class="cap clip" data-start="19.20" data-duration="3.10" data-track-index="34">Every top fund now has a Physical AI thesis.</div>
+    <div class="cap clip" data-start="22.70" data-duration="4.10" data-track-index="35">Software ate the world. Physical AI will move it.</div>
+    <div class="cap clip" data-start="27.10" data-duration="2.70" data-track-index="36">Read this week's RVL. rvl.tech/p/physical-ai</div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      tl.to({}, { duration: 30 }, 0);
+      window.__timelines["rvl-physical-ai"] = tl;
+    </script>
+  </body>
+</html>

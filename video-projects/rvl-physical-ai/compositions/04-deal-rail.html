@@ -1,0 +1,187 @@
+<template id="04-deal-rail-template">
+  <script src="assets/gsap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@500;700&display=block" rel="stylesheet" />
+
+  <div data-composition-id="04-deal-rail" data-start="0" data-duration="8" data-width="1920" data-height="1080">
+    <div class="stage">
+      <div class="rail-label">THIS WEEK&apos;S DEALS</div>
+
+      <div class="rail">
+        <div class="row row-1">
+          <div class="co">FIGURE</div>
+          <div class="arrow">→</div>
+          <div class="amt"><span class="amt-num" data-target="1.5">0.0</span><span class="amt-unit">B</span></div>
+          <div class="row-underline"></div>
+        </div>
+
+        <div class="row row-2">
+          <div class="co">PHYSICAL<br/>INTELLIGENCE</div>
+          <div class="arrow">→</div>
+          <div class="amt"><span class="amt-num" data-target="400">0</span><span class="amt-unit">M</span></div>
+          <div class="row-underline"></div>
+        </div>
+
+        <div class="row row-3">
+          <div class="co">SKILD&nbsp;AI</div>
+          <div class="arrow">→</div>
+          <div class="amt"><span class="amt-num" data-target="300">0</span><span class="amt-unit">M</span></div>
+          <div class="row-underline"></div>
+        </div>
+      </div>
+
+      <div class="wipe"></div>
+      <div class="grain"></div>
+    </div>
+
+    <style>
+      [data-composition-id="04-deal-rail"] {
+        position: absolute; inset: 0; overflow: hidden;
+        background: #0a0a0a;
+        font-family: "Archivo Black", sans-serif;
+      }
+      [data-composition-id="04-deal-rail"] .stage { position: absolute; inset: 0; }
+      [data-composition-id="04-deal-rail"] .rail-label {
+        position: absolute;
+        top: 96px; left: 100px;
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 700;
+        font-size: 32px;
+        letter-spacing: 0.22em;
+        color: #c3f53b;
+        opacity: 0;
+      }
+      [data-composition-id="04-deal-rail"] .rail {
+        position: absolute;
+        top: 220px; left: 100px; right: 100px;
+        display: flex; flex-direction: column; gap: 40px;
+      }
+      [data-composition-id="04-deal-rail"] .row {
+        position: relative;
+        display: flex; align-items: baseline;
+        gap: 64px;
+        padding-bottom: 28px;
+        opacity: 0;
+      }
+      [data-composition-id="04-deal-rail"] .co {
+        font-size: 150px;
+        color: #ffffff;
+        letter-spacing: -0.03em;
+        line-height: 0.95;
+        flex: 1;
+      }
+      [data-composition-id="04-deal-rail"] .arrow {
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 700;
+        font-size: 110px;
+        color: #c3f53b;
+        line-height: 1;
+        opacity: 0.85;
+      }
+      [data-composition-id="04-deal-rail"] .amt {
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 700;
+        font-size: 200px;
+        color: #c3f53b;
+        letter-spacing: -0.04em;
+        line-height: 1;
+        text-shadow: 0 0 32px rgba(195,245,59,0.35);
+        display: inline-flex; align-items: baseline;
+        min-width: 560px;
+        justify-content: flex-end;
+      }
+      [data-composition-id="04-deal-rail"] .amt::before {
+        content: "$";
+        color: #c3f53b;
+        font-size: 140px;
+        margin-right: 12px;
+        opacity: 0.85;
+      }
+      [data-composition-id="04-deal-rail"] .amt-unit { font-size: 140px; margin-left: 8px; }
+      [data-composition-id="04-deal-rail"] .row-2 .co { font-size: 110px; line-height: 1.0; }
+      [data-composition-id="04-deal-rail"] .row-underline {
+        position: absolute;
+        bottom: 0; left: 0;
+        width: 100%; height: 3px;
+        background: #c3f53b;
+        transform: scaleX(0);
+        transform-origin: left center;
+        box-shadow: 0 0 12px rgba(195,245,59,0.45);
+      }
+      [data-composition-id="04-deal-rail"] .wipe {
+        position: absolute; top: 0; left: -100%;
+        width: 100%; height: 100%;
+        background: #c3f53b;
+        z-index: 30;
+      }
+      [data-composition-id="04-deal-rail"] .grain {
+        position: absolute; inset: 0; pointer-events: none; opacity: 0.04;
+        background-image:
+          radial-gradient(rgba(255,255,255,0.3) 1px, transparent 1px),
+          radial-gradient(rgba(255,255,255,0.2) 1px, transparent 1px);
+        background-size: 3px 3px, 5px 5px;
+        z-index: 40;
+      }
+    </style>
+
+    <script>
+      (() => {
+        const SLOT = 8;
+        const sel = (q) => `[data-composition-id="04-deal-rail"] ${q}`;
+        const tl = gsap.timeline({ paused: true });
+
+        tl.fromTo(sel('.rail-label'),
+          { x: -30, opacity: 0 },
+          { x: 0, opacity: 1, duration: 0.35, ease: 'power3.out' }, 0.10);
+
+        const rows = [
+          { cls: '.row-1', at: 0.20, decimals: 1, unit: 'B' },
+          { cls: '.row-2', at: 2.60, decimals: 0, unit: 'M' },
+          { cls: '.row-3', at: 5.20, decimals: 0, unit: 'M', bounce: true }
+        ];
+
+        rows.forEach((r) => {
+          const rowSel = sel(r.cls);
+          const numSel = rowSel + ' .amt-num';
+
+          // Row slides in from right
+          tl.fromTo(rowSel,
+            { xPercent: 12, opacity: 0 },
+            { xPercent: 0, opacity: 1, duration: 0.45,
+              ease: r.bounce ? 'back.out(1.4)' : 'expo.out' }, r.at);
+
+          // Counter up
+          const el = document.querySelector(numSel);
+          if (el) {
+            const target = parseFloat(el.dataset.target);
+            const proxy = { v: 0 };
+            tl.to(proxy, {
+              v: target, duration: 0.95, ease: 'power2.out',
+              onUpdate: () => {
+                el.textContent = r.decimals > 0
+                  ? proxy.v.toFixed(r.decimals)
+                  : Math.round(proxy.v).toString();
+              }
+            }, r.at + 0.20);
+          }
+
+          // Underline
+          tl.to(rowSel + ' .row-underline',
+            { scaleX: 1, duration: 0.55, ease: 'power2.out' }, r.at + 0.25);
+        });
+
+        // Lift + wipe exit
+        tl.to(sel('.rail'),
+          { y: -80, opacity: 0, duration: 0.40, ease: 'power2.in' }, 7.30);
+        tl.to(sel('.rail-label'),
+          { opacity: 0, duration: 0.30, ease: 'power2.in' }, 7.30);
+        tl.fromTo(sel('.wipe'),
+          { xPercent: 0 },
+          { xPercent: 200, duration: 0.35, ease: 'power3.in' }, 7.60);
+
+        tl.to({}, { duration: SLOT }, 0);
+        window.__timelines = window.__timelines || {};
+        window.__timelines['04-deal-rail'] = tl;
+      })();
+    </script>
+  </div>
+</template>
