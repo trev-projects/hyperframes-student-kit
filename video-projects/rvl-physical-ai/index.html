@@ -25,15 +25,15 @@
       id="root"
       data-composition-id="rvl-physical-ai"
       data-start="0"
-      data-duration="32"
+      data-duration="32.5"
       data-width="1920"
       data-height="1080"
     >
-      <!-- Persistent RVL corner bug (after hook, 2-29s) -->
+      <!-- Persistent RVL corner bug (after hook, 2-29.5s) -->
       <div class="beat-layer"
         data-composition-id="00-rvl-bug"
         data-composition-src="compositions/00-rvl-bug.html"
-        data-start="2" data-duration="27" data-track-index="10"
+        data-start="2" data-duration="27.5" data-track-index="10"
         data-width="1920" data-height="1080"></div>
 
       <!-- Beat 0 — PRE-HOOK TEASER (0–2s) -->
@@ -71,32 +71,37 @@
         data-start="13" data-duration="8" data-track-index="0"
         data-width="1920" data-height="1080"></div>
 
-      <!-- Beat 05 — Thesis (21–24.5s) -->
+      <!-- Beat 05 — Thesis (21–25s) -->
       <div class="beat-layer"
         data-composition-id="05-thesis"
         data-composition-src="compositions/05-thesis.html"
-        data-start="21" data-duration="3.5" data-track-index="0"
+        data-start="21" data-duration="4" data-track-index="0"
         data-width="1920" data-height="1080"></div>
 
-      <!-- Beat 06 — Signoff (24.5–29s) -->
+      <!-- Beat 06 — Signoff (25–29.5s) -->
       <div class="beat-layer"
         data-composition-id="06-signoff"
         data-composition-src="compositions/06-signoff.html"
-        data-start="24.5" data-duration="4.5" data-track-index="0"
+        data-start="25" data-duration="4.5" data-track-index="0"
         data-width="1920" data-height="1080"></div>
 
-      <!-- Beat 07 — CTA hero outro (29–32s) -->
+      <!-- Beat 07 — CTA hero outro (29.5–32.5s) -->
       <div class="beat-layer"
         data-composition-id="07-cta"
         data-composition-src="compositions/07-cta.html"
-        data-start="29" data-duration="3" data-track-index="0"
+        data-start="29.5" data-duration="3" data-track-index="0"
         data-width="1920" data-height="1080"></div>
+
+      <!-- Voiceover (Kokoro-82M, voice am_michael) -->
+      <audio id="vo"
+        data-start="2.0" data-duration="26.3" data-track-index="20" data-volume="1.0"
+        src="assets/narration.wav"></audio>
     </div>
 
     <script>
       window.__timelines = window.__timelines || {};
       const tl = gsap.timeline({ paused: true });
-      tl.to({}, { duration: 32 }, 0);
+      tl.to({}, { duration: 32.5 }, 0);
       window.__timelines["rvl-physical-ai"] = tl;
     </script>
   </body>
