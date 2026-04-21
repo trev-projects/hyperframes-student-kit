@@ -32,11 +32,11 @@
       [data-composition-id="05-thesis"] .ln {
         letter-spacing: -0.035em;
         line-height: 0.95;
-        opacity: 0;
       }
       [data-composition-id="05-thesis"] .ln1 {
         font-size: 150px;
         color: #ffffff;
+        opacity: 0;
       }
       [data-composition-id="05-thesis"] .ln2 {
         font-size: 130px;
@@ -50,6 +50,7 @@
         white-space: nowrap;
         line-height: 1.0;
         margin-top: 8px;
+        /* parent stays visible; .ln3 .ch handles per-char opacity */
       }
       [data-composition-id="05-thesis"] .ln3 .ch {
         display: inline-block;
