@@ -7,8 +7,9 @@
       <div class="stack">
         <div class="ln ln1">EVERY TOP FUND</div>
         <div class="ln ln2">NOW HAS A</div>
-        <div class="ln ln3" data-split>PHYSICAL AI THESIS.</div>
-        <div class="ln3-underline"></div>
+        <div class="ln ln3" data-split>PHYSICAL AI</div>
+        <div class="ln ln4" data-split>THESIS.</div>
+        <div class="ln4-underline"></div>
       </div>
       <div class="source">SOURCE &mdash; RVL ANALYSIS &bull; 2026</div>
       <div class="wipe"></div>
@@ -27,45 +28,45 @@
         top: 50%; left: 100px;
         transform: translateY(-50%);
         display: flex; flex-direction: column; gap: 0;
-        max-width: 1720px;
       }
       [data-composition-id="05-thesis"] .ln {
         letter-spacing: -0.035em;
         line-height: 0.95;
       }
       [data-composition-id="05-thesis"] .ln1 {
-        font-size: 150px;
-        color: #ffffff;
-        opacity: 0;
-      }
-      [data-composition-id="05-thesis"] .ln2 {
         font-size: 130px;
         color: #ffffff;
         opacity: 0;
       }
-      [data-composition-id="05-thesis"] .ln3 {
-        font-size: 210px;
+      [data-composition-id="05-thesis"] .ln2 {
+        font-size: 110px;
+        color: #ffffff;
+        opacity: 0;
+      }
+      [data-composition-id="05-thesis"] .ln3,
+      [data-composition-id="05-thesis"] .ln4 {
+        font-size: 220px;
         color: #c3f53b;
         text-shadow: 0 0 54px rgba(195,245,59,0.45);
         white-space: nowrap;
-        line-height: 1.0;
-        margin-top: 8px;
-        /* parent stays visible; .ln3 .ch handles per-char opacity */
+        line-height: 1.02;
       }
-      [data-composition-id="05-thesis"] .ln3 .ch {
+      [data-composition-id="05-thesis"] .ln3 { margin-top: 6px; }
+      [data-composition-id="05-thesis"] .ln3 .ch,
+      [data-composition-id="05-thesis"] .ln4 .ch {
         display: inline-block;
         opacity: 0;
         transform: translateY(60px) rotate(8deg);
         will-change: opacity, transform;
       }
-      [data-composition-id="05-thesis"] .ln3-underline {
-        height: 8px;
-        margin-top: 18px;
-        width: 100%;
+      [data-composition-id="05-thesis"] .ln4-underline {
+        height: 10px;
+        margin-top: 14px;
+        width: 620px;
         background: #c3f53b;
         transform: scaleX(0);
         transform-origin: left center;
-        box-shadow: 0 0 22px rgba(195,245,59,0.6);
+        box-shadow: 0 0 24px rgba(195,245,59,0.7);
       }
       [data-composition-id="05-thesis"] .source {
         position: absolute;
@@ -109,30 +110,36 @@
 
         const tl = gsap.timeline({ paused: true });
 
-        // Line 1 + 2 — quick reveals
+        // Setup lines 1-2 intros
         tl.fromTo(sel('.ln1'),
           { x: -40, opacity: 0 },
           { x: 0, opacity: 1, duration: 0.28, ease: 'expo.out' }, 0.08);
         tl.fromTo(sel('.ln2'),
           { x: -40, opacity: 0 },
-          { x: 0, opacity: 0.85, duration: 0.28, ease: 'expo.out' }, 0.30);
+          { x: 0, opacity: 0.80, duration: 0.28, ease: 'expo.out' }, 0.30);
 
-        // Line 3 — the punchline, per-char burst with scale
+        // Hero line 1 — "PHYSICAL AI" per-char burst
         tl.to(sel('.ln3 .ch'),
           { y: 0, rotate: 0, opacity: 1,
             duration: 0.35, ease: 'back.out(2)',
-            stagger: 0.018 }, 0.60);
+            stagger: 0.022 }, 0.58);
 
-        // Underline sweep
-        tl.to(sel('.ln3-underline'),
-          { scaleX: 1, duration: 0.55, ease: 'power3.out' }, 0.95);
+        // Hero line 2 — "THESIS." per-char burst
+        tl.to(sel('.ln4 .ch'),
+          { y: 0, rotate: 0, opacity: 1,
+            duration: 0.40, ease: 'back.out(2.2)',
+            stagger: 0.028 }, 0.95);
+
+        // Underline sweep under THESIS.
+        tl.to(sel('.ln4-underline'),
+          { scaleX: 1, duration: 0.55, ease: 'power3.out' }, 1.30);
 
         // Source stamp
         tl.fromTo(sel('.source'),
           { opacity: 0 },
-          { opacity: 0.7, duration: 0.4, ease: 'power2.out' }, 1.20);
+          { opacity: 0.7, duration: 0.4, ease: 'power2.out' }, 1.50);
 
-        // HOLD — full resolved state visible from ~1.2s to 3.3s (2.1s hold)
+        // HOLD — full resolved state from ~1.85s to 3.30s (1.45s)
 
         // Exit
         tl.to(sel('.stack'),
