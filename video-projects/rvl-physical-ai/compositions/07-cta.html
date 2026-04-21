@@ -6,12 +6,9 @@
     <div class="stage">
       <div class="rvl-big">RVL</div>
       <div class="tagline">REVEALING&nbsp;THE&nbsp;FUTURE&nbsp;OF&nbsp;BRANDS,&nbsp;STARTUPS,&nbsp;AND&nbsp;VENTURE&nbsp;CAPITAL.</div>
-      <div class="url">rvl.tech/p/physical-ai</div>
-      <div class="marquee-wrap">
-        <div class="marquee">
-          <span>PHYSICAL&nbsp;AI&nbsp;&middot;&nbsp;NEW&nbsp;INVESTMENT&nbsp;CATEGORY&nbsp;&middot;&nbsp;WEEKLY&nbsp;FROM&nbsp;RVL&nbsp;&middot;&nbsp;</span>
-          <span>PHYSICAL&nbsp;AI&nbsp;&middot;&nbsp;NEW&nbsp;INVESTMENT&nbsp;CATEGORY&nbsp;&middot;&nbsp;WEEKLY&nbsp;FROM&nbsp;RVL&nbsp;&middot;&nbsp;</span>
-        </div>
+      <div class="cta-line">
+        <span class="cta-main">Read the latest issue and sign up at</span>
+        <span class="cta-url">rvl.tech</span>
       </div>
       <div class="grain"></div>
     </div>
@@ -48,38 +45,29 @@
         text-align: center;
         max-width: 1600px;
       }
-      [data-composition-id="07-cta"] .url {
+      [data-composition-id="07-cta"] .cta-line {
         position: absolute;
-        top: 83%; left: 50%;
+        top: 82%; left: 50%;
         transform: translateX(-50%);
-        font-family: "JetBrains Mono", monospace;
-        font-weight: 700;
-        font-size: 44px;
-        letter-spacing: 0.04em;
-        color: #c3f53b;
+        display: flex; align-items: baseline; gap: 18px;
         opacity: 0;
-        text-shadow: 0 0 16px rgba(195,245,59,0.5);
-      }
-      [data-composition-id="07-cta"] .marquee-wrap {
-        position: absolute;
-        bottom: 40px; left: 0; right: 0;
-        height: 48px; overflow: hidden;
-        border-top: 2px solid #c3f53b;
-        border-bottom: 2px solid #c3f53b;
-        opacity: 0;
-      }
-      [data-composition-id="07-cta"] .marquee {
-        display: flex;
-        font-family: "JetBrains Mono", monospace;
-        font-weight: 700;
-        font-size: 26px;
-        letter-spacing: 0.12em;
-        color: #c3f53b;
         white-space: nowrap;
-        line-height: 48px;
-        will-change: transform;
       }
-      [data-composition-id="07-cta"] .marquee span { padding-right: 28px; }
+      [data-composition-id="07-cta"] .cta-main {
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 700;
+        font-size: 38px;
+        letter-spacing: 0.02em;
+        color: #ffffff;
+      }
+      [data-composition-id="07-cta"] .cta-url {
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 700;
+        font-size: 48px;
+        letter-spacing: 0.02em;
+        color: #c3f53b;
+        text-shadow: 0 0 20px rgba(195,245,59,0.55);
+      }
       [data-composition-id="07-cta"] .grain {
         position: absolute; inset: 0; pointer-events: none; opacity: 0.04;
         background-image:
@@ -104,21 +92,13 @@
           { y: 24, opacity: 0 },
           { y: 0, opacity: 0.92, duration: 0.45, ease: 'power3.out' }, 0.35);
 
-        tl.fromTo(sel('.url'),
+        tl.fromTo(sel('.cta-line'),
           { y: 16, opacity: 0 },
-          { y: 0, opacity: 1, duration: 0.40, ease: 'power3.out' }, 0.70);
-
-        // Marquee ticker
-        tl.fromTo(sel('.marquee-wrap'),
-          { y: 10, opacity: 0 },
-          { y: 0, opacity: 1, duration: 0.40, ease: 'power3.out' }, 0.85);
-        tl.fromTo(sel('.marquee'),
-          { x: 0 },
-          { x: '-50%', duration: SLOT, ease: 'none' }, 0);
+          { y: 0, opacity: 1, duration: 0.45, ease: 'power3.out' }, 0.70);
 
         // Pulse glow on URL for last half-second
-        tl.to(sel('.url'),
-          { textShadow: '0 0 34px rgba(195,245,59,0.85)', duration: 0.5,
+        tl.to(sel('.cta-url'),
+          { textShadow: '0 0 34px rgba(195,245,59,0.95)', duration: 0.5,
             yoyo: true, repeat: 1, ease: 'sine.inOut' }, 2.20);
 
         tl.to({}, { duration: SLOT }, 0);
