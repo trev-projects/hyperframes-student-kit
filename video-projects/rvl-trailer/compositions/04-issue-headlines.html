@@ -1,0 +1,139 @@
+<template id="04-issue-headlines-template">
+  <script src="assets/gsap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@500;700&display=block" rel="stylesheet" />
+
+  <div data-composition-id="04-issue-headlines" data-start="0" data-duration="6" data-width="1920" data-height="1080">
+    <div class="stage">
+      <div class="label-top">RECENT ISSUES</div>
+
+      <div class="issue i1">
+        <span class="issue-no">W17</span>
+        <span class="issue-title">Physical AI Becomes Its Own Investment Category</span>
+      </div>
+      <div class="issue i2">
+        <span class="issue-no">W16</span>
+        <span class="issue-title">Stablecoin Commerce, Finally</span>
+      </div>
+      <div class="issue i3">
+        <span class="issue-no">W15</span>
+        <span class="issue-title">The Unbundling of Venture Capital</span>
+      </div>
+      <div class="issue i4">
+        <span class="issue-no">W14</span>
+        <span class="issue-title">AI-Native Brands vs. the DTC Playbook</span>
+      </div>
+      <div class="issue i5">
+        <span class="issue-no">W13</span>
+        <span class="issue-title">The New Creator Economy Math</span>
+      </div>
+
+      <div class="hairline hairline-top"></div>
+      <div class="hairline hairline-bottom"></div>
+      <div class="wipe"></div>
+      <div class="grain"></div>
+    </div>
+
+    <style>
+      [data-composition-id="04-issue-headlines"] {
+        position: absolute; inset: 0; overflow: hidden;
+        background: #0a0a0a;
+        font-family: "Archivo Black", sans-serif;
+      }
+      [data-composition-id="04-issue-headlines"] .stage { position: absolute; inset: 0; }
+      [data-composition-id="04-issue-headlines"] .label-top {
+        position: absolute;
+        top: 96px; left: 100px;
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 700;
+        font-size: 28px;
+        letter-spacing: 0.32em;
+        color: #c3f53b;
+        opacity: 0;
+      }
+      [data-composition-id="04-issue-headlines"] .issue {
+        position: absolute;
+        top: 50%; left: 100px; right: 100px;
+        transform: translateY(-50%);
+        display: flex; align-items: baseline; gap: 56px;
+        opacity: 0;
+      }
+      [data-composition-id="04-issue-headlines"] .issue-no {
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 700;
+        font-size: 92px;
+        color: #c3f53b;
+        letter-spacing: 0.05em;
+        text-shadow: 0 0 18px rgba(195,245,59,0.4);
+        flex: 0 0 auto;
+      }
+      [data-composition-id="04-issue-headlines"] .issue-title {
+        font-size: 96px;
+        font-weight: 900;
+        color: #ffffff;
+        letter-spacing: -0.03em;
+        line-height: 0.98;
+      }
+      [data-composition-id="04-issue-headlines"] .hairline {
+        position: absolute;
+        left: 100px; right: 100px;
+        height: 2px;
+        background: linear-gradient(90deg, transparent 0, #c3f53b 12%, #c3f53b 88%, transparent 100%);
+        transform: scaleX(0);
+        transform-origin: center;
+        opacity: 0.5;
+      }
+      [data-composition-id="04-issue-headlines"] .hairline-top { top: 40%; }
+      [data-composition-id="04-issue-headlines"] .hairline-bottom { top: 60%; }
+      [data-composition-id="04-issue-headlines"] .wipe {
+        position: absolute; top: 0; left: -100%;
+        width: 100%; height: 100%;
+        background: #c3f53b;
+        z-index: 30;
+      }
+      [data-composition-id="04-issue-headlines"] .grain {
+        position: absolute; inset: 0; pointer-events: none; opacity: 0.04;
+        background-image:
+          radial-gradient(rgba(255,255,255,0.3) 1px, transparent 1px),
+          radial-gradient(rgba(255,255,255,0.2) 1px, transparent 1px);
+        background-size: 3px 3px, 5px 5px;
+        z-index: 40;
+      }
+    </style>
+
+    <script>
+      (() => {
+        const SLOT = 6;
+        const sel = (q) => `[data-composition-id="04-issue-headlines"] ${q}`;
+        const tl = gsap.timeline({ paused: true });
+
+        tl.fromTo(sel('.label-top'),
+          { y: -10, opacity: 0 },
+          { y: 0, opacity: 0.9, duration: 0.35, ease: 'power3.out' }, 0.05);
+
+        tl.to([sel('.hairline-top'), sel('.hairline-bottom')],
+          { scaleX: 1, duration: 0.60, ease: 'power3.out' }, 0.20);
+
+        // 5 issue headlines flash by at 1.0s cadence, 0.8s on-screen each
+        const items = ['.i1','.i2','.i3','.i4','.i5'];
+        const period = 1.00;
+        items.forEach((cls, i) => {
+          const at = 0.50 + i * period;
+          tl.fromTo(sel(cls),
+            { x: 60, opacity: 0 },
+            { x: 0, opacity: 1, duration: 0.28, ease: 'expo.out' }, at);
+          tl.to(sel(cls),
+            { x: -40, opacity: 0, duration: 0.22, ease: 'power2.in' }, at + period - 0.10);
+        });
+
+        // Block-wipe
+        tl.fromTo(sel('.wipe'),
+          { xPercent: 0 },
+          { xPercent: 200, duration: 0.35, ease: 'power3.in' }, 5.65);
+
+        tl.to({}, { duration: SLOT }, 0);
+        window.__timelines = window.__timelines || {};
+        window.__timelines['04-issue-headlines'] = tl;
+      })();
+    </script>
+  </div>
+</template>

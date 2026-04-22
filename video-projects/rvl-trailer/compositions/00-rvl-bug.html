@@ -1,0 +1,58 @@
+<template id="00-rvl-bug-template">
+  <script src="assets/gsap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=block" rel="stylesheet" />
+
+  <div data-composition-id="00-rvl-bug" data-start="0" data-duration="27" data-width="1920" data-height="1080">
+    <div class="bug">
+      <span class="mark">RVL</span>
+      <span class="dot"></span>
+    </div>
+
+    <style>
+      [data-composition-id="00-rvl-bug"] {
+        position: absolute; inset: 0; pointer-events: none;
+        background: transparent;
+        font-family: "Archivo Black", sans-serif;
+      }
+      [data-composition-id="00-rvl-bug"] .bug {
+        position: absolute;
+        top: 40px; left: 48px;
+        display: flex; align-items: center; gap: 14px;
+        opacity: 0;
+      }
+      [data-composition-id="00-rvl-bug"] .mark {
+        font-size: 58px;
+        letter-spacing: -0.04em;
+        color: #c3f53b;
+        line-height: 1;
+      }
+      [data-composition-id="00-rvl-bug"] .dot {
+        display: inline-block;
+        width: 16px; height: 16px;
+        background: #c3f53b;
+        border-radius: 50%;
+        box-shadow: 0 0 12px rgba(195,245,59,0.7);
+      }
+    </style>
+
+    <script>
+      (() => {
+        const SLOT = 27;
+        const sel = (q) => `[data-composition-id="00-rvl-bug"] ${q}`;
+        const tl = gsap.timeline({ paused: true });
+
+        tl.fromTo(sel('.bug'),
+          { x: -10, opacity: 0 },
+          { x: 0, opacity: 1, duration: 0.4, ease: 'power3.out' }, 0.25);
+
+        // Subtle pulse on dot throughout
+        tl.to(sel('.dot'),
+          { opacity: 0.5, duration: 1.2, ease: 'sine.inOut', yoyo: true, repeat: 20 }, 1.0);
+
+        tl.to({}, { duration: SLOT }, 0);
+        window.__timelines = window.__timelines || {};
+        window.__timelines['00-rvl-bug'] = tl;
+      })();
+    </script>
+  </div>
+</template>

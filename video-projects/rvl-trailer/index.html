@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <title>RVL — Newsletter Trailer</title>
+    <script src="assets/gsap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@500;700&display=block" rel="stylesheet" />
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body {
+        width: 1920px; height: 1080px;
+        overflow: hidden;
+        background: #0a0a0a;
+        color: #ffffff;
+      }
+      .beat-layer {
+        position: absolute; top: 0; left: 0;
+        width: 1920px; height: 1080px;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="rvl-trailer"
+      data-start="0"
+      data-duration="30"
+      data-width="1920"
+      data-height="1080"
+    >
+      <!-- Persistent RVL corner bug (2–25s) -->
+      <div class="beat-layer"
+        data-composition-id="00-rvl-bug"
+        data-composition-src="compositions/00-rvl-bug.html"
+        data-start="3" data-duration="22" data-track-index="10"
+        data-width="1920" data-height="1080"></div>
+
+      <!-- Beat 01 — "EVERY SUNDAY." cold open (0–3s) -->
+      <div class="beat-layer"
+        data-composition-id="01-cold-open"
+        data-composition-src="compositions/01-cold-open.html"
+        data-start="0" data-duration="3" data-track-index="0"
+        data-width="1920" data-height="1080"></div>
+
+      <!-- Beat 02 — Thesis (3–8s) -->
+      <div class="beat-layer"
+        data-composition-id="02-thesis"
+        data-composition-src="compositions/02-thesis.html"
+        data-start="3" data-duration="5" data-track-index="0"
+        data-width="1920" data-height="1080"></div>
+
+      <!-- Beat 03 — Topic reel (8–14s) -->
+      <div class="beat-layer"
+        data-composition-id="03-topic-reel"
+        data-composition-src="compositions/03-topic-reel.html"
+        data-start="8" data-duration="6" data-track-index="0"
+        data-width="1920" data-height="1080"></div>
+
+      <!-- Beat 04 — Recent issue headlines (14–20s) -->
+      <div class="beat-layer"
+        data-composition-id="04-issue-headlines"
+        data-composition-src="compositions/04-issue-headlines.html"
+        data-start="14" data-duration="6" data-track-index="0"
+        data-width="1920" data-height="1080"></div>
+
+      <!-- Beat 05 — Audience (20–25s) -->
+      <div class="beat-layer"
+        data-composition-id="05-audience"
+        data-composition-src="compositions/05-audience.html"
+        data-start="20" data-duration="5" data-track-index="0"
+        data-width="1920" data-height="1080"></div>
+
+      <!-- Beat 06 — CTA outro (25–30s) -->
+      <div class="beat-layer"
+        data-composition-id="06-cta"
+        data-composition-src="compositions/06-cta.html"
+        data-start="25" data-duration="5" data-track-index="0"
+        data-width="1920" data-height="1080"></div>
+
+      <!-- Voiceover (Kokoro-82M, voice af_heart @ 0.92x) -->
+      <audio id="vo"
+        data-start="3.0" data-duration="22" data-track-index="20" data-volume="1.0"
+        src="assets/narration.wav"></audio>
+
+      <!-- Background music bed -->
+      <audio id="bed"
+        data-start="0" data-duration="30" data-track-index="21" data-volume="0.18"
+        src="assets/music.wav"></audio>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      tl.to({}, { duration: 30 }, 0);
+      window.__timelines["rvl-trailer"] = tl;
+    </script>
+  </body>
+</html>
