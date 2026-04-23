@@ -10,7 +10,7 @@
 
       <div class="ch-body">
         <div class="ch-quote-mark">&ldquo;</div>
-        <div class="ch-body-text" data-split>Pixels are out. Atoms are in.</div>
+        <div class="ch-body-text" data-split>Pixels are out.<br/>Atoms are in.</div>
       </div>
 
       <div class="footer-mark">RVL &middot; ISSUE 17</div>
@@ -116,12 +116,22 @@
         const sel = (q) => `[data-composition-id="01-chapter-shift"] ${q}`;
 
         document.querySelectorAll(sel('[data-split]')).forEach((node) => {
-          const text = node.textContent;
-          node.innerHTML = text.split('').map((c) =>
-            c === ' '
-              ? '<span class="ch space">&nbsp;</span>'
-              : `<span class="ch">${c}</span>`
-          ).join('');
+          // Walk children: split text nodes, preserve <br/> elements
+          const newChildren = [];
+          node.childNodes.forEach((child) => {
+            if (child.nodeType === Node.TEXT_NODE) {
+              child.textContent.split('').forEach((c) => {
+                const span = document.createElement('span');
+                span.className = c === ' ' ? 'ch space' : 'ch';
+                span.innerHTML = c === ' ' ? '&nbsp;' : c;
+                newChildren.push(span);
+              });
+            } else {
+              newChildren.push(child.cloneNode(true));
+            }
+          });
+          node.innerHTML = '';
+          newChildren.forEach((c) => node.appendChild(c));
         });
 
         const tl = gsap.timeline({ paused: true });
