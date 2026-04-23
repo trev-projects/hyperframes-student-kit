@@ -1,0 +1,191 @@
+<template id="00-hook-teaser-template">
+  <script src="assets/gsap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@500;700&display=block" rel="stylesheet" />
+
+  <div data-composition-id="00-hook-teaser" data-start="0" data-duration="3.2" data-width="1920" data-height="1080">
+    <div class="stage">
+      <div class="label-sm">W17 &middot; APR 21</div>
+
+      <div class="slide slide-a">
+        <div class="slide-a-main">THIS WEEK</div>
+        <div class="slide-a-sub">on RVL</div>
+      </div>
+
+      <div class="slide slide-b" data-split>PHYSICAL AI</div>
+
+      <div class="slide slide-c">
+        <div class="slide-c-stat">$1.5B</div>
+        <div class="slide-c-label">NEW&nbsp;INVESTMENT&nbsp;CATEGORY</div>
+      </div>
+
+      <div class="arrow-down">&darr;</div>
+      <div class="flash-fill"></div>
+      <div class="grain"></div>
+    </div>
+
+    <style>
+      [data-composition-id="00-hook-teaser"] {
+        position: absolute; inset: 0; overflow: hidden;
+        background: #0a0a0a;
+        font-family: "Archivo Black", sans-serif;
+      }
+      [data-composition-id="00-hook-teaser"] .stage { position: absolute; inset: 0; }
+
+      [data-composition-id="00-hook-teaser"] .label-sm {
+        position: absolute;
+        top: 60px; right: 100px;
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 700;
+        font-size: 26px;
+        letter-spacing: 0.22em;
+        color: #c3f53b;
+        opacity: 0;
+      }
+
+      [data-composition-id="00-hook-teaser"] .slide {
+        position: absolute;
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        opacity: 0;
+        white-space: nowrap;
+      }
+
+      [data-composition-id="00-hook-teaser"] .slide-a-main {
+        font-size: 260px;
+        color: #c3f53b;
+        letter-spacing: -0.03em;
+        line-height: 0.9;
+        text-shadow: 0 0 52px rgba(195,245,59,0.45);
+      }
+      [data-composition-id="00-hook-teaser"] .slide-a-sub {
+        margin-top: 18px;
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 700;
+        font-size: 54px;
+        color: #ffffff;
+        letter-spacing: 0.24em;
+        text-transform: uppercase;
+      }
+
+      [data-composition-id="00-hook-teaser"] .slide-b {
+        font-size: 210px;
+        color: #c3f53b;
+        letter-spacing: -0.04em;
+        line-height: 0.88;
+        text-shadow: 0 0 54px rgba(195,245,59,0.45);
+      }
+      [data-composition-id="00-hook-teaser"] .slide-b .ch {
+        display: inline-block;
+        opacity: 0;
+        transform: translateY(80px) rotate(10deg);
+        will-change: opacity, transform;
+      }
+
+      [data-composition-id="00-hook-teaser"] .slide-c-stat {
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 700;
+        font-size: 300px;
+        color: #c3f53b;
+        letter-spacing: -0.04em;
+        line-height: 0.9;
+        text-shadow: 0 0 54px rgba(195,245,59,0.45);
+      }
+      [data-composition-id="00-hook-teaser"] .slide-c-label {
+        margin-top: 24px;
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 700;
+        font-size: 48px;
+        color: #ffffff;
+        letter-spacing: 0.2em;
+      }
+
+      [data-composition-id="00-hook-teaser"] .arrow-down {
+        position: absolute;
+        bottom: 80px; left: 50%;
+        transform: translateX(-50%);
+        font-size: 160px;
+        color: #c3f53b;
+        opacity: 0;
+        text-shadow: 0 0 32px rgba(195,245,59,0.6);
+        line-height: 1;
+      }
+      [data-composition-id="00-hook-teaser"] .flash-fill {
+        position: absolute; inset: 0;
+        background: #ffffff;
+        opacity: 0;
+        pointer-events: none;
+        z-index: 20;
+      }
+      [data-composition-id="00-hook-teaser"] .grain {
+        position: absolute; inset: 0; pointer-events: none; opacity: 0.04;
+        background-image:
+          radial-gradient(rgba(255,255,255,0.3) 1px, transparent 1px),
+          radial-gradient(rgba(255,255,255,0.2) 1px, transparent 1px);
+        background-size: 3px 3px, 5px 5px;
+        z-index: 40;
+      }
+    </style>
+
+    <script>
+      (() => {
+        const SLOT = 3.2;
+        const sel = (q) => `[data-composition-id="00-hook-teaser"] ${q}`;
+
+        document.querySelectorAll(sel('[data-split]')).forEach((node) => {
+          const text = node.textContent;
+          node.innerHTML = text.split('').map((c) =>
+            c === ' '
+              ? '<span class="ch space">&nbsp;</span>'
+              : `<span class="ch">${c}</span>`
+          ).join('');
+        });
+
+        const tl = gsap.timeline({ paused: true });
+
+        // Week stamp — present throughout
+        tl.fromTo(sel('.label-sm'),
+          { x: 20, opacity: 0 },
+          { x: 0, opacity: 0.85, duration: 0.35, ease: 'power3.out' }, 0.05);
+
+        // SLIDE A — THIS WEEK / on RVL (0.0 - 1.1s)
+        tl.fromTo(sel('.slide-a'),
+          { scale: 0.82, opacity: 0 },
+          { scale: 1, opacity: 1, duration: 0.35, ease: 'back.out(1.6)' }, 0.0);
+        tl.to(sel('.slide-a'),
+          { scale: 0.92, opacity: 0, y: -40, duration: 0.25, ease: 'power3.in' }, 1.10);
+        // brief white flash at the cut
+        tl.fromTo(sel('.flash-fill'),
+          { opacity: 0 },
+          { opacity: 0.35, duration: 0.06, ease: 'power2.out', yoyo: true, repeat: 1 }, 1.15);
+
+        // SLIDE B — PHYSICAL AI (1.35 - 2.15s) per-char burst
+        tl.to(sel('.slide-b'), { opacity: 1, duration: 0.01 }, 1.35);
+        tl.to(sel('.slide-b .ch'),
+          { y: 0, rotate: 0, opacity: 1,
+            duration: 0.35, ease: 'back.out(1.9)', stagger: 0.025 }, 1.35);
+        tl.to(sel('.slide-b'),
+          { scale: 1.05, opacity: 0, duration: 0.25, ease: 'power3.in' }, 2.20);
+        tl.fromTo(sel('.flash-fill'),
+          { opacity: 0 },
+          { opacity: 0.35, duration: 0.06, ease: 'power2.out', yoyo: true, repeat: 1 }, 2.25);
+
+        // SLIDE C — $1.5B / NEW INVESTMENT CATEGORY (2.45 - 3.0s)
+        tl.fromTo(sel('.slide-c'),
+          { scale: 0.85, opacity: 0 },
+          { scale: 1, opacity: 1, duration: 0.30, ease: 'back.out(1.6)' }, 2.45);
+
+        // Arrow pulse at the tail, pointing down to first real beat
+        tl.fromTo(sel('.arrow-down'),
+          { y: -30, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.25, ease: 'back.out(2)' }, 2.75);
+        tl.to(sel('.arrow-down'),
+          { y: 12, duration: 0.18, ease: 'sine.inOut', yoyo: true, repeat: 1 }, 3.00);
+
+        tl.to({}, { duration: SLOT }, 0);
+        window.__timelines = window.__timelines || {};
+        window.__timelines['00-hook-teaser'] = tl;
+      })();
+    </script>
+  </div>
+</template>

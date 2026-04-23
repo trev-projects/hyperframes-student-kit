@@ -1,0 +1,159 @@
+<template id="03-category-land-template">
+  <script src="assets/gsap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@500;700&display=block" rel="stylesheet" />
+
+  <div data-composition-id="03-category-land" data-start="0" data-duration="7.2" data-width="1920" data-height="1080">
+    <div class="stage">
+      <div class="headline-stack">
+        <div class="h-physical">PHYSICAL</div>
+        <div class="h-ai">AI</div>
+      </div>
+
+      <div class="cycle-row">
+        <div class="cyc c1">HUMANOIDS</div>
+        <div class="cyc c2">FACTORY ROBOTS</div>
+        <div class="cyc c3">SELF&middot;DRIVING</div>
+        <div class="cyc-underline"></div>
+      </div>
+
+      <div class="subcap">ITS&nbsp;OWN&nbsp;INVESTMENT&nbsp;CATEGORY</div>
+
+      <div class="wipe"></div>
+      <div class="grain"></div>
+    </div>
+
+    <style>
+      [data-composition-id="03-category-land"] {
+        position: absolute; inset: 0; overflow: hidden;
+        background: #0a0a0a;
+        font-family: "Archivo Black", sans-serif;
+      }
+      [data-composition-id="03-category-land"] .stage { position: absolute; inset: 0; }
+      [data-composition-id="03-category-land"] .headline-stack {
+        position: absolute;
+        top: 40%; left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+      }
+      [data-composition-id="03-category-land"] .h-physical {
+        font-size: 240px;
+        color: #ffffff;
+        letter-spacing: -0.04em;
+        line-height: 0.85;
+        white-space: nowrap;
+        opacity: 0;
+      }
+      [data-composition-id="03-category-land"] .h-ai {
+        font-size: 560px;
+        color: #c3f53b;
+        letter-spacing: -0.04em;
+        line-height: 0.82;
+        white-space: nowrap;
+        text-shadow: 0 0 54px rgba(195,245,59,0.45);
+        opacity: 0;
+      }
+      [data-composition-id="03-category-land"] .cycle-row {
+        position: absolute;
+        bottom: 220px; left: 50%;
+        transform: translateX(-50%);
+        width: 1200px; height: 96px;
+        display: flex; justify-content: center; align-items: center;
+        opacity: 0;
+      }
+      [data-composition-id="03-category-land"] .cyc {
+        position: absolute;
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 700;
+        font-size: 68px;
+        color: #ffffff;
+        letter-spacing: 0.02em;
+        text-transform: uppercase;
+        opacity: 0;
+      }
+      [data-composition-id="03-category-land"] .cyc-underline {
+        position: absolute;
+        bottom: -18px; left: 0;
+        height: 3px; width: 100%;
+        background: #c3f53b;
+        transform: scaleX(0);
+        transform-origin: left center;
+        box-shadow: 0 0 14px rgba(195,245,59,0.5);
+      }
+      [data-composition-id="03-category-land"] .subcap {
+        position: absolute;
+        bottom: 110px; right: 100px;
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 700;
+        font-size: 30px;
+        letter-spacing: 0.18em;
+        color: #c3f53b;
+        opacity: 0;
+        text-shadow: 0 0 14px rgba(195,245,59,0.3);
+      }
+      [data-composition-id="03-category-land"] .wipe {
+        position: absolute; top: 0; left: -100%;
+        width: 100%; height: 100%;
+        background: #c3f53b;
+        z-index: 30;
+      }
+      [data-composition-id="03-category-land"] .grain {
+        position: absolute; inset: 0; pointer-events: none; opacity: 0.04;
+        background-image:
+          radial-gradient(rgba(255,255,255,0.3) 1px, transparent 1px),
+          radial-gradient(rgba(255,255,255,0.2) 1px, transparent 1px);
+        background-size: 3px 3px, 5px 5px;
+        z-index: 40;
+      }
+    </style>
+
+    <script>
+      (() => {
+        const SLOT = 7.2;
+        const sel = (q) => `[data-composition-id="03-category-land"] ${q}`;
+        const tl = gsap.timeline({ paused: true });
+
+        tl.fromTo(sel('.h-physical'),
+          { y: 60, opacity: 0, scale: 1.08 },
+          { y: 0, opacity: 1, scale: 1, duration: 0.45, ease: 'expo.out' }, 0.10);
+
+        tl.fromTo(sel('.h-ai'),
+          { y: 80, opacity: 0, scale: 1.15 },
+          { y: 0, opacity: 1, scale: 1, duration: 0.55, ease: 'expo.out' }, 0.35);
+
+        // Subcap mono reveal
+        tl.fromTo(sel('.subcap'),
+          { x: 40, opacity: 0 },
+          { x: 0, opacity: 1, duration: 0.40, ease: 'power3.out' }, 0.95);
+
+        // Cycling words
+        tl.to(sel('.cycle-row'), { opacity: 1, duration: 0.25 }, 1.10);
+        tl.fromTo(sel('.c1'), { y: 30, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.30, ease: 'expo.out' }, 1.15);
+        tl.to(sel('.c1'), { y: -30, opacity: 0, duration: 0.25, ease: 'power2.in' }, 2.35);
+
+        tl.fromTo(sel('.c2'), { y: 30, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.30, ease: 'expo.out' }, 2.55);
+        tl.to(sel('.c2'), { y: -30, opacity: 0, duration: 0.25, ease: 'power2.in' }, 3.85);
+
+        tl.fromTo(sel('.c3'), { y: 30, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.30, ease: 'expo.out' }, 4.05);
+
+        // Underline draws on last word
+        tl.to(sel('.cyc-underline'),
+          { scaleX: 1, duration: 0.50, ease: 'power2.out' }, 4.35);
+
+        // Hold then exit
+        tl.to([sel('.headline-stack'), sel('.cycle-row'), sel('.subcap')],
+          { scale: 1.10, filter: 'blur(6px)', opacity: 0, duration: 0.40, ease: 'power2.in' }, 6.55);
+
+        tl.fromTo(sel('.wipe'),
+          { xPercent: 0 },
+          { xPercent: 200, duration: 0.35, ease: 'power3.in' }, 6.85);
+
+        tl.to({}, { duration: SLOT }, 0);
+        window.__timelines = window.__timelines || {};
+        window.__timelines['03-category-land'] = tl;
+      })();
+    </script>
+  </div>
+</template>

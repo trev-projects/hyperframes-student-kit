@@ -1,0 +1,93 @@
+<template id="02-flip-template">
+  <script src="assets/gsap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@500;700&display=block" rel="stylesheet" />
+
+  <div data-composition-id="02-flip" data-start="0" data-duration="1.8" data-width="1920" data-height="1080">
+    <div class="stage">
+      <div class="hero">ATOMS</div>
+      <div class="tag">
+        <span>ARE</span>
+        <span class="tag-in">IN</span>
+        <span class="dot">.</span>
+      </div>
+      <div class="wipe"></div>
+      <div class="grain"></div>
+    </div>
+
+    <style>
+      [data-composition-id="02-flip"] {
+        position: absolute; inset: 0; overflow: hidden;
+        background: #0a0a0a;
+        font-family: "Archivo Black", sans-serif;
+      }
+      [data-composition-id="02-flip"] .stage { position: absolute; inset: 0; }
+      [data-composition-id="02-flip"] .hero {
+        position: absolute;
+        top: 45%; left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 440px;
+        color: #c3f53b;
+        letter-spacing: -0.04em;
+        line-height: 0.85;
+        white-space: nowrap;
+        opacity: 0;
+        text-shadow: 0 0 44px rgba(195,245,59,0.42);
+      }
+      [data-composition-id="02-flip"] .tag {
+        position: absolute;
+        bottom: 120px; left: 100px;
+        display: flex; align-items: baseline; gap: 16px;
+        opacity: 0;
+      }
+      [data-composition-id="02-flip"] .tag span {
+        font-size: 92px;
+        color: #ffffff;
+        letter-spacing: -0.02em;
+        line-height: 1;
+      }
+      [data-composition-id="02-flip"] .tag-in {
+        color: #c3f53b;
+        text-shadow: 0 0 22px rgba(195,245,59,0.5);
+      }
+      [data-composition-id="02-flip"] .wipe {
+        position: absolute; top: 0; right: -100%;
+        width: 100%; height: 100%;
+        background: #c3f53b;
+        z-index: 30;
+      }
+      [data-composition-id="02-flip"] .grain {
+        position: absolute; inset: 0; pointer-events: none; opacity: 0.04;
+        background-image:
+          radial-gradient(rgba(255,255,255,0.3) 1px, transparent 1px),
+          radial-gradient(rgba(255,255,255,0.2) 1px, transparent 1px);
+        background-size: 3px 3px, 5px 5px;
+        z-index: 40;
+      }
+    </style>
+
+    <script>
+      (() => {
+        const SLOT = 1.8;
+        const sel = (q) => `[data-composition-id="02-flip"] ${q}`;
+        const tl = gsap.timeline({ paused: true });
+
+        tl.fromTo(sel('.hero'),
+          { xPercent: -60, opacity: 0, scale: 1.08 },
+          { xPercent: 0, opacity: 1, scale: 1, duration: 0.45, ease: 'expo.out' }, 0.05);
+
+        tl.fromTo(sel('.tag'),
+          { opacity: 0, y: 20 },
+          { opacity: 1, y: 0, duration: 0.35, ease: 'power3.out' }, 0.50);
+
+        // Block-wipe sweep (exits left)
+        tl.fromTo(sel('.wipe'),
+          { xPercent: 0 },
+          { xPercent: -200, duration: 0.35, ease: 'power3.in' }, 1.40);
+
+        tl.to({}, { duration: SLOT }, 0);
+        window.__timelines = window.__timelines || {};
+        window.__timelines['02-flip'] = tl;
+      })();
+    </script>
+  </div>
+</template>

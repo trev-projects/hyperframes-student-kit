@@ -120,6 +120,16 @@ The CLI reads `hyperframes.json`/`meta.json` from the current directory and reso
 4. Pull in any shared brand assets the project needs (e.g. `cp ../../assets/brand-tokens.css ../../assets/AIS\ Logo\ PNG.png assets/`)
 5. Build the composition; lint + render from inside this folder
 
+### RVL Weekly — recurring video workflow
+
+When Nate says "new RVL issue", "this week on RVL", or gives a `newsletter.rvl.tech/p/...` URL, follow the weekly pipeline rather than scaffolding from scratch.
+
+- **Canonical template:** `video-projects/rvl-weekly-template/` — read `HANDOFF.md` inside before building
+- **Per-issue workflow:** clone the template to `rvl-week-<n>-<kebab-slug>` → edit 7 swap tokens (documented in the HANDOFF) → regenerate `narration-main.wav` → lint → render → loudnorm to -14 LUFS → push. ~10 minutes per issue.
+- **Worked reference:** `video-projects/rvl-physical-ai/` is a fully-rendered W17 edition demonstrating every swap with concrete values
+- **Evergreen pitch:** `video-projects/rvl-trailer/` is a separate non-weekly deliverable (channel trailer). Don't confuse with a weekly issue.
+- **Brand is locked:** acid lime `#c3f53b` on `#0a0a0a`, Archivo Black display + JetBrains Mono numerics + Space Grotesk body. This brand *overrides* `MOTION_PHILOSOPHY.md` for RVL work — do not add perspective grids, chrome gradients, vignettes, or amber whips to RVL videos.
+
 ### What lives at the workspace root
 
 - **Motion-graphics philosophy:** `MOTION_PHILOSOPHY.md` (gold-standard aesthetic, deconstructed Infinite Payments spot — read before brainstorming any composition)

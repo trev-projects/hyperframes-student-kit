@@ -1,0 +1,112 @@
+<template id="01-cold-open-template">
+  <script src="assets/gsap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@500;700&display=block" rel="stylesheet" />
+
+  <div data-composition-id="01-cold-open" data-start="0" data-duration="2" data-width="1920" data-height="1080">
+    <div class="stage">
+      <div class="hero">PIXELS</div>
+      <div class="tag">
+        <span class="tag-are">ARE</span>
+        <span class="tag-out">OUT<span class="strike"></span></span>
+        <span class="dot">.</span>
+      </div>
+      <div class="wipe"></div>
+      <div class="grain"></div>
+    </div>
+
+    <style>
+      [data-composition-id="01-cold-open"] {
+        position: absolute; inset: 0; overflow: hidden;
+        background: #0a0a0a;
+        font-family: "Archivo Black", "Anton", "Bebas Neue", sans-serif;
+      }
+      [data-composition-id="01-cold-open"] .stage { position: absolute; inset: 0; }
+      [data-composition-id="01-cold-open"] .hero {
+        position: absolute;
+        top: 45%; left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 400px;
+        color: #ffffff;
+        letter-spacing: -0.04em;
+        line-height: 0.85;
+        white-space: nowrap;
+        opacity: 0;
+        will-change: transform, opacity;
+      }
+      [data-composition-id="01-cold-open"] .tag {
+        position: absolute;
+        bottom: 120px; right: 100px;
+        display: flex; align-items: baseline; gap: 16px;
+        opacity: 0;
+      }
+      [data-composition-id="01-cold-open"] .tag-are,
+      [data-composition-id="01-cold-open"] .tag-out,
+      [data-composition-id="01-cold-open"] .dot {
+        font-family: "Archivo Black", sans-serif;
+        font-size: 92px;
+        color: #ffffff;
+        letter-spacing: -0.02em;
+        line-height: 1;
+      }
+      [data-composition-id="01-cold-open"] .tag-out {
+        position: relative;
+      }
+      [data-composition-id="01-cold-open"] .strike {
+        position: absolute;
+        top: 52%; left: -8%;
+        width: 116%; height: 12px;
+        background: #c3f53b;
+        transform: scaleX(0);
+        transform-origin: left center;
+        box-shadow: 0 0 16px rgba(195,245,59,0.55);
+      }
+      [data-composition-id="01-cold-open"] .wipe {
+        position: absolute; top: 0; left: -100%;
+        width: 100%; height: 100%;
+        background: #c3f53b;
+        z-index: 30;
+      }
+      [data-composition-id="01-cold-open"] .grain {
+        position: absolute; inset: 0; pointer-events: none; opacity: 0.04;
+        background-image:
+          radial-gradient(rgba(255,255,255,0.3) 1px, transparent 1px),
+          radial-gradient(rgba(255,255,255,0.2) 1px, transparent 1px);
+        background-size: 3px 3px, 5px 5px;
+        background-position: 0 0, 1px 2px;
+        z-index: 40;
+      }
+    </style>
+
+    <script>
+      (() => {
+        const SLOT = 2;
+        const sel = (q) => `[data-composition-id="01-cold-open"] ${q}`;
+        const tl = gsap.timeline({ paused: true });
+
+        tl.fromTo(sel('.hero'),
+          { x: '-50%', y: '-50%', xPercent: 60, opacity: 0, scale: 1.08 },
+          { xPercent: 0, opacity: 1, scale: 1, duration: 0.45, ease: 'expo.out' }, 0.05);
+
+        tl.fromTo(sel('.tag'),
+          { opacity: 0, y: 20 },
+          { opacity: 1, y: 0, duration: 0.35, ease: 'power3.out' }, 0.55);
+
+        tl.to(sel('.strike'),
+          { scaleX: 1, duration: 0.35, ease: 'power3.out' }, 0.85);
+
+        // Hold
+        tl.to(sel('.hero'),
+          { opacity: 0.92, duration: 0.8 }, 1.0);
+
+        // Block-wipe sweep (exits right)
+        tl.fromTo(sel('.wipe'),
+          { xPercent: 0 },
+          { xPercent: 200, duration: 0.35, ease: 'power3.in' }, 1.65);
+
+        tl.to({}, { duration: SLOT }, 0);
+        window.__timelines = window.__timelines || {};
+        window.__timelines['01-cold-open'] = tl;
+      })();
+    </script>
+  </div>
+</template>
