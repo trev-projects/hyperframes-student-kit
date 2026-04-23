@@ -1,0 +1,137 @@
+<template id="05-audience-template">
+  <script src="assets/gsap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=JetBrains+Mono:wght@500;700&display=block" rel="stylesheet" />
+
+  <div data-composition-id="05-audience" data-start="0" data-duration="5" data-width="1080" data-height="1080">
+    <div class="stage">
+      <div class="label-top">READ BY</div>
+
+      <div class="audience-stack">
+        <div class="aud a1">OPERATORS.</div>
+        <div class="aud a2">FOUNDERS.</div>
+        <div class="aud a3">G&middot;P&middot;s.</div>
+      </div>
+
+      <div class="stats">
+        <div class="stat-line">
+          <span class="stat-val">WEEKLY</span>
+          <span class="stat-dot">&bull;</span>
+          <span class="stat-val stat-lime">FREE</span>
+          <span class="stat-dot">&bull;</span>
+          <span class="stat-val">UNCUT</span>
+        </div>
+      </div>
+
+      <div class="wipe"></div>
+      <div class="grain"></div>
+    </div>
+
+    <style>
+      [data-composition-id="05-audience"] {
+        position: absolute; inset: 0; overflow: hidden;
+        background: #0a0a0a;
+        font-family: "Archivo Black", sans-serif;
+      }
+      [data-composition-id="05-audience"] .stage { position: absolute; inset: 0; }
+      [data-composition-id="05-audience"] .label-top {
+        position: absolute;
+        top: 140px; left: 60px;
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 700;
+        font-size: 22px;
+        letter-spacing: 0.32em;
+        color: #c3f53b;
+        opacity: 0;
+      }
+      [data-composition-id="05-audience"] .audience-stack {
+        position: absolute;
+        top: 46%; left: 60px;
+        transform: translateY(-50%);
+        display: flex; flex-direction: column; gap: 0;
+      }
+      [data-composition-id="05-audience"] .aud {
+        font-size: 118px;
+        letter-spacing: -0.03em;
+        line-height: 0.98;
+        opacity: 0;
+      }
+      [data-composition-id="05-audience"] .a1 { color: #ffffff; }
+      [data-composition-id="05-audience"] .a2 { color: #ffffff; }
+      [data-composition-id="05-audience"] .a3 { color: #c3f53b; text-shadow: 0 0 44px rgba(195,245,59,0.5); }
+
+      [data-composition-id="05-audience"] .stats {
+        position: absolute;
+        bottom: 160px; left: 60px; right: 60px;
+        display: flex; justify-content: flex-start;
+        opacity: 0;
+      }
+      [data-composition-id="05-audience"] .stat-line {
+        display: flex; gap: 22px; align-items: center;
+      }
+      [data-composition-id="05-audience"] .stat-val {
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 700;
+        font-size: 28px;
+        letter-spacing: 0.18em;
+        color: #ffffff;
+      }
+      [data-composition-id="05-audience"] .stat-lime {
+        color: #c3f53b;
+        text-shadow: 0 0 16px rgba(195,245,59,0.55);
+      }
+      [data-composition-id="05-audience"] .stat-dot {
+        color: #c3f53b;
+        font-size: 30px;
+        line-height: 1;
+      }
+      [data-composition-id="05-audience"] .wipe {
+        position: absolute; top: 0; left: -100%;
+        width: 100%; height: 100%;
+        background: #c3f53b;
+        z-index: 30;
+      }
+      [data-composition-id="05-audience"] .grain {
+        position: absolute; inset: 0; pointer-events: none; opacity: 0.04;
+        background-image:
+          radial-gradient(rgba(255,255,255,0.3) 1px, transparent 1px),
+          radial-gradient(rgba(255,255,255,0.2) 1px, transparent 1px);
+        background-size: 3px 3px, 5px 5px;
+        z-index: 40;
+      }
+    </style>
+
+    <script>
+      (() => {
+        const SLOT = 5;
+        const sel = (q) => `[data-composition-id="05-audience"] ${q}`;
+        const tl = gsap.timeline({ paused: true });
+
+        tl.fromTo(sel('.label-top'),
+          { y: -10, opacity: 0 },
+          { y: 0, opacity: 0.9, duration: 0.35, ease: 'power3.out' }, 0.10);
+
+        ['.a1', '.a2', '.a3'].forEach((cls, i) => {
+          tl.fromTo(sel(cls),
+            { x: -40, opacity: 0 },
+            { x: 0, opacity: 1, duration: 0.30, ease: 'expo.out' }, 0.40 + i * 0.28);
+        });
+
+        tl.fromTo(sel('.stats'),
+          { y: 12, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.40, ease: 'power3.out' }, 1.80);
+
+        // Exit
+        tl.to([sel('.audience-stack'), sel('.label-top'), sel('.stats')],
+          { y: -40, opacity: 0, duration: 0.40, ease: 'power2.in' }, 4.25);
+
+        tl.fromTo(sel('.wipe'),
+          { xPercent: 0 },
+          { xPercent: 200, duration: 0.35, ease: 'power3.in' }, 4.65);
+
+        tl.to({}, { duration: SLOT }, 0);
+        window.__timelines = window.__timelines || {};
+        window.__timelines['05-audience'] = tl;
+      })();
+    </script>
+  </div>
+</template>
