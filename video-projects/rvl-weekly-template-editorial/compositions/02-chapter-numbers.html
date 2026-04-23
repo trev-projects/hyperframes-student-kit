@@ -1,0 +1,201 @@
+<template id="02-chapter-numbers-template">
+  <script src="assets/gsap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@500;700&display=block" rel="stylesheet" />
+
+  <div data-composition-id="02-chapter-numbers" data-start="0" data-duration="7" data-width="1920" data-height="1080">
+    <div class="stage">
+      <div class="ch-num">02</div>
+      <div class="ch-rule"></div>
+      <div class="ch-label">THE&nbsp;NUMBERS</div>
+
+      <div class="stat-rail">
+        <div class="stat-row sr1">
+          <span class="stat-co">FIGURE</span>
+          <span class="stat-amt"><span class="amt-num" data-target="1.5">0.0</span><span class="amt-unit">B</span></span>
+        </div>
+        <div class="stat-row sr2">
+          <span class="stat-co">PHYSICAL INTELLIGENCE</span>
+          <span class="stat-amt"><span class="amt-num" data-target="400">0</span><span class="amt-unit">M</span></span>
+        </div>
+        <div class="stat-row sr3">
+          <span class="stat-co">SKILD AI</span>
+          <span class="stat-amt"><span class="amt-num" data-target="300">0</span><span class="amt-unit">M</span></span>
+        </div>
+      </div>
+
+      <div class="stat-summary">$2.2B in 90 days. New category, fully formed.</div>
+
+      <div class="footer-mark">RVL &middot; ISSUE 17</div>
+
+      <div class="wipe"></div>
+      <div class="grain"></div>
+    </div>
+
+    <style>
+      [data-composition-id="02-chapter-numbers"] {
+        position: absolute; inset: 0; overflow: hidden;
+        background: #0a0a0a;
+        font-family: "Archivo Black", sans-serif;
+      }
+      [data-composition-id="02-chapter-numbers"] .stage { position: absolute; inset: 0; }
+      [data-composition-id="02-chapter-numbers"] .ch-num {
+        position: absolute;
+        top: 130px; left: 100px;
+        font-size: 420px;
+        color: #c3f53b;
+        letter-spacing: -0.04em;
+        line-height: 0.85;
+        text-shadow: 0 0 50px rgba(195,245,59,0.4);
+        opacity: 0;
+      }
+      [data-composition-id="02-chapter-numbers"] .ch-rule {
+        position: absolute;
+        top: 50%; left: 720px;
+        width: 2px; height: 0;
+        background: #c3f53b;
+        box-shadow: 0 0 14px rgba(195,245,59,0.55);
+        transform: translateY(-50%);
+        transform-origin: top center;
+      }
+      [data-composition-id="02-chapter-numbers"] .ch-label {
+        position: absolute;
+        top: 200px; left: 760px;
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 700;
+        font-size: 32px;
+        letter-spacing: 0.32em;
+        color: #c3f53b;
+        opacity: 0;
+        text-shadow: 0 0 14px rgba(195,245,59,0.4);
+      }
+      [data-composition-id="02-chapter-numbers"] .stat-rail {
+        position: absolute;
+        top: 320px; left: 760px; right: 100px;
+        display: flex; flex-direction: column; gap: 30px;
+      }
+      [data-composition-id="02-chapter-numbers"] .stat-row {
+        display: flex; align-items: baseline; justify-content: space-between;
+        gap: 40px;
+        padding-bottom: 18px;
+        border-bottom: 1px solid rgba(195,245,59,0.25);
+        opacity: 0;
+        transform: translateX(40px);
+      }
+      [data-composition-id="02-chapter-numbers"] .stat-co {
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 700;
+        font-size: 56px;
+        color: #ffffff;
+        letter-spacing: -0.01em;
+        line-height: 1.0;
+      }
+      [data-composition-id="02-chapter-numbers"] .stat-amt {
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 700;
+        font-size: 84px;
+        color: #c3f53b;
+        letter-spacing: -0.02em;
+        line-height: 1.0;
+        text-shadow: 0 0 22px rgba(195,245,59,0.45);
+        white-space: nowrap;
+      }
+      [data-composition-id="02-chapter-numbers"] .stat-amt::before {
+        content: "$";
+        margin-right: 4px;
+        opacity: 0.85;
+      }
+      [data-composition-id="02-chapter-numbers"] .amt-unit { margin-left: 4px; }
+      [data-composition-id="02-chapter-numbers"] .stat-summary {
+        position: absolute;
+        bottom: 130px; left: 760px; right: 100px;
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 700;
+        font-size: 32px;
+        line-height: 1.3;
+        color: #c3f53b;
+        opacity: 0;
+        letter-spacing: 0.02em;
+      }
+      [data-composition-id="02-chapter-numbers"] .footer-mark {
+        position: absolute;
+        bottom: 80px; left: 100px;
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 500;
+        font-size: 22px;
+        letter-spacing: 0.32em;
+        color: #ffffff;
+        opacity: 0.55;
+      }
+      [data-composition-id="02-chapter-numbers"] .wipe {
+        position: absolute; top: 0; left: -100%;
+        width: 100%; height: 100%;
+        background: #c3f53b;
+        z-index: 30;
+      }
+      [data-composition-id="02-chapter-numbers"] .grain {
+        position: absolute; inset: 0; pointer-events: none; opacity: 0.04;
+        background-image:
+          radial-gradient(rgba(255,255,255,0.3) 1px, transparent 1px),
+          radial-gradient(rgba(255,255,255,0.2) 1px, transparent 1px);
+        background-size: 3px 3px, 5px 5px;
+        z-index: 40;
+      }
+    </style>
+
+    <script>
+      (() => {
+        const SLOT = 7;
+        const sel = (q) => `[data-composition-id="02-chapter-numbers"] ${q}`;
+        const tl = gsap.timeline({ paused: true });
+
+        tl.fromTo(sel('.ch-num'),
+          { y: 60, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.55, ease: 'power3.out' }, 0.10);
+        tl.to(sel('.ch-rule'),
+          { height: 720, duration: 0.65, ease: 'power3.out' }, 0.40);
+        tl.fromTo(sel('.ch-label'),
+          { x: -10, opacity: 0 },
+          { x: 0, opacity: 0.95, duration: 0.40, ease: 'power3.out' }, 0.60);
+
+        const rows = [
+          { cls: '.sr1', at: 0.95, decimals: 1 },
+          { cls: '.sr2', at: 2.10, decimals: 0 },
+          { cls: '.sr3', at: 3.25, decimals: 0 }
+        ];
+        rows.forEach((r) => {
+          const rowSel = sel(r.cls);
+          tl.to(rowSel,
+            { x: 0, opacity: 1, duration: 0.45, ease: 'expo.out' }, r.at);
+
+          const el = document.querySelector(rowSel + ' .amt-num');
+          if (el) {
+            const target = parseFloat(el.dataset.target);
+            const proxy = { v: 0 };
+            tl.to(proxy, {
+              v: target, duration: 0.85, ease: 'power2.out',
+              onUpdate: () => {
+                el.textContent = r.decimals > 0
+                  ? proxy.v.toFixed(r.decimals)
+                  : Math.round(proxy.v).toString();
+              }
+            }, r.at + 0.15);
+          }
+        });
+
+        // Summary line
+        tl.fromTo(sel('.stat-summary'),
+          { y: 12, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.55, ease: 'power3.out' }, 4.55);
+
+        // Block-wipe
+        tl.fromTo(sel('.wipe'),
+          { xPercent: 0 },
+          { xPercent: 200, duration: 0.40, ease: 'power3.in' }, 6.55);
+
+        tl.to({}, { duration: SLOT }, 0);
+        window.__timelines = window.__timelines || {};
+        window.__timelines['02-chapter-numbers'] = tl;
+      })();
+    </script>
+  </div>
+</template>

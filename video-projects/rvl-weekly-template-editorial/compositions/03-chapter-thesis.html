@@ -1,0 +1,169 @@
+<template id="03-chapter-thesis-template">
+  <script src="assets/gsap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@500;700&display=block" rel="stylesheet" />
+
+  <div data-composition-id="03-chapter-thesis" data-start="0" data-duration="7" data-width="1920" data-height="1080">
+    <div class="stage">
+      <div class="ch-num">03</div>
+      <div class="ch-rule"></div>
+      <div class="ch-label">THE&nbsp;THESIS</div>
+
+      <div class="ch-body">
+        <div class="ch-quote-mark">&ldquo;</div>
+        <div class="ch-body-text" data-split>Every major fund now has a Physical AI thesis.</div>
+        <div class="ch-attribution">&mdash; RVL ANALYSIS &bull; W17</div>
+      </div>
+
+      <div class="footer-mark">RVL &middot; ISSUE 17</div>
+
+      <div class="wipe"></div>
+      <div class="grain"></div>
+    </div>
+
+    <style>
+      [data-composition-id="03-chapter-thesis"] {
+        position: absolute; inset: 0; overflow: hidden;
+        background: #0a0a0a;
+        font-family: "Archivo Black", sans-serif;
+      }
+      [data-composition-id="03-chapter-thesis"] .stage { position: absolute; inset: 0; }
+      [data-composition-id="03-chapter-thesis"] .ch-num {
+        position: absolute;
+        top: 130px; left: 100px;
+        font-size: 420px;
+        color: #c3f53b;
+        letter-spacing: -0.04em;
+        line-height: 0.85;
+        text-shadow: 0 0 50px rgba(195,245,59,0.4);
+        opacity: 0;
+      }
+      [data-composition-id="03-chapter-thesis"] .ch-rule {
+        position: absolute;
+        top: 50%; left: 720px;
+        width: 2px; height: 0;
+        background: #c3f53b;
+        box-shadow: 0 0 14px rgba(195,245,59,0.55);
+        transform: translateY(-50%);
+        transform-origin: top center;
+      }
+      [data-composition-id="03-chapter-thesis"] .ch-label {
+        position: absolute;
+        top: 200px; left: 760px;
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 700;
+        font-size: 32px;
+        letter-spacing: 0.32em;
+        color: #c3f53b;
+        opacity: 0;
+        text-shadow: 0 0 14px rgba(195,245,59,0.4);
+      }
+      [data-composition-id="03-chapter-thesis"] .ch-body {
+        position: absolute;
+        top: 50%; left: 760px;
+        right: 100px;
+        transform: translateY(-50%);
+      }
+      [data-composition-id="03-chapter-thesis"] .ch-quote-mark {
+        font-size: 240px;
+        color: #c3f53b;
+        line-height: 0.6;
+        margin-bottom: -8px;
+        opacity: 0;
+        text-shadow: 0 0 18px rgba(195,245,59,0.4);
+      }
+      [data-composition-id="03-chapter-thesis"] .ch-body-text {
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 700;
+        font-size: 88px;
+        line-height: 1.05;
+        color: #c3f53b;
+        letter-spacing: -0.02em;
+        text-shadow: 0 0 28px rgba(195,245,59,0.35);
+        max-width: 1060px;
+      }
+      [data-composition-id="03-chapter-thesis"] .ch-body-text .ch {
+        display: inline-block;
+        opacity: 0;
+        transform: translateY(30px);
+        will-change: opacity, transform;
+      }
+      [data-composition-id="03-chapter-thesis"] .ch-attribution {
+        margin-top: 32px;
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 500;
+        font-size: 24px;
+        letter-spacing: 0.22em;
+        color: #ffffff;
+        opacity: 0;
+      }
+      [data-composition-id="03-chapter-thesis"] .footer-mark {
+        position: absolute;
+        bottom: 80px; left: 100px;
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 500;
+        font-size: 22px;
+        letter-spacing: 0.32em;
+        color: #ffffff;
+        opacity: 0.55;
+      }
+      [data-composition-id="03-chapter-thesis"] .wipe {
+        position: absolute; top: 0; left: -100%;
+        width: 100%; height: 100%;
+        background: #c3f53b;
+        z-index: 30;
+      }
+      [data-composition-id="03-chapter-thesis"] .grain {
+        position: absolute; inset: 0; pointer-events: none; opacity: 0.04;
+        background-image:
+          radial-gradient(rgba(255,255,255,0.3) 1px, transparent 1px),
+          radial-gradient(rgba(255,255,255,0.2) 1px, transparent 1px);
+        background-size: 3px 3px, 5px 5px;
+        z-index: 40;
+      }
+    </style>
+
+    <script>
+      (() => {
+        const SLOT = 7;
+        const sel = (q) => `[data-composition-id="03-chapter-thesis"] ${q}`;
+
+        document.querySelectorAll(sel('[data-split]')).forEach((node) => {
+          const text = node.textContent;
+          node.innerHTML = text.split('').map((c) =>
+            c === ' '
+              ? '<span class="ch space">&nbsp;</span>'
+              : `<span class="ch">${c}</span>`
+          ).join('');
+        });
+
+        const tl = gsap.timeline({ paused: true });
+
+        tl.fromTo(sel('.ch-num'),
+          { y: 60, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.55, ease: 'power3.out' }, 0.10);
+        tl.to(sel('.ch-rule'),
+          { height: 720, duration: 0.65, ease: 'power3.out' }, 0.40);
+        tl.fromTo(sel('.ch-label'),
+          { x: -10, opacity: 0 },
+          { x: 0, opacity: 0.95, duration: 0.40, ease: 'power3.out' }, 0.60);
+        tl.fromTo(sel('.ch-quote-mark'),
+          { y: -20, opacity: 0 },
+          { y: 0, opacity: 0.9, duration: 0.45, ease: 'back.out(1.4)' }, 0.90);
+        tl.to(sel('.ch-body-text .ch'),
+          { y: 0, opacity: 1, duration: 0.40, ease: 'power3.out', stagger: 0.014 }, 1.20);
+        tl.fromTo(sel('.ch-attribution'),
+          { y: 6, opacity: 0 },
+          { y: 0, opacity: 0.8, duration: 0.45, ease: 'power3.out' }, 2.40);
+
+        // Block-wipe
+        tl.fromTo(sel('.wipe'),
+          { xPercent: 0 },
+          { xPercent: 200, duration: 0.40, ease: 'power3.in' }, 6.55);
+
+        tl.to({}, { duration: SLOT }, 0);
+        window.__timelines = window.__timelines || {};
+        window.__timelines['03-chapter-thesis'] = tl;
+      })();
+    </script>
+  </div>
+</template>
