@@ -1,0 +1,191 @@
+<template id="04-cta-template">
+  <script src="assets/gsap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@500;600;700&display=block" rel="stylesheet" />
+
+  <div data-composition-id="04-cta" data-start="0" data-duration="4" data-width="1920" data-height="1080">
+    <div class="stage">
+      <div class="paper-grain"></div>
+
+      <svg class="sprig" viewBox="0 0 200 80" fill="none">
+        <path d="M 20 40 Q 100 20 180 40" stroke="#5e7140" stroke-width="2" stroke-linecap="round" opacity="0.45"/>
+        <path d="M 60 36 Q 60 26 70 22 Q 78 32 70 40 Z" fill="#5e7140" opacity="0.45"/>
+        <path d="M 100 32 Q 102 22 112 18 Q 118 28 110 36 Z" fill="#5e7140" opacity="0.45"/>
+        <path d="M 140 36 Q 142 26 152 22 Q 158 32 150 40 Z" fill="#5e7140" opacity="0.45"/>
+      </svg>
+
+      <div class="cta-block">
+        <div class="wordmark" data-split>Gathered</div>
+        <div class="dot-i"></div>
+        <div class="tagline-cap">RECIPE&nbsp;COMPANION</div>
+        <div class="hairline"></div>
+        <div class="tagline-pair">
+          <span class="tg-1">All the recipes.</span>
+          <span class="tg-2">None of the noise.</span>
+        </div>
+        <a class="cta-button" href="#">Start Discovering &amp; Saving Recipes</a>
+        <div class="cta-url">gatheredrecipes.com</div>
+      </div>
+    </div>
+
+    <style>
+      [data-composition-id="04-cta"] {
+        position: absolute; inset: 0; overflow: hidden;
+        background: #f8f1e4;
+        font-family: "Inter", sans-serif;
+      }
+      [data-composition-id="04-cta"] .stage { position: absolute; inset: 0; }
+      [data-composition-id="04-cta"] .paper-grain {
+        position: absolute; inset: 0; pointer-events: none; opacity: 0.10;
+        background-image:
+          radial-gradient(rgba(31,22,15,0.30) 1px, transparent 1px),
+          radial-gradient(rgba(31,22,15,0.20) 1px, transparent 1px);
+        background-size: 4px 4px, 7px 7px;
+        background-position: 0 0, 2px 3px;
+        z-index: 2;
+      }
+      [data-composition-id="04-cta"] .sprig {
+        position: absolute;
+        bottom: 8%; left: 12%;
+        width: 320px; height: 128px;
+        opacity: 0;
+        transform: rotate(8deg);
+        z-index: 3;
+      }
+
+      [data-composition-id="04-cta"] .cta-block {
+        position: absolute;
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        z-index: 4;
+      }
+      [data-composition-id="04-cta"] .wordmark {
+        font-family: "Instrument Serif", serif;
+        font-size: 240px;
+        color: #1f160f;
+        letter-spacing: -0.01em;
+        line-height: 1.0;
+        position: relative;
+      }
+      [data-composition-id="04-cta"] .wordmark .ch {
+        display: inline-block;
+        opacity: 0;
+        transform: translateY(20px);
+        will-change: opacity, transform;
+      }
+      [data-composition-id="04-cta"] .dot-i {
+        position: absolute;
+        top: -8px; left: 50%;
+        transform: translateX(168px);
+        width: 14px; height: 14px;
+        background: #f5a73a;
+        border-radius: 50%;
+        opacity: 0;
+        box-shadow: 0 0 18px rgba(245,167,58,0.55);
+      }
+      [data-composition-id="04-cta"] .tagline-cap {
+        font-weight: 700; font-size: 18px;
+        letter-spacing: 0.32em; color: #1f160f;
+        opacity: 0;
+        margin-top: 4px;
+      }
+      [data-composition-id="04-cta"] .hairline {
+        margin: 28px auto 0;
+        width: 320px; height: 1px;
+        background: #c44a30;
+        opacity: 0;
+        transform: scaleX(0);
+        transform-origin: center;
+      }
+      [data-composition-id="04-cta"] .tagline-pair {
+        margin-top: 24px;
+        display: flex; gap: 12px; justify-content: center;
+        opacity: 0;
+      }
+      [data-composition-id="04-cta"] .tg-1,
+      [data-composition-id="04-cta"] .tg-2 {
+        font-family: "Instrument Serif", serif;
+        font-size: 44px;
+        line-height: 1.1;
+      }
+      [data-composition-id="04-cta"] .tg-1 { color: #1f160f; }
+      [data-composition-id="04-cta"] .tg-2 { color: #c44a30; font-style: italic; }
+      [data-composition-id="04-cta"] .cta-button {
+        display: inline-block;
+        margin-top: 44px;
+        padding: 22px 50px;
+        background: #f5a73a;
+        color: #1f160f;
+        font-weight: 700; font-size: 28px;
+        letter-spacing: 0.01em;
+        text-decoration: none;
+        border-radius: 999px;
+        box-shadow: 0 8px 22px rgba(245,167,58,0.30);
+        opacity: 0;
+        transform: translateY(8px) scale(0.96);
+      }
+      [data-composition-id="04-cta"] .cta-url {
+        margin-top: 24px;
+        font-weight: 600; font-size: 20px;
+        color: #1f160f; opacity: 0;
+        letter-spacing: 0.04em;
+      }
+    </style>
+
+    <script>
+      (() => {
+        const SLOT = 4;
+        const sel = (q) => `[data-composition-id="04-cta"] ${q}`;
+
+        document.querySelectorAll(sel('[data-split]')).forEach((node) => {
+          const text = node.textContent;
+          node.innerHTML = text.split('').map((c) =>
+            c === ' '
+              ? '<span class="ch space">&nbsp;</span>'
+              : `<span class="ch">${c}</span>`
+          ).join('');
+        });
+
+        const tl = gsap.timeline({ paused: true });
+
+        tl.fromTo(sel('.sprig'),
+          { x: -40, y: 20, opacity: 0, rotation: 4 },
+          { x: 0, y: 0, opacity: 1, rotation: 8, duration: 1.8, ease: 'power2.out' }, 0.10);
+
+        tl.to(sel('.wordmark .ch'),
+          { y: 0, opacity: 1, duration: 0.55, ease: 'power3.out', stagger: 0.06 }, 0.20);
+
+        tl.fromTo(sel('.dot-i'),
+          { y: -8, opacity: 0, scale: 0 },
+          { y: 0, opacity: 1, scale: 1, duration: 0.40, ease: 'back.out(2)' }, 0.85);
+
+        tl.fromTo(sel('.tagline-cap'),
+          { y: 6, opacity: 0 },
+          { y: 0, opacity: 0.6, duration: 0.45, ease: 'power3.out' }, 0.95);
+
+        tl.to(sel('.hairline'),
+          { opacity: 1, scaleX: 1, duration: 0.65, ease: 'power3.out' }, 1.20);
+
+        tl.fromTo(sel('.tagline-pair'),
+          { y: 14, opacity: 0, filter: 'blur(4px)' },
+          { y: 0, opacity: 1, filter: 'blur(0px)', duration: 0.70, ease: 'power2.out' }, 1.40);
+
+        tl.to(sel('.cta-button'),
+          { y: 0, scale: 1, opacity: 1, duration: 0.55, ease: 'back.out(1.4)' }, 1.85);
+
+        tl.fromTo(sel('.cta-url'),
+          { y: 6, opacity: 0 },
+          { y: 0, opacity: 0.6, duration: 0.45, ease: 'power3.out' }, 2.30);
+
+        // CTA pulse glow loop (every ~1s) for the rest of the beat
+        tl.to(sel('.cta-button'),
+          { boxShadow: '0 12px 34px rgba(245,167,58,0.55)', duration: 0.6,
+            yoyo: true, repeat: 1, ease: 'sine.inOut' }, 2.80);
+
+        tl.to({}, { duration: SLOT }, 0);
+        window.__timelines = window.__timelines || {};
+        window.__timelines['04-cta'] = tl;
+      })();
+    </script>
+  </div>
+</template>

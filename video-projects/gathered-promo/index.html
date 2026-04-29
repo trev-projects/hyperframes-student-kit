@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <title>Gathered — Landing Page Hero</title>
+    <script src="assets/gsap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@500;600;700&display=block" rel="stylesheet" />
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body {
+        width: 1920px; height: 1080px;
+        overflow: hidden;
+        background: #f8f1e4;
+      }
+      .beat-layer {
+        position: absolute; top: 0; left: 0;
+        width: 1920px; height: 1080px;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="gathered-promo"
+      data-start="0"
+      data-duration="24"
+      data-width="1920"
+      data-height="1080"
+    >
+      <!-- Beat 0 — Cold open (0–4s) -->
+      <div class="beat-layer"
+        data-composition-id="00-cold-open"
+        data-composition-src="compositions/00-cold-open.html"
+        data-start="0" data-duration="4" data-track-index="0"
+        data-width="1920" data-height="1080"></div>
+
+      <!-- Beat 1 — URL → Recipe Card comparison (4–11s) -->
+      <div class="beat-layer"
+        data-composition-id="01-url-to-card"
+        data-composition-src="compositions/01-url-to-card.html"
+        data-start="4" data-duration="7" data-track-index="0"
+        data-width="1920" data-height="1080"></div>
+
+      <!-- Beat 2 — Collection grid (11–16s) -->
+      <div class="beat-layer"
+        data-composition-id="02-collection-grid"
+        data-composition-src="compositions/02-collection-grid.html"
+        data-start="11" data-duration="5" data-track-index="0"
+        data-width="1920" data-height="1080"></div>
+
+      <!-- Beat 3 — Scale by tap (16–20s) -->
+      <div class="beat-layer"
+        data-composition-id="03-scale-tap"
+        data-composition-src="compositions/03-scale-tap.html"
+        data-start="16" data-duration="4" data-track-index="0"
+        data-width="1920" data-height="1080"></div>
+
+      <!-- Beat 4 — CTA hero (20–24s) -->
+      <div class="beat-layer"
+        data-composition-id="04-cta"
+        data-composition-src="compositions/04-cta.html"
+        data-start="20" data-duration="4" data-track-index="0"
+        data-width="1920" data-height="1080"></div>
+
+      <!-- Background music bed — warm acoustic, full runtime -->
+      <audio id="bed"
+        data-start="0" data-duration="24" data-track-index="20" data-volume="0.55"
+        src="assets/music.wav"></audio>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      tl.to({}, { duration: 24 }, 0);
+      window.__timelines["gathered-promo"] = tl;
+    </script>
+  </body>
+</html>
