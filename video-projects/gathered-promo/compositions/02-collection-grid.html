@@ -8,8 +8,12 @@
 
       <div class="eyebrow-pill">
         <span class="sparkle">✦</span>
-        <span class="eyebrow-text">100+&nbsp;CHEF-CURATED&nbsp;RECIPES&nbsp;INSIDE</span>
+        <span class="eyebrow-text"><span class="cnt">0</span>+&nbsp;CHEF-CURATED&nbsp;RECIPES&nbsp;INSIDE</span>
       </div>
+
+      <span class="sparkle-deco sd1">✦</span>
+      <span class="sparkle-deco sd2">✦</span>
+      <span class="sparkle-deco sd3">✦</span>
 
       <div class="grid">
         <div class="r-card r1">
@@ -113,6 +117,22 @@
         font-weight: 700; font-size: 16px;
         letter-spacing: 0.18em; color: #c44a30;
       }
+      [data-composition-id="02-collection-grid"] .cnt {
+        display: inline-block;
+        min-width: 1.4em;
+        text-align: right;
+      }
+      [data-composition-id="02-collection-grid"] .sparkle-deco {
+        position: absolute;
+        font-size: 22px;
+        color: #f5a73a;
+        opacity: 0;
+        z-index: 6;
+        text-shadow: 0 0 14px rgba(245,167,58,0.55);
+      }
+      [data-composition-id="02-collection-grid"] .sd1 { top: 110px; left: 38%; }
+      [data-composition-id="02-collection-grid"] .sd2 { top: 90px;  right: 36%; font-size: 16px; }
+      [data-composition-id="02-collection-grid"] .sd3 { top: 130px; left: 62%; font-size: 18px; }
 
       [data-composition-id="02-collection-grid"] .grid {
         position: absolute;
@@ -190,8 +210,39 @@
           { y: -6, opacity: 0 },
           { y: 0, opacity: 1, duration: 0.55, ease: 'power3.out' }, 0.10);
 
+        // Counter 0 → 100 inside the pill
+        const root = document.querySelector(`[data-composition-id="02-collection-grid"]`);
+        const cntEl = root && root.querySelector('.cnt');
+        const cntProxy = { v: 0 };
+        if (cntEl) {
+          tl.to(cntProxy, {
+            v: 100, duration: 1.40, ease: 'power2.out',
+            onUpdate: () => { cntEl.textContent = Math.round(cntProxy.v); }
+          }, 0.40);
+        }
+
+        // Sparkles twinkle around the pill — sequential pop-and-fade
+        ['.sd1', '.sd2', '.sd3'].forEach((s, i) => {
+          tl.fromTo(sel(s),
+            { scale: 0, opacity: 0, rotation: -45 },
+            { scale: 1, opacity: 1, rotation: 0, duration: 0.40, ease: 'back.out(1.8)' }, 0.65 + i * 0.18);
+          tl.to(sel(s),
+            { opacity: 0, scale: 0.8, duration: 0.50, ease: 'power2.in' }, 1.50 + i * 0.20);
+        });
+
+        // Tilted cards — slight rotation on entry, settle to 0
+        const rots = [-2, 1.5, -1, 2];
+        ['.r1', '.r2', '.r3', '.r4'].forEach((cls, i) => {
+          tl.fromTo(sel(cls),
+            { y: 40, opacity: 0, rotation: rots[i] * 1.6, scale: 0.95 },
+            { y: 0, opacity: 1, rotation: rots[i] * 0.4, scale: 1,
+              duration: 0.65, ease: 'back.out(1.2)' }, 0.45 + i * 0.18);
+        });
+
+        // Hold-state breathe — cards float and barely scale
         tl.to(sel('.r-card'),
-          { y: 0, opacity: 1, duration: 0.65, ease: 'back.out(1.2)', stagger: 0.18 }, 0.45);
+          { y: -4, duration: 1.6, ease: 'sine.inOut', yoyo: true, repeat: 1,
+            stagger: { each: 0.08, from: 'random' } }, 1.85);
 
         // Subtle breathing while held
         tl.to(sel('.grid'),

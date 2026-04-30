@@ -22,6 +22,7 @@
       <div class="hero">
         <div class="line line-1">All the recipes.</div>
         <div class="line line-2">None of the noise.</div>
+        <div class="halo"></div>
       </div>
 
       <div class="page-sweep"></div>
@@ -93,6 +94,16 @@
         color: #c44a30;
         font-style: italic;
       }
+      [data-composition-id="00-cold-open"] .halo {
+        position: absolute;
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+        width: 1100px; height: 380px;
+        background: radial-gradient(ellipse at center, rgba(245,167,58,0.18), transparent 70%);
+        opacity: 0;
+        pointer-events: none;
+        z-index: -1;
+      }
       [data-composition-id="00-cold-open"] .page-sweep {
         position: absolute; top: 0; left: -100%;
         width: 100%; height: 100%;
@@ -124,6 +135,18 @@
           { y: 14, opacity: 0, filter: 'blur(6px)' },
           { y: 0, opacity: 1, filter: 'blur(0px)', duration: 0.85, ease: 'power2.out' }, 1.40);
 
+        // Halo glow pulse on the hero copy — soft amber breath
+        tl.fromTo(sel('.halo'),
+          { opacity: 0, scale: 0.9 },
+          { opacity: 1, scale: 1, duration: 1.2, ease: 'sine.out' }, 1.20);
+        tl.to(sel('.halo'),
+          { scale: 1.05, duration: 1.6, ease: 'sine.inOut', yoyo: true, repeat: 1 }, 1.80);
+
+        // Parallax: sprig drifts subtly during hold
+        tl.to(sel('.sprig'),
+          { x: 14, y: -8, rotation: -10, duration: 2.0, ease: 'sine.inOut' }, 2.0);
+
+        // Hero subtle parallax
         tl.to(sel('.hero'),
           { y: -10, duration: 1.0, ease: 'sine.inOut' }, 2.40);
 

@@ -1,0 +1,94 @@
+<template id="overlay-decor-template">
+  <script src="assets/gsap.min.js"></script>
+
+  <div data-composition-id="overlay-decor" data-start="0" data-duration="24" data-width="1920" data-height="1080">
+    <div class="ing-stage">
+      <!-- 10 drifting ingredients, varied placement + drift profile -->
+      <svg class="ing basil i1" viewBox="0 0 80 80"><ellipse cx="40" cy="40" rx="30" ry="14" fill="#5e7140" transform="rotate(-30 40 40)"/><path d="M 12 50 Q 40 28 68 32" stroke="#1f160f" stroke-width="1" fill="none" opacity="0.5"/></svg>
+      <svg class="ing strawberry i2" viewBox="0 0 80 80"><path d="M 40 18 Q 64 24 60 50 Q 52 70 40 70 Q 28 70 20 50 Q 16 24 40 18 Z" fill="#c44a30"/><path d="M 30 14 L 40 22 L 50 14 L 47 22 L 40 24 L 33 22 Z" fill="#5e7140"/><circle cx="30" cy="36" r="1.4" fill="#fde4d3"/><circle cx="44" cy="32" r="1.4" fill="#fde4d3"/><circle cx="52" cy="40" r="1.4" fill="#fde4d3"/><circle cx="34" cy="46" r="1.4" fill="#fde4d3"/><circle cx="48" cy="50" r="1.4" fill="#fde4d3"/></svg>
+      <svg class="ing tomato i3" viewBox="0 0 80 80"><circle cx="40" cy="44" r="26" fill="#c44a30"/><path d="M 36 18 L 40 26 L 44 18 L 42 24 L 40 26 L 38 24 Z" fill="#5e7140"/><line x1="40" y1="22" x2="40" y2="18" stroke="#5e7140" stroke-width="1.5"/></svg>
+      <svg class="ing garlic i4" viewBox="0 0 80 80"><ellipse cx="40" cy="42" rx="20" ry="28" fill="#fef5e2" stroke="#a8978a" stroke-width="0.8"/><line x1="40" y1="14" x2="40" y2="68" stroke="#c8b89a" stroke-width="0.8"/><ellipse cx="30" cy="42" rx="9" ry="24" fill="#fef5e2" stroke="#c8b89a" stroke-width="0.4"/><ellipse cx="50" cy="42" rx="9" ry="24" fill="#fef5e2" stroke="#c8b89a" stroke-width="0.4"/></svg>
+      <svg class="ing sprig-ing i5" viewBox="0 0 80 80"><path d="M 14 40 Q 40 30 66 40" stroke="#5e7140" stroke-width="1.5" fill="none"/><ellipse cx="26" cy="36" rx="7" ry="4" fill="#5e7140" transform="rotate(-25 26 36)"/><ellipse cx="40" cy="32" rx="7" ry="4" fill="#5e7140" transform="rotate(-10 40 32)"/><ellipse cx="54" cy="36" rx="7" ry="4" fill="#5e7140" transform="rotate(20 54 36)"/></svg>
+      <svg class="ing basil i6" viewBox="0 0 80 80"><ellipse cx="40" cy="40" rx="28" ry="13" fill="#5e7140" transform="rotate(20 40 40)"/><path d="M 14 36 Q 40 50 66 38" stroke="#1f160f" stroke-width="1" fill="none" opacity="0.5"/></svg>
+      <svg class="ing strawberry i7" viewBox="0 0 80 80"><path d="M 40 18 Q 64 24 60 50 Q 52 70 40 70 Q 28 70 20 50 Q 16 24 40 18 Z" fill="#c44a30"/><path d="M 30 14 L 40 22 L 50 14 L 47 22 L 40 24 L 33 22 Z" fill="#5e7140"/><circle cx="30" cy="36" r="1.4" fill="#fde4d3"/><circle cx="44" cy="32" r="1.4" fill="#fde4d3"/><circle cx="52" cy="40" r="1.4" fill="#fde4d3"/><circle cx="34" cy="46" r="1.4" fill="#fde4d3"/></svg>
+      <svg class="ing tomato i8" viewBox="0 0 80 80"><circle cx="40" cy="44" r="22" fill="#c44a30"/><path d="M 36 22 L 40 28 L 44 22" stroke="#5e7140" stroke-width="1.5" fill="none"/></svg>
+      <svg class="ing sprig-ing i9" viewBox="0 0 80 80"><path d="M 14 40 Q 40 50 66 36" stroke="#5e7140" stroke-width="1.5" fill="none"/><ellipse cx="26" cy="42" rx="7" ry="4" fill="#5e7140" transform="rotate(15 26 42)"/><ellipse cx="40" cy="46" rx="7" ry="4" fill="#5e7140" transform="rotate(0 40 46)"/><ellipse cx="54" cy="42" rx="7" ry="4" fill="#5e7140" transform="rotate(-15 54 42)"/></svg>
+      <svg class="ing basil i10" viewBox="0 0 80 80"><ellipse cx="40" cy="40" rx="26" ry="12" fill="#5e7140" transform="rotate(-50 40 40)"/></svg>
+    </div>
+
+    <style>
+      [data-composition-id="overlay-decor"] {
+        position: absolute; inset: 0;
+        background: transparent;
+        pointer-events: none;
+        overflow: hidden;
+        z-index: 5;
+      }
+      [data-composition-id="overlay-decor"] .ing-stage {
+        position: absolute; inset: 0;
+      }
+      [data-composition-id="overlay-decor"] .ing {
+        position: absolute;
+        width: 90px; height: 90px;
+        opacity: 0;
+        will-change: transform, opacity;
+        mix-blend-mode: multiply;
+      }
+      /* Initial positions — off-screen left at varied vertical */
+      [data-composition-id="overlay-decor"] .i1  { top:  8%; left: -120px; }
+      [data-composition-id="overlay-decor"] .i2  { top: 78%; left: -120px; }
+      [data-composition-id="overlay-decor"] .i3  { top: 22%; left: -120px; }
+      [data-composition-id="overlay-decor"] .i4  { top: 64%; left: -120px; }
+      [data-composition-id="overlay-decor"] .i5  { top: 38%; left: -120px; }
+      [data-composition-id="overlay-decor"] .i6  { top: 88%; left: -120px; }
+      [data-composition-id="overlay-decor"] .i7  { top: 14%; left: -120px; }
+      [data-composition-id="overlay-decor"] .i8  { top: 50%; left: -120px; }
+      [data-composition-id="overlay-decor"] .i9  { top: 32%; left: -120px; }
+      [data-composition-id="overlay-decor"] .i10 { top: 70%; left: -120px; }
+    </style>
+
+    <script>
+      (() => {
+        const SLOT = 24;
+        const sel = (q) => `[data-composition-id="overlay-decor"] ${q}`;
+        const tl = gsap.timeline({ paused: true });
+
+        // Each ingredient drifts L→R across viewport (~2100px) with rotation + soft fade in/out
+        const items = [
+          { cls: '.i1',  start:  0.0, dur: 14, rot: -18, peakOp: 0.20, dy:  20 },
+          { cls: '.i2',  start:  1.5, dur: 16, rot:  22, peakOp: 0.22, dy: -25 },
+          { cls: '.i3',  start:  3.5, dur: 13, rot: -12, peakOp: 0.18, dy:  18 },
+          { cls: '.i4',  start:  5.0, dur: 15, rot:  18, peakOp: 0.16, dy: -16 },
+          { cls: '.i5',  start:  7.0, dur: 14, rot: -22, peakOp: 0.22, dy:  22 },
+          { cls: '.i6',  start:  8.5, dur: 13, rot:  10, peakOp: 0.18, dy: -18 },
+          { cls: '.i7',  start: 10.5, dur: 12, rot: -16, peakOp: 0.20, dy:  20 },
+          { cls: '.i8',  start: 12.5, dur: 11, rot:  20, peakOp: 0.18, dy: -22 },
+          { cls: '.i9',  start: 14.0, dur: 10, rot: -10, peakOp: 0.20, dy:  18 },
+          { cls: '.i10', start: 16.0, dur:  8, rot:  15, peakOp: 0.16, dy: -14 }
+        ];
+
+        items.forEach((it) => {
+          tl.fromTo(sel(it.cls),
+            { x: 0, y: 0, opacity: 0, rotation: -it.rot, scale: 0.92 },
+            { x: 2100,
+              y: it.dy,
+              rotation: it.rot,
+              scale: 1.0,
+              duration: it.dur,
+              ease: 'none' }, it.start);
+
+          tl.fromTo(sel(it.cls),
+            { opacity: 0 },
+            { opacity: it.peakOp, duration: 1.2, ease: 'sine.out' }, it.start);
+
+          tl.to(sel(it.cls),
+            { opacity: 0, duration: 1.2, ease: 'sine.in' }, it.start + it.dur - 1.2);
+        });
+
+        tl.to({}, { duration: SLOT }, 0);
+        window.__timelines = window.__timelines || {};
+        window.__timelines['overlay-decor'] = tl;
+      })();
+    </script>
+  </div>
+</template>

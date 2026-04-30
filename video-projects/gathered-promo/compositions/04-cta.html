@@ -69,9 +69,10 @@
       }
       [data-composition-id="04-cta"] .wordmark .ch {
         display: inline-block;
-        opacity: 0;
-        transform: translateY(20px);
-        will-change: opacity, transform;
+        opacity: 1;
+        clip-path: inset(0 100% 0 0);
+        -webkit-clip-path: inset(0 100% 0 0);
+        will-change: clip-path;
       }
       [data-composition-id="04-cta"] .dot-i {
         position: absolute;
@@ -152,8 +153,10 @@
           { x: -40, y: 20, opacity: 0, rotation: 4 },
           { x: 0, y: 0, opacity: 1, rotation: 8, duration: 1.8, ease: 'power2.out' }, 0.10);
 
+        // Ink-draw: each character reveals via clip-path L→R
         tl.to(sel('.wordmark .ch'),
-          { y: 0, opacity: 1, duration: 0.55, ease: 'power3.out', stagger: 0.06 }, 0.20);
+          { clipPath: 'inset(0 0% 0 0)', WebkitClipPath: 'inset(0 0% 0 0)',
+            duration: 0.45, ease: 'power2.out', stagger: 0.08 }, 0.20);
 
         tl.fromTo(sel('.dot-i'),
           { y: -8, opacity: 0, scale: 0 },
@@ -178,9 +181,15 @@
           { y: 0, opacity: 0.6, duration: 0.45, ease: 'power3.out' }, 2.30);
 
         // CTA pulse glow loop (every ~1s) for the rest of the beat
+        // Continuous breathing pulse on the CTA button
         tl.to(sel('.cta-button'),
-          { boxShadow: '0 12px 34px rgba(245,167,58,0.55)', duration: 0.6,
-            yoyo: true, repeat: 1, ease: 'sine.inOut' }, 2.80);
+          { boxShadow: '0 12px 34px rgba(245,167,58,0.55)', scale: 1.02, duration: 0.7,
+            yoyo: true, repeat: 3, ease: 'sine.inOut' }, 2.50);
+
+        // Sprig grows: from a tiny version, scales to full
+        tl.fromTo(sel('.sprig'),
+          { scale: 0.6, transformOrigin: '20% 100%' },
+          { scale: 1, duration: 1.4, ease: 'power3.out' }, 0.50);
 
         tl.to({}, { duration: SLOT }, 0);
         window.__timelines = window.__timelines || {};
