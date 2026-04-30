@@ -2,13 +2,13 @@
   <script src="assets/gsap.min.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@500;600;700&display=block" rel="stylesheet" />
 
-  <div data-composition-id="02-collection-grid" data-start="0" data-duration="5" data-width="1920" data-height="1080">
+  <div data-composition-id="02-collection-grid" data-start="0" data-duration="5" data-width="1080" data-height="1080">
     <div class="stage">
       <div class="paper-grain"></div>
 
       <div class="eyebrow-pill">
         <span class="sparkle">✦</span>
-        <span class="eyebrow-text">100+&nbsp;CHEF-CURATED&nbsp;RECIPES&nbsp;INSIDE</span>
+        <span class="eyebrow-text">100+&nbsp;CHEF-CURATED&nbsp;RECIPES</span>
       </div>
 
       <div class="grid">
@@ -97,7 +97,7 @@
 
       [data-composition-id="02-collection-grid"] .eyebrow-pill {
         position: absolute;
-        top: 64px; left: 50%;
+        top: 60px; left: 50%;
         transform: translateX(-50%);
         display: flex; align-items: center; gap: 10px;
         padding: 12px 26px;
@@ -118,11 +118,11 @@
         position: absolute;
         top: 50%; left: 50%;
         transform: translate(-50%, -50%);
-        margin-top: 30px;
+        margin-top: 22px;
         display: grid;
-        grid-template-columns: repeat(2, 480px);
+        grid-template-columns: repeat(2, 460px);
         grid-template-rows: repeat(2, 380px);
-        gap: 28px;
+        gap: 24px;
       }
       [data-composition-id="02-collection-grid"] .r-card {
         background: #ffffff;
@@ -153,7 +153,7 @@
 
       [data-composition-id="02-collection-grid"] .toast {
         position: absolute;
-        bottom: 80px; left: 100px;
+        bottom: 60px; left: 60px;
         background: #ffffff;
         border-radius: 14px;
         padding: 14px 22px;
@@ -193,11 +193,9 @@
         tl.to(sel('.r-card'),
           { y: 0, opacity: 1, duration: 0.65, ease: 'back.out(1.2)', stagger: 0.18 }, 0.45);
 
-        // Subtle breathing while held
         tl.to(sel('.grid'),
           { scale: 1.012, duration: 1.4, ease: 'sine.inOut', yoyo: true, repeat: 1 }, 2.0);
 
-        // Toast pulses
         tl.to(sel('.toast'),
           { y: 0, scale: 1, opacity: 1, duration: 0.50, ease: 'back.out(1.6)' }, 3.20);
         tl.to(sel('.toast'),

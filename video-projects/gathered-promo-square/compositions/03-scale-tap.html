@@ -1,0 +1,265 @@
+<template id="03-scale-tap-template">
+  <script src="assets/gsap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@500;600;700&display=block" rel="stylesheet" />
+
+  <div data-composition-id="03-scale-tap" data-start="0" data-duration="4" data-width="1080" data-height="1080">
+    <div class="stage">
+      <div class="paper-grain"></div>
+
+      <div class="eyebrow">SCALE&nbsp;IN&nbsp;ONE&nbsp;TAP</div>
+      <div class="caption">Cooking for 2 or 12?<br/>Every ingredient scales automatically.</div>
+
+      <div class="card">
+        <div class="card-header">SERVINGS</div>
+        <div class="serving-row">
+          <span class="serving s-2">2</span>
+          <span class="serving s-4">4</span>
+          <span class="serving s-6 selected">6</span>
+          <span class="serving s-8">8</span>
+          <span class="serving s-12">12</span>
+        </div>
+        <div class="ripple"></div>
+        <svg class="cursor" viewBox="0 0 24 24">
+          <path d="M 4 3 L 4 18 L 9 14 L 12 21 L 15 19 L 12 12 L 18 12 Z" fill="#1f160f" stroke="#f8f1e4" stroke-width="1.5"/>
+        </svg>
+
+        <div class="ingredients">
+          <div class="ing-row">
+            <span class="ing-name">Rigatoni</span>
+            <span class="ing-amt">
+              <span class="amt-from">500g</span>
+              <span class="amt-to">1000g</span>
+            </span>
+          </div>
+          <div class="ing-row">
+            <span class="ing-name">Passata</span>
+            <span class="ing-amt">
+              <span class="amt-from">700ml</span>
+              <span class="amt-to">1400ml</span>
+            </span>
+          </div>
+          <div class="ing-row">
+            <span class="ing-name">Mozzarella</span>
+            <span class="ing-amt">
+              <span class="amt-from">250g</span>
+              <span class="amt-to">500g</span>
+            </span>
+          </div>
+          <div class="ing-row">
+            <span class="ing-name">Fresh basil</span>
+            <span class="ing-amt">
+              <span class="amt-from">1 handful</span>
+              <span class="amt-to">2 handfuls</span>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="page-sweep"></div>
+    </div>
+
+    <style>
+      [data-composition-id="03-scale-tap"] {
+        position: absolute; inset: 0; overflow: hidden;
+        background: #f8f1e4;
+        font-family: "Inter", sans-serif;
+      }
+      [data-composition-id="03-scale-tap"] .stage { position: absolute; inset: 0; }
+      [data-composition-id="03-scale-tap"] .paper-grain {
+        position: absolute; inset: 0; pointer-events: none; opacity: 0.10;
+        background-image:
+          radial-gradient(rgba(31,22,15,0.30) 1px, transparent 1px),
+          radial-gradient(rgba(31,22,15,0.20) 1px, transparent 1px);
+        background-size: 4px 4px, 7px 7px;
+        background-position: 0 0, 2px 3px;
+        z-index: 2;
+      }
+
+      [data-composition-id="03-scale-tap"] .eyebrow {
+        position: absolute;
+        top: 80px; left: 50%;
+        transform: translateX(-50%);
+        font-weight: 700; font-size: 16px;
+        letter-spacing: 0.32em; color: #c44a30;
+        opacity: 0;
+        z-index: 4;
+      }
+      [data-composition-id="03-scale-tap"] .caption {
+        position: absolute;
+        top: 120px; left: 50%;
+        transform: translateX(-50%);
+        font-family: "Instrument Serif", serif;
+        font-size: 32px;
+        color: #1f160f;
+        text-align: center;
+        line-height: 1.25;
+        max-width: 920px;
+        opacity: 0;
+        z-index: 4;
+      }
+
+      [data-composition-id="03-scale-tap"] .card {
+        position: absolute;
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+        margin-top: 70px;
+        width: 920px;
+        background: #ffffff;
+        border-radius: 18px;
+        padding: 32px 44px 38px;
+        box-shadow: 0 14px 50px rgba(31,22,15,0.10);
+        opacity: 0;
+        z-index: 4;
+      }
+      [data-composition-id="03-scale-tap"] .card-header {
+        font-weight: 700; font-size: 12px;
+        letter-spacing: 0.32em; color: #a8978a;
+        margin-bottom: 16px;
+      }
+      [data-composition-id="03-scale-tap"] .serving-row {
+        display: flex; gap: 12px;
+        margin-bottom: 30px;
+        position: relative;
+      }
+      [data-composition-id="03-scale-tap"] .serving {
+        width: 70px; height: 56px;
+        display: flex; align-items: center; justify-content: center;
+        font-family: "Instrument Serif", serif;
+        font-size: 28px;
+        background: #faf3e7;
+        border-radius: 10px;
+        color: #1f160f;
+      }
+      [data-composition-id="03-scale-tap"] .serving.selected {
+        background: #f5a73a;
+        color: #1f160f;
+      }
+      [data-composition-id="03-scale-tap"] .ripple {
+        position: absolute;
+        top: 0; left: 0;
+        width: 70px; height: 56px;
+        border-radius: 10px;
+        background: #f5a73a;
+        opacity: 0;
+        pointer-events: none;
+      }
+      [data-composition-id="03-scale-tap"] .cursor {
+        position: absolute;
+        width: 26px; height: 26px;
+        opacity: 0;
+        pointer-events: none;
+        z-index: 6;
+      }
+
+      [data-composition-id="03-scale-tap"] .ingredients {
+        display: flex; flex-direction: column;
+      }
+      [data-composition-id="03-scale-tap"] .ing-row {
+        display: flex; justify-content: space-between;
+        align-items: baseline;
+        padding: 13px 4px;
+        border-bottom: 1px solid #ece4d3;
+        font-size: 21px;
+      }
+      [data-composition-id="03-scale-tap"] .ing-row:last-child { border-bottom: none; }
+      [data-composition-id="03-scale-tap"] .ing-name {
+        color: #1f160f;
+        font-weight: 600;
+      }
+      [data-composition-id="03-scale-tap"] .ing-amt {
+        position: relative;
+        font-family: "Instrument Serif", serif;
+        font-size: 24px;
+        color: #c44a30;
+      }
+      [data-composition-id="03-scale-tap"] .amt-from,
+      [data-composition-id="03-scale-tap"] .amt-to {
+        display: inline-block;
+      }
+      [data-composition-id="03-scale-tap"] .amt-to {
+        position: absolute; top: 0; right: 0;
+        opacity: 0;
+      }
+
+      [data-composition-id="03-scale-tap"] .page-sweep {
+        position: absolute; top: 0; left: -100%;
+        width: 100%; height: 100%;
+        background: #f8f1e4;
+        box-shadow: 18px 0 60px rgba(31,22,15,0.18);
+        z-index: 30;
+      }
+    </style>
+
+    <script>
+      (() => {
+        const SLOT = 4;
+        const sel = (q) => `[data-composition-id="03-scale-tap"] ${q}`;
+        const tl = gsap.timeline({ paused: true });
+
+        tl.fromTo(sel('.eyebrow'),
+          { y: -6, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.40, ease: 'power3.out' }, 0.05);
+        tl.fromTo(sel('.caption'),
+          { y: 14, opacity: 0, filter: 'blur(4px)' },
+          { y: 0, opacity: 1, filter: 'blur(0px)', duration: 0.70, ease: 'power2.out' }, 0.15);
+        tl.fromTo(sel('.card'),
+          { y: 24, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.65, ease: 'back.out(1.15)' }, 0.30);
+
+        // Cursor enters near "6" then moves to "12"
+        // Card serving row: 6 = (70+12)*2 + 35 = 199 from card's content-left edge
+        // Card padding-left 44, so 6 center ≈ 44 + 199 = 243 from card-left. Plus 5 hover offset.
+        // Card starts at top 70 (margin-top), header 12+16, so serving row top ≈ 100 from card top.
+        tl.set(sel('.cursor'), { x: 320, y: 130 });
+        tl.fromTo(sel('.cursor'),
+          { opacity: 0 },
+          { opacity: 1, duration: 0.30, ease: 'power2.out' }, 1.30);
+
+        // Cursor moves to "12"
+        tl.to(sel('.cursor'),
+          { x: 648, y: 130, duration: 0.65, ease: 'power2.inOut' }, 1.55);
+
+        // Tap moment
+        tl.to(sel('.cursor'),
+          { scale: 0.85, duration: 0.10, ease: 'power3.in' }, 2.20);
+        tl.to(sel('.cursor'),
+          { scale: 1, duration: 0.20, ease: 'back.out(2)' }, 2.30);
+
+        // Ripple over the "12"
+        tl.set(sel('.ripple'), { x: 372, y: 102, scale: 1, opacity: 0.65 });
+        tl.to(sel('.ripple'),
+          { scale: 1.6, opacity: 0, duration: 0.50, ease: 'power2.out' }, 2.20);
+
+        // Update selection class
+        tl.add(() => {
+          const root = document.querySelector(`[data-composition-id="03-scale-tap"]`);
+          if (root) {
+            const six = root.querySelector('.s-6');
+            const twelve = root.querySelector('.s-12');
+            if (six) six.classList.remove('selected');
+            if (twelve) twelve.classList.add('selected');
+          }
+        }, 2.25);
+
+        // Cross-fade ingredient amounts
+        tl.to(sel('.amt-from'),
+          { opacity: 0, duration: 0.50, ease: 'power2.inOut', stagger: 0.08 }, 2.30);
+        tl.to(sel('.amt-to'),
+          { opacity: 1, duration: 0.50, ease: 'power2.inOut', stagger: 0.08 }, 2.30);
+
+        // Cursor exits
+        tl.to(sel('.cursor'),
+          { opacity: 0, duration: 0.35, ease: 'power2.out' }, 3.00);
+
+        // Page-sweep exit
+        tl.fromTo(sel('.page-sweep'),
+          { xPercent: 0 },
+          { xPercent: 200, duration: 0.50, ease: 'power2.inOut' }, 3.50);
+
+        tl.to({}, { duration: SLOT }, 0);
+        window.__timelines = window.__timelines || {};
+        window.__timelines['03-scale-tap'] = tl;
+      })();
+    </script>
+  </div>
+</template>
