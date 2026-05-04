@@ -81,6 +81,10 @@
         text-shadow: 0 0 28px rgba(195,245,59,0.35);
         max-width: 1060px;
       }
+      [data-composition-id="03-chapter-thesis"] .ch-body-text .word {
+        display: inline-block;
+        white-space: nowrap;
+      }
       [data-composition-id="03-chapter-thesis"] .ch-body-text .ch {
         display: inline-block;
         opacity: 0;
@@ -127,15 +131,15 @@
         const SLOT = 7;
         const sel = (q) => `[data-composition-id="03-chapter-thesis"] ${q}`;
 
-        // Per-char split that preserves word-boundary wrapping by leaving spaces
-        // as raw whitespace text nodes between the per-char spans.
+        // Per-char split that wraps each word in a non-breakable container so
+        // line breaks only happen at word boundaries, never mid-word.
         document.querySelectorAll(sel('[data-split]')).forEach((node) => {
-          const text = node.textContent;
-          node.innerHTML = text.split('').map((c) =>
-            c === ' '
-              ? ' '
-              : `<span class="ch">${c}</span>`
-          ).join('');
+          const tokens = node.textContent.split(/(\s+)/);
+          node.innerHTML = tokens.map((tok) => {
+            if (/^\s+$/.test(tok)) return ' ';
+            const chars = tok.split('').map((c) => `<span class="ch">${c}</span>`).join('');
+            return `<span class="word">${chars}</span>`;
+          }).join('');
         });
 
         const tl = gsap.timeline({ paused: true });
