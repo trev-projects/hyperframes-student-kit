@@ -127,11 +127,13 @@
         const SLOT = 7;
         const sel = (q) => `[data-composition-id="03-chapter-thesis"] ${q}`;
 
+        // Per-char split that preserves word-boundary wrapping by leaving spaces
+        // as raw whitespace text nodes between the per-char spans.
         document.querySelectorAll(sel('[data-split]')).forEach((node) => {
           const text = node.textContent;
           node.innerHTML = text.split('').map((c) =>
             c === ' '
-              ? '<span class="ch space">&nbsp;</span>'
+              ? ' '
               : `<span class="ch">${c}</span>`
           ).join('');
         });

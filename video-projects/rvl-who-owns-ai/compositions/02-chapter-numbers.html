@@ -158,9 +158,9 @@
           { x: 0, opacity: 0.95, duration: 0.40, ease: 'power3.out' }, 0.60);
 
         const rows = [
-          { cls: '.sr1', at: 0.95, decimals: 1 },
-          { cls: '.sr2', at: 2.10, decimals: 0 },
-          { cls: '.sr3', at: 3.25, decimals: 0 }
+          { cls: '.sr1', at: 0.95, decimals: 0 },   // ANTHROPIC $50B
+          { cls: '.sr2', at: 2.10, decimals: 1 },   // INEFFABLE $1.1B
+          { cls: '.sr3', at: 3.25, decimals: 0 }    // 137 VENTURES $700M
         ];
         rows.forEach((r) => {
           const rowSel = sel(r.cls);
