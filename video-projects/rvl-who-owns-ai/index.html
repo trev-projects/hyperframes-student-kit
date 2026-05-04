@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <title>RVL — Who Owns AI</title>
+    <script src="assets/gsap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@500;700&display=block" rel="stylesheet" />
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body {
+        width: 1920px; height: 1080px;
+        overflow: hidden;
+        background: #0a0a0a;
+        color: #ffffff;
+      }
+      .beat-layer {
+        position: absolute; top: 0; left: 0;
+        width: 1920px; height: 1080px;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="rvl-who-owns-ai"
+      data-start="0"
+      data-duration="32"
+      data-width="1920"
+      data-height="1080"
+    >
+      <!-- Beat 00 — Cover (0–4s) -->
+      <div class="beat-layer"
+        data-composition-id="00-cover"
+        data-composition-src="compositions/00-cover.html"
+        data-start="0" data-duration="4" data-track-index="0"
+        data-width="1920" data-height="1080"></div>
+
+      <!-- Beat 01 — Chapter 1 / The Shift (4–10s) -->
+      <div class="beat-layer"
+        data-composition-id="01-chapter-shift"
+        data-composition-src="compositions/01-chapter-shift.html"
+        data-start="4" data-duration="6" data-track-index="0"
+        data-width="1920" data-height="1080"></div>
+
+      <!-- Beat 02 — Chapter 2 / The Numbers (10–17s) -->
+      <div class="beat-layer"
+        data-composition-id="02-chapter-numbers"
+        data-composition-src="compositions/02-chapter-numbers.html"
+        data-start="10" data-duration="7" data-track-index="0"
+        data-width="1920" data-height="1080"></div>
+
+      <!-- Beat 03 — Chapter 3 / The Thesis (17–24s) -->
+      <div class="beat-layer"
+        data-composition-id="03-chapter-thesis"
+        data-composition-src="compositions/03-chapter-thesis.html"
+        data-start="17" data-duration="7" data-track-index="0"
+        data-width="1920" data-height="1080"></div>
+
+      <!-- Beat 04 — Read the Issue / CTA (24–32s) -->
+      <div class="beat-layer"
+        data-composition-id="04-cta"
+        data-composition-src="compositions/04-cta.html"
+        data-start="24" data-duration="8" data-track-index="0"
+        data-width="1920" data-height="1080"></div>
+
+      <!-- Main voiceover — 4 chapter lines, regenerated per issue -->
+      <audio id="vo-main"
+        data-start="4.5" data-duration="20" data-track-index="20" data-volume="1.0"
+        src="assets/narration-main.wav"></audio>
+
+      <!-- CTA voiceover — fixed across issues -->
+      <audio id="vo-cta"
+        data-start="28.0" data-duration="3" data-track-index="22" data-volume="1.0"
+        src="assets/narration-cta.wav"></audio>
+
+      <!-- Background music bed -->
+      <audio id="bed"
+        data-start="0" data-duration="32" data-track-index="21" data-volume="0.18"
+        src="assets/music.wav"></audio>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      tl.to({}, { duration: 32 }, 0);
+      window.__timelines["rvl-who-owns-ai"] = tl;
+    </script>
+  </body>
+</html>
