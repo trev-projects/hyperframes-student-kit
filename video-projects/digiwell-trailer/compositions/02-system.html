@@ -1,0 +1,278 @@
+<template id="02-system-template">
+  <script src="assets/gsap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=block" rel="stylesheet" />
+
+  <div data-composition-id="02-system" data-start="0" data-duration="8.5" data-width="1920" data-height="1080">
+    <div class="stage">
+      <div class="grid-floor"></div>
+
+      <div class="eyebrow">THE&nbsp;GROWTH&nbsp;SYSTEM</div>
+
+      <div class="cards">
+        <div class="card card-a">
+          <div class="icon-wrap">
+            <svg viewBox="0 0 64 64" fill="none" stroke="#f9a72c" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="8" y="16" width="48" height="32" rx="3" />
+              <path d="M8 20 L32 38 L56 20" />
+              <circle cx="48" cy="20" r="4" fill="#f9a72c" stroke="none"/>
+            </svg>
+          </div>
+          <div class="label">AI&nbsp;NEWSLETTERS</div>
+          <div class="stat-row">
+            <span class="stat-num" data-target="47">0</span><span class="stat-unit">%</span>
+          </div>
+          <div class="stat-label">OPEN&nbsp;RATE</div>
+          <div class="tag-line">Warm the list every week.</div>
+        </div>
+
+        <div class="card card-b">
+          <div class="icon-wrap">
+            <svg viewBox="0 0 64 64" fill="none" stroke="#f9a72c" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M34 8 L18 36 L30 36 L26 56 L46 26 L34 26 Z" fill="#f9a72c" fill-opacity="0.20"/>
+            </svg>
+          </div>
+          <div class="label">CRM&nbsp;AUTOMATION</div>
+          <div class="stat-row">
+            <span class="stat-num" data-target="12">0</span><span class="stat-unit">×</span>
+          </div>
+          <div class="stat-label">PIPELINE&nbsp;ROI</div>
+          <div class="tag-line">Score every lead in real time.</div>
+        </div>
+
+        <div class="card card-c">
+          <div class="icon-wrap">
+            <svg viewBox="0 0 64 64" fill="none" stroke="#f9a72c" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="14" cy="14" r="4" />
+              <circle cx="50" cy="14" r="4" />
+              <circle cx="32" cy="32" r="4" />
+              <circle cx="14" cy="50" r="4" />
+              <circle cx="50" cy="50" r="4" />
+              <path d="M14 18 L32 28" />
+              <path d="M50 18 L34 30" />
+              <path d="M32 36 L14 46" />
+              <path d="M32 36 L50 46" />
+            </svg>
+          </div>
+          <div class="label">NURTURE&nbsp;FLOWS</div>
+          <div class="stat-row">
+            <span class="stat-num" data-target="30">0</span><span class="stat-unit">d</span>
+          </div>
+          <div class="stat-label">TO&nbsp;LIFT</div>
+          <div class="tag-line">Convert at the right moment.</div>
+        </div>
+
+        <!-- Connector arrows (drawn left → right after cards land) -->
+        <svg class="connectors" viewBox="0 0 1720 4" preserveAspectRatio="none">
+          <line class="conn c1" x1="500" y1="2" x2="730" y2="2" stroke="#f9a72c" stroke-width="3" stroke-linecap="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/>
+          <polygon class="head h1" points="725,-6 745,2 725,10" fill="#f9a72c" opacity="0"/>
+          <line class="conn c2" x1="1100" y1="2" x2="1330" y2="2" stroke="#f9a72c" stroke-width="3" stroke-linecap="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/>
+          <polygon class="head h2" points="1325,-6 1345,2 1325,10" fill="#f9a72c" opacity="0"/>
+        </svg>
+      </div>
+
+      <div class="whip-streak"></div>
+      <div class="vignette"></div>
+      <div class="grain"></div>
+    </div>
+
+    <style>
+      [data-composition-id="02-system"] {
+        position: absolute; inset: 0; overflow: hidden;
+        background: #07080c;
+        font-family: "Inter", sans-serif;
+      }
+      [data-composition-id="02-system"] .stage { position: absolute; inset: 0; }
+      [data-composition-id="02-system"] .grid-floor {
+        position: absolute; inset: 0;
+        transform: perspective(900px) rotateX(60deg) translateY(25%);
+        background:
+          repeating-linear-gradient(0deg,  rgba(249,167,44,0.06) 0 1px, transparent 1px 80px),
+          repeating-linear-gradient(90deg, rgba(249,167,44,0.06) 0 1px, transparent 1px 80px);
+        background-color: #07080c;
+      }
+      [data-composition-id="02-system"] .eyebrow {
+        position: absolute;
+        top: 100px; left: 50%;
+        transform: translateX(-50%);
+        font-weight: 600; font-size: 22px;
+        letter-spacing: 0.32em;
+        color: #f9a72c;
+        text-shadow: 0 0 14px rgba(249,167,44,0.4);
+        opacity: 0;
+      }
+      [data-composition-id="02-system"] .cards {
+        position: absolute;
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+        display: flex; gap: 50px;
+        align-items: stretch;
+      }
+      [data-composition-id="02-system"] .card {
+        width: 510px; height: 580px;
+        background: linear-gradient(135deg,
+          rgba(255,255,255,0.07) 0%,
+          rgba(255,255,255,0.02) 40%,
+          rgba(255,255,255,0.01) 70%,
+          rgba(255,255,255,0.05) 100%);
+        backdrop-filter: blur(14px) saturate(1.12);
+        border-radius: 24px;
+        border: 1px solid rgba(249,167,44,0.26);
+        box-shadow:
+          inset 0 1px 0 rgba(255,255,255,0.20),
+          0 0 60px rgba(249,167,44,0.18);
+        display: flex; flex-direction: column;
+        align-items: center; justify-content: flex-start;
+        padding: 36px 28px;
+        opacity: 0;
+        transform: translateY(60px);
+      }
+      [data-composition-id="02-system"] .icon-wrap {
+        width: 110px; height: 110px;
+        border-radius: 50%;
+        border: 1px solid rgba(249,167,44,0.30);
+        box-shadow:
+          0 0 36px rgba(249,167,44,0.25),
+          inset 0 0 22px rgba(249,167,44,0.10);
+        display: flex; align-items: center; justify-content: center;
+        margin-bottom: 22px;
+      }
+      [data-composition-id="02-system"] .icon-wrap svg { width: 70px; height: 70px; }
+      [data-composition-id="02-system"] .label {
+        font-weight: 700;
+        font-size: 32px;
+        letter-spacing: 0.04em;
+        color: #ffffff;
+        text-align: center;
+        line-height: 1.1;
+        text-shadow: 0 0 20px rgba(249,167,44,0.30);
+        margin-bottom: 18px;
+      }
+      [data-composition-id="02-system"] .stat-row {
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 700;
+        font-size: 130px;
+        line-height: 1;
+        color: #3de0a6;
+        text-shadow: 0 0 26px rgba(61,224,166,0.5);
+        letter-spacing: -0.03em;
+      }
+      [data-composition-id="02-system"] .stat-unit { font-size: 80px; margin-left: 4px; }
+      [data-composition-id="02-system"] .stat-label {
+        margin-top: 6px;
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 600;
+        font-size: 16px;
+        letter-spacing: 0.22em;
+        color: #f9a72c;
+        opacity: 0.85;
+      }
+      [data-composition-id="02-system"] .tag-line {
+        margin-top: auto;
+        font-weight: 500;
+        font-size: 22px;
+        line-height: 1.3;
+        color: #d9d9de;
+        opacity: 0.85;
+        text-align: center;
+      }
+
+      [data-composition-id="02-system"] .connectors {
+        position: absolute;
+        top: 50%; left: 50%;
+        transform: translate(-50%, -38%);
+        width: 1720px; height: 12px;
+        pointer-events: none;
+        overflow: visible;
+      }
+
+      [data-composition-id="02-system"] .vignette {
+        position: absolute; inset: 0; pointer-events: none;
+        background: radial-gradient(ellipse at center, transparent 35%, rgba(0,0,0,0.9) 95%);
+        opacity: 0.65;
+      }
+      [data-composition-id="02-system"] .grain {
+        position: absolute; inset: 0; pointer-events: none; opacity: 0.06;
+        background-image:
+          radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+          radial-gradient(rgba(255,255,255,0.02) 1px, transparent 1px);
+        background-size: 3px 3px, 5px 5px;
+      }
+      [data-composition-id="02-system"] .whip-streak {
+        position: absolute; top: 50%; left: 0;
+        width: 70%; height: 14px;
+        background: linear-gradient(90deg, transparent 0%, rgba(249,167,44,0.95) 50%, transparent 100%);
+        filter: blur(10px);
+        transform: translate(-150%, -50%);
+        opacity: 0; z-index: 30;
+      }
+    </style>
+
+    <script>
+      (() => {
+        const SLOT = 8.5;
+        const sel = (q) => `[data-composition-id="02-system"] ${q}`;
+        const tl = gsap.timeline({ paused: true });
+
+        tl.to(sel('.grid-floor'),
+          { backgroundPositionY: '-90px', duration: SLOT, ease: 'none' }, 0);
+
+        // Eyebrow
+        tl.fromTo(sel('.eyebrow'),
+          { y: -8, opacity: 0 },
+          { y: 0, opacity: 0.95, duration: 0.45, ease: 'power3.out' }, 0.10);
+
+        // Cards cascade in
+        const cardCls = ['.card-a', '.card-b', '.card-c'];
+        cardCls.forEach((cls, i) => {
+          tl.fromTo(sel(cls),
+            { y: 60, opacity: 0 },
+            { y: 0, opacity: 1, duration: 0.55, ease: 'back.out(1.2)' }, 0.40 + i * 0.40);
+        });
+
+        // Counters animate to final values (47, 12, 30) — decimals: 0 for all
+        const counterSelectors = [
+          '[data-composition-id="02-system"] .card-a .stat-num',
+          '[data-composition-id="02-system"] .card-b .stat-num',
+          '[data-composition-id="02-system"] .card-c .stat-num',
+        ];
+        const counterStarts = [1.10, 1.50, 1.90];
+        counterSelectors.forEach((selector, i) => {
+          const el = document.querySelector(selector);
+          if (el) {
+            const target = parseFloat(el.dataset.target);
+            const proxy = { v: 0 };
+            tl.to(proxy, {
+              v: target, duration: 0.95, ease: 'power2.out',
+              onUpdate: () => { el.textContent = Math.round(proxy.v); }
+            }, counterStarts[i]);
+          }
+        });
+
+        // Connector arrows draw between cards
+        tl.to(sel('.conn.c1'),
+          { strokeDashoffset: 0, duration: 0.50, ease: 'power2.out' }, 2.85);
+        tl.to(sel('.head.h1'),
+          { opacity: 1, duration: 0.20, ease: 'power2.out' }, 3.30);
+        tl.to(sel('.conn.c2'),
+          { strokeDashoffset: 0, duration: 0.50, ease: 'power2.out' }, 3.40);
+        tl.to(sel('.head.h2'),
+          { opacity: 1, duration: 0.20, ease: 'power2.out' }, 3.85);
+
+        // Held-state breathing on cards
+        tl.to(sel('.card'),
+          { y: -6, duration: 1.4, ease: 'sine.inOut', yoyo: true, repeat: 1,
+            stagger: { each: 0.08, from: 'random' } }, 4.30);
+
+        // Whip-streak exit
+        tl.set(sel('.whip-streak'), { opacity: 1 }, 8.05);
+        tl.fromTo(sel('.whip-streak'),
+          { xPercent: -150, scaleX: 0.5 },
+          { xPercent: 250, scaleX: 1.5, duration: 0.40, ease: 'power3.in' }, 8.05);
+
+        tl.to({}, { duration: SLOT }, 0);
+        window.__timelines = window.__timelines || {};
+        window.__timelines['02-system'] = tl;
+      })();
+    </script>
+  </div>
+</template>

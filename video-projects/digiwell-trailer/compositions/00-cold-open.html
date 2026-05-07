@@ -1,0 +1,248 @@
+<template id="00-cold-open-template">
+  <script src="assets/gsap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&family=JetBrains+Mono:wght@500;600&display=block" rel="stylesheet" />
+
+  <div data-composition-id="00-cold-open" data-start="0" data-duration="4.5" data-width="1920" data-height="1080">
+    <div class="stage">
+      <div class="grid-floor"></div>
+      <div class="swirl">
+        <div class="ring ring-1"></div>
+        <div class="ring ring-2"></div>
+        <div class="ring ring-3"></div>
+      </div>
+      <div class="particles" id="particles-cold"></div>
+
+      <div class="masthead">
+        <span class="mark-name">DIGIWELL</span>
+        <span class="mark-divider">·</span>
+        <span class="mark-tagline">MARKETING</span>
+      </div>
+
+      <div class="hero">
+        <div class="hero-line line-top">GROWTH&nbsp;IS</div>
+        <div class="hero-line line-bot" data-split>A SYSTEM.</div>
+        <div class="halo"></div>
+      </div>
+
+      <div class="whip-streak"></div>
+      <div class="vignette"></div>
+      <div class="grain"></div>
+    </div>
+
+    <style>
+      [data-composition-id="00-cold-open"] {
+        position: absolute; inset: 0; overflow: hidden;
+        background: #07080c;
+        font-family: "Inter", sans-serif;
+      }
+      [data-composition-id="00-cold-open"] .stage { position: absolute; inset: 0; }
+      [data-composition-id="00-cold-open"] .grid-floor {
+        position: absolute; inset: 0;
+        transform: perspective(900px) rotateX(60deg) translateY(25%);
+        background:
+          repeating-linear-gradient(0deg,  rgba(249,167,44,0.05) 0 1px, transparent 1px 80px),
+          repeating-linear-gradient(90deg, rgba(249,167,44,0.05) 0 1px, transparent 1px 80px);
+        background-color: #07080c;
+      }
+      [data-composition-id="00-cold-open"] .swirl {
+        position: absolute; top: 50%; left: 50%;
+        width: 1400px; height: 1400px;
+        transform: translate(-50%, -50%);
+        opacity: 0;
+      }
+      [data-composition-id="00-cold-open"] .ring {
+        position: absolute; top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+        border: 1px dashed rgba(249,167,44,0.18);
+      }
+      [data-composition-id="00-cold-open"] .ring-1 { width: 600px;  height: 600px; }
+      [data-composition-id="00-cold-open"] .ring-2 { width: 900px;  height: 900px; border-color: rgba(249,167,44,0.12); }
+      [data-composition-id="00-cold-open"] .ring-3 { width: 1300px; height: 1300px; border-color: rgba(249,167,44,0.07); }
+      [data-composition-id="00-cold-open"] .particles {
+        position: absolute; top: 50%; left: 50%;
+        width: 1400px; height: 1400px;
+        transform: translate(-50%, -50%);
+      }
+      [data-composition-id="00-cold-open"] .particle {
+        position: absolute;
+        border-radius: 50%;
+        background: radial-gradient(circle, #ffd480 0%, #f9a72c 40%, transparent 75%);
+        filter: blur(1px);
+        opacity: 0;
+      }
+
+      [data-composition-id="00-cold-open"] .masthead {
+        position: absolute;
+        top: 64px; right: 100px;
+        display: flex; align-items: center; gap: 14px;
+        opacity: 0;
+        z-index: 5;
+      }
+      [data-composition-id="00-cold-open"] .mark-name,
+      [data-composition-id="00-cold-open"] .mark-tagline {
+        font-weight: 600; font-size: 18px;
+        letter-spacing: 0.32em;
+        color: #f9a72c;
+        opacity: 0.85;
+      }
+      [data-composition-id="00-cold-open"] .mark-divider { color: #f9a72c; opacity: 0.5; }
+
+      [data-composition-id="00-cold-open"] .hero {
+        position: absolute;
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        z-index: 4;
+      }
+      [data-composition-id="00-cold-open"] .hero-line {
+        font-weight: 800;
+        line-height: 1.0;
+        letter-spacing: -0.025em;
+        white-space: nowrap;
+      }
+      [data-composition-id="00-cold-open"] .line-top {
+        font-size: 140px;
+        background: linear-gradient(180deg, #ffffff 0%, #f7d99a 60%, #f9a72c 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        color: transparent;
+        text-shadow: 0 0 30px rgba(249,167,44,0.20);
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      [data-composition-id="00-cold-open"] .line-bot {
+        font-size: 240px;
+        color: #f9a72c;
+        text-shadow:
+          0 0 30px rgba(249,167,44,0.85),
+          0 0 80px rgba(249,167,44,0.35);
+        margin-top: 8px;
+      }
+      [data-composition-id="00-cold-open"] .line-bot .ch {
+        display: inline-block;
+        opacity: 0;
+        transform: translateY(60px);
+        will-change: opacity, transform;
+      }
+      [data-composition-id="00-cold-open"] .halo {
+        position: absolute;
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+        width: 1600px; height: 600px;
+        background: radial-gradient(ellipse at center, rgba(249,167,44,0.20), transparent 70%);
+        opacity: 0;
+        pointer-events: none;
+        z-index: -1;
+      }
+
+      [data-composition-id="00-cold-open"] .vignette {
+        position: absolute; inset: 0; pointer-events: none;
+        background: radial-gradient(ellipse at center, transparent 25%, rgba(0,0,0,0.95) 95%);
+        opacity: 0.70;
+      }
+      [data-composition-id="00-cold-open"] .grain {
+        position: absolute; inset: 0; pointer-events: none; opacity: 0.08;
+        background-image:
+          radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+          radial-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+          radial-gradient(rgba(255,255,255,0.015) 1px, transparent 1px);
+        background-size: 3px 3px, 5px 5px, 7px 7px;
+      }
+      [data-composition-id="00-cold-open"] .whip-streak {
+        position: absolute; top: 50%; left: 0;
+        width: 70%; height: 14px;
+        background: linear-gradient(90deg, transparent 0%, rgba(249,167,44,0.95) 50%, transparent 100%);
+        filter: blur(10px);
+        transform: translate(-150%, -50%);
+        opacity: 0; z-index: 30;
+      }
+    </style>
+
+    <script>
+      (() => {
+        const SLOT = 4.5;
+        const sel = (q) => `[data-composition-id="00-cold-open"] ${q}`;
+
+        // Word-safe per-char split (preserves spaces as breakable text nodes)
+        document.querySelectorAll(sel('[data-split]')).forEach((node) => {
+          const text = node.textContent;
+          node.innerHTML = text.split('').map((c) =>
+            c === ' '
+              ? ' '
+              : `<span class="ch">${c}</span>`
+          ).join('');
+        });
+
+        // Deterministic particle cloud — golden-angle spiral seed
+        const root = document.querySelector(sel('.particles'));
+        if (root) {
+          const N = 60;
+          for (let i = 0; i < N; i++) {
+            const p = document.createElement('div');
+            p.className = 'particle';
+            const angle = (i * 137.5) * Math.PI / 180;
+            const r = 280 + 500 * Math.abs(Math.sin(i * 0.37 + 0.7));
+            const cx = 700 + Math.cos(angle) * r;
+            const cy = 700 + Math.sin(angle) * r * 0.55;
+            const size = 4 + 6 * Math.abs(Math.cos(i * 0.91));
+            p.style.left = (cx - size / 2) + 'px';
+            p.style.top  = (cy - size / 2) + 'px';
+            p.style.width = size + 'px';
+            p.style.height = size + 'px';
+            root.appendChild(p);
+          }
+        }
+
+        const tl = gsap.timeline({ paused: true });
+
+        // Grid drift
+        tl.to(sel('.grid-floor'),
+          { backgroundPositionY: '-100px', duration: SLOT, ease: 'none' }, 0);
+
+        // Swirl + particles
+        tl.to(sel('.swirl'),
+          { opacity: 1, duration: 0.8, ease: 'power2.out' }, 0);
+        tl.to(sel('.swirl'),
+          { rotation: 60, duration: SLOT, ease: 'none', transformOrigin: '50% 50%' }, 0);
+        tl.to(sel('.particles'),
+          { rotation: -40, duration: SLOT, ease: 'none', transformOrigin: '50% 50%' }, 0);
+        tl.to(sel('.particle'),
+          { opacity: 1, duration: 0.8, ease: 'power2.out',
+            stagger: { each: 0.012, from: 'center' } }, 0);
+
+        // Masthead
+        tl.fromTo(sel('.masthead'),
+          { x: 12, opacity: 0 },
+          { x: 0, opacity: 1, duration: 0.55, ease: 'power3.out' }, 0.10);
+
+        // Hero line top fades up
+        tl.fromTo(sel('.line-top'),
+          { y: 20, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.55, ease: 'power3.out' }, 0.30);
+
+        // Hero line bot per-char back-out
+        tl.to(sel('.line-bot .ch'),
+          { y: 0, opacity: 1, duration: 0.50, ease: 'back.out(1.6)', stagger: 0.05 }, 0.65);
+
+        // Halo glow pulses through hold
+        tl.fromTo(sel('.halo'),
+          { opacity: 0, scale: 0.92 },
+          { opacity: 1, scale: 1, duration: 0.9, ease: 'sine.out' }, 1.10);
+        tl.to(sel('.halo'),
+          { scale: 1.04, duration: 1.4, ease: 'sine.inOut', yoyo: true, repeat: 1 }, 1.80);
+
+        // Whip-streak exit
+        tl.set(sel('.whip-streak'), { opacity: 1 }, 4.10);
+        tl.fromTo(sel('.whip-streak'),
+          { xPercent: -150, scaleX: 0.5 },
+          { xPercent: 250, scaleX: 1.5, duration: 0.40, ease: 'power3.in' }, 4.10);
+
+        tl.to({}, { duration: SLOT }, 0);
+        window.__timelines = window.__timelines || {};
+        window.__timelines['00-cold-open'] = tl;
+      })();
+    </script>
+  </div>
+</template>

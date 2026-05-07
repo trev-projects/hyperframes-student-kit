@@ -1,0 +1,146 @@
+<template id="03-bridge-template">
+  <script src="assets/gsap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&display=block" rel="stylesheet" />
+
+  <div data-composition-id="03-bridge" data-start="0" data-duration="4.5" data-width="1920" data-height="1080">
+    <div class="stage">
+      <div class="grid-floor"></div>
+
+      <div class="eyebrow">THE&nbsp;COMPOUND&nbsp;EFFECT</div>
+
+      <div class="hero">
+        <div class="bridge-line line-a" data-split>When the system runs,</div>
+        <div class="bridge-line line-b" data-split>the numbers follow.</div>
+      </div>
+
+      <div class="whip-streak"></div>
+      <div class="vignette"></div>
+      <div class="grain"></div>
+    </div>
+
+    <style>
+      [data-composition-id="03-bridge"] {
+        position: absolute; inset: 0; overflow: hidden;
+        background: #07080c;
+        font-family: "Inter", sans-serif;
+      }
+      [data-composition-id="03-bridge"] .stage { position: absolute; inset: 0; }
+      [data-composition-id="03-bridge"] .grid-floor {
+        position: absolute; inset: 0;
+        transform: perspective(900px) rotateX(60deg) translateY(25%);
+        background:
+          repeating-linear-gradient(0deg,  rgba(249,167,44,0.05) 0 1px, transparent 1px 80px),
+          repeating-linear-gradient(90deg, rgba(249,167,44,0.05) 0 1px, transparent 1px 80px);
+        background-color: #07080c;
+      }
+      [data-composition-id="03-bridge"] .eyebrow {
+        position: absolute;
+        top: 30%; left: 50%;
+        transform: translateX(-50%);
+        font-weight: 600; font-size: 22px;
+        letter-spacing: 0.32em;
+        color: #f9a72c;
+        text-shadow: 0 0 14px rgba(249,167,44,0.4);
+        opacity: 0;
+      }
+      [data-composition-id="03-bridge"] .hero {
+        position: absolute;
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+      }
+      [data-composition-id="03-bridge"] .bridge-line {
+        font-weight: 800;
+        font-size: 116px;
+        line-height: 1.05;
+        letter-spacing: -0.02em;
+        white-space: nowrap;
+      }
+      [data-composition-id="03-bridge"] .line-a .ch {
+        background: linear-gradient(180deg, #ffffff 0%, #f7d99a 60%, #f9a72c 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        color: transparent;
+      }
+      [data-composition-id="03-bridge"] .line-b {
+        color: #f9a72c;
+        text-shadow:
+          0 0 28px rgba(249,167,44,0.8),
+          0 0 64px rgba(249,167,44,0.32);
+      }
+      [data-composition-id="03-bridge"] .bridge-line .word {
+        display: inline-block;
+        white-space: nowrap;
+      }
+      [data-composition-id="03-bridge"] .bridge-line .ch {
+        display: inline-block;
+        opacity: 0;
+        transform: translateY(30px);
+        will-change: opacity, transform;
+      }
+
+      [data-composition-id="03-bridge"] .vignette {
+        position: absolute; inset: 0; pointer-events: none;
+        background: radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.95) 95%);
+        opacity: 0.75;
+      }
+      [data-composition-id="03-bridge"] .grain {
+        position: absolute; inset: 0; pointer-events: none; opacity: 0.08;
+        background-image:
+          radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+          radial-gradient(rgba(255,255,255,0.02) 1px, transparent 1px);
+        background-size: 3px 3px, 5px 5px;
+      }
+      [data-composition-id="03-bridge"] .whip-streak {
+        position: absolute; top: 50%; left: 0;
+        width: 70%; height: 14px;
+        background: linear-gradient(90deg, transparent 0%, rgba(249,167,44,0.95) 50%, transparent 100%);
+        filter: blur(10px);
+        transform: translate(-150%, -50%);
+        opacity: 0; z-index: 30;
+      }
+    </style>
+
+    <script>
+      (() => {
+        const SLOT = 4.5;
+        const sel = (q) => `[data-composition-id="03-bridge"] ${q}`;
+
+        document.querySelectorAll(sel('[data-split]')).forEach((node) => {
+          const text = node.textContent;
+          const words = text.split(' ');
+          node.innerHTML = words.map((word) => {
+            const chars = word.split('').map((c) => `<span class="ch">${c}</span>`).join('');
+            return `<span class="word">${chars}</span>`;
+          }).join(' ');
+        });
+
+        const tl = gsap.timeline({ paused: true });
+
+        tl.to(sel('.grid-floor'),
+          { backgroundPositionY: '-80px', duration: SLOT, ease: 'none' }, 0);
+
+        tl.fromTo(sel('.eyebrow'),
+          { y: -8, opacity: 0 },
+          { y: 0, opacity: 0.95, duration: 0.45, ease: 'power3.out' }, 0.05);
+
+        tl.to(sel('.line-a .ch'),
+          { y: 0, opacity: 1, duration: 0.50, ease: 'back.out(1.5)', stagger: 0.020 }, 0.30);
+        tl.to(sel('.line-b .ch'),
+          { y: 0, opacity: 1, duration: 0.55, ease: 'back.out(1.6)', stagger: 0.022 }, 1.10);
+
+        // 2s of held state for silent reading
+
+        tl.set(sel('.whip-streak'), { opacity: 1 }, 4.05);
+        tl.fromTo(sel('.whip-streak'),
+          { xPercent: -150, scaleX: 0.5 },
+          { xPercent: 250, scaleX: 1.5, duration: 0.40, ease: 'power3.in' }, 4.05);
+
+        tl.to({}, { duration: SLOT }, 0);
+        window.__timelines = window.__timelines || {};
+        window.__timelines['03-bridge'] = tl;
+      })();
+    </script>
+  </div>
+</template>
