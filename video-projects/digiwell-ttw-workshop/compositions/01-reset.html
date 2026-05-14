@@ -1,0 +1,131 @@
+<template id="01-reset-template">
+  <script src="assets/gsap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&display=block" rel="stylesheet" />
+
+  <div data-composition-id="01-reset" data-start="0" data-duration="3.5" data-width="1920" data-height="1080">
+    <div class="stage">
+      <div class="grid-floor"></div>
+
+      <div class="stack">
+        <div class="ln ln1" data-split>BUILD YOUR</div>
+        <div class="ln ln2a" data-split>AI OPERATING</div>
+        <div class="ln ln2b" data-split>SYSTEM</div>
+        <div class="underline"></div>
+      </div>
+
+      <div class="whip-streak"></div>
+      <div class="vignette"></div>
+      <div class="grain"></div>
+    </div>
+
+    <style>
+      [data-composition-id="01-reset"] {
+        position: absolute; inset: 0; overflow: hidden;
+        background: #07080c; font-family: "Inter", sans-serif;
+      }
+      [data-composition-id="01-reset"] .stage { position: absolute; inset: 0; }
+      [data-composition-id="01-reset"] .grid-floor {
+        position: absolute; inset: 0;
+        transform: perspective(900px) rotateX(60deg) translateY(25%);
+        background:
+          repeating-linear-gradient(0deg,  rgba(249,167,44,0.06) 0 1px, transparent 1px 80px),
+          repeating-linear-gradient(90deg, rgba(249,167,44,0.06) 0 1px, transparent 1px 80px);
+        background-color: #07080c;
+      }
+      [data-composition-id="01-reset"] .stack {
+        position: absolute; top: 50%; left: 100px;
+        transform: translateY(-50%);
+        display: flex; flex-direction: column; gap: 0;
+      }
+      [data-composition-id="01-reset"] .ln {
+        font-weight: 800; letter-spacing: -0.025em; line-height: 0.96;
+        white-space: nowrap;
+      }
+      [data-composition-id="01-reset"] .ln1 {
+        font-size: 110px;
+        color: rgba(255,255,255,0.80);
+      }
+      [data-composition-id="01-reset"] .ln2a {
+        font-size: 190px;
+        color: #f9a72c;
+        text-shadow: 0 0 28px rgba(249,167,44,0.70), 0 0 70px rgba(249,167,44,0.28);
+      }
+      [data-composition-id="01-reset"] .ln2b {
+        font-size: 240px;
+        color: #f9a72c;
+        text-shadow: 0 0 36px rgba(249,167,44,0.80), 0 0 90px rgba(249,167,44,0.35);
+        margin-top: -12px;
+      }
+      [data-composition-id="01-reset"] .ln .word { display: inline-block; white-space: nowrap; }
+      [data-composition-id="01-reset"] .ln .ch {
+        display: inline-block; opacity: 0; transform: translateY(45px);
+        will-change: opacity, transform;
+      }
+      [data-composition-id="01-reset"] .underline {
+        margin-top: 18px;
+        height: 7px; width: 100%;
+        background: linear-gradient(90deg, #f9a72c, #ffd480);
+        box-shadow: 0 0 22px rgba(249,167,44,0.65);
+        transform: scaleX(0); transform-origin: left center;
+      }
+      [data-composition-id="01-reset"] .vignette {
+        position: absolute; inset: 0; pointer-events: none;
+        background: radial-gradient(ellipse at 30% 50%, transparent 30%, rgba(0,0,0,0.95) 95%);
+        opacity: 0.72;
+      }
+      [data-composition-id="01-reset"] .grain {
+        position: absolute; inset: 0; pointer-events: none; opacity: 0.08;
+        background-image: radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px);
+        background-size: 3px 3px;
+      }
+      [data-composition-id="01-reset"] .whip-streak {
+        position: absolute; top: 50%; left: 0;
+        width: 70%; height: 14px;
+        background: linear-gradient(90deg, transparent 0%, rgba(249,167,44,0.95) 50%, transparent 100%);
+        filter: blur(10px);
+        transform: translate(-150%, -50%);
+        opacity: 0; z-index: 30;
+      }
+    </style>
+
+    <script>
+      (() => {
+        const SLOT = 3.5;
+        const sel = (q) => `[data-composition-id="01-reset"] ${q}`;
+
+        document.querySelectorAll(sel('[data-split]')).forEach((node) => {
+          const words = node.textContent.split(' ');
+          node.innerHTML = words.map((w) =>
+            `<span class="word">${w.split('').map((c) => `<span class="ch">${c}</span>`).join('')}</span>`
+          ).join(' ');
+        });
+
+        const tl = gsap.timeline({ paused: true });
+
+        tl.to(sel('.grid-floor'), { backgroundPositionY: '-80px', duration: SLOT, ease: 'none' }, 0);
+
+        // "BUILD YOUR" — intro label
+        tl.to(sel('.ln1 .ch'), { y: 0, opacity: 1, duration: 0.35, ease: 'power3.out', stagger: 0.018 }, 0.05);
+
+        // "AI OPERATING" — lands on beat
+        tl.to(sel('.ln2a .ch'), { y: 0, opacity: 1, duration: 0.45, ease: 'back.out(1.4)', stagger: 0.020 }, 0.55);
+
+        // "SYSTEM" — hero word, max punch
+        tl.to(sel('.ln2b .ch'), { y: 0, opacity: 1, duration: 0.55, ease: 'back.out(1.8)', stagger: 0.030 }, 1.10);
+
+        // Underline sweeps
+        tl.to(sel('.underline'), { scaleX: 1, duration: 0.60, ease: 'power3.out' }, 1.80);
+
+        // Whip exit
+        tl.set(sel('.whip-streak'), { opacity: 1 }, 3.12);
+        tl.fromTo(sel('.whip-streak'),
+          { xPercent: -150, scaleX: 0.5 },
+          { xPercent: 250, scaleX: 1.5, duration: 0.36, ease: 'power3.in' }, 3.12);
+
+        tl.to({}, { duration: SLOT }, 0);
+        window.__timelines = window.__timelines || {};
+        window.__timelines['01-reset'] = tl;
+      })();
+    </script>
+  </div>
+</template>

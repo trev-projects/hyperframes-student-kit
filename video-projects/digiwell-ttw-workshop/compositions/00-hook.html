@@ -1,0 +1,165 @@
+<template id="00-hook-template">
+  <script src="assets/gsap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=block" rel="stylesheet" />
+
+  <div data-composition-id="00-hook" data-start="0" data-duration="2.5" data-width="1920" data-height="1080">
+    <div class="stage">
+      <div class="grid-floor"></div>
+      <div class="particles" id="particles-hook"></div>
+
+      <div class="masthead">
+        <span class="mark-name">DIGIWELL</span>
+        <span class="mark-dot">·</span>
+        <span class="mark-tag">MARKETING</span>
+      </div>
+
+      <div class="hero">
+        <div class="line-top" data-split>LOTS OF TOOLS.</div>
+        <div class="line-bot" data-split>NO SYSTEM.</div>
+      </div>
+
+      <div class="whip-streak"></div>
+      <div class="vignette"></div>
+      <div class="grain"></div>
+    </div>
+
+    <style>
+      [data-composition-id="00-hook"] {
+        position: absolute; inset: 0; overflow: hidden;
+        background: #07080c;
+        font-family: "Inter", sans-serif;
+      }
+      [data-composition-id="00-hook"] .stage { position: absolute; inset: 0; }
+      [data-composition-id="00-hook"] .grid-floor {
+        position: absolute; inset: 0;
+        transform: perspective(900px) rotateX(60deg) translateY(25%);
+        background:
+          repeating-linear-gradient(0deg,  rgba(249,167,44,0.05) 0 1px, transparent 1px 80px),
+          repeating-linear-gradient(90deg, rgba(249,167,44,0.05) 0 1px, transparent 1px 80px);
+        background-color: #07080c;
+      }
+      [data-composition-id="00-hook"] .particles {
+        position: absolute; top: 50%; left: 50%;
+        width: 1400px; height: 1400px;
+        transform: translate(-50%, -50%);
+      }
+      [data-composition-id="00-hook"] .particle {
+        position: absolute; border-radius: 50%;
+        background: radial-gradient(circle, #ffd480 0%, #f9a72c 40%, transparent 75%);
+        filter: blur(1px); opacity: 0;
+      }
+      [data-composition-id="00-hook"] .masthead {
+        position: absolute; top: 64px; right: 100px;
+        display: flex; align-items: center; gap: 12px;
+        opacity: 0;
+      }
+      [data-composition-id="00-hook"] .mark-name,
+      [data-composition-id="00-hook"] .mark-tag {
+        font-weight: 600; font-size: 18px;
+        letter-spacing: 0.30em; color: #f9a72c; opacity: 0.85;
+      }
+      [data-composition-id="00-hook"] .mark-dot { color: #f9a72c; opacity: 0.45; }
+
+      [data-composition-id="00-hook"] .hero {
+        position: absolute; top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+      }
+      [data-composition-id="00-hook"] .line-top {
+        font-weight: 800; font-size: 120px;
+        letter-spacing: -0.025em; line-height: 1.0;
+        color: rgba(255,255,255,0.88);
+        white-space: nowrap;
+      }
+      [data-composition-id="00-hook"] .line-bot {
+        font-weight: 800; font-size: 200px;
+        letter-spacing: -0.03em; line-height: 0.95;
+        color: #f9a72c;
+        text-shadow: 0 0 32px rgba(249,167,44,0.75), 0 0 80px rgba(249,167,44,0.30);
+        white-space: nowrap;
+      }
+      [data-composition-id="00-hook"] .line-top .word,
+      [data-composition-id="00-hook"] .line-bot .word { display: inline-block; white-space: nowrap; }
+      [data-composition-id="00-hook"] .line-top .ch,
+      [data-composition-id="00-hook"] .line-bot .ch {
+        display: inline-block; opacity: 0; transform: translateY(50px);
+        will-change: opacity, transform;
+      }
+      [data-composition-id="00-hook"] .vignette {
+        position: absolute; inset: 0; pointer-events: none;
+        background: radial-gradient(ellipse at center, transparent 28%, rgba(0,0,0,0.92) 95%);
+        opacity: 0.72;
+      }
+      [data-composition-id="00-hook"] .grain {
+        position: absolute; inset: 0; pointer-events: none; opacity: 0.07;
+        background-image:
+          radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+          radial-gradient(rgba(255,255,255,0.02) 1px, transparent 1px);
+        background-size: 3px 3px, 5px 5px;
+      }
+      [data-composition-id="00-hook"] .whip-streak {
+        position: absolute; top: 50%; left: 0;
+        width: 70%; height: 14px;
+        background: linear-gradient(90deg, transparent 0%, rgba(249,167,44,0.95) 50%, transparent 100%);
+        filter: blur(10px);
+        transform: translate(-150%, -50%);
+        opacity: 0; z-index: 30;
+      }
+    </style>
+
+    <script>
+      (() => {
+        const SLOT = 2.5;
+        const sel = (q) => `[data-composition-id="00-hook"] ${q}`;
+
+        // Word-safe split
+        document.querySelectorAll(sel('[data-split]')).forEach((node) => {
+          const words = node.textContent.split(' ');
+          node.innerHTML = words.map((w) =>
+            `<span class="word">${w.split('').map((c) => `<span class="ch">${c}</span>`).join('')}</span>`
+          ).join(' ');
+        });
+
+        // Particles
+        const root = document.querySelector(sel('.particles'));
+        if (root) {
+          for (let i = 0; i < 48; i++) {
+            const p = document.createElement('div');
+            p.className = 'particle';
+            const angle = (i * 137.5) * Math.PI / 180;
+            const r = 260 + 440 * Math.abs(Math.sin(i * 0.41 + 0.7));
+            const cx = 700 + Math.cos(angle) * r;
+            const cy = 700 + Math.sin(angle) * r * 0.55;
+            const size = 3 + 6 * Math.abs(Math.cos(i * 0.89));
+            p.style.cssText = `left:${cx - size/2}px;top:${cy - size/2}px;width:${size}px;height:${size}px`;
+            root.appendChild(p);
+          }
+        }
+
+        const tl = gsap.timeline({ paused: true });
+
+        tl.to(sel('.grid-floor'), { backgroundPositionY: '-60px', duration: SLOT, ease: 'none' }, 0);
+        tl.to(sel('.particles'), { rotation: -30, duration: SLOT, ease: 'none', transformOrigin: '50% 50%' }, 0);
+        tl.to(sel('.particle'), { opacity: 1, duration: 0.6, ease: 'power2.out', stagger: { each: 0.010, from: 'center' } }, 0);
+
+        tl.fromTo(sel('.masthead'), { x: 10, opacity: 0 }, { x: 0, opacity: 1, duration: 0.40, ease: 'power3.out' }, 0.05);
+
+        // Line top — white, lands first
+        tl.to(sel('.line-top .ch'), { y: 0, opacity: 1, duration: 0.35, ease: 'power3.out', stagger: 0.018 }, 0.15);
+
+        // Line bot — amber, hard land
+        tl.to(sel('.line-bot .ch'), { y: 0, opacity: 1, duration: 0.45, ease: 'back.out(1.6)', stagger: 0.024 }, 0.55);
+
+        // Whip exit
+        tl.set(sel('.whip-streak'), { opacity: 1 }, 2.10);
+        tl.fromTo(sel('.whip-streak'),
+          { xPercent: -150, scaleX: 0.5 },
+          { xPercent: 250, scaleX: 1.5, duration: 0.38, ease: 'power3.in' }, 2.10);
+
+        tl.to({}, { duration: SLOT }, 0);
+        window.__timelines = window.__timelines || {};
+        window.__timelines['00-hook'] = tl;
+      })();
+    </script>
+  </div>
+</template>
