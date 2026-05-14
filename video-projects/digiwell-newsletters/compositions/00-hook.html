@@ -1,0 +1,148 @@
+<template id="00-hook-template">
+  <script src="assets/gsap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=block" rel="stylesheet" />
+
+  <div data-composition-id="00-hook" data-start="0" data-duration="3" data-width="1920" data-height="1080">
+    <div class="stage">
+      <div class="grid-floor"></div>
+
+      <!-- Falling "open rate" graph that drops -->
+      <svg class="graph" viewBox="0 0 800 280" xmlns="http://www.w3.org/2000/svg">
+        <polyline class="graph-line"
+          points="0,80 100,90 200,120 300,150 400,170 500,200 600,220 700,240 800,255"
+          fill="none" stroke="rgba(255,90,90,0.65)" stroke-width="3"
+          stroke-dasharray="900" stroke-dashoffset="900"/>
+        <line x1="0" y1="270" x2="800" y2="270" stroke="rgba(255,255,255,0.10)" stroke-width="1"/>
+      </svg>
+
+      <div class="masthead">
+        <span class="mark-name">DIGIWELL</span>
+        <span class="mark-dot">·</span>
+        <span class="mark-tag">AI NEWSLETTERS</span>
+      </div>
+
+      <div class="hero">
+        <div class="line-1" data-split>YOUR LIST IS</div>
+        <div class="line-2" data-split>GETTING COLDER.</div>
+      </div>
+
+      <div class="whip-streak"></div>
+      <div class="vignette"></div>
+      <div class="grain"></div>
+    </div>
+
+    <style>
+      [data-composition-id="00-hook"] {
+        position: absolute; inset: 0; overflow: hidden;
+        background: #07080c; font-family: "Inter", sans-serif;
+      }
+      [data-composition-id="00-hook"] .stage { position: absolute; inset: 0; }
+      [data-composition-id="00-hook"] .grid-floor {
+        position: absolute; inset: 0;
+        transform: perspective(900px) rotateX(60deg) translateY(25%);
+        background:
+          repeating-linear-gradient(0deg,  rgba(249,167,44,0.05) 0 1px, transparent 1px 80px),
+          repeating-linear-gradient(90deg, rgba(249,167,44,0.05) 0 1px, transparent 1px 80px);
+        background-color: #07080c;
+      }
+      [data-composition-id="00-hook"] .graph {
+        position: absolute; bottom: 14%; left: 50%;
+        transform: translateX(-50%);
+        width: 1200px; height: 200px;
+        opacity: 0;
+        filter: drop-shadow(0 0 18px rgba(255,90,90,0.30));
+      }
+      [data-composition-id="00-hook"] .masthead {
+        position: absolute; top: 64px; right: 100px;
+        display: flex; align-items: center; gap: 12px;
+        opacity: 0;
+      }
+      [data-composition-id="00-hook"] .mark-name,
+      [data-composition-id="00-hook"] .mark-tag {
+        font-weight: 600; font-size: 18px;
+        letter-spacing: 0.30em; color: #f9a72c; opacity: 0.85;
+      }
+      [data-composition-id="00-hook"] .mark-dot { color: #f9a72c; opacity: 0.45; }
+
+      [data-composition-id="00-hook"] .hero {
+        position: absolute; top: 38%; left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+      }
+      [data-composition-id="00-hook"] .line-1 {
+        font-weight: 800; font-size: 130px;
+        letter-spacing: -0.025em; line-height: 1.0;
+        color: rgba(255,255,255,0.88);
+        white-space: nowrap;
+      }
+      [data-composition-id="00-hook"] .line-2 {
+        font-weight: 800; font-size: 196px;
+        letter-spacing: -0.03em; line-height: 0.96;
+        color: #f9a72c;
+        text-shadow: 0 0 32px rgba(249,167,44,0.75), 0 0 80px rgba(249,167,44,0.30);
+        white-space: nowrap;
+        margin-top: 4px;
+      }
+      [data-composition-id="00-hook"] .line-1 .word,
+      [data-composition-id="00-hook"] .line-2 .word { display: inline-block; white-space: nowrap; }
+      [data-composition-id="00-hook"] .line-1 .ch,
+      [data-composition-id="00-hook"] .line-2 .ch {
+        display: inline-block; opacity: 0; transform: translateY(45px);
+        will-change: opacity, transform;
+      }
+      [data-composition-id="00-hook"] .vignette {
+        position: absolute; inset: 0; pointer-events: none;
+        background: radial-gradient(ellipse at center, transparent 28%, rgba(0,0,0,0.92) 95%);
+        opacity: 0.70;
+      }
+      [data-composition-id="00-hook"] .grain {
+        position: absolute; inset: 0; pointer-events: none; opacity: 0.07;
+        background-image: radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px);
+        background-size: 3px 3px;
+      }
+      [data-composition-id="00-hook"] .whip-streak {
+        position: absolute; top: 50%; left: 0;
+        width: 70%; height: 14px;
+        background: linear-gradient(90deg, transparent 0%, rgba(249,167,44,0.95) 50%, transparent 100%);
+        filter: blur(10px); transform: translate(-150%, -50%);
+        opacity: 0; z-index: 30;
+      }
+    </style>
+
+    <script>
+      (() => {
+        const SLOT = 3;
+        const sel = (q) => `[data-composition-id="00-hook"] ${q}`;
+
+        document.querySelectorAll(sel('[data-split]')).forEach((node) => {
+          const words = node.textContent.split(' ');
+          node.innerHTML = words.map((w) =>
+            `<span class="word">${w.split('').map((c) => `<span class="ch">${c}</span>`).join('')}</span>`
+          ).join(' ');
+        });
+
+        const tl = gsap.timeline({ paused: true });
+
+        tl.to(sel('.grid-floor'), { backgroundPositionY: '-50px', duration: SLOT, ease: 'none' }, 0);
+
+        tl.fromTo(sel('.masthead'), { x: 10, opacity: 0 }, { x: 0, opacity: 1, duration: 0.40, ease: 'power3.out' }, 0.05);
+
+        tl.to(sel('.line-1 .ch'), { y: 0, opacity: 1, duration: 0.40, ease: 'power3.out', stagger: 0.020 }, 0.15);
+        tl.to(sel('.line-2 .ch'), { y: 0, opacity: 1, duration: 0.50, ease: 'back.out(1.6)', stagger: 0.025 }, 0.65);
+
+        // Falling graph appears under text — visualizes the decay
+        tl.to(sel('.graph'), { opacity: 1, duration: 0.35, ease: 'power2.out' }, 1.20);
+        tl.to(sel('.graph-line'), { strokeDashoffset: 0, duration: 1.20, ease: 'power2.in' }, 1.30);
+
+        tl.set(sel('.whip-streak'), { opacity: 1 }, 2.62);
+        tl.fromTo(sel('.whip-streak'),
+          { xPercent: -150, scaleX: 0.5 },
+          { xPercent: 250, scaleX: 1.5, duration: 0.38, ease: 'power3.in' }, 2.62);
+
+        tl.to({}, { duration: SLOT }, 0);
+        window.__timelines = window.__timelines || {};
+        window.__timelines['00-hook'] = tl;
+      })();
+    </script>
+  </div>
+</template>

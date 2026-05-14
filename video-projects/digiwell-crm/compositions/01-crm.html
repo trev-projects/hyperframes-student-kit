@@ -1,0 +1,336 @@
+<template id="01-crm-template">
+  <script src="assets/gsap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=block" rel="stylesheet" />
+
+  <div data-composition-id="01-crm" data-start="0" data-duration="6" data-width="1920" data-height="1080">
+    <div class="stage">
+      <div class="grid-floor"></div>
+
+      <div class="eyebrow">CRM AUTOMATION</div>
+
+      <div class="layout">
+        <!-- CRM dashboard mockup (left) -->
+        <div class="crm-card">
+          <div class="crm-header">
+            <div class="crm-title">PIPELINE</div>
+            <div class="crm-live">
+              <div class="live-dot"></div>
+              <span>LIVE</span>
+            </div>
+          </div>
+          <div class="crm-row row-1">
+            <span class="row-name">Sarah Chen</span>
+            <span class="row-company">Aperture Labs</span>
+            <span class="row-source">Inbound &middot; web</span>
+            <span class="row-score score-hot">94</span>
+          </div>
+          <div class="crm-row row-2">
+            <span class="row-name">Marcus Webb</span>
+            <span class="row-company">Northwind Co</span>
+            <span class="row-source">LinkedIn DM</span>
+            <span class="row-score score-warm">71</span>
+          </div>
+          <div class="crm-row row-3">
+            <span class="row-name">Priya Kapoor</span>
+            <span class="row-company">Lumen Studio</span>
+            <span class="row-source">Referral</span>
+            <span class="row-score score-warm">63</span>
+          </div>
+          <div class="crm-row row-4">
+            <span class="row-name">Dan O'Brien</span>
+            <span class="row-company">Tradewind Inc</span>
+            <span class="row-source">Inbound &middot; web</span>
+            <span class="row-score score-cold">28</span>
+          </div>
+
+          <div class="action-trace">
+            <div class="trace-step ts-1">SCORED &middot; 4s</div>
+            <div class="trace-arrow ta-1">&rarr;</div>
+            <div class="trace-step ts-2">ROUTED &middot; sales</div>
+            <div class="trace-arrow ta-2">&rarr;</div>
+            <div class="trace-step ts-3">REPLY DRAFTED</div>
+          </div>
+        </div>
+
+        <!-- Stat side (right) -->
+        <div class="stat-side">
+          <div class="stat-label">PIPELINE LIFT</div>
+          <div class="stat-num-row">
+            <span class="stat-num" data-target="12">0</span><span class="stat-x">&times;</span>
+          </div>
+          <div class="stat-sub">CLIENT ROI</div>
+          <div class="stat-divider"></div>
+          <div class="stat-tagline">
+            <div class="tagline-1">Every lead, scored</div>
+            <div class="tagline-2">in seconds.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="whip-streak"></div>
+      <div class="vignette"></div>
+      <div class="grain"></div>
+    </div>
+
+    <style>
+      [data-composition-id="01-crm"] {
+        position: absolute; inset: 0; overflow: hidden;
+        background: #07080c; font-family: "Inter", sans-serif;
+      }
+      [data-composition-id="01-crm"] .stage { position: absolute; inset: 0; }
+      [data-composition-id="01-crm"] .grid-floor {
+        position: absolute; inset: 0;
+        transform: perspective(900px) rotateX(60deg) translateY(25%);
+        background:
+          repeating-linear-gradient(0deg,  rgba(249,167,44,0.05) 0 1px, transparent 1px 80px),
+          repeating-linear-gradient(90deg, rgba(249,167,44,0.05) 0 1px, transparent 1px 80px);
+        background-color: #07080c;
+      }
+      [data-composition-id="01-crm"] .eyebrow {
+        position: absolute; top: 80px; left: 50%;
+        transform: translateX(-50%);
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 700; font-size: 28px;
+        letter-spacing: 0.42em;
+        color: #f9a72c; opacity: 0;
+        text-shadow: 0 0 14px rgba(249,167,44,0.40);
+      }
+      [data-composition-id="01-crm"] .layout {
+        position: absolute; top: 50%; left: 50%;
+        transform: translate(-50%, -45%);
+        display: flex; gap: 60px; align-items: stretch;
+        width: 1660px;
+      }
+      [data-composition-id="01-crm"] .crm-card {
+        flex: 1.6;
+        background: rgba(255,255,255,0.04);
+        border: 1px solid rgba(249,167,44,0.25);
+        border-radius: 18px;
+        padding: 32px 36px;
+        opacity: 0; transform: translateY(40px);
+        box-shadow: 0 0 60px rgba(249,167,44,0.10), inset 0 1px 0 rgba(255,255,255,0.05);
+      }
+      [data-composition-id="01-crm"] .crm-header {
+        display: flex; align-items: center; justify-content: space-between;
+        padding-bottom: 18px;
+        border-bottom: 1px solid rgba(255,255,255,0.10);
+        margin-bottom: 18px;
+      }
+      [data-composition-id="01-crm"] .crm-title {
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 700; font-size: 22px;
+        letter-spacing: 0.30em;
+        color: rgba(255,255,255,0.85);
+      }
+      [data-composition-id="01-crm"] .crm-live {
+        display: flex; align-items: center; gap: 8px;
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 700; font-size: 14px;
+        letter-spacing: 0.20em;
+        color: #3de0a6;
+      }
+      [data-composition-id="01-crm"] .live-dot {
+        width: 8px; height: 8px;
+        border-radius: 50%;
+        background: #3de0a6;
+        box-shadow: 0 0 10px rgba(61,224,166,0.85);
+      }
+      [data-composition-id="01-crm"] .crm-row {
+        display: flex; align-items: center; gap: 18px;
+        padding: 16px 0;
+        border-bottom: 1px solid rgba(255,255,255,0.06);
+        opacity: 0; transform: translateX(-20px);
+      }
+      [data-composition-id="01-crm"] .crm-row:last-of-type { border-bottom: none; }
+      [data-composition-id="01-crm"] .row-name {
+        flex: 1.2;
+        font-weight: 700; font-size: 22px;
+        color: #fff;
+      }
+      [data-composition-id="01-crm"] .row-company {
+        flex: 1;
+        font-size: 18px; color: rgba(255,255,255,0.55);
+      }
+      [data-composition-id="01-crm"] .row-source {
+        flex: 1.2;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 14px;
+        color: rgba(255,255,255,0.40);
+        letter-spacing: 0.04em;
+      }
+      [data-composition-id="01-crm"] .row-score {
+        flex: 0 0 70px;
+        text-align: center;
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 700; font-size: 28px;
+        padding: 6px 12px;
+        border-radius: 8px;
+      }
+      [data-composition-id="01-crm"] .score-hot {
+        color: #3de0a6;
+        background: rgba(61,224,166,0.12);
+        border: 1px solid rgba(61,224,166,0.45);
+        text-shadow: 0 0 12px rgba(61,224,166,0.50);
+      }
+      [data-composition-id="01-crm"] .score-warm {
+        color: #f9a72c;
+        background: rgba(249,167,44,0.10);
+        border: 1px solid rgba(249,167,44,0.35);
+      }
+      [data-composition-id="01-crm"] .score-cold {
+        color: rgba(140,170,200,0.85);
+        background: rgba(80,120,160,0.10);
+        border: 1px solid rgba(80,120,160,0.30);
+      }
+      [data-composition-id="01-crm"] .action-trace {
+        margin-top: 22px;
+        display: flex; align-items: center; gap: 14px;
+        padding-top: 18px;
+        border-top: 1px solid rgba(249,167,44,0.20);
+      }
+      [data-composition-id="01-crm"] .trace-step {
+        padding: 8px 14px;
+        background: rgba(249,167,44,0.10);
+        border: 1px solid rgba(249,167,44,0.40);
+        border-radius: 6px;
+        color: #f9a72c;
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 700; font-size: 13px;
+        letter-spacing: 0.12em;
+        opacity: 0; transform: translateY(6px);
+      }
+      [data-composition-id="01-crm"] .trace-arrow {
+        color: rgba(249,167,44,0.65);
+        font-size: 22px; font-weight: 800;
+        opacity: 0;
+      }
+      [data-composition-id="01-crm"] .stat-side {
+        flex: 1;
+        display: flex; flex-direction: column; justify-content: center;
+      }
+      [data-composition-id="01-crm"] .stat-label {
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 700; font-size: 18px;
+        letter-spacing: 0.32em;
+        color: rgba(255,255,255,0.45);
+        opacity: 0;
+      }
+      [data-composition-id="01-crm"] .stat-num-row {
+        margin-top: 8px;
+        display: flex; align-items: baseline;
+        opacity: 0;
+      }
+      [data-composition-id="01-crm"] .stat-num {
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 700; font-size: 240px;
+        line-height: 0.92;
+        color: #3de0a6;
+        text-shadow: 0 0 32px rgba(61,224,166,0.55);
+      }
+      [data-composition-id="01-crm"] .stat-x {
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 700; font-size: 130px;
+        color: #3de0a6; opacity: 0.85;
+        margin-left: 8px;
+      }
+      [data-composition-id="01-crm"] .stat-sub {
+        margin-top: 4px;
+        font-weight: 700; font-size: 28px;
+        color: #fff; opacity: 0;
+        letter-spacing: 0.18em;
+      }
+      [data-composition-id="01-crm"] .stat-divider {
+        margin: 26px 0;
+        height: 2px; width: 80px;
+        background: #f9a72c;
+        box-shadow: 0 0 10px rgba(249,167,44,0.6);
+        transform: scaleX(0); transform-origin: left center;
+      }
+      [data-composition-id="01-crm"] .stat-tagline {
+        font-weight: 700; font-size: 34px;
+        color: rgba(255,255,255,0.92);
+        line-height: 1.1;
+        opacity: 0;
+      }
+      [data-composition-id="01-crm"] .tagline-2 { color: #f9a72c; text-shadow: 0 0 18px rgba(249,167,44,0.45); }
+
+      [data-composition-id="01-crm"] .vignette {
+        position: absolute; inset: 0; pointer-events: none;
+        background: radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.90) 95%);
+        opacity: 0.55;
+      }
+      [data-composition-id="01-crm"] .grain {
+        position: absolute; inset: 0; pointer-events: none; opacity: 0.07;
+        background-image: radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px);
+        background-size: 3px 3px;
+      }
+      [data-composition-id="01-crm"] .whip-streak {
+        position: absolute; top: 50%; left: 0;
+        width: 70%; height: 14px;
+        background: linear-gradient(90deg, transparent 0%, rgba(249,167,44,0.95) 50%, transparent 100%);
+        filter: blur(10px); transform: translate(-150%, -50%);
+        opacity: 0; z-index: 30;
+      }
+    </style>
+
+    <script>
+      (() => {
+        const SLOT = 6;
+        const sel = (q) => `[data-composition-id="01-crm"] ${q}`;
+        const tl = gsap.timeline({ paused: true });
+
+        tl.to(sel('.grid-floor'), { backgroundPositionY: '-80px', duration: SLOT, ease: 'none' }, 0);
+
+        tl.fromTo(sel('.eyebrow'),
+          { y: -8, opacity: 0 }, { y: 0, opacity: 0.95, duration: 0.40, ease: 'power3.out' }, 0.05);
+
+        tl.to(sel('.crm-card'), { y: 0, opacity: 1, duration: 0.55, ease: 'back.out(1.2)' }, 0.25);
+
+        // Rows cascade
+        ['.row-1', '.row-2', '.row-3', '.row-4'].forEach((cls, i) => {
+          tl.to(sel(cls), { x: 0, opacity: 1, duration: 0.35, ease: 'power3.out' }, 0.75 + i * 0.14);
+        });
+
+        // Highlight Sarah (the hot lead) — pulse + score flash
+        tl.to(sel('.row-1'), { backgroundColor: 'rgba(61,224,166,0.06)', duration: 0.30 }, 1.40);
+        tl.fromTo(sel('.row-1 .row-score'),
+          { scale: 0.7 }, { scale: 1.0, duration: 0.30, ease: 'back.out(2.0)' }, 1.40);
+
+        // Action trace
+        tl.fromTo(sel('.action-trace .ts-1'), { y: 6, opacity: 0 }, { y: 0, opacity: 1, duration: 0.30, ease: 'power3.out' }, 1.95);
+        tl.to(sel('.action-trace .ta-1'), { opacity: 1, duration: 0.20 }, 2.15);
+        tl.fromTo(sel('.action-trace .ts-2'), { y: 6, opacity: 0 }, { y: 0, opacity: 1, duration: 0.30, ease: 'power3.out' }, 2.25);
+        tl.to(sel('.action-trace .ta-2'), { opacity: 1, duration: 0.20 }, 2.45);
+        tl.fromTo(sel('.action-trace .ts-3'), { y: 6, opacity: 0 }, { y: 0, opacity: 1, duration: 0.30, ease: 'power3.out' }, 2.55);
+
+        // Stat side
+        tl.to(sel('.stat-label'), { opacity: 0.85, duration: 0.30, ease: 'power3.out' }, 2.40);
+        tl.to(sel('.stat-num-row'), { opacity: 1, duration: 0.30, ease: 'power3.out' }, 2.55);
+
+        const numEl = document.querySelector(sel('.stat-num'));
+        if (numEl) {
+          const proxy = { v: 0 };
+          tl.to(proxy, {
+            v: 12, duration: 1.10, ease: 'power2.out',
+            onUpdate: () => { numEl.textContent = Math.round(proxy.v); }
+          }, 2.60);
+        }
+
+        tl.fromTo(sel('.stat-sub'), { y: 6, opacity: 0 }, { y: 0, opacity: 0.95, duration: 0.35, ease: 'power3.out' }, 3.40);
+        tl.to(sel('.stat-divider'), { scaleX: 1, duration: 0.40, ease: 'power3.out' }, 3.75);
+        tl.fromTo(sel('.stat-tagline'), { y: 8, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45, ease: 'power3.out' }, 4.05);
+
+        tl.to(sel('.crm-card'), { y: -4, duration: 1.0, yoyo: true, repeat: 1, ease: 'sine.inOut' }, 4.50);
+
+        tl.set(sel('.whip-streak'), { opacity: 1 }, 5.62);
+        tl.fromTo(sel('.whip-streak'),
+          { xPercent: -150, scaleX: 0.5 },
+          { xPercent: 250, scaleX: 1.5, duration: 0.38, ease: 'power3.in' }, 5.62);
+
+        tl.to({}, { duration: SLOT }, 0);
+        window.__timelines = window.__timelines || {};
+        window.__timelines['01-crm'] = tl;
+      })();
+    </script>
+  </div>
+</template>

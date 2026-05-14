@@ -1,0 +1,273 @@
+<template id="01-newsletter-template">
+  <script src="assets/gsap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=block" rel="stylesheet" />
+
+  <div data-composition-id="01-newsletter" data-start="0" data-duration="6" data-width="1920" data-height="1080">
+    <div class="stage">
+      <div class="grid-floor"></div>
+
+      <div class="eyebrow">AI NEWSLETTERS</div>
+
+      <!-- Mockup newsletter card (left) + stat (right) -->
+      <div class="layout">
+        <div class="email-card">
+          <div class="email-header">
+            <div class="email-avatar">
+              <svg viewBox="0 0 32 32" fill="none">
+                <rect x="2" y="6" width="28" height="20" rx="2" stroke="#f9a72c" stroke-width="2"/>
+                <path d="M2 10L16 20L30 10" stroke="#f9a72c" stroke-width="2" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="email-meta">
+              <div class="email-from">Digiwell · Weekly Brief</div>
+              <div class="email-date">Mon · 9:00 AM</div>
+            </div>
+            <div class="ai-badge">AI-WRITTEN</div>
+          </div>
+          <div class="email-subject">5 plays that doubled our pipeline this week</div>
+          <div class="email-preview">Hey Sarah &mdash; quick one. This week we rebuilt the discovery script for B2B founders and it's getting double the replies. Inside: the exact prompts, the 90-second framework, and three real before-and-afters from our portfolio&hellip;</div>
+          <div class="email-footer">
+            <span class="email-tag">PERSONALIZED</span>
+            <span class="email-tag">SOUNDS LIKE YOU</span>
+            <span class="email-tag">SCHEDULED</span>
+          </div>
+        </div>
+
+        <div class="stat-side">
+          <div class="stat-label">CLIENT AVG</div>
+          <div class="stat-num-row">
+            <span class="stat-num" data-target="47">0</span><span class="stat-pct">%</span>
+          </div>
+          <div class="stat-sub">OPEN RATE</div>
+          <div class="stat-divider"></div>
+          <div class="stat-tagline">
+            <div class="tagline-1">Warm the list</div>
+            <div class="tagline-2">every week.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="whip-streak"></div>
+      <div class="vignette"></div>
+      <div class="grain"></div>
+    </div>
+
+    <style>
+      [data-composition-id="01-newsletter"] {
+        position: absolute; inset: 0; overflow: hidden;
+        background: #07080c; font-family: "Inter", sans-serif;
+      }
+      [data-composition-id="01-newsletter"] .stage { position: absolute; inset: 0; }
+      [data-composition-id="01-newsletter"] .grid-floor {
+        position: absolute; inset: 0;
+        transform: perspective(900px) rotateX(60deg) translateY(25%);
+        background:
+          repeating-linear-gradient(0deg,  rgba(249,167,44,0.05) 0 1px, transparent 1px 80px),
+          repeating-linear-gradient(90deg, rgba(249,167,44,0.05) 0 1px, transparent 1px 80px);
+        background-color: #07080c;
+      }
+      [data-composition-id="01-newsletter"] .eyebrow {
+        position: absolute; top: 80px; left: 50%;
+        transform: translateX(-50%);
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 700; font-size: 28px;
+        letter-spacing: 0.42em; color: #f9a72c; opacity: 0;
+        text-shadow: 0 0 14px rgba(249,167,44,0.40);
+      }
+      [data-composition-id="01-newsletter"] .layout {
+        position: absolute; top: 50%; left: 50%;
+        transform: translate(-50%, -45%);
+        display: flex; gap: 60px; align-items: stretch;
+        width: 1660px;
+      }
+      [data-composition-id="01-newsletter"] .email-card {
+        flex: 1.5;
+        background: rgba(255,255,255,0.04);
+        border: 1px solid rgba(249,167,44,0.25);
+        border-radius: 18px;
+        padding: 36px 40px;
+        opacity: 0; transform: translateY(40px);
+        box-shadow: 0 0 60px rgba(249,167,44,0.10), inset 0 1px 0 rgba(255,255,255,0.05);
+      }
+      [data-composition-id="01-newsletter"] .email-header {
+        display: flex; align-items: center; gap: 18px;
+        padding-bottom: 18px;
+        border-bottom: 1px solid rgba(255,255,255,0.10);
+      }
+      [data-composition-id="01-newsletter"] .email-avatar {
+        width: 48px; height: 48px;
+        padding: 8px;
+        background: rgba(249,167,44,0.10);
+        border-radius: 12px;
+        flex: 0 0 48px;
+      }
+      [data-composition-id="01-newsletter"] .email-meta {
+        flex: 1;
+      }
+      [data-composition-id="01-newsletter"] .email-from {
+        font-weight: 700; font-size: 22px;
+        color: #fff;
+      }
+      [data-composition-id="01-newsletter"] .email-date {
+        font-size: 16px;
+        color: rgba(255,255,255,0.45);
+        margin-top: 2px;
+      }
+      [data-composition-id="01-newsletter"] .ai-badge {
+        padding: 6px 14px;
+        background: rgba(61,224,166,0.12);
+        border: 1px solid rgba(61,224,166,0.45);
+        border-radius: 6px;
+        color: #3de0a6;
+        font-size: 13px; font-weight: 700;
+        letter-spacing: 0.16em;
+        opacity: 0;
+      }
+      [data-composition-id="01-newsletter"] .email-subject {
+        margin-top: 24px;
+        font-weight: 700; font-size: 36px;
+        line-height: 1.15;
+        color: #fff;
+        opacity: 0; transform: translateY(10px);
+      }
+      [data-composition-id="01-newsletter"] .email-preview {
+        margin-top: 14px;
+        font-size: 19px; line-height: 1.55;
+        color: rgba(255,255,255,0.58);
+        opacity: 0;
+      }
+      [data-composition-id="01-newsletter"] .email-footer {
+        margin-top: 24px;
+        display: flex; gap: 10px; flex-wrap: wrap;
+      }
+      [data-composition-id="01-newsletter"] .email-tag {
+        padding: 6px 12px;
+        background: rgba(249,167,44,0.10);
+        border: 1px solid rgba(249,167,44,0.30);
+        border-radius: 6px;
+        color: #f9a72c;
+        font-size: 12px; font-weight: 600;
+        letter-spacing: 0.12em;
+        opacity: 0;
+      }
+      [data-composition-id="01-newsletter"] .stat-side {
+        flex: 1;
+        display: flex; flex-direction: column; justify-content: center;
+        padding-left: 12px;
+      }
+      [data-composition-id="01-newsletter"] .stat-label {
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 700; font-size: 18px;
+        letter-spacing: 0.32em;
+        color: rgba(255,255,255,0.45);
+        opacity: 0;
+      }
+      [data-composition-id="01-newsletter"] .stat-num-row {
+        margin-top: 8px;
+        display: flex; align-items: baseline;
+        opacity: 0;
+      }
+      [data-composition-id="01-newsletter"] .stat-num {
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 700; font-size: 240px;
+        line-height: 0.92;
+        color: #3de0a6;
+        text-shadow: 0 0 32px rgba(61,224,166,0.55);
+      }
+      [data-composition-id="01-newsletter"] .stat-pct {
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 700; font-size: 100px;
+        color: #3de0a6; opacity: 0.85;
+        margin-left: 6px;
+      }
+      [data-composition-id="01-newsletter"] .stat-sub {
+        margin-top: 4px;
+        font-weight: 700; font-size: 28px;
+        color: #fff; opacity: 0;
+        letter-spacing: 0.18em;
+      }
+      [data-composition-id="01-newsletter"] .stat-divider {
+        margin: 28px 0;
+        height: 2px; width: 80px;
+        background: #f9a72c;
+        box-shadow: 0 0 10px rgba(249,167,44,0.6);
+        transform: scaleX(0); transform-origin: left center;
+      }
+      [data-composition-id="01-newsletter"] .stat-tagline {
+        font-weight: 700; font-size: 36px;
+        color: rgba(255,255,255,0.92);
+        line-height: 1.1;
+        opacity: 0;
+      }
+      [data-composition-id="01-newsletter"] .tagline-2 { color: #f9a72c; text-shadow: 0 0 18px rgba(249,167,44,0.45); }
+
+      [data-composition-id="01-newsletter"] .vignette {
+        position: absolute; inset: 0; pointer-events: none;
+        background: radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.90) 95%);
+        opacity: 0.55;
+      }
+      [data-composition-id="01-newsletter"] .grain {
+        position: absolute; inset: 0; pointer-events: none; opacity: 0.07;
+        background-image: radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px);
+        background-size: 3px 3px;
+      }
+      [data-composition-id="01-newsletter"] .whip-streak {
+        position: absolute; top: 50%; left: 0;
+        width: 70%; height: 14px;
+        background: linear-gradient(90deg, transparent 0%, rgba(249,167,44,0.95) 50%, transparent 100%);
+        filter: blur(10px); transform: translate(-150%, -50%);
+        opacity: 0; z-index: 30;
+      }
+    </style>
+
+    <script>
+      (() => {
+        const SLOT = 6;
+        const sel = (q) => `[data-composition-id="01-newsletter"] ${q}`;
+        const tl = gsap.timeline({ paused: true });
+
+        tl.to(sel('.grid-floor'), { backgroundPositionY: '-80px', duration: SLOT, ease: 'none' }, 0);
+
+        tl.fromTo(sel('.eyebrow'),
+          { y: -8, opacity: 0 }, { y: 0, opacity: 0.95, duration: 0.40, ease: 'power3.out' }, 0.05);
+
+        // Email card slides in
+        tl.to(sel('.email-card'), { y: 0, opacity: 1, duration: 0.55, ease: 'back.out(1.2)' }, 0.25);
+        tl.fromTo(sel('.ai-badge'), { x: 8, opacity: 0 }, { x: 0, opacity: 1, duration: 0.35, ease: 'power3.out' }, 0.80);
+        tl.to(sel('.email-subject'), { y: 0, opacity: 1, duration: 0.40, ease: 'power3.out' }, 0.95);
+        tl.to(sel('.email-preview'), { opacity: 1, duration: 0.45, ease: 'power3.out' }, 1.25);
+        tl.to(sel('.email-tag'), { opacity: 1, duration: 0.30, ease: 'power3.out', stagger: 0.10 }, 1.65);
+
+        // Stat side
+        tl.to(sel('.stat-label'), { opacity: 0.85, duration: 0.30, ease: 'power3.out' }, 2.10);
+        tl.to(sel('.stat-num-row'), { opacity: 1, duration: 0.30, ease: 'power3.out' }, 2.25);
+
+        // Counter
+        const numEl = document.querySelector(sel('.stat-num'));
+        if (numEl) {
+          const proxy = { v: 0 };
+          tl.to(proxy, {
+            v: 47, duration: 1.10, ease: 'power2.out',
+            onUpdate: () => { numEl.textContent = Math.round(proxy.v); }
+          }, 2.30);
+        }
+
+        tl.fromTo(sel('.stat-sub'), { y: 6, opacity: 0 }, { y: 0, opacity: 0.95, duration: 0.35, ease: 'power3.out' }, 3.20);
+        tl.to(sel('.stat-divider'), { scaleX: 1, duration: 0.40, ease: 'power3.out' }, 3.55);
+        tl.fromTo(sel('.stat-tagline'), { y: 8, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45, ease: 'power3.out' }, 3.85);
+
+        // Subtle breathing hold on card
+        tl.to(sel('.email-card'), { y: -4, duration: 1.0, yoyo: true, repeat: 1, ease: 'sine.inOut' }, 4.40);
+
+        tl.set(sel('.whip-streak'), { opacity: 1 }, 5.62);
+        tl.fromTo(sel('.whip-streak'),
+          { xPercent: -150, scaleX: 0.5 },
+          { xPercent: 250, scaleX: 1.5, duration: 0.38, ease: 'power3.in' }, 5.62);
+
+        tl.to({}, { duration: SLOT }, 0);
+        window.__timelines = window.__timelines || {};
+        window.__timelines['01-newsletter'] = tl;
+      })();
+    </script>
+  </div>
+</template>

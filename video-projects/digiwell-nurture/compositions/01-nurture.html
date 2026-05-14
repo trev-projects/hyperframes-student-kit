@@ -1,0 +1,324 @@
+<template id="01-nurture-template">
+  <script src="assets/gsap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=block" rel="stylesheet" />
+
+  <div data-composition-id="01-nurture" data-start="0" data-duration="6" data-width="1920" data-height="1080">
+    <div class="stage">
+      <div class="grid-floor"></div>
+
+      <div class="eyebrow">NURTURE FLOWS</div>
+
+      <!-- Full 30-day journey visualization -->
+      <div class="journey">
+        <div class="journey-axis">
+          <div class="axis-line">
+            <div class="axis-fill"></div>
+          </div>
+          <div class="axis-labels">
+            <div class="axis-label">DAY 1</div>
+            <div class="axis-label">DAY 7</div>
+            <div class="axis-label">DAY 14</div>
+            <div class="axis-label">DAY 21</div>
+            <div class="axis-label">DAY 30</div>
+          </div>
+        </div>
+
+        <div class="touchpoints">
+          <div class="touch tp-1">
+            <div class="touch-dot"></div>
+            <div class="touch-tag">WELCOME</div>
+            <div class="touch-line"></div>
+            <div class="touch-card">
+              <div class="touch-card-title">Welcome email</div>
+              <div class="touch-card-sub">Personalized intro</div>
+            </div>
+          </div>
+          <div class="touch tp-2">
+            <div class="touch-dot"></div>
+            <div class="touch-tag">EDUCATE</div>
+            <div class="touch-line"></div>
+            <div class="touch-card">
+              <div class="touch-card-title">Case study #1</div>
+              <div class="touch-card-sub">Build trust</div>
+            </div>
+          </div>
+          <div class="touch tp-3">
+            <div class="touch-dot"></div>
+            <div class="touch-tag">SOCIAL PROOF</div>
+            <div class="touch-line"></div>
+            <div class="touch-card">
+              <div class="touch-card-title">Founder DM</div>
+              <div class="touch-card-sub">Behind-the-scenes</div>
+            </div>
+          </div>
+          <div class="touch tp-4">
+            <div class="touch-dot"></div>
+            <div class="touch-tag">OBJECTION</div>
+            <div class="touch-line"></div>
+            <div class="touch-card">
+              <div class="touch-card-title">Pricing breakdown</div>
+              <div class="touch-card-sub">Address concerns</div>
+            </div>
+          </div>
+          <div class="touch tp-5 tp-final">
+            <div class="touch-dot dot-final"></div>
+            <div class="touch-tag final-tag">CONVERT</div>
+            <div class="touch-line"></div>
+            <div class="touch-card final-card">
+              <div class="touch-card-title">Booked call</div>
+              <div class="touch-card-sub">Right moment</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="stat-strip">
+        <div class="stat-label">CLIENT AVG</div>
+        <div class="stat-row">
+          <span class="stat-num" data-target="30">0</span>
+          <span class="stat-suffix">DAYS</span>
+          <span class="stat-arrow">&rarr;</span>
+          <span class="stat-end">CONVERSION</span>
+        </div>
+        <div class="stat-tagline">Convert at the right moment.</div>
+      </div>
+
+      <div class="whip-streak"></div>
+      <div class="vignette"></div>
+      <div class="grain"></div>
+    </div>
+
+    <style>
+      [data-composition-id="01-nurture"] {
+        position: absolute; inset: 0; overflow: hidden;
+        background: #07080c; font-family: "Inter", sans-serif;
+      }
+      [data-composition-id="01-nurture"] .stage { position: absolute; inset: 0; }
+      [data-composition-id="01-nurture"] .grid-floor {
+        position: absolute; inset: 0;
+        transform: perspective(900px) rotateX(60deg) translateY(25%);
+        background:
+          repeating-linear-gradient(0deg,  rgba(249,167,44,0.05) 0 1px, transparent 1px 80px),
+          repeating-linear-gradient(90deg, rgba(249,167,44,0.05) 0 1px, transparent 1px 80px);
+        background-color: #07080c;
+      }
+      [data-composition-id="01-nurture"] .eyebrow {
+        position: absolute; top: 80px; left: 50%;
+        transform: translateX(-50%);
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 700; font-size: 28px;
+        letter-spacing: 0.42em;
+        color: #f9a72c; opacity: 0;
+        text-shadow: 0 0 14px rgba(249,167,44,0.40);
+      }
+      [data-composition-id="01-nurture"] .journey {
+        position: absolute; top: 36%; left: 50%;
+        transform: translate(-50%, -50%);
+        width: 1660px;
+      }
+      [data-composition-id="01-nurture"] .journey-axis {
+        position: relative;
+      }
+      [data-composition-id="01-nurture"] .axis-line {
+        position: relative;
+        height: 3px;
+        background: rgba(249,167,44,0.18);
+      }
+      [data-composition-id="01-nurture"] .axis-fill {
+        position: absolute; top: 0; left: 0;
+        height: 100%; width: 0%;
+        background: linear-gradient(90deg, #f9a72c, #3de0a6);
+        box-shadow: 0 0 14px rgba(249,167,44,0.55);
+      }
+      [data-composition-id="01-nurture"] .axis-labels {
+        display: flex; justify-content: space-between;
+        margin-top: 12px;
+      }
+      [data-composition-id="01-nurture"] .axis-label {
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 700; font-size: 16px;
+        letter-spacing: 0.20em;
+        color: rgba(255,255,255,0.40);
+      }
+      [data-composition-id="01-nurture"] .touchpoints {
+        position: absolute; top: -10px; left: 0; right: 0;
+        display: flex; justify-content: space-between;
+        pointer-events: none;
+      }
+      [data-composition-id="01-nurture"] .touch {
+        flex: 0 0 auto;
+        display: flex; flex-direction: column; align-items: center;
+        opacity: 0;
+      }
+      [data-composition-id="01-nurture"] .touch-dot {
+        width: 22px; height: 22px;
+        border-radius: 50%;
+        background: #f9a72c;
+        border: 3px solid #07080c;
+        box-shadow: 0 0 14px rgba(249,167,44,0.7);
+      }
+      [data-composition-id="01-nurture"] .touch-dot.dot-final {
+        width: 28px; height: 28px;
+        background: #3de0a6;
+        box-shadow: 0 0 20px rgba(61,224,166,0.85);
+      }
+      [data-composition-id="01-nurture"] .touch-tag {
+        margin-top: -260px;
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 700; font-size: 14px;
+        letter-spacing: 0.22em;
+        color: #f9a72c;
+      }
+      [data-composition-id="01-nurture"] .touch-tag.final-tag {
+        color: #3de0a6;
+        text-shadow: 0 0 10px rgba(61,224,166,0.45);
+      }
+      [data-composition-id="01-nurture"] .touch-line {
+        margin-top: 6px;
+        width: 1px; height: 200px;
+        background: linear-gradient(180deg, rgba(249,167,44,0.40), rgba(249,167,44,0.06));
+      }
+      [data-composition-id="01-nurture"] .touch-card {
+        position: absolute; top: -210px;
+        width: 220px;
+        padding: 16px 18px;
+        background: rgba(255,255,255,0.04);
+        border: 1px solid rgba(249,167,44,0.30);
+        border-radius: 12px;
+        text-align: left;
+      }
+      [data-composition-id="01-nurture"] .touch-card.final-card {
+        border-color: rgba(61,224,166,0.45);
+        background: rgba(61,224,166,0.06);
+      }
+      [data-composition-id="01-nurture"] .touch-card-title {
+        font-weight: 700; font-size: 18px;
+        color: #fff;
+        line-height: 1.15;
+      }
+      [data-composition-id="01-nurture"] .touch-card-sub {
+        margin-top: 4px;
+        font-size: 14px;
+        color: rgba(255,255,255,0.50);
+        line-height: 1.2;
+      }
+
+      [data-composition-id="01-nurture"] .stat-strip {
+        position: absolute; bottom: 14%; left: 50%;
+        transform: translateX(-50%);
+        width: 1660px;
+        text-align: center;
+      }
+      [data-composition-id="01-nurture"] .stat-label {
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 700; font-size: 18px;
+        letter-spacing: 0.32em;
+        color: rgba(255,255,255,0.45);
+        opacity: 0;
+      }
+      [data-composition-id="01-nurture"] .stat-row {
+        margin-top: 12px;
+        display: flex; align-items: baseline; justify-content: center;
+        gap: 26px;
+        opacity: 0;
+      }
+      [data-composition-id="01-nurture"] .stat-num {
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 700; font-size: 160px;
+        line-height: 0.92;
+        color: #3de0a6;
+        text-shadow: 0 0 32px rgba(61,224,166,0.55);
+      }
+      [data-composition-id="01-nurture"] .stat-suffix {
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 700; font-size: 48px;
+        color: #3de0a6; opacity: 0.85;
+        letter-spacing: 0.16em;
+      }
+      [data-composition-id="01-nurture"] .stat-arrow {
+        font-size: 60px; color: #f9a72c; font-weight: 700;
+        opacity: 0.75;
+      }
+      [data-composition-id="01-nurture"] .stat-end {
+        font-weight: 700; font-size: 48px;
+        color: #fff; opacity: 0.92;
+        letter-spacing: 0.14em;
+      }
+      [data-composition-id="01-nurture"] .stat-tagline {
+        margin-top: 14px;
+        font-weight: 700; font-size: 32px;
+        color: #f9a72c; opacity: 0;
+        text-shadow: 0 0 18px rgba(249,167,44,0.40);
+      }
+
+      [data-composition-id="01-nurture"] .vignette {
+        position: absolute; inset: 0; pointer-events: none;
+        background: radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.90) 95%);
+        opacity: 0.55;
+      }
+      [data-composition-id="01-nurture"] .grain {
+        position: absolute; inset: 0; pointer-events: none; opacity: 0.07;
+        background-image: radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px);
+        background-size: 3px 3px;
+      }
+      [data-composition-id="01-nurture"] .whip-streak {
+        position: absolute; top: 50%; left: 0;
+        width: 70%; height: 14px;
+        background: linear-gradient(90deg, transparent 0%, rgba(249,167,44,0.95) 50%, transparent 100%);
+        filter: blur(10px); transform: translate(-150%, -50%);
+        opacity: 0; z-index: 30;
+      }
+    </style>
+
+    <script>
+      (() => {
+        const SLOT = 6;
+        const sel = (q) => `[data-composition-id="01-nurture"] ${q}`;
+        const tl = gsap.timeline({ paused: true });
+
+        tl.to(sel('.grid-floor'), { backgroundPositionY: '-80px', duration: SLOT, ease: 'none' }, 0);
+
+        tl.fromTo(sel('.eyebrow'),
+          { y: -8, opacity: 0 }, { y: 0, opacity: 0.95, duration: 0.40, ease: 'power3.out' }, 0.05);
+
+        // Axis line fills across the 30-day arc
+        tl.to(sel('.axis-fill'), { width: '100%', duration: 2.20, ease: 'power2.inOut' }, 0.30);
+
+        // Touchpoints light up at their day
+        const touchSelectors = ['.tp-1', '.tp-2', '.tp-3', '.tp-4', '.tp-5'];
+        const touchStarts = [0.40, 0.90, 1.40, 1.95, 2.55];
+        touchSelectors.forEach((cls, i) => {
+          tl.to(sel(cls), { opacity: 1, duration: 0.35, ease: 'power3.out' }, touchStarts[i]);
+        });
+
+        // Stat strip lands after axis completes
+        tl.fromTo(sel('.stat-label'), { y: -6, opacity: 0 }, { y: 0, opacity: 0.85, duration: 0.35, ease: 'power3.out' }, 3.10);
+        tl.to(sel('.stat-row'), { opacity: 1, duration: 0.30, ease: 'power3.out' }, 3.30);
+
+        const numEl = document.querySelector(sel('.stat-num'));
+        if (numEl) {
+          const proxy = { v: 0 };
+          tl.to(proxy, {
+            v: 30, duration: 1.10, ease: 'power2.out',
+            onUpdate: () => { numEl.textContent = Math.round(proxy.v); }
+          }, 3.40);
+        }
+
+        tl.fromTo(sel('.stat-tagline'), { y: 8, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45, ease: 'power3.out' }, 4.60);
+
+        // Subtle breathing on final touch card
+        tl.to(sel('.tp-final .touch-card'),
+          { y: -4, duration: 0.9, yoyo: true, repeat: 1, ease: 'sine.inOut' }, 4.80);
+
+        tl.set(sel('.whip-streak'), { opacity: 1 }, 5.62);
+        tl.fromTo(sel('.whip-streak'),
+          { xPercent: -150, scaleX: 0.5 },
+          { xPercent: 250, scaleX: 1.5, duration: 0.38, ease: 'power3.in' }, 5.62);
+
+        tl.to({}, { duration: SLOT }, 0);
+        window.__timelines = window.__timelines || {};
+        window.__timelines['01-nurture'] = tl;
+      })();
+    </script>
+  </div>
+</template>

@@ -1,0 +1,153 @@
+<template id="00-hook-nurture-template">
+  <script src="assets/gsap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=block" rel="stylesheet" />
+
+  <div data-composition-id="00-hook-nurture" data-start="0" data-duration="3" data-width="1920" data-height="1080">
+    <div class="stage">
+      <div class="grid-floor"></div>
+
+      <!-- Hourglass-like timeline progress arc -->
+      <svg class="day-arc" viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg">
+        <line x1="40" y1="60" x2="1160" y2="60" stroke="rgba(249,167,44,0.18)" stroke-width="2"/>
+        <line class="arc-fill" x1="40" y1="60" x2="40" y2="60"
+          stroke="#f9a72c" stroke-width="3" stroke-linecap="round"/>
+        <circle class="day-dot d-1" cx="80"   cy="60" r="6" fill="#f9a72c" opacity="0"/>
+        <circle class="day-dot d-2" cx="320"  cy="60" r="6" fill="#f9a72c" opacity="0"/>
+        <circle class="day-dot d-3" cx="560"  cy="60" r="6" fill="#f9a72c" opacity="0"/>
+        <circle class="day-dot d-4" cx="800"  cy="60" r="6" fill="#f9a72c" opacity="0"/>
+        <circle class="day-dot d-5" cx="1120" cy="60" r="10" fill="#3de0a6" opacity="0"/>
+      </svg>
+
+      <div class="masthead">
+        <span class="mark-name">DIGIWELL</span>
+        <span class="mark-dot">·</span>
+        <span class="mark-tag">NURTURE FLOWS</span>
+      </div>
+
+      <div class="hero">
+        <div class="line-1" data-split>BUYERS ARE READY.</div>
+        <div class="line-2" data-split>IN 30 DAYS.</div>
+      </div>
+
+      <div class="whip-streak"></div>
+      <div class="vignette"></div>
+      <div class="grain"></div>
+    </div>
+
+    <style>
+      [data-composition-id="00-hook-nurture"] {
+        position: absolute; inset: 0; overflow: hidden;
+        background: #07080c; font-family: "Inter", sans-serif;
+      }
+      [data-composition-id="00-hook-nurture"] .stage { position: absolute; inset: 0; }
+      [data-composition-id="00-hook-nurture"] .grid-floor {
+        position: absolute; inset: 0;
+        transform: perspective(900px) rotateX(60deg) translateY(25%);
+        background:
+          repeating-linear-gradient(0deg,  rgba(249,167,44,0.05) 0 1px, transparent 1px 80px),
+          repeating-linear-gradient(90deg, rgba(249,167,44,0.05) 0 1px, transparent 1px 80px);
+        background-color: #07080c;
+      }
+      [data-composition-id="00-hook-nurture"] .day-arc {
+        position: absolute; bottom: 16%; left: 50%;
+        transform: translateX(-50%);
+        width: 1400px; height: 130px;
+        filter: drop-shadow(0 0 18px rgba(249,167,44,0.30));
+      }
+      [data-composition-id="00-hook-nurture"] .masthead {
+        position: absolute; top: 64px; right: 100px;
+        display: flex; align-items: center; gap: 12px;
+        opacity: 0;
+      }
+      [data-composition-id="00-hook-nurture"] .mark-name,
+      [data-composition-id="00-hook-nurture"] .mark-tag {
+        font-weight: 600; font-size: 18px;
+        letter-spacing: 0.30em; color: #f9a72c; opacity: 0.85;
+      }
+      [data-composition-id="00-hook-nurture"] .mark-dot { color: #f9a72c; opacity: 0.45; }
+
+      [data-composition-id="00-hook-nurture"] .hero {
+        position: absolute; top: 42%; left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+      }
+      [data-composition-id="00-hook-nurture"] .line-1 {
+        font-weight: 800; font-size: 130px;
+        letter-spacing: -0.025em; line-height: 1.0;
+        color: rgba(255,255,255,0.88);
+        white-space: nowrap;
+      }
+      [data-composition-id="00-hook-nurture"] .line-2 {
+        font-weight: 800; font-size: 220px;
+        letter-spacing: -0.03em; line-height: 0.96;
+        color: #f9a72c;
+        text-shadow: 0 0 36px rgba(249,167,44,0.80), 0 0 90px rgba(249,167,44,0.35);
+        white-space: nowrap;
+        margin-top: 4px;
+      }
+      [data-composition-id="00-hook-nurture"] .line-1 .word,
+      [data-composition-id="00-hook-nurture"] .line-2 .word { display: inline-block; white-space: nowrap; }
+      [data-composition-id="00-hook-nurture"] .line-1 .ch,
+      [data-composition-id="00-hook-nurture"] .line-2 .ch {
+        display: inline-block; opacity: 0; transform: translateY(45px);
+        will-change: opacity, transform;
+      }
+      [data-composition-id="00-hook-nurture"] .vignette {
+        position: absolute; inset: 0; pointer-events: none;
+        background: radial-gradient(ellipse at center, transparent 28%, rgba(0,0,0,0.92) 95%);
+        opacity: 0.70;
+      }
+      [data-composition-id="00-hook-nurture"] .grain {
+        position: absolute; inset: 0; pointer-events: none; opacity: 0.07;
+        background-image: radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px);
+        background-size: 3px 3px;
+      }
+      [data-composition-id="00-hook-nurture"] .whip-streak {
+        position: absolute; top: 50%; left: 0;
+        width: 70%; height: 14px;
+        background: linear-gradient(90deg, transparent 0%, rgba(249,167,44,0.95) 50%, transparent 100%);
+        filter: blur(10px); transform: translate(-150%, -50%);
+        opacity: 0; z-index: 30;
+      }
+    </style>
+
+    <script>
+      (() => {
+        const SLOT = 3;
+        const sel = (q) => `[data-composition-id="00-hook-nurture"] ${q}`;
+
+        document.querySelectorAll(sel('[data-split]')).forEach((node) => {
+          const words = node.textContent.split(' ');
+          node.innerHTML = words.map((w) =>
+            `<span class="word">${w.split('').map((c) => `<span class="ch">${c}</span>`).join('')}</span>`
+          ).join(' ');
+        });
+
+        const tl = gsap.timeline({ paused: true });
+
+        tl.to(sel('.grid-floor'), { backgroundPositionY: '-50px', duration: SLOT, ease: 'none' }, 0);
+        tl.fromTo(sel('.masthead'), { x: 10, opacity: 0 }, { x: 0, opacity: 1, duration: 0.40, ease: 'power3.out' }, 0.05);
+
+        tl.to(sel('.line-1 .ch'), { y: 0, opacity: 1, duration: 0.40, ease: 'power3.out', stagger: 0.020 }, 0.15);
+        tl.to(sel('.line-2 .ch'), { y: 0, opacity: 1, duration: 0.50, ease: 'back.out(1.6)', stagger: 0.025 }, 0.65);
+
+        // Day arc fills + dots light up in sequence (visualizing the 30 days)
+        tl.to(sel('.arc-fill'), { attr: { x2: 1120 }, duration: 1.40, ease: 'power2.inOut' }, 1.20);
+        tl.to(sel('.d-1'), { opacity: 1, duration: 0.15 }, 1.30);
+        tl.to(sel('.d-2'), { opacity: 1, duration: 0.15 }, 1.55);
+        tl.to(sel('.d-3'), { opacity: 1, duration: 0.15 }, 1.85);
+        tl.to(sel('.d-4'), { opacity: 1, duration: 0.15 }, 2.15);
+        tl.fromTo(sel('.d-5'), { scale: 0.3, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.40, ease: 'back.out(2.0)', transformOrigin: 'center' }, 2.45);
+
+        tl.set(sel('.whip-streak'), { opacity: 1 }, 2.62);
+        tl.fromTo(sel('.whip-streak'),
+          { xPercent: -150, scaleX: 0.5 },
+          { xPercent: 250, scaleX: 1.5, duration: 0.38, ease: 'power3.in' }, 2.62);
+
+        tl.to({}, { duration: SLOT }, 0);
+        window.__timelines = window.__timelines || {};
+        window.__timelines['00-hook-nurture'] = tl;
+      })();
+    </script>
+  </div>
+</template>

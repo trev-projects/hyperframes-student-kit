@@ -1,0 +1,185 @@
+<template id="02-cta-template">
+  <script src="assets/gsap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=block" rel="stylesheet" />
+
+  <div data-composition-id="02-cta" data-start="0" data-duration="3" data-width="1920" data-height="1080">
+    <div class="stage">
+      <div class="grid-floor"></div>
+      <div class="swirl">
+        <div class="ring r1"></div>
+        <div class="ring r2"></div>
+      </div>
+      <div class="particles" id="particles-cta"></div>
+
+      <div class="cta">
+        <div class="pill">FREE&nbsp;AUDIT</div>
+        <div class="wordmark">
+          <span class="word-text">Digiwell</span>
+          <div class="shimmer"></div>
+        </div>
+        <div class="tagline">MARKETING</div>
+        <div class="url">digiwellmarketing.com</div>
+        <div class="button">
+          <span class="button-label">Get Your Audit Preview</span>
+          <span class="button-arrow">&rarr;</span>
+        </div>
+      </div>
+
+      <div class="vignette"></div>
+      <div class="grain"></div>
+    </div>
+
+    <style>
+      [data-composition-id="02-cta"] {
+        position: absolute; inset: 0; overflow: hidden;
+        background: #07080c; font-family: "Inter", sans-serif;
+      }
+      [data-composition-id="02-cta"] .stage { position: absolute; inset: 0; }
+      [data-composition-id="02-cta"] .grid-floor {
+        position: absolute; inset: 0;
+        transform: perspective(900px) rotateX(60deg) translateY(25%);
+        background:
+          repeating-linear-gradient(0deg,  rgba(249,167,44,0.05) 0 1px, transparent 1px 80px),
+          repeating-linear-gradient(90deg, rgba(249,167,44,0.05) 0 1px, transparent 1px 80px);
+        background-color: #07080c;
+      }
+      [data-composition-id="02-cta"] .swirl {
+        position: absolute; top: 50%; left: 50%;
+        width: 1500px; height: 1500px;
+        transform: translate(-50%, -50%);
+      }
+      [data-composition-id="02-cta"] .ring {
+        position: absolute; top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+        border: 1px dashed rgba(249,167,44,0.14);
+      }
+      [data-composition-id="02-cta"] .r1 { width: 750px; height: 750px; }
+      [data-composition-id="02-cta"] .r2 { width: 1300px; height: 1300px; border-color: rgba(249,167,44,0.08); }
+      [data-composition-id="02-cta"] .particles {
+        position: absolute; top: 50%; left: 50%;
+        width: 1500px; height: 1500px;
+        transform: translate(-50%, -50%);
+      }
+      [data-composition-id="02-cta"] .particle {
+        position: absolute; border-radius: 50%;
+        background: radial-gradient(circle, #ffd480 0%, #f9a72c 40%, transparent 75%);
+        filter: blur(1px); opacity: 0;
+      }
+      [data-composition-id="02-cta"] .cta {
+        position: absolute; top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+        display: flex; flex-direction: column; align-items: center; gap: 0;
+      }
+      [data-composition-id="02-cta"] .pill {
+        padding: 10px 28px;
+        border: 1px solid rgba(249,167,44,0.6);
+        border-radius: 999px;
+        background: rgba(249,167,44,0.08);
+        color: #f9a72c; font-weight: 600;
+        font-size: 22px; letter-spacing: 0.32em;
+        margin-bottom: 24px;
+        text-shadow: 0 0 16px rgba(249,167,44,0.6);
+        box-shadow: 0 0 32px rgba(249,167,44,0.25);
+        opacity: 0;
+      }
+      [data-composition-id="02-cta"] .wordmark {
+        position: relative; display: inline-block;
+        font-weight: 800; font-size: 220px;
+        letter-spacing: -0.035em; line-height: 1;
+        background: linear-gradient(180deg, #ffffff 0%, #f7d99a 55%, #f9a72c 100%);
+        -webkit-background-clip: text; background-clip: text; color: transparent;
+        text-shadow: 0 0 50px rgba(249,167,44,0.50);
+        overflow: hidden; opacity: 0;
+      }
+      [data-composition-id="02-cta"] .shimmer {
+        position: absolute; top: 0; left: -40%;
+        width: 40%; height: 100%;
+        background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.65) 50%, transparent 100%);
+        filter: blur(12px); mix-blend-mode: screen; pointer-events: none;
+      }
+      [data-composition-id="02-cta"] .tagline {
+        margin-top: 2px;
+        font-weight: 600; font-size: 50px;
+        letter-spacing: 0.44em;
+        color: #f9a72c; opacity: 0;
+        text-shadow: 0 0 18px rgba(249,167,44,0.35);
+      }
+      [data-composition-id="02-cta"] .url {
+        margin-top: 28px;
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 500; font-size: 38px;
+        letter-spacing: 0.04em;
+        color: #f9a72c; opacity: 0;
+        text-shadow: 0 0 16px rgba(249,167,44,0.35);
+      }
+      [data-composition-id="02-cta"] .button {
+        margin-top: 22px;
+        padding: 14px 32px;
+        background: linear-gradient(180deg, #ffba5a 0%, #f9a72c 55%, #e0881c 100%);
+        color: #1a1208; font-weight: 700; font-size: 24px;
+        letter-spacing: 0.02em; border-radius: 999px;
+        display: flex; gap: 14px; align-items: center;
+        box-shadow: 0 0 40px rgba(249,167,44,0.5), inset 0 1px 0 rgba(255,255,255,0.5);
+        opacity: 0;
+      }
+      [data-composition-id="02-cta"] .button-arrow { font-size: 26px; font-weight: 800; }
+      [data-composition-id="02-cta"] .vignette {
+        position: absolute; inset: 0; pointer-events: none;
+        background: radial-gradient(ellipse at center, transparent 25%, rgba(0,0,0,0.95) 95%);
+        opacity: 0.70;
+      }
+      [data-composition-id="02-cta"] .grain {
+        position: absolute; inset: 0; pointer-events: none; opacity: 0.07;
+        background-image:
+          radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+          radial-gradient(rgba(255,255,255,0.02) 1px, transparent 1px);
+        background-size: 3px 3px, 5px 5px;
+      }
+    </style>
+
+    <script>
+      (() => {
+        const SLOT = 3;
+        const sel = (q) => `[data-composition-id="02-cta"] ${q}`;
+
+        const root = document.querySelector(sel('.particles'));
+        if (root) {
+          for (let i = 0; i < 70; i++) {
+            const p = document.createElement('div');
+            p.className = 'particle';
+            const angle = (i * 137.5) * Math.PI / 180;
+            const r = 220 + 480 * Math.abs(Math.sin(i * 0.41 + 0.9));
+            const cx = 750 + Math.cos(angle) * r;
+            const cy = 750 + Math.sin(angle) * r * 0.58;
+            const size = 3 + 7 * Math.abs(Math.cos(i * 0.87));
+            p.style.cssText = `left:${cx - size/2}px;top:${cy - size/2}px;width:${size}px;height:${size}px`;
+            root.appendChild(p);
+          }
+        }
+
+        const tl = gsap.timeline({ paused: true });
+
+        tl.to(sel('.grid-floor'), { backgroundPositionY: '-50px', duration: SLOT, ease: 'none' }, 0);
+        tl.to(sel('.swirl'), { rotation: 30, duration: SLOT, ease: 'none', transformOrigin: '50% 50%' }, 0);
+        tl.to(sel('.particles'), { rotation: -20, duration: SLOT, ease: 'none', transformOrigin: '50% 50%' }, 0);
+        tl.to(sel('.particle'), { opacity: 1, duration: 0.7, ease: 'power2.out', stagger: { each: 0.008, from: 'center' } }, 0);
+
+        tl.fromTo(sel('.pill'), { y: 10, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, ease: 'back.out(1.4)' }, 0.08);
+        tl.fromTo(sel('.wordmark'), { opacity: 0, scale: 0.95 }, { opacity: 1, scale: 1, duration: 0.55, ease: 'power3.out' }, 0.22);
+        tl.fromTo(sel('.tagline'), { opacity: 0, y: 6 }, { opacity: 0.85, y: 0, duration: 0.45, ease: 'power3.out' }, 0.70);
+        tl.fromTo(sel('.url'), { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.40, ease: 'power3.out' }, 1.05);
+        tl.fromTo(sel('.button'), { opacity: 0, y: 8, scale: 0.96 }, { opacity: 1, y: 0, scale: 1, duration: 0.45, ease: 'back.out(1.4)' }, 1.30);
+
+        tl.fromTo(sel('.shimmer'), { left: '-40%' }, { left: '100%', duration: 0.75, ease: 'power2.inOut' }, 1.85);
+
+        // Button breathing pulse for the hold
+        tl.to(sel('.button'), { scale: 1.04, duration: 0.55, yoyo: true, repeat: 1, ease: 'sine.inOut' }, 2.20);
+
+        tl.to({}, { duration: SLOT }, 0);
+        window.__timelines = window.__timelines || {};
+        window.__timelines['02-cta'] = tl;
+      })();
+    </script>
+  </div>
+</template>

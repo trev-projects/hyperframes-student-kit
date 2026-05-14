@@ -1,0 +1,161 @@
+<template id="00-hook-crm-template">
+  <script src="assets/gsap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=block" rel="stylesheet" />
+
+  <div data-composition-id="00-hook-crm" data-start="0" data-duration="3" data-width="1920" data-height="1080">
+    <div class="stage">
+      <div class="grid-floor"></div>
+
+      <!-- Notification badge animating -->
+      <div class="notif">
+        <div class="notif-dot"></div>
+        <div class="notif-text">NEW LEAD &middot; 38 min ago</div>
+      </div>
+
+      <div class="masthead">
+        <span class="mark-name">DIGIWELL</span>
+        <span class="mark-dot">·</span>
+        <span class="mark-tag">CRM AUTOMATION</span>
+      </div>
+
+      <div class="hero">
+        <div class="line-1" data-split>A LEAD JUST CAME IN.</div>
+        <div class="line-2" data-split>DID YOU NOTICE?</div>
+      </div>
+
+      <div class="whip-streak"></div>
+      <div class="vignette"></div>
+      <div class="grain"></div>
+    </div>
+
+    <style>
+      [data-composition-id="00-hook-crm"] {
+        position: absolute; inset: 0; overflow: hidden;
+        background: #07080c; font-family: "Inter", sans-serif;
+      }
+      [data-composition-id="00-hook-crm"] .stage { position: absolute; inset: 0; }
+      [data-composition-id="00-hook-crm"] .grid-floor {
+        position: absolute; inset: 0;
+        transform: perspective(900px) rotateX(60deg) translateY(25%);
+        background:
+          repeating-linear-gradient(0deg,  rgba(249,167,44,0.05) 0 1px, transparent 1px 80px),
+          repeating-linear-gradient(90deg, rgba(249,167,44,0.05) 0 1px, transparent 1px 80px);
+        background-color: #07080c;
+      }
+      [data-composition-id="00-hook-crm"] .notif {
+        position: absolute; top: 160px; left: 50%;
+        transform: translateX(-50%);
+        display: flex; align-items: center; gap: 14px;
+        padding: 12px 22px;
+        background: rgba(255,90,90,0.10);
+        border: 1px solid rgba(255,120,120,0.45);
+        border-radius: 999px;
+        box-shadow: 0 0 22px rgba(255,90,90,0.25);
+        opacity: 0;
+      }
+      [data-composition-id="00-hook-crm"] .notif-dot {
+        width: 12px; height: 12px;
+        border-radius: 50%;
+        background: #ff5a5a;
+        box-shadow: 0 0 12px rgba(255,90,90,0.85);
+      }
+      [data-composition-id="00-hook-crm"] .notif-text {
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 700; font-size: 20px;
+        letter-spacing: 0.22em;
+        color: #ff8a8a;
+      }
+      [data-composition-id="00-hook-crm"] .masthead {
+        position: absolute; top: 64px; right: 100px;
+        display: flex; align-items: center; gap: 12px;
+        opacity: 0;
+      }
+      [data-composition-id="00-hook-crm"] .mark-name,
+      [data-composition-id="00-hook-crm"] .mark-tag {
+        font-weight: 600; font-size: 18px;
+        letter-spacing: 0.30em; color: #f9a72c; opacity: 0.85;
+      }
+      [data-composition-id="00-hook-crm"] .mark-dot { color: #f9a72c; opacity: 0.45; }
+
+      [data-composition-id="00-hook-crm"] .hero {
+        position: absolute; top: 54%; left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+      }
+      [data-composition-id="00-hook-crm"] .line-1 {
+        font-weight: 800; font-size: 120px;
+        letter-spacing: -0.025em; line-height: 1.0;
+        color: rgba(255,255,255,0.88);
+        white-space: nowrap;
+      }
+      [data-composition-id="00-hook-crm"] .line-2 {
+        font-weight: 800; font-size: 180px;
+        letter-spacing: -0.03em; line-height: 0.96;
+        color: #f9a72c;
+        text-shadow: 0 0 32px rgba(249,167,44,0.75), 0 0 80px rgba(249,167,44,0.30);
+        white-space: nowrap;
+        margin-top: 4px;
+      }
+      [data-composition-id="00-hook-crm"] .line-1 .word,
+      [data-composition-id="00-hook-crm"] .line-2 .word { display: inline-block; white-space: nowrap; }
+      [data-composition-id="00-hook-crm"] .line-1 .ch,
+      [data-composition-id="00-hook-crm"] .line-2 .ch {
+        display: inline-block; opacity: 0; transform: translateY(45px);
+        will-change: opacity, transform;
+      }
+      [data-composition-id="00-hook-crm"] .vignette {
+        position: absolute; inset: 0; pointer-events: none;
+        background: radial-gradient(ellipse at center, transparent 28%, rgba(0,0,0,0.92) 95%);
+        opacity: 0.70;
+      }
+      [data-composition-id="00-hook-crm"] .grain {
+        position: absolute; inset: 0; pointer-events: none; opacity: 0.07;
+        background-image: radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px);
+        background-size: 3px 3px;
+      }
+      [data-composition-id="00-hook-crm"] .whip-streak {
+        position: absolute; top: 50%; left: 0;
+        width: 70%; height: 14px;
+        background: linear-gradient(90deg, transparent 0%, rgba(249,167,44,0.95) 50%, transparent 100%);
+        filter: blur(10px); transform: translate(-150%, -50%);
+        opacity: 0; z-index: 30;
+      }
+    </style>
+
+    <script>
+      (() => {
+        const SLOT = 3;
+        const sel = (q) => `[data-composition-id="00-hook-crm"] ${q}`;
+
+        document.querySelectorAll(sel('[data-split]')).forEach((node) => {
+          const words = node.textContent.split(' ');
+          node.innerHTML = words.map((w) =>
+            `<span class="word">${w.split('').map((c) => `<span class="ch">${c}</span>`).join('')}</span>`
+          ).join(' ');
+        });
+
+        const tl = gsap.timeline({ paused: true });
+
+        tl.to(sel('.grid-floor'), { backgroundPositionY: '-50px', duration: SLOT, ease: 'none' }, 0);
+        tl.fromTo(sel('.masthead'), { x: 10, opacity: 0 }, { x: 0, opacity: 1, duration: 0.40, ease: 'power3.out' }, 0.05);
+
+        // Notification pops first
+        tl.fromTo(sel('.notif'), { y: -12, opacity: 0 }, { y: 0, opacity: 1, duration: 0.40, ease: 'back.out(1.7)' }, 0.10);
+        // Pulse the dot through the beat
+        tl.to(sel('.notif-dot'), { scale: 1.6, opacity: 0.6, duration: 0.5, yoyo: true, repeat: 3, ease: 'sine.inOut' }, 0.50);
+
+        tl.to(sel('.line-1 .ch'), { y: 0, opacity: 1, duration: 0.40, ease: 'power3.out', stagger: 0.018 }, 0.30);
+        tl.to(sel('.line-2 .ch'), { y: 0, opacity: 1, duration: 0.50, ease: 'back.out(1.6)', stagger: 0.024 }, 0.85);
+
+        tl.set(sel('.whip-streak'), { opacity: 1 }, 2.62);
+        tl.fromTo(sel('.whip-streak'),
+          { xPercent: -150, scaleX: 0.5 },
+          { xPercent: 250, scaleX: 1.5, duration: 0.38, ease: 'power3.in' }, 2.62);
+
+        tl.to({}, { duration: SLOT }, 0);
+        window.__timelines = window.__timelines || {};
+        window.__timelines['00-hook-crm'] = tl;
+      })();
+    </script>
+  </div>
+</template>

@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <title>Digiwell — AI Newsletters</title>
+    <script src="assets/gsap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=block" rel="stylesheet" />
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1920px; height: 1080px; overflow: hidden; background: #07080c; color: #fff; }
+      .beat-layer { position: absolute; top: 0; left: 0; width: 1920px; height: 1080px; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="digiwell-newsletters" data-start="0" data-duration="12" data-width="1920" data-height="1080">
+      <div class="beat-layer"
+        data-composition-id="00-hook"
+        data-composition-src="compositions/00-hook.html"
+        data-start="0" data-duration="3" data-track-index="0"
+        data-width="1920" data-height="1080"></div>
+
+      <div class="beat-layer"
+        data-composition-id="01-newsletter"
+        data-composition-src="compositions/01-newsletter.html"
+        data-start="3" data-duration="6" data-track-index="0"
+        data-width="1920" data-height="1080"></div>
+
+      <div class="beat-layer"
+        data-composition-id="02-cta"
+        data-composition-src="compositions/02-cta.html"
+        data-start="9" data-duration="3" data-track-index="0"
+        data-width="1920" data-height="1080"></div>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      tl.to({}, { duration: 12 }, 0);
+      window.__timelines["digiwell-newsletters"] = tl;
+    </script>
+  </body>
+</html>
