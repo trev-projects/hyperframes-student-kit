@@ -1,0 +1,188 @@
+<template id="00-walk-in-template">
+  <script src="assets/gsap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=block" rel="stylesheet" />
+
+  <div data-composition-id="00-walk-in" data-start="0" data-duration="3" data-width="1920" data-height="1080">
+    <div class="stage">
+      <div class="grid-floor"></div>
+
+      <!-- Scattered chaos: drifting tool chips -->
+      <div class="chaos" id="chaos-tools">
+        <div class="tool t1">ChatGPT</div>
+        <div class="tool t2">Claude</div>
+        <div class="tool t3">Notion AI</div>
+        <div class="tool t4">Perplexity</div>
+        <div class="tool t5">Gemini</div>
+        <div class="tool t6">v0</div>
+        <div class="tool t7">Cursor</div>
+        <div class="tool t8">Make.com</div>
+        <div class="tool t9">Zapier</div>
+        <div class="tool t10">Lovable</div>
+      </div>
+
+      <div class="masthead">
+        <span class="mark-name">DIGIWELL</span>
+        <span class="mark-dot">·</span>
+        <span class="mark-tag">MARKETING</span>
+      </div>
+
+      <div class="hero">
+        <div class="eyebrow">RIGHT NOW</div>
+        <div class="line" data-split>WALK IN WITH</div>
+        <div class="line-hero" data-split>AN IDEA.</div>
+      </div>
+
+      <div class="whip-streak"></div>
+      <div class="vignette"></div>
+      <div class="grain"></div>
+    </div>
+
+    <style>
+      [data-composition-id="00-walk-in"] {
+        position: absolute; inset: 0; overflow: hidden;
+        background: #07080c; font-family: "Inter", sans-serif;
+      }
+      [data-composition-id="00-walk-in"] .stage { position: absolute; inset: 0; }
+      [data-composition-id="00-walk-in"] .grid-floor {
+        position: absolute; inset: 0;
+        transform: perspective(900px) rotateX(60deg) translateY(25%);
+        background:
+          repeating-linear-gradient(0deg,  rgba(249,167,44,0.04) 0 1px, transparent 1px 80px),
+          repeating-linear-gradient(90deg, rgba(249,167,44,0.04) 0 1px, transparent 1px 80px);
+        background-color: #07080c;
+      }
+      [data-composition-id="00-walk-in"] .chaos {
+        position: absolute; inset: 0;
+        pointer-events: none;
+      }
+      [data-composition-id="00-walk-in"] .tool {
+        position: absolute;
+        padding: 10px 18px;
+        background: rgba(255,255,255,0.04);
+        border: 1px solid rgba(255,255,255,0.18);
+        border-radius: 8px;
+        color: rgba(255,255,255,0.55);
+        font-size: 22px; font-weight: 500;
+        letter-spacing: 0.02em;
+        opacity: 0;
+        will-change: transform, opacity;
+        white-space: nowrap;
+      }
+      [data-composition-id="00-walk-in"] .t1  { left: 8%;  top: 14%; transform: rotate(-6deg); }
+      [data-composition-id="00-walk-in"] .t2  { left: 78%; top: 11%; transform: rotate(4deg); }
+      [data-composition-id="00-walk-in"] .t3  { left: 4%;  top: 32%; transform: rotate(3deg); }
+      [data-composition-id="00-walk-in"] .t4  { left: 82%; top: 30%; transform: rotate(-3deg); }
+      [data-composition-id="00-walk-in"] .t5  { left: 10%; top: 78%; transform: rotate(5deg); }
+      [data-composition-id="00-walk-in"] .t6  { left: 85%; top: 60%; transform: rotate(-4deg); }
+      [data-composition-id="00-walk-in"] .t7  { left: 6%;  top: 60%; transform: rotate(2deg); }
+      [data-composition-id="00-walk-in"] .t8  { left: 80%; top: 82%; transform: rotate(-2deg); }
+      [data-composition-id="00-walk-in"] .t9  { left: 14%; top: 88%; transform: rotate(-6deg); }
+      [data-composition-id="00-walk-in"] .t10 { left: 70%; top: 88%; transform: rotate(5deg); }
+
+      [data-composition-id="00-walk-in"] .masthead {
+        position: absolute; top: 64px; right: 100px;
+        display: flex; align-items: center; gap: 12px;
+        opacity: 0;
+      }
+      [data-composition-id="00-walk-in"] .mark-name,
+      [data-composition-id="00-walk-in"] .mark-tag {
+        font-weight: 600; font-size: 18px;
+        letter-spacing: 0.30em; color: #f9a72c; opacity: 0.85;
+      }
+      [data-composition-id="00-walk-in"] .mark-dot { color: #f9a72c; opacity: 0.45; }
+
+      [data-composition-id="00-walk-in"] .hero {
+        position: absolute; top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+      }
+      [data-composition-id="00-walk-in"] .eyebrow {
+        font-family: "JetBrains Mono", monospace; font-weight: 700;
+        font-size: 24px; letter-spacing: 0.38em;
+        color: rgba(255,255,255,0.45); opacity: 0;
+        margin-bottom: 22px;
+      }
+      [data-composition-id="00-walk-in"] .line {
+        font-weight: 800; font-size: 100px;
+        letter-spacing: -0.022em; line-height: 1.0;
+        color: rgba(255,255,255,0.85);
+        white-space: nowrap;
+      }
+      [data-composition-id="00-walk-in"] .line-hero {
+        font-weight: 800; font-size: 180px;
+        letter-spacing: -0.03em; line-height: 0.96;
+        color: #f9a72c;
+        text-shadow: 0 0 32px rgba(249,167,44,0.70), 0 0 80px rgba(249,167,44,0.30);
+        white-space: nowrap;
+        margin-top: 4px;
+      }
+      [data-composition-id="00-walk-in"] .line .word,
+      [data-composition-id="00-walk-in"] .line-hero .word { display: inline-block; white-space: nowrap; }
+      [data-composition-id="00-walk-in"] .line .ch,
+      [data-composition-id="00-walk-in"] .line-hero .ch {
+        display: inline-block; opacity: 0; transform: translateY(40px);
+        will-change: opacity, transform;
+      }
+      [data-composition-id="00-walk-in"] .vignette {
+        position: absolute; inset: 0; pointer-events: none;
+        background: radial-gradient(ellipse at center, transparent 25%, rgba(0,0,0,0.90) 95%);
+        opacity: 0.72;
+      }
+      [data-composition-id="00-walk-in"] .grain {
+        position: absolute; inset: 0; pointer-events: none; opacity: 0.07;
+        background-image: radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px);
+        background-size: 3px 3px;
+      }
+      [data-composition-id="00-walk-in"] .whip-streak {
+        position: absolute; top: 50%; left: 0;
+        width: 70%; height: 14px;
+        background: linear-gradient(90deg, transparent 0%, rgba(249,167,44,0.95) 50%, transparent 100%);
+        filter: blur(10px); transform: translate(-150%, -50%);
+        opacity: 0; z-index: 30;
+      }
+    </style>
+
+    <script>
+      (() => {
+        const SLOT = 3;
+        const sel = (q) => `[data-composition-id="00-walk-in"] ${q}`;
+
+        document.querySelectorAll(sel('[data-split]')).forEach((node) => {
+          const words = node.textContent.split(' ');
+          node.innerHTML = words.map((w) =>
+            `<span class="word">${w.split('').map((c) => `<span class="ch">${c}</span>`).join('')}</span>`
+          ).join(' ');
+        });
+
+        const tl = gsap.timeline({ paused: true });
+
+        tl.to(sel('.grid-floor'), { backgroundPositionY: '-50px', duration: SLOT, ease: 'none' }, 0);
+
+        tl.fromTo(sel('.masthead'), { x: 10, opacity: 0 }, { x: 0, opacity: 1, duration: 0.40, ease: 'power3.out' }, 0.05);
+
+        // Tools scatter in, jitter, then drift
+        tl.to(sel('.tool'),
+          { opacity: 0.9, duration: 0.35, ease: 'power2.out',
+            stagger: { each: 0.030, from: 'random' } }, 0.10);
+        tl.to(sel('.tool'),
+          { y: '+=12', duration: 1.8, yoyo: true, repeat: 1, ease: 'sine.inOut',
+            stagger: { each: 0.030, from: 'random' } }, 0.50);
+
+        // Hero copy
+        tl.fromTo(sel('.eyebrow'), { y: -6, opacity: 0 }, { y: 0, opacity: 0.85, duration: 0.30, ease: 'power3.out' }, 0.20);
+        tl.to(sel('.line .ch'), { y: 0, opacity: 1, duration: 0.35, ease: 'power3.out', stagger: 0.016 }, 0.40);
+        tl.to(sel('.line-hero .ch'), { y: 0, opacity: 1, duration: 0.45, ease: 'back.out(1.6)', stagger: 0.024 }, 0.85);
+
+        // Whip exit
+        tl.set(sel('.whip-streak'), { opacity: 1 }, 2.60);
+        tl.fromTo(sel('.whip-streak'),
+          { xPercent: -150, scaleX: 0.5 },
+          { xPercent: 250, scaleX: 1.5, duration: 0.38, ease: 'power3.in' }, 2.60);
+
+        tl.to({}, { duration: SLOT }, 0);
+        window.__timelines = window.__timelines || {};
+        window.__timelines['00-walk-in'] = tl;
+      })();
+    </script>
+  </div>
+</template>

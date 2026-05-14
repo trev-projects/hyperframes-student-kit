@@ -1,0 +1,215 @@
+<template id="01-five-template">
+  <script src="assets/gsap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=block" rel="stylesheet" />
+
+  <div data-composition-id="01-five" data-start="0" data-duration="7" data-width="1920" data-height="1080">
+    <div class="stage">
+      <div class="grid-floor"></div>
+
+      <div class="progress-rail">
+        <div class="progress-fill"></div>
+        <div class="tick t-1"></div>
+        <div class="tick t-2"></div>
+        <div class="tick t-3"></div>
+        <div class="tick t-4"></div>
+        <div class="tick t-5"></div>
+      </div>
+
+      <div class="item item-1">
+        <div class="num">01</div>
+        <div class="lead">A WORKING</div>
+        <div class="title">AI SETUP</div>
+        <div class="sub">Your business context loaded in</div>
+      </div>
+
+      <div class="item item-2">
+        <div class="num">02</div>
+        <div class="lead">SKILLS + AGENTS</div>
+        <div class="title">FRAMEWORK</div>
+        <div class="sub">Tailored to your actual workflows</div>
+      </div>
+
+      <div class="item item-3">
+        <div class="num">03</div>
+        <div class="lead">A REPEATABLE</div>
+        <div class="title">SYSTEM</div>
+        <div class="sub">Write, research, execute &mdash; faster</div>
+      </div>
+
+      <div class="item item-4">
+        <div class="num">04</div>
+        <div class="lead">YOUR PERSONAL</div>
+        <div class="title">TOOL GUIDE</div>
+        <div class="sub">What's worth paying for, what to skip</div>
+      </div>
+
+      <div class="item item-5">
+        <div class="num">05</div>
+        <div class="lead">STARTER</div>
+        <div class="title">PROMPTS</div>
+        <div class="sub">Take them home, use them this week</div>
+      </div>
+
+      <div class="whip-streak"></div>
+      <div class="vignette"></div>
+      <div class="grain"></div>
+    </div>
+
+    <style>
+      [data-composition-id="01-five"] {
+        position: absolute; inset: 0; overflow: hidden;
+        background: #07080c; font-family: "Inter", sans-serif;
+      }
+      [data-composition-id="01-five"] .stage { position: absolute; inset: 0; }
+      [data-composition-id="01-five"] .grid-floor {
+        position: absolute; inset: 0;
+        transform: perspective(900px) rotateX(60deg) translateY(25%);
+        background:
+          repeating-linear-gradient(0deg,  rgba(249,167,44,0.05) 0 1px, transparent 1px 80px),
+          repeating-linear-gradient(90deg, rgba(249,167,44,0.05) 0 1px, transparent 1px 80px);
+        background-color: #07080c;
+      }
+      [data-composition-id="01-five"] .progress-rail {
+        position: absolute; top: 120px; left: 50%;
+        transform: translateX(-50%);
+        width: 1500px; height: 4px;
+        background: rgba(249,167,44,0.16);
+        border-radius: 2px;
+        overflow: visible;
+      }
+      [data-composition-id="01-five"] .progress-fill {
+        position: absolute; top: 0; left: 0;
+        height: 100%; width: 0%;
+        background: linear-gradient(90deg, #f9a72c, #ffd480);
+        border-radius: 2px;
+        box-shadow: 0 0 14px rgba(249,167,44,0.65);
+      }
+      [data-composition-id="01-five"] .tick {
+        position: absolute; top: -6px;
+        width: 16px; height: 16px;
+        border-radius: 50%;
+        background: #07080c;
+        border: 2px solid rgba(249,167,44,0.45);
+        transform: translateX(-50%);
+      }
+      [data-composition-id="01-five"] .tick.t-1 { left: 0%; }
+      [data-composition-id="01-five"] .tick.t-2 { left: 25%; }
+      [data-composition-id="01-five"] .tick.t-3 { left: 50%; }
+      [data-composition-id="01-five"] .tick.t-4 { left: 75%; }
+      [data-composition-id="01-five"] .tick.t-5 { left: 100%; }
+      [data-composition-id="01-five"] .tick.lit {
+        background: #f9a72c;
+        border-color: #f9a72c;
+        box-shadow: 0 0 16px rgba(249,167,44,0.8);
+      }
+
+      [data-composition-id="01-five"] .item {
+        position: absolute; top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        opacity: 0;
+        width: 1700px;
+      }
+      [data-composition-id="01-five"] .num {
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 700; font-size: 36px;
+        color: #f9a72c;
+        letter-spacing: 0.20em;
+        text-shadow: 0 0 14px rgba(249,167,44,0.45);
+        margin-bottom: 22px;
+      }
+      [data-composition-id="01-five"] .lead {
+        font-weight: 700; font-size: 70px;
+        color: rgba(255,255,255,0.78);
+        letter-spacing: -0.015em;
+        line-height: 1.0;
+        margin-bottom: 6px;
+      }
+      [data-composition-id="01-five"] .title {
+        font-weight: 800; font-size: 200px;
+        letter-spacing: -0.035em;
+        line-height: 0.96;
+        color: #f9a72c;
+        text-shadow: 0 0 36px rgba(249,167,44,0.80), 0 0 90px rgba(249,167,44,0.35);
+      }
+      [data-composition-id="01-five"] .sub {
+        margin-top: 26px;
+        font-weight: 500; font-size: 30px;
+        color: rgba(255,255,255,0.62);
+        letter-spacing: 0.01em;
+      }
+
+      [data-composition-id="01-five"] .vignette {
+        position: absolute; inset: 0; pointer-events: none;
+        background: radial-gradient(ellipse at center, transparent 28%, rgba(0,0,0,0.90) 95%);
+        opacity: 0.62;
+      }
+      [data-composition-id="01-five"] .grain {
+        position: absolute; inset: 0; pointer-events: none; opacity: 0.07;
+        background-image: radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px);
+        background-size: 3px 3px;
+      }
+      [data-composition-id="01-five"] .whip-streak {
+        position: absolute; top: 50%; left: 0;
+        width: 70%; height: 14px;
+        background: linear-gradient(90deg, transparent 0%, rgba(249,167,44,0.95) 50%, transparent 100%);
+        filter: blur(10px); transform: translate(-150%, -50%);
+        opacity: 0; z-index: 30;
+      }
+    </style>
+
+    <script>
+      (() => {
+        const SLOT = 7;
+        const sel = (q) => `[data-composition-id="01-five"] ${q}`;
+        const tl = gsap.timeline({ paused: true });
+
+        tl.to(sel('.grid-floor'), { backgroundPositionY: '-100px', duration: SLOT, ease: 'none' }, 0);
+
+        // Progress rail fills smoothly across the 5 items
+        tl.to(sel('.progress-fill'), { width: '100%', duration: 6.50, ease: 'none' }, 0);
+
+        // Light up ticks at each item start
+        const itemStarts = [0.05, 1.35, 2.65, 3.95, 5.25];
+        ['.t-1', '.t-2', '.t-3', '.t-4', '.t-5'].forEach((t, i) => {
+          tl.call(() => {
+            const el = document.querySelector(sel(t));
+            if (el) el.classList.add('lit');
+          }, [], itemStarts[i]);
+        });
+
+        // Items flash through — each item stays visible until the next one starts
+        const items = ['.item-1', '.item-2', '.item-3', '.item-4', '.item-5'];
+        items.forEach((cls, i) => {
+          const start = itemStarts[i];
+          tl.fromTo(sel(cls + ' .num'),
+            { y: -6, opacity: 0 }, { y: 0, opacity: 0.95, duration: 0.18, ease: 'power3.out' }, start);
+          tl.fromTo(sel(cls + ' .lead'),
+            { y: 10, opacity: 0 }, { y: 0, opacity: 0.85, duration: 0.22, ease: 'power3.out' }, start);
+          tl.fromTo(sel(cls + ' .title'),
+            { y: 22, opacity: 0 }, { y: 0, opacity: 1, duration: 0.32, ease: 'back.out(1.4)' }, start + 0.04);
+          tl.fromTo(sel(cls + ' .sub'),
+            { y: 8, opacity: 0 }, { y: 0, opacity: 1, duration: 0.22, ease: 'power3.out' }, start + 0.10);
+
+          // Item visible immediately at start
+          tl.set(sel(cls), { opacity: 1 }, start);
+
+          // Hide previous item instantly when this one starts (cross-cut, no dead-air gap)
+          if (i > 0) {
+            tl.set(sel(items[i - 1]), { opacity: 0 }, start);
+          }
+        });
+
+        // Whip exit
+        tl.set(sel('.whip-streak'), { opacity: 1 }, 6.62);
+        tl.fromTo(sel('.whip-streak'),
+          { xPercent: -150, scaleX: 0.5 },
+          { xPercent: 250, scaleX: 1.5, duration: 0.38, ease: 'power3.in' }, 6.62);
+
+        tl.to({}, { duration: SLOT }, 0);
+        window.__timelines = window.__timelines || {};
+        window.__timelines['01-five'] = tl;
+      })();
+    </script>
+  </div>
+</template>

@@ -1,0 +1,167 @@
+<template id="00-hook-list-template">
+  <script src="assets/gsap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=block" rel="stylesheet" />
+
+  <div data-composition-id="00-hook-list" data-start="0" data-duration="2.5" data-width="1920" data-height="1080">
+    <div class="stage">
+      <div class="grid-floor"></div>
+      <div class="particles" id="p-list"></div>
+
+      <div class="masthead">
+        <span class="mark-name">DIGIWELL</span>
+        <span class="mark-dot">·</span>
+        <span class="mark-tag">MARKETING</span>
+      </div>
+
+      <div class="hero">
+        <div class="numeral">5</div>
+        <div class="right-stack">
+          <div class="line-1" data-split>THINGS YOU LEAVE</div>
+          <div class="line-2" data-split>THE WORKSHOP WITH.</div>
+        </div>
+      </div>
+
+      <div class="whip-streak"></div>
+      <div class="vignette"></div>
+      <div class="grain"></div>
+    </div>
+
+    <style>
+      [data-composition-id="00-hook-list"] {
+        position: absolute; inset: 0; overflow: hidden;
+        background: #07080c; font-family: "Inter", sans-serif;
+      }
+      [data-composition-id="00-hook-list"] .stage { position: absolute; inset: 0; }
+      [data-composition-id="00-hook-list"] .grid-floor {
+        position: absolute; inset: 0;
+        transform: perspective(900px) rotateX(60deg) translateY(25%);
+        background:
+          repeating-linear-gradient(0deg,  rgba(249,167,44,0.05) 0 1px, transparent 1px 80px),
+          repeating-linear-gradient(90deg, rgba(249,167,44,0.05) 0 1px, transparent 1px 80px);
+        background-color: #07080c;
+      }
+      [data-composition-id="00-hook-list"] .particles {
+        position: absolute; top: 50%; left: 50%;
+        width: 1400px; height: 1400px;
+        transform: translate(-50%, -50%);
+      }
+      [data-composition-id="00-hook-list"] .particle {
+        position: absolute; border-radius: 50%;
+        background: radial-gradient(circle, #ffd480 0%, #f9a72c 40%, transparent 75%);
+        filter: blur(1px); opacity: 0;
+      }
+      [data-composition-id="00-hook-list"] .masthead {
+        position: absolute; top: 64px; right: 100px;
+        display: flex; align-items: center; gap: 12px;
+        opacity: 0;
+      }
+      [data-composition-id="00-hook-list"] .mark-name,
+      [data-composition-id="00-hook-list"] .mark-tag {
+        font-weight: 600; font-size: 18px;
+        letter-spacing: 0.30em; color: #f9a72c; opacity: 0.85;
+      }
+      [data-composition-id="00-hook-list"] .mark-dot { color: #f9a72c; opacity: 0.45; }
+
+      [data-composition-id="00-hook-list"] .hero {
+        position: absolute; top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+        display: flex; align-items: center; gap: 60px;
+      }
+      [data-composition-id="00-hook-list"] .numeral {
+        font-weight: 800; font-size: 440px;
+        line-height: 0.85; letter-spacing: -0.06em;
+        color: #f9a72c;
+        text-shadow: 0 0 50px rgba(249,167,44,0.85), 0 0 120px rgba(249,167,44,0.40);
+        opacity: 0; transform: scale(0.7);
+      }
+      [data-composition-id="00-hook-list"] .right-stack {
+        text-align: left;
+      }
+      [data-composition-id="00-hook-list"] .line-1,
+      [data-composition-id="00-hook-list"] .line-2 {
+        font-weight: 800; font-size: 80px;
+        letter-spacing: -0.02em; line-height: 1.0;
+        color: rgba(255,255,255,0.92);
+        white-space: nowrap;
+      }
+      [data-composition-id="00-hook-list"] .line-2 { color: #fff; margin-top: 4px; }
+      [data-composition-id="00-hook-list"] .line-1 .word,
+      [data-composition-id="00-hook-list"] .line-2 .word { display: inline-block; white-space: nowrap; }
+      [data-composition-id="00-hook-list"] .line-1 .ch,
+      [data-composition-id="00-hook-list"] .line-2 .ch {
+        display: inline-block; opacity: 0; transform: translateY(30px);
+        will-change: opacity, transform;
+      }
+      [data-composition-id="00-hook-list"] .vignette {
+        position: absolute; inset: 0; pointer-events: none;
+        background: radial-gradient(ellipse at center, transparent 28%, rgba(0,0,0,0.92) 95%);
+        opacity: 0.70;
+      }
+      [data-composition-id="00-hook-list"] .grain {
+        position: absolute; inset: 0; pointer-events: none; opacity: 0.07;
+        background-image: radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px);
+        background-size: 3px 3px;
+      }
+      [data-composition-id="00-hook-list"] .whip-streak {
+        position: absolute; top: 50%; left: 0;
+        width: 70%; height: 14px;
+        background: linear-gradient(90deg, transparent 0%, rgba(249,167,44,0.95) 50%, transparent 100%);
+        filter: blur(10px); transform: translate(-150%, -50%);
+        opacity: 0; z-index: 30;
+      }
+    </style>
+
+    <script>
+      (() => {
+        const SLOT = 2.5;
+        const sel = (q) => `[data-composition-id="00-hook-list"] ${q}`;
+
+        document.querySelectorAll(sel('[data-split]')).forEach((node) => {
+          const words = node.textContent.split(' ');
+          node.innerHTML = words.map((w) =>
+            `<span class="word">${w.split('').map((c) => `<span class="ch">${c}</span>`).join('')}</span>`
+          ).join(' ');
+        });
+
+        const root = document.querySelector(sel('.particles'));
+        if (root) {
+          for (let i = 0; i < 36; i++) {
+            const p = document.createElement('div');
+            p.className = 'particle';
+            const angle = (i * 137.5) * Math.PI / 180;
+            const r = 280 + 400 * Math.abs(Math.sin(i * 0.41 + 0.7));
+            const cx = 700 + Math.cos(angle) * r;
+            const cy = 700 + Math.sin(angle) * r * 0.55;
+            const size = 3 + 5 * Math.abs(Math.cos(i * 0.89));
+            p.style.cssText = `left:${cx - size/2}px;top:${cy - size/2}px;width:${size}px;height:${size}px`;
+            root.appendChild(p);
+          }
+        }
+
+        const tl = gsap.timeline({ paused: true });
+
+        tl.to(sel('.grid-floor'), { backgroundPositionY: '-50px', duration: SLOT, ease: 'none' }, 0);
+        tl.to(sel('.particles'), { rotation: -25, duration: SLOT, ease: 'none', transformOrigin: '50% 50%' }, 0);
+        tl.to(sel('.particle'), { opacity: 1, duration: 0.5, ease: 'power2.out', stagger: { each: 0.012, from: 'center' } }, 0);
+
+        tl.fromTo(sel('.masthead'), { x: 10, opacity: 0 }, { x: 0, opacity: 1, duration: 0.40, ease: 'power3.out' }, 0.05);
+
+        // Numeral pops hard
+        tl.to(sel('.numeral'), { opacity: 1, scale: 1, duration: 0.55, ease: 'back.out(2.0)' }, 0.10);
+
+        // Lines cascade
+        tl.to(sel('.line-1 .ch'), { y: 0, opacity: 1, duration: 0.35, ease: 'power3.out', stagger: 0.014 }, 0.55);
+        tl.to(sel('.line-2 .ch'), { y: 0, opacity: 1, duration: 0.35, ease: 'power3.out', stagger: 0.014 }, 0.80);
+
+        tl.set(sel('.whip-streak'), { opacity: 1 }, 2.10);
+        tl.fromTo(sel('.whip-streak'),
+          { xPercent: -150, scaleX: 0.5 },
+          { xPercent: 250, scaleX: 1.5, duration: 0.38, ease: 'power3.in' }, 2.10);
+
+        tl.to({}, { duration: SLOT }, 0);
+        window.__timelines = window.__timelines || {};
+        window.__timelines['00-hook-list'] = tl;
+      })();
+    </script>
+  </div>
+</template>

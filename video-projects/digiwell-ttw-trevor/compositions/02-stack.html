@@ -1,0 +1,169 @@
+<template id="02-stack-template">
+  <script src="assets/gsap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=block" rel="stylesheet" />
+
+  <div data-composition-id="02-stack" data-start="0" data-duration="3" data-width="1920" data-height="1080">
+    <div class="stage">
+      <div class="grid-floor"></div>
+
+      <div class="eyebrow">WHAT HE RUNS ON AI</div>
+
+      <div class="cards-row">
+        <div class="card card-a">
+          <div class="card-icon">
+            <svg viewBox="0 0 48 48" fill="none">
+              <path d="M6 36L18 24L26 32L42 12" stroke="#f9a72c" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="42" cy="12" r="3" fill="#f9a72c"/>
+            </svg>
+          </div>
+          <div class="card-title">CLIENT</div>
+          <div class="card-title-2">MARKETING</div>
+          <div class="card-tag">Systems · funnels · attribution</div>
+        </div>
+
+        <div class="card card-b">
+          <div class="card-icon">
+            <svg viewBox="0 0 48 48" fill="none">
+              <rect x="6" y="10" width="36" height="28" rx="3" stroke="#f9a72c" stroke-width="2.5"/>
+              <path d="M6 16L24 28L42 16" stroke="#f9a72c" stroke-width="2.5" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="card-title">NEWSLETTER</div>
+          <div class="card-title-2">INFRASTRUCTURE</div>
+          <div class="card-tag">Capture · nurture · scale</div>
+        </div>
+
+        <div class="card card-c">
+          <div class="card-icon">
+            <svg viewBox="0 0 48 48" fill="none">
+              <circle cx="24" cy="14" r="6" stroke="#f9a72c" stroke-width="2.5"/>
+              <path d="M14 38c0-5.523 4.477-10 10-10s10 4.477 10 10" stroke="#f9a72c" stroke-width="2.5" stroke-linecap="round"/>
+              <path d="M24 22L24 38M14 38L34 38" stroke="#f9a72c" stroke-width="2.5" stroke-linecap="round" opacity="0.4"/>
+            </svg>
+          </div>
+          <div class="card-title">SALES</div>
+          <div class="card-title-2">OPERATIONS</div>
+          <div class="card-tag">Lead score · outbound · follow-up</div>
+        </div>
+      </div>
+
+      <div class="footer-note">Now showing you how, live.</div>
+
+      <div class="vignette"></div>
+      <div class="grain"></div>
+      <div class="whip-streak"></div>
+    </div>
+
+    <style>
+      [data-composition-id="02-stack"] {
+        position: absolute; inset: 0; overflow: hidden;
+        background: #07080c; font-family: "Inter", sans-serif;
+      }
+      [data-composition-id="02-stack"] .stage { position: absolute; inset: 0; }
+      [data-composition-id="02-stack"] .grid-floor {
+        position: absolute; inset: 0;
+        transform: perspective(900px) rotateX(60deg) translateY(25%);
+        background:
+          repeating-linear-gradient(0deg,  rgba(249,167,44,0.05) 0 1px, transparent 1px 80px),
+          repeating-linear-gradient(90deg, rgba(249,167,44,0.05) 0 1px, transparent 1px 80px);
+        background-color: #07080c;
+      }
+      [data-composition-id="02-stack"] .eyebrow {
+        position: absolute; top: 100px; left: 50%;
+        transform: translateX(-50%);
+        font-family: "JetBrains Mono", monospace; font-weight: 700;
+        font-size: 26px; letter-spacing: 0.38em;
+        color: #f9a72c; opacity: 0;
+        text-shadow: 0 0 14px rgba(249,167,44,0.40);
+      }
+      [data-composition-id="02-stack"] .cards-row {
+        position: absolute; top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+        display: flex; gap: 36px;
+        width: 1660px;
+      }
+      [data-composition-id="02-stack"] .card {
+        flex: 1;
+        background: rgba(255,255,255,0.03);
+        border: 1px solid rgba(249,167,44,0.22);
+        border-radius: 20px;
+        padding: 48px 36px 40px;
+        display: flex; flex-direction: column; align-items: flex-start;
+        gap: 0;
+        box-shadow: 0 0 60px rgba(249,167,44,0.06), inset 0 1px 0 rgba(255,255,255,0.05);
+        opacity: 0; transform: translateY(40px);
+      }
+      [data-composition-id="02-stack"] .card-icon {
+        width: 56px; height: 56px; margin-bottom: 24px; opacity: 0.95;
+      }
+      [data-composition-id="02-stack"] .card-icon svg { width: 100%; height: 100%; }
+      [data-composition-id="02-stack"] .card-title,
+      [data-composition-id="02-stack"] .card-title-2 {
+        font-weight: 800; font-size: 44px;
+        letter-spacing: -0.015em;
+        color: #fff; line-height: 1.0;
+      }
+      [data-composition-id="02-stack"] .card-title { opacity: 0.95; }
+      [data-composition-id="02-stack"] .card-title-2 { color: #f9a72c; margin-top: 4px; text-shadow: 0 0 14px rgba(249,167,44,0.35); }
+      [data-composition-id="02-stack"] .card-tag {
+        margin-top: 18px;
+        font-size: 20px; color: rgba(255,255,255,0.55);
+        font-weight: 500;
+      }
+      [data-composition-id="02-stack"] .footer-note {
+        position: absolute; bottom: 110px; left: 50%;
+        transform: translateX(-50%);
+        font-weight: 600; font-size: 28px;
+        color: rgba(255,255,255,0.75);
+        letter-spacing: -0.005em;
+        opacity: 0;
+      }
+      [data-composition-id="02-stack"] .vignette {
+        position: absolute; inset: 0; pointer-events: none;
+        background: radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.90) 95%);
+        opacity: 0.62;
+      }
+      [data-composition-id="02-stack"] .grain {
+        position: absolute; inset: 0; pointer-events: none; opacity: 0.07;
+        background-image: radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px);
+        background-size: 3px 3px;
+      }
+      [data-composition-id="02-stack"] .whip-streak {
+        position: absolute; top: 50%; left: 0;
+        width: 70%; height: 14px;
+        background: linear-gradient(90deg, transparent 0%, rgba(249,167,44,0.95) 50%, transparent 100%);
+        filter: blur(10px); transform: translate(-150%, -50%);
+        opacity: 0; z-index: 30;
+      }
+    </style>
+
+    <script>
+      (() => {
+        const SLOT = 3;
+        const sel = (q) => `[data-composition-id="02-stack"] ${q}`;
+        const tl = gsap.timeline({ paused: true });
+
+        tl.to(sel('.grid-floor'), { backgroundPositionY: '-60px', duration: SLOT, ease: 'none' }, 0);
+
+        tl.fromTo(sel('.eyebrow'),
+          { y: -8, opacity: 0 },
+          { y: 0, opacity: 0.95, duration: 0.35, ease: 'power3.out' }, 0.05);
+
+        tl.to(sel('.card-a'), { y: 0, opacity: 1, duration: 0.45, ease: 'back.out(1.2)' }, 0.20);
+        tl.to(sel('.card-b'), { y: 0, opacity: 1, duration: 0.45, ease: 'back.out(1.2)' }, 0.42);
+        tl.to(sel('.card-c'), { y: 0, opacity: 1, duration: 0.45, ease: 'back.out(1.2)' }, 0.64);
+
+        tl.fromTo(sel('.footer-note'), { y: 10, opacity: 0 }, { y: 0, opacity: 1, duration: 0.40, ease: 'power3.out' }, 1.50);
+
+        tl.set(sel('.whip-streak'), { opacity: 1 }, 2.62);
+        tl.fromTo(sel('.whip-streak'),
+          { xPercent: -150, scaleX: 0.5 },
+          { xPercent: 250, scaleX: 1.5, duration: 0.38, ease: 'power3.in' }, 2.62);
+
+        tl.to({}, { duration: SLOT }, 0);
+        window.__timelines = window.__timelines || {};
+        window.__timelines['02-stack'] = tl;
+      })();
+    </script>
+  </div>
+</template>
