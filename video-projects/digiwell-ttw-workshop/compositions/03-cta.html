@@ -2,7 +2,7 @@
   <script src="assets/gsap.min.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=block" rel="stylesheet" />
 
-  <div data-composition-id="03-cta" data-start="0" data-duration="2.5" data-width="1920" data-height="1080">
+  <div data-composition-id="03-cta" data-start="0" data-duration="3.5" data-width="1920" data-height="1080">
     <div class="stage">
       <div class="grid-floor"></div>
       <div class="particles" id="particles-cta"></div>
@@ -130,7 +130,7 @@
 
     <script>
       (() => {
-        const SLOT = 2.5;
+        const SLOT = 3.5;
         const sel = (q) => `[data-composition-id="03-cta"] ${q}`;
 
         // Particles
@@ -156,14 +156,19 @@
         tl.to(sel('.particles'), { rotation: -25, duration: SLOT, ease: 'none', transformOrigin: '50% 50%' }, 0);
         tl.to(sel('.particle'), { opacity: 1, duration: 0.7, ease: 'power2.out', stagger: { each: 0.010, from: 'center' } }, 0);
 
-        tl.fromTo(sel('.event-label'), { y: -8, opacity: 0 }, { y: 0, opacity: 0.90, duration: 0.38, ease: 'power3.out' }, 0.08);
-        tl.fromTo(sel('.wordmark'), { opacity: 0, scale: 0.96 }, { opacity: 1, scale: 1, duration: 0.65, ease: 'power3.out' }, 0.22);
-        tl.fromTo(sel('.tagline'), { opacity: 0, y: 6 }, { opacity: 0.85, y: 0, duration: 0.50, ease: 'power3.out' }, 0.75);
-        tl.fromTo(sel('.hosted'), { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.45, ease: 'power3.out' }, 1.05);
-        tl.fromTo(sel('.button'), { opacity: 0, y: 10, scale: 0.96 }, { opacity: 1, y: 0, scale: 1, duration: 0.50, ease: 'back.out(1.4)' }, 1.35);
+        tl.fromTo(sel('.event-label'), { y: -8, opacity: 0 }, { y: 0, opacity: 0.90, duration: 0.32, ease: 'power3.out' }, 0.05);
+        tl.fromTo(sel('.wordmark'), { opacity: 0, scale: 0.96 }, { opacity: 1, scale: 1, duration: 0.55, ease: 'power3.out' }, 0.15);
+        tl.fromTo(sel('.tagline'), { opacity: 0, y: 6 }, { opacity: 0.85, y: 0, duration: 0.42, ease: 'power3.out' }, 0.55);
+        tl.fromTo(sel('.hosted'), { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.38, ease: 'power3.out' }, 0.80);
+        tl.fromTo(sel('.button'), { opacity: 0, y: 10, scale: 0.96 }, { opacity: 1, y: 0, scale: 1, duration: 0.45, ease: 'back.out(1.4)' }, 1.05);
 
-        // Shimmer sweep
-        tl.fromTo(sel('.shimmer'), { left: '-40%' }, { left: '100%', duration: 0.70, ease: 'power2.inOut' }, 1.90);
+        // Shimmer sweep across the wordmark
+        tl.fromTo(sel('.shimmer'), { left: '-40%' }, { left: '100%', duration: 0.70, ease: 'power2.inOut' }, 1.55);
+
+        // Breathing pulse on the button for the held tail
+        tl.to(sel('.button'),
+          { scale: 1.04, boxShadow: '0 0 56px rgba(249,167,44,0.65), inset 0 1px 0 rgba(255,255,255,0.5)',
+            duration: 0.60, yoyo: true, repeat: 2, ease: 'sine.inOut' }, 2.30);
 
         tl.to({}, { duration: SLOT }, 0);
         window.__timelines = window.__timelines || {};

@@ -25,7 +25,7 @@
       id="root"
       data-composition-id="digiwell-ttw-workshop"
       data-start="0"
-      data-duration="12"
+      data-duration="13"
       data-width="1920"
       data-height="1080"
     >
@@ -50,18 +50,23 @@
         data-start="6" data-duration="3.5" data-track-index="0"
         data-width="1920" data-height="1080"></div>
 
-      <!-- Beat 03 — CTA hold (9.5–12s) -->
+      <!-- Beat 03 — CTA hold (9.5–13s) — extended +1s for proper breathe -->
       <div class="beat-layer"
         data-composition-id="03-cta"
         data-composition-src="compositions/03-cta.html"
-        data-start="9.5" data-duration="2.5" data-track-index="0"
+        data-start="9.5" data-duration="3.5" data-track-index="0"
         data-width="1920" data-height="1080"></div>
+
+      <!-- Background music bed — warm-electronic, full runtime -->
+      <audio id="bed"
+        data-start="0" data-duration="13" data-track-index="20" data-volume="0.55"
+        src="assets/music.wav"></audio>
     </div>
 
     <script>
       window.__timelines = window.__timelines || {};
       const tl = gsap.timeline({ paused: true });
-      tl.to({}, { duration: 12 }, 0);
+      tl.to({}, { duration: 13 }, 0);
       window.__timelines["digiwell-ttw-workshop"] = tl;
     </script>
   </body>
