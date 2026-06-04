@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <title>Digiwell — AI Operating System Replay (Vertical)</title>
+    <script src="assets/gsap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=block" rel="stylesheet" />
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: #07080c; color: #fff; }
+      .beat-layer { position: absolute; top: 0; left: 0; width: 1080px; height: 1920px; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="digiwell-ttw-replay-vertical" data-start="0" data-duration="19" data-width="1080" data-height="1920">
+      <div class="beat-layer"
+        data-composition-id="00-hook"
+        data-composition-src="compositions/00-hook.html"
+        data-start="0" data-duration="3" data-track-index="0"
+        data-width="1080" data-height="1920"></div>
+
+      <div class="beat-layer"
+        data-composition-id="01-context"
+        data-composition-src="compositions/01-context.html"
+        data-start="3" data-duration="4" data-track-index="0"
+        data-width="1080" data-height="1920"></div>
+
+      <div class="beat-layer"
+        data-composition-id="02-skills"
+        data-composition-src="compositions/02-skills.html"
+        data-start="7" data-duration="4" data-track-index="0"
+        data-width="1080" data-height="1920"></div>
+
+      <div class="beat-layer"
+        data-composition-id="03-workflows"
+        data-composition-src="compositions/03-workflows.html"
+        data-start="11" data-duration="4" data-track-index="0"
+        data-width="1080" data-height="1920"></div>
+
+      <div class="beat-layer"
+        data-composition-id="04-cta"
+        data-composition-src="compositions/04-cta.html"
+        data-start="15" data-duration="4" data-track-index="0"
+        data-width="1080" data-height="1920"></div>
+
+      <audio id="bed"
+        data-start="0" data-duration="19" data-track-index="20" data-volume="0.55"
+        src="assets/music.wav"></audio>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      tl.to({}, { duration: 19 }, 0);
+      window.__timelines["digiwell-ttw-replay-vertical"] = tl;
+    </script>
+  </body>
+</html>

@@ -1,0 +1,174 @@
+<template id="02-skills-template">
+  <script src="assets/gsap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=block" rel="stylesheet" />
+
+  <div data-composition-id="02-skills" data-start="0" data-duration="4" data-width="1080" data-height="1920">
+    <div class="stage">
+      <div class="grid-floor"></div>
+
+      <div class="content">
+        <div class="eyebrow">LAYER 2</div>
+        <div class="layer-name" data-split>SKILLS</div>
+        <div class="desc">Wiring AI to do specific jobs reliably &mdash; not just one-off questions and forgetting.</div>
+      </div>
+
+      <div class="stack">
+        <div class="bar bar-wf"><span class="bar-no">3</span><span class="bar-label">WORKFLOWS</span></div>
+        <div class="bar bar-sk"><span class="bar-no">2</span><span class="bar-label">SKILLS</span></div>
+        <div class="bar bar-cx"><span class="bar-no">1</span><span class="bar-label">CONTEXT</span></div>
+      </div>
+
+      <div class="whip-streak"></div>
+      <div class="vignette"></div>
+      <div class="grain"></div>
+    </div>
+
+    <style>
+      [data-composition-id="02-skills"] {
+        position: absolute; inset: 0; overflow: hidden;
+        background: #07080c; font-family: "Inter", sans-serif;
+      }
+      [data-composition-id="02-skills"] .stage { position: absolute; inset: 0; }
+      [data-composition-id="02-skills"] .grid-floor {
+        position: absolute; inset: 0;
+        transform: perspective(900px) rotateX(60deg) translateY(25%);
+        background:
+          repeating-linear-gradient(0deg,  rgba(249,167,44,0.05) 0 1px, transparent 1px 80px),
+          repeating-linear-gradient(90deg, rgba(249,167,44,0.05) 0 1px, transparent 1px 80px);
+        background-color: #07080c;
+        z-index: 0;
+      }
+      [data-composition-id="02-skills"] .content,
+      [data-composition-id="02-skills"] .stack { z-index: 2; }
+      [data-composition-id="02-skills"] .content {
+        position: absolute; top: 220px; left: 50%;
+        transform: translateX(-50%);
+        width: 960px;
+        text-align: center;
+      }
+      [data-composition-id="02-skills"] .eyebrow {
+        font-family: "JetBrains Mono", monospace; font-weight: 700;
+        font-size: 28px; letter-spacing: 0.34em;
+        color: #f9a72c; opacity: 0;
+        text-shadow: 0 0 14px rgba(249,167,44,0.40);
+        margin-bottom: 16px;
+      }
+      [data-composition-id="02-skills"] .layer-name {
+        font-weight: 800; font-size: 140px;
+        letter-spacing: -0.035em; line-height: 0.96;
+        color: #f9a72c;
+        text-shadow: 0 0 36px rgba(249,167,44,0.80), 0 0 90px rgba(249,167,44,0.35);
+        white-space: nowrap;
+      }
+      [data-composition-id="02-skills"] .layer-name .word { display: inline-block; white-space: nowrap; }
+      [data-composition-id="02-skills"] .layer-name .ch {
+        display: inline-block; opacity: 0; transform: translateY(48px);
+        will-change: opacity, transform;
+      }
+      [data-composition-id="02-skills"] .desc {
+        margin: 32px auto 0;
+        font-weight: 500; font-size: 34px;
+        line-height: 1.34;
+        color: rgba(255,255,255,0.72);
+        max-width: 880px;
+        opacity: 0;
+      }
+
+      [data-composition-id="02-skills"] .stack {
+        position: absolute; bottom: 200px; left: 50%;
+        transform: translateX(-50%);
+        display: flex; flex-direction: column; gap: 20px;
+      }
+      [data-composition-id="02-skills"] .bar {
+        width: 780px; height: 120px;
+        border-radius: 18px;
+        border: 1.5px solid rgba(255,255,255,0.14);
+        background: rgba(255,255,255,0.03);
+        display: flex; align-items: center; gap: 32px;
+        padding: 0 40px;
+      }
+      [data-composition-id="02-skills"] .bar-no {
+        font-family: "JetBrains Mono", monospace; font-weight: 700;
+        font-size: 42px; color: rgba(255,255,255,0.30);
+        flex: 0 0 auto;
+      }
+      [data-composition-id="02-skills"] .bar-label {
+        font-weight: 700; font-size: 42px;
+        letter-spacing: 0.04em; color: rgba(255,255,255,0.45);
+      }
+      /* Context bar carried over already lit */
+      [data-composition-id="02-skills"] .bar-cx {
+        border-color: rgba(249,167,44,0.9);
+        background: rgba(249,167,44,0.14);
+        box-shadow: 0 0 40px rgba(249,167,44,0.30), inset 0 1px 0 rgba(255,255,255,0.08);
+      }
+      [data-composition-id="02-skills"] .bar-cx .bar-no { color: #ffd480; }
+      [data-composition-id="02-skills"] .bar-cx .bar-label { color: #fff; }
+
+      [data-composition-id="02-skills"] .vignette {
+        position: absolute; inset: 0; pointer-events: none;
+        background: radial-gradient(ellipse at center, transparent 32%, rgba(0,0,0,0.92) 95%);
+        opacity: 0.62;
+      }
+      [data-composition-id="02-skills"] .grain {
+        position: absolute; inset: 0; pointer-events: none; opacity: 0.07;
+        background-image: radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px);
+        background-size: 3px 3px;
+      }
+      [data-composition-id="02-skills"] .whip-streak {
+        position: absolute; top: 50%; left: 0;
+        width: 70%; height: 14px;
+        background: linear-gradient(90deg, transparent 0%, rgba(249,167,44,0.95) 50%, transparent 100%);
+        filter: blur(10px); transform: translate(-150%, -50%);
+        opacity: 0; z-index: 30;
+      }
+    </style>
+
+    <script>
+      (() => {
+        const SLOT = 4;
+        const sel = (q) => `[data-composition-id="02-skills"] ${q}`;
+
+        document.querySelectorAll(sel('[data-split]')).forEach((node) => {
+          const words = node.textContent.split(' ');
+          node.innerHTML = words.map((w) =>
+            `<span class="word">${w.split('').map((c) => `<span class="ch">${c}</span>`).join('')}</span>`
+          ).join(' ');
+        });
+
+        const LIT = {
+          borderColor: 'rgba(249,167,44,0.9)',
+          background: 'rgba(249,167,44,0.14)',
+          boxShadow: '0 0 40px rgba(249,167,44,0.30), inset 0 1px 0 rgba(255,255,255,0.08)',
+        };
+
+        const tl = gsap.timeline({ paused: true });
+
+        tl.to(sel('.grid-floor'), { backgroundPositionY: '-60px', duration: SLOT, ease: 'none' }, 0);
+
+        tl.fromTo(sel('.bar'),
+          { y: 24, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.40, ease: 'power3.out', stagger: 0.08 }, 0.15);
+
+        tl.fromTo(sel('.eyebrow'), { y: -8, opacity: 0 }, { y: 0, opacity: 0.95, duration: 0.35, ease: 'power3.out' }, 0.20);
+        tl.to(sel('.layer-name .ch'), { y: 0, opacity: 1, duration: 0.50, ease: 'back.out(1.6)', stagger: 0.05 }, 0.40);
+        tl.fromTo(sel('.desc'), { y: 12, opacity: 0 }, { y: 0, opacity: 1, duration: 0.50, ease: 'power3.out' }, 1.05);
+
+        // Layer 2 (SKILLS / middle bar) lights up — stacks on Context
+        tl.to(sel('.bar-sk'), { ...LIT, duration: 0.45, ease: 'power2.out' }, 0.95);
+        tl.to(sel('.bar-sk .bar-no'), { color: '#ffd480', duration: 0.45 }, 0.95);
+        tl.to(sel('.bar-sk .bar-label'), { color: '#fff', duration: 0.45 }, 0.95);
+        tl.to(sel('.bar-sk'), { scale: 1.03, duration: 0.40, yoyo: true, repeat: 1, ease: 'sine.inOut', transformOrigin: 'center' }, 1.00);
+
+        tl.set(sel('.whip-streak'), { opacity: 1 }, 3.62);
+        tl.fromTo(sel('.whip-streak'),
+          { xPercent: -150, scaleX: 0.5 },
+          { xPercent: 250, scaleX: 1.5, duration: 0.38, ease: 'power3.in' }, 3.62);
+
+        tl.to({}, { duration: SLOT }, 0);
+        window.__timelines = window.__timelines || {};
+        window.__timelines['02-skills'] = tl;
+      })();
+    </script>
+  </div>
+</template>

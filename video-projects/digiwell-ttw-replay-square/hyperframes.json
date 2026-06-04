@@ -1,0 +1,6 @@
+{
+  "registryUrl": "https://hyperframes.heygen.com/registry",
+  "compositions": "./compositions",
+  "assets": "./assets",
+  "renders": "./renders"
+}
