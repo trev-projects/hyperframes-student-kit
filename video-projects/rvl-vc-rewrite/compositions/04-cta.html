@@ -1,0 +1,185 @@
+<template id="04-cta-template">
+  <script src="assets/gsap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@500;700&display=block" rel="stylesheet" />
+
+  <div data-composition-id="04-cta" data-start="0" data-duration="8" data-width="1920" data-height="1080">
+    <div class="stage">
+      <div class="ch-num">04</div>
+      <div class="ch-rule"></div>
+      <!-- SWAP: CH4_LABEL (rarely changes) -->
+      <div class="ch-label">READ&nbsp;THE&nbsp;ISSUE</div>
+
+      <div class="cta-block">
+        <div class="rvl-mark" data-split>RVL</div>
+        <!-- SWAP: RVL_TAGLINE (fixed brand tagline — do not change per issue) -->
+        <div class="cta-tagline">REVEALING&nbsp;THE&nbsp;FUTURE&nbsp;OF&nbsp;BRANDS,&nbsp;STARTUPS,&nbsp;AND&nbsp;VENTURE&nbsp;CAPITAL.</div>
+        <div class="cta-line">
+          <span class="cta-main">Sign up free at</span>
+          <!-- SWAP: CTA_URL (usually "rvl.tech" — only change if routing per-issue) -->
+          <span class="cta-url">rvl.tech</span>
+        </div>
+      </div>
+
+      <div class="footer-mark">RVL</div>
+
+      <div class="grain"></div>
+    </div>
+
+    <style>
+      [data-composition-id="04-cta"] {
+        position: absolute; inset: 0; overflow: hidden;
+        background: #0a0a0a;
+        font-family: "Archivo Black", sans-serif;
+      }
+      [data-composition-id="04-cta"] .stage { position: absolute; inset: 0; }
+      [data-composition-id="04-cta"] .ch-num {
+        position: absolute;
+        top: 130px; left: 100px;
+        font-size: 420px;
+        color: #c3f53b;
+        letter-spacing: -0.04em;
+        line-height: 0.85;
+        text-shadow: 0 0 50px rgba(195,245,59,0.4);
+        opacity: 0;
+      }
+      [data-composition-id="04-cta"] .ch-rule {
+        position: absolute;
+        top: 50%; left: 720px;
+        width: 2px; height: 0;
+        background: #c3f53b;
+        box-shadow: 0 0 14px rgba(195,245,59,0.55);
+        transform: translateY(-50%);
+        transform-origin: top center;
+      }
+      [data-composition-id="04-cta"] .ch-label {
+        position: absolute;
+        top: 200px; left: 760px;
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 700;
+        font-size: 32px;
+        letter-spacing: 0.32em;
+        color: #c3f53b;
+        opacity: 0;
+        text-shadow: 0 0 14px rgba(195,245,59,0.4);
+      }
+      [data-composition-id="04-cta"] .cta-block {
+        position: absolute;
+        top: 50%; left: 760px; right: 100px;
+        transform: translateY(-50%);
+      }
+      [data-composition-id="04-cta"] .rvl-mark {
+        font-weight: 800;
+        font-size: 360px;
+        color: #c3f53b;
+        letter-spacing: -0.03em;
+        line-height: 0.9;
+        text-shadow: 0 0 54px rgba(195,245,59,0.5);
+      }
+      [data-composition-id="04-cta"] .rvl-mark .ch {
+        display: inline-block;
+        opacity: 0;
+        transform: translateY(80px) rotate(8deg);
+        will-change: opacity, transform;
+      }
+      [data-composition-id="04-cta"] .cta-tagline {
+        margin-top: 28px;
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 700;
+        font-size: 22px;
+        letter-spacing: 0.18em;
+        color: #ffffff;
+        opacity: 0;
+        max-width: 1060px;
+      }
+      [data-composition-id="04-cta"] .cta-line {
+        margin-top: 36px;
+        display: flex; align-items: baseline; gap: 16px;
+        opacity: 0;
+        white-space: nowrap;
+      }
+      [data-composition-id="04-cta"] .cta-main {
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 700;
+        font-size: 36px;
+        color: #ffffff;
+      }
+      [data-composition-id="04-cta"] .cta-url {
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 700;
+        font-size: 56px;
+        letter-spacing: 0.04em;
+        color: #c3f53b;
+        text-shadow: 0 0 22px rgba(195,245,59,0.65);
+      }
+      [data-composition-id="04-cta"] .footer-mark {
+        position: absolute;
+        bottom: 80px; left: 100px;
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 500;
+        font-size: 22px;
+        letter-spacing: 0.32em;
+        color: #ffffff;
+        opacity: 0.55;
+      }
+      [data-composition-id="04-cta"] .grain {
+        position: absolute; inset: 0; pointer-events: none; opacity: 0.04;
+        background-image:
+          radial-gradient(rgba(255,255,255,0.3) 1px, transparent 1px),
+          radial-gradient(rgba(255,255,255,0.2) 1px, transparent 1px);
+        background-size: 3px 3px, 5px 5px;
+        z-index: 40;
+      }
+    </style>
+
+    <script>
+      (() => {
+        const SLOT = 8;
+        const sel = (q) => `[data-composition-id="04-cta"] ${q}`;
+
+        document.querySelectorAll(sel('[data-split]')).forEach((node) => {
+          const text = node.textContent;
+          node.innerHTML = text.split('').map((c) =>
+            c === ' '
+              ? '<span class="ch space">&nbsp;</span>'
+              : `<span class="ch">${c}</span>`
+          ).join('');
+        });
+
+        const tl = gsap.timeline({ paused: true });
+
+        tl.fromTo(sel('.ch-num'),
+          { y: 60, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.55, ease: 'power3.out' }, 0.10);
+        tl.to(sel('.ch-rule'),
+          { height: 720, duration: 0.65, ease: 'power3.out' }, 0.40);
+        tl.fromTo(sel('.ch-label'),
+          { x: -10, opacity: 0 },
+          { x: 0, opacity: 0.95, duration: 0.40, ease: 'power3.out' }, 0.60);
+
+        // RVL chars stagger in
+        tl.to(sel('.rvl-mark .ch'),
+          { y: 0, rotate: 0, opacity: 1,
+            duration: 0.50, ease: 'back.out(1.6)', stagger: 0.10 }, 1.00);
+
+        // Tagline
+        tl.fromTo(sel('.cta-tagline'),
+          { y: 12, opacity: 0 },
+          { y: 0, opacity: 0.92, duration: 0.55, ease: 'power3.out' }, 1.95);
+
+        // CTA line
+        tl.fromTo(sel('.cta-line'),
+          { y: 12, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.55, ease: 'power3.out' }, 2.40);
+
+        // URL pulse glow loop
+        tl.to(sel('.cta-url'),
+          { textShadow: '0 0 38px rgba(195,245,59,0.95)', duration: 0.6,
+            yoyo: true, repeat: 3, ease: 'sine.inOut' }, 4.50);
+
+        tl.to({}, { duration: SLOT }, 0);
+        window.__timelines = window.__timelines || {};
+        window.__timelines['04-cta'] = tl;
+      })();
+    </script>
+  </div>
+</template>

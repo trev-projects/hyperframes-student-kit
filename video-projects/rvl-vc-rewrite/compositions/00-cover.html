@@ -1,0 +1,181 @@
+<template id="00-cover-template">
+  <script src="assets/gsap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@500;700&display=block" rel="stylesheet" />
+
+  <div data-composition-id="00-cover" data-start="0" data-duration="4" data-width="1920" data-height="1080">
+    <div class="stage">
+      <div class="masthead-row">
+        <div class="masthead-mark">RVL</div>
+        <div class="masthead-divider"></div>
+        <div class="masthead-date">DESIGN &middot; TECH &middot; CAPITAL</div>
+      </div>
+
+      <div class="cover-title" data-split>THE VC REWRITE</div>
+
+      <div class="cover-rule"></div>
+
+      <div class="cover-tagline">REVEALING&nbsp;THE&nbsp;FUTURE&nbsp;OF&nbsp;BRANDS,&nbsp;STARTUPS,&nbsp;AND&nbsp;VENTURE&nbsp;CAPITAL.</div>
+
+      <div class="corner-tl">+</div>
+      <div class="corner-tr">+</div>
+      <div class="corner-bl">+</div>
+      <div class="corner-br">+</div>
+
+      <div class="wipe"></div>
+      <div class="grain"></div>
+    </div>
+
+    <style>
+      [data-composition-id="00-cover"] {
+        position: absolute; inset: 0; overflow: hidden;
+        background: #0a0a0a;
+        font-family: "Archivo Black", sans-serif;
+      }
+      [data-composition-id="00-cover"] .stage { position: absolute; inset: 0; }
+      [data-composition-id="00-cover"] .masthead-row {
+        position: absolute;
+        top: 80px; left: 100px;
+        display: flex; align-items: center; gap: 22px;
+        opacity: 0;
+      }
+      [data-composition-id="00-cover"] .masthead-mark,
+      [data-composition-id="00-cover"] .masthead-issue,
+      [data-composition-id="00-cover"] .masthead-date {
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 700;
+        font-size: 24px;
+        letter-spacing: 0.32em;
+        color: #c3f53b;
+        text-shadow: 0 0 12px rgba(195,245,59,0.4);
+      }
+      [data-composition-id="00-cover"] .masthead-date {
+        color: #ffffff; opacity: 0.7;
+      }
+      [data-composition-id="00-cover"] .masthead-divider {
+        width: 14px; height: 1px;
+        background: #c3f53b;
+      }
+      [data-composition-id="00-cover"] .cover-title {
+        position: absolute;
+        top: 50%; left: 100px;
+        right: 100px;
+        transform: translateY(-50%);
+        font-size: 168px;
+        color: #c3f53b;
+        letter-spacing: -0.04em;
+        line-height: 0.92;
+        text-shadow: 0 0 60px rgba(195,245,59,0.45);
+        white-space: nowrap;
+      }
+      [data-composition-id="00-cover"] .cover-title .word {
+        display: inline-block;
+        white-space: nowrap;
+      }
+      [data-composition-id="00-cover"] .cover-title .ch {
+        display: inline-block;
+        opacity: 0;
+        transform: translateY(80px) rotate(8deg);
+        will-change: opacity, transform;
+      }
+      [data-composition-id="00-cover"] .cover-rule {
+        position: absolute;
+        bottom: 200px; left: 100px; right: 100px;
+        height: 2px;
+        background: linear-gradient(90deg, #c3f53b 0%, #c3f53b 30%, transparent 100%);
+        transform: scaleX(0);
+        transform-origin: left center;
+      }
+      [data-composition-id="00-cover"] .cover-tagline {
+        position: absolute;
+        bottom: 130px; left: 100px;
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 700;
+        font-size: 24px;
+        letter-spacing: 0.2em;
+        color: #ffffff;
+        opacity: 0;
+        text-transform: uppercase;
+      }
+      [data-composition-id="00-cover"] .corner-tl,
+      [data-composition-id="00-cover"] .corner-tr,
+      [data-composition-id="00-cover"] .corner-bl,
+      [data-composition-id="00-cover"] .corner-br {
+        position: absolute;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 32px;
+        color: #c3f53b;
+        opacity: 0;
+        line-height: 1;
+      }
+      [data-composition-id="00-cover"] .corner-tl { top: 40px; left: 40px; }
+      [data-composition-id="00-cover"] .corner-tr { top: 40px; right: 40px; }
+      [data-composition-id="00-cover"] .corner-bl { bottom: 40px; left: 40px; }
+      [data-composition-id="00-cover"] .corner-br { bottom: 40px; right: 40px; }
+      [data-composition-id="00-cover"] .wipe {
+        position: absolute; top: 0; left: -100%;
+        width: 100%; height: 100%;
+        background: #c3f53b;
+        z-index: 30;
+      }
+      [data-composition-id="00-cover"] .grain {
+        position: absolute; inset: 0; pointer-events: none; opacity: 0.04;
+        background-image:
+          radial-gradient(rgba(255,255,255,0.3) 1px, transparent 1px),
+          radial-gradient(rgba(255,255,255,0.2) 1px, transparent 1px);
+        background-size: 3px 3px, 5px 5px;
+        z-index: 40;
+      }
+    </style>
+
+    <script>
+      (() => {
+        const SLOT = 4;
+        const sel = (q) => `[data-composition-id="00-cover"] ${q}`;
+
+        // Word-safe per-char split — words stay together so lines only break at spaces
+        document.querySelectorAll(sel('[data-split]')).forEach((node) => {
+          const tokens = node.textContent.split(/(\s+)/);
+          node.innerHTML = tokens.map((tok) => {
+            if (/^\s+$/.test(tok)) return ' ';
+            const chars = tok.split('').map((c) => `<span class="ch">${c}</span>`).join('');
+            return `<span class="word">${chars}</span>`;
+          }).join('');
+        });
+
+        const tl = gsap.timeline({ paused: true });
+
+        // Corners reveal first — registration marks
+        tl.to([sel('.corner-tl'), sel('.corner-tr'), sel('.corner-bl'), sel('.corner-br')],
+          { opacity: 0.65, duration: 0.30, ease: 'power3.out', stagger: 0.04 }, 0.05);
+
+        // Masthead reveals
+        tl.fromTo(sel('.masthead-row'),
+          { x: -20, opacity: 0 },
+          { x: 0, opacity: 1, duration: 0.45, ease: 'power3.out' }, 0.15);
+
+        // Title chars burst
+        tl.to(sel('.cover-title .ch'),
+          { y: 0, rotate: 0, opacity: 1,
+            duration: 0.45, ease: 'back.out(1.8)', stagger: 0.04 }, 0.50);
+
+        // Rule sweeps
+        tl.to(sel('.cover-rule'),
+          { scaleX: 1, duration: 0.80, ease: 'power3.out' }, 1.20);
+
+        // Tagline fades in
+        tl.fromTo(sel('.cover-tagline'),
+          { y: 8, opacity: 0 },
+          { y: 0, opacity: 0.95, duration: 0.55, ease: 'power3.out' }, 1.55);
+
+        // Hold then block-wipe
+        tl.fromTo(sel('.wipe'),
+          { xPercent: 0 },
+          { xPercent: 200, duration: 0.40, ease: 'power3.in' }, 3.55);
+
+        tl.to({}, { duration: SLOT }, 0);
+        window.__timelines = window.__timelines || {};
+        window.__timelines['00-cover'] = tl;
+      })();
+    </script>
+  </div>
+</template>
