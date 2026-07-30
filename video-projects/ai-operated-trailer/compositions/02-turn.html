@@ -1,0 +1,134 @@
+<template id="02-turn-template">
+  <script src="assets/gsap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Manrope:wght@500;700&family=JetBrains+Mono:wght@500;600;700&display=block" rel="stylesheet" />
+
+  <div data-composition-id="02-turn" data-start="0" data-duration="4" data-width="1920" data-height="1080">
+    <div class="stage">
+      <!-- Full-bleed terracotta panel: the piece's one big colour flip. Text rides
+           inside it so the wipe carries the content in and out as one object. -->
+      <div class="panel">
+        <div class="kicker">A&nbsp;DIGIWELL&nbsp;NEWSLETTER</div>
+        <div class="turn-head">
+          <div class="th-line thl1" data-words>The newsletter</div>
+          <div class="th-line thl2" data-words>I wish I had.</div>
+        </div>
+        <div class="turn-sub">When I started building with agents, this didn&rsquo;t exist.</div>
+      </div>
+
+      <div class="vignette"></div>
+      <div class="grain"></div>
+    </div>
+
+    <style>
+      [data-composition-id="02-turn"] {
+        position: absolute; inset: 0; overflow: hidden;
+        background: #F1ECE3;
+        font-family: "Sora", Helvetica, Arial, sans-serif;
+      }
+      [data-composition-id="02-turn"] .stage { position: absolute; inset: 0; }
+
+      [data-composition-id="02-turn"] .panel {
+        position: absolute; inset: 0;
+        background: #B5532E;
+        transform: translateX(-100%);
+        z-index: 10;
+      }
+
+      [data-composition-id="02-turn"] .kicker {
+        position: absolute;
+        top: 150px; left: 100px;
+        font-family: "JetBrains Mono", Consolas, monospace;
+        font-weight: 600;
+        font-size: 20px;
+        letter-spacing: 3px;
+        color: #F4E7DC;
+        opacity: 0;
+      }
+
+      [data-composition-id="02-turn"] .turn-head {
+        position: absolute;
+        top: 50%; left: 100px; right: 100px;
+        transform: translateY(-56%);
+      }
+      [data-composition-id="02-turn"] .th-line {
+        font-weight: 800;
+        font-size: 150px;
+        line-height: 1.02;
+        letter-spacing: -4px;
+        color: #F1ECE3;
+        white-space: nowrap;
+      }
+      [data-composition-id="02-turn"] .th-line .w {
+        display: inline-block;
+        opacity: 0;
+        transform: translateY(66px);
+        will-change: opacity, transform;
+      }
+
+      [data-composition-id="02-turn"] .turn-sub {
+        position: absolute;
+        bottom: 176px; left: 100px; right: 100px;
+        font-family: "Manrope", Helvetica, Arial, sans-serif;
+        font-weight: 500;
+        font-size: 34px;
+        line-height: 1.45;
+        color: #F8F1E9;
+        opacity: 0;
+      }
+
+      [data-composition-id="02-turn"] .vignette {
+        position: absolute; inset: 0; pointer-events: none;
+        background: radial-gradient(ellipse at center, transparent 55%, rgba(31,27,23,0.10) 100%);
+        z-index: 35;
+      }
+      [data-composition-id="02-turn"] .grain {
+        position: absolute; inset: 0; pointer-events: none; opacity: 0.035;
+        background-image:
+          radial-gradient(rgba(31,27,23,0.35) 1px, transparent 1px),
+          radial-gradient(rgba(31,27,23,0.25) 1px, transparent 1px);
+        background-size: 3px 3px, 5px 5px;
+        z-index: 40;
+      }
+    </style>
+
+    <script>
+      (() => {
+        const SLOT = 4;
+        const sel = (q) => `[data-composition-id="02-turn"] ${q}`;
+
+        document.querySelectorAll(sel('[data-words]')).forEach((node) => {
+          node.innerHTML = node.textContent.trim().split(/\s+/)
+            .map((w) => `<span class="w">${w}</span>`).join(' ');
+        });
+
+        const tl = gsap.timeline({ paused: true });
+
+        // ENTRY — panel sweeps in from the left, picking up 01-noise's streak direction.
+        tl.to(sel('.panel'),
+          { xPercent: 100, duration: 0.42, ease: 'power3.out' }, 0);
+
+        tl.fromTo(sel('.kicker'),
+          { x: -10, opacity: 0 },
+          { x: 0, opacity: 1, duration: 0.35, ease: 'power3.out' }, 0.34);
+
+        tl.to(sel('.thl1 .w'),
+          { y: 0, opacity: 1, duration: 0.38, ease: 'expo.out', stagger: 0.06 }, 0.44);
+        tl.to(sel('.thl2 .w'),
+          { y: 0, opacity: 1, duration: 0.38, ease: 'expo.out', stagger: 0.06 }, 0.78);
+
+        tl.fromTo(sel('.turn-sub'),
+          { y: 12, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.42, ease: 'power3.out' }, 1.30);
+
+        // EXIT — the whole panel (text included) rides off right, revealing the
+        // cream paper that 03-inside opens on.
+        tl.to(sel('.panel'),
+          { xPercent: 200, duration: 0.40, ease: 'power3.in' }, 3.55);
+
+        tl.to({}, { duration: SLOT }, 0);
+        window.__timelines = window.__timelines || {};
+        window.__timelines['02-turn'] = tl;
+      })();
+    </script>
+  </div>
+</template>

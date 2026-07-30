@@ -1,0 +1,196 @@
+<template id="03-inside-template">
+  <script src="assets/gsap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Manrope:wght@500;700&family=JetBrains+Mono:wght@500;600;700&display=block" rel="stylesheet" />
+
+  <div data-composition-id="03-inside" data-start="0" data-duration="7" data-width="1920" data-height="1080">
+    <div class="stage">
+      <div class="rule"></div>
+      <div class="eyebrow">EVERY&nbsp;THURSDAY</div>
+      <div class="headline" data-words>Three things. That&rsquo;s it.</div>
+
+      <div class="cards">
+        <div class="card c1">
+          <div class="c-num">01</div>
+          <div class="c-title">The News</div>
+          <div class="c-body">Three stories that actually moved, and what to do about them.</div>
+        </div>
+        <div class="card c2 feature">
+          <div class="c-num">02</div>
+          <div class="c-title">The Drop</div>
+          <div class="c-body">One tool or skill worth switching on. Usually in under a minute.</div>
+        </div>
+        <div class="card c3">
+          <div class="c-num">03</div>
+          <div class="c-title">Plain English</div>
+          <div class="c-body">The jargon, explained without the jargon.</div>
+        </div>
+      </div>
+
+      <div class="streak"></div>
+      <div class="vignette"></div>
+      <div class="grain"></div>
+    </div>
+
+    <style>
+      [data-composition-id="03-inside"] {
+        position: absolute; inset: 0; overflow: hidden;
+        background: #F1ECE3;
+        font-family: "Sora", Helvetica, Arial, sans-serif;
+      }
+      [data-composition-id="03-inside"] .stage { position: absolute; inset: 0; }
+
+      [data-composition-id="03-inside"] .rule {
+        position: absolute;
+        top: 150px; left: 100px; right: 100px;
+        height: 1px;
+        background: rgba(31,27,23,0.12);
+        transform: scaleX(0);
+        transform-origin: left center;
+      }
+      [data-composition-id="03-inside"] .eyebrow {
+        position: absolute;
+        top: 182px; left: 100px;
+        font-family: "JetBrains Mono", Consolas, monospace;
+        font-weight: 600;
+        font-size: 20px;
+        letter-spacing: 2.4px;
+        color: #B5532E;
+        opacity: 0;
+      }
+      [data-composition-id="03-inside"] .headline {
+        position: absolute;
+        top: 228px; left: 100px; right: 100px;
+        font-weight: 800;
+        font-size: 92px;
+        line-height: 1.05;
+        letter-spacing: -2.2px;
+        color: #1F1B17;
+        white-space: nowrap;
+      }
+      [data-composition-id="03-inside"] .headline .w {
+        display: inline-block;
+        opacity: 0;
+        transform: translateY(42px);
+        will-change: opacity, transform;
+      }
+
+      [data-composition-id="03-inside"] .cards {
+        position: absolute;
+        top: 400px; left: 100px; right: 100px;
+        display: flex;
+        gap: 40px;
+      }
+      [data-composition-id="03-inside"] .card {
+        flex: 1 1 0;
+        height: 336px;
+        background: #FFFFFF;
+        border: 1px solid #C49A70;
+        border-radius: 16px;
+        padding: 34px 32px;
+        opacity: 0;
+        will-change: opacity, transform;
+      }
+      [data-composition-id="03-inside"] .card.feature {
+        background: #B5532E;
+        border-color: #B5532E;
+      }
+      [data-composition-id="03-inside"] .c-num {
+        font-family: "JetBrains Mono", Consolas, monospace;
+        font-weight: 600;
+        font-size: 22px;
+        letter-spacing: 2px;
+        color: #B5532E;
+      }
+      [data-composition-id="03-inside"] .feature .c-num { color: #F4E7DC; }
+      [data-composition-id="03-inside"] .c-title {
+        margin-top: 22px;
+        font-weight: 800;
+        font-size: 56px;
+        line-height: 1.1;
+        letter-spacing: -1.4px;
+        color: #1F1B17;
+      }
+      [data-composition-id="03-inside"] .feature .c-title { color: #F1ECE3; }
+      [data-composition-id="03-inside"] .c-body {
+        margin-top: 22px;
+        font-family: "Manrope", Helvetica, Arial, sans-serif;
+        font-weight: 500;
+        font-size: 28px;
+        line-height: 1.5;
+        color: #4B433A;
+      }
+      [data-composition-id="03-inside"] .feature .c-body { color: #F8F1E9; }
+
+      [data-composition-id="03-inside"] .streak {
+        position: absolute;
+        top: 50%; left: 0;
+        width: 55%; height: 14px;
+        background: linear-gradient(90deg, transparent, #B5532E, transparent);
+        filter: blur(9px);
+        transform: translateY(-50%);
+        opacity: 0;
+        z-index: 30;
+      }
+      [data-composition-id="03-inside"] .vignette {
+        position: absolute; inset: 0; pointer-events: none;
+        background: radial-gradient(ellipse at center, transparent 55%, rgba(31,27,23,0.10) 100%);
+        z-index: 35;
+      }
+      [data-composition-id="03-inside"] .grain {
+        position: absolute; inset: 0; pointer-events: none; opacity: 0.035;
+        background-image:
+          radial-gradient(rgba(31,27,23,0.35) 1px, transparent 1px),
+          radial-gradient(rgba(31,27,23,0.25) 1px, transparent 1px);
+        background-size: 3px 3px, 5px 5px;
+        z-index: 40;
+      }
+    </style>
+
+    <script>
+      (() => {
+        const SLOT = 7;
+        const sel = (q) => `[data-composition-id="03-inside"] ${q}`;
+
+        document.querySelectorAll(sel('[data-words]')).forEach((node) => {
+          node.innerHTML = node.textContent.trim().split(/\s+/)
+            .map((w) => `<span class="w">${w}</span>`).join(' ');
+        });
+
+        const tl = gsap.timeline({ paused: true });
+
+        tl.to(sel('.rule'),
+          { scaleX: 1, duration: 0.55, ease: 'power3.out' }, 0.04);
+        tl.fromTo(sel('.eyebrow'),
+          { x: -10, opacity: 0 },
+          { x: 0, opacity: 1, duration: 0.32, ease: 'power3.out' }, 0.16);
+        tl.to(sel('.headline .w'),
+          { y: 0, opacity: 1, duration: 0.36, ease: 'expo.out', stagger: 0.05 }, 0.30);
+
+        // Cards deal in fast, 0.30s apart, each with a slight counter-rotation settle.
+        [
+          { cls: '.c1', at: 0.85, rot: -3 },
+          { cls: '.c2', at: 1.15, rot:  2.5 },
+          { cls: '.c3', at: 1.45, rot: -2 }
+        ].forEach((c) => {
+          tl.fromTo(sel(c.cls),
+            { y: 70, rotation: c.rot, scale: 0.94, opacity: 0 },
+            { y: 0, rotation: 0, scale: 1, opacity: 1,
+              duration: 0.52, ease: 'back.out(1.5)' }, c.at);
+        });
+
+        // Feature card breathes so the row never goes fully static.
+        tl.to(sel('.c2'),
+          { y: -12, duration: 1.6, yoyo: true, repeat: 1, ease: 'sine.inOut' }, 2.6);
+
+        // EXIT — streak into the promise beat.
+        tl.fromTo(sel('.streak'),
+          { xPercent: -120, opacity: 0.9, scaleX: 0.6 },
+          { xPercent: 240, scaleX: 1.4, duration: 0.36, ease: 'power3.in' }, 6.56);
+
+        tl.to({}, { duration: SLOT }, 0);
+        window.__timelines = window.__timelines || {};
+        window.__timelines['03-inside'] = tl;
+      })();
+    </script>
+  </div>
+</template>

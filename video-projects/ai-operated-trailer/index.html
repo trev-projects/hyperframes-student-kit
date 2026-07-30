@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <title>AI Operated — Channel Trailer</title>
+    <script src="assets/gsap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Manrope:wght@500;700&family=JetBrains+Mono:wght@500;600;700&display=block" rel="stylesheet" />
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body {
+        width: 1920px; height: 1080px;
+        overflow: hidden;
+        background: #F1ECE3;
+        color: #1F1B17;
+      }
+      .beat-layer {
+        position: absolute; top: 0; left: 0;
+        width: 1920px; height: 1080px;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="ai-operated-trailer"
+      data-start="0"
+      data-duration="33"
+      data-width="1920"
+      data-height="1080"
+    >
+      <!-- Beat 00 — Hook: four fast phrases (0–5s) -->
+      <div class="beat-layer"
+        data-composition-id="00-hook"
+        data-composition-src="compositions/00-hook.html"
+        data-start="0" data-duration="5" data-track-index="0"
+        data-width="1920" data-height="1080"></div>
+
+      <!-- Beat 01 — The noise (5–10s) -->
+      <div class="beat-layer"
+        data-composition-id="01-noise"
+        data-composition-src="compositions/01-noise.html"
+        data-start="5" data-duration="5" data-track-index="0"
+        data-width="1920" data-height="1080"></div>
+
+      <!-- Beat 02 — Full-bleed terracotta turn (10–14s) -->
+      <div class="beat-layer"
+        data-composition-id="02-turn"
+        data-composition-src="compositions/02-turn.html"
+        data-start="10" data-duration="4" data-track-index="0"
+        data-width="1920" data-height="1080"></div>
+
+      <!-- Beat 03 — What's inside (14–21s) -->
+      <div class="beat-layer"
+        data-composition-id="03-inside"
+        data-composition-src="compositions/03-inside.html"
+        data-start="14" data-duration="7" data-track-index="0"
+        data-width="1920" data-height="1080"></div>
+
+      <!-- Beat 04 — The promise (21–26s) -->
+      <div class="beat-layer"
+        data-composition-id="04-promise"
+        data-composition-src="compositions/04-promise.html"
+        data-start="21" data-duration="5" data-track-index="0"
+        data-width="1920" data-height="1080"></div>
+
+      <!-- Beat 05 — Brand + CTA hold (26–33s) -->
+      <div class="beat-layer"
+        data-composition-id="05-cta"
+        data-composition-src="compositions/05-cta.html"
+        data-start="26" data-duration="7" data-track-index="0"
+        data-width="1920" data-height="1080"></div>
+
+      <audio id="bed"
+        data-start="0" data-duration="33" data-track-index="21" data-volume="0.5"
+        src="assets/music.wav"></audio>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      tl.to({}, { duration: 33 }, 0);
+      window.__timelines["ai-operated-trailer"] = tl;
+    </script>
+  </body>
+</html>

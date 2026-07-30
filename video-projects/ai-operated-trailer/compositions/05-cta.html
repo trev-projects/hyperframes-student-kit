@@ -1,0 +1,161 @@
+<template id="05-cta-template">
+  <script src="assets/gsap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Manrope:wght@500;700&family=JetBrains+Mono:wght@500;600;700&display=block" rel="stylesheet" />
+
+  <div data-composition-id="05-cta" data-start="0" data-duration="7" data-width="1920" data-height="1080">
+    <div class="stage">
+      <div class="outro">
+        <!-- Wordmark at hero scale: the piece lands on the brand it opened as a whisper. -->
+        <div class="wordmark">
+          <span class="wm-ai">AI</span>
+          <span class="wm-wrap">
+            <span class="wm-swash"></span>
+            <span class="wm-op">Operated</span><span class="wm-dot">.</span>
+          </span>
+        </div>
+
+        <div class="tagline">YOUR&nbsp;AI&nbsp;OPERATING&nbsp;SYSTEM,&nbsp;EVERY&nbsp;THURSDAY</div>
+
+        <div class="btn">Subscribe free &rarr;</div>
+
+        <div class="url">digiwellmarketing.com</div>
+      </div>
+
+      <div class="vignette"></div>
+      <div class="grain"></div>
+    </div>
+
+    <style>
+      [data-composition-id="05-cta"] {
+        position: absolute; inset: 0; overflow: hidden;
+        background: #F1ECE3;
+        font-family: "Sora", Helvetica, Arial, sans-serif;
+      }
+      [data-composition-id="05-cta"] .stage { position: absolute; inset: 0; }
+
+      [data-composition-id="05-cta"] .outro {
+        position: absolute;
+        top: 50%; left: 0; right: 0;
+        transform: translateY(-50%);
+        text-align: center;
+      }
+
+      [data-composition-id="05-cta"] .wordmark {
+        font-weight: 800;
+        font-size: 156px;
+        letter-spacing: -3.6px;
+        color: #1F1B17;
+        line-height: 1;
+        opacity: 0;
+        white-space: nowrap;
+      }
+      [data-composition-id="05-cta"] .wm-wrap {
+        position: relative;
+        display: inline-block;
+        padding: 0 14px;
+      }
+      [data-composition-id="05-cta"] .wm-swash {
+        position: absolute;
+        left: 0; bottom: 10px;
+        width: 100%; height: 19%;
+        background: #DDB892;
+        transform: scaleX(0);
+        transform-origin: left center;
+        z-index: 0;
+      }
+      [data-composition-id="05-cta"] .wm-op,
+      [data-composition-id="05-cta"] .wm-dot {
+        position: relative; z-index: 1;
+      }
+      [data-composition-id="05-cta"] .wm-dot {
+        color: #B5532E;
+        opacity: 0;
+        display: inline-block;
+      }
+
+      [data-composition-id="05-cta"] .tagline {
+        margin-top: 34px;
+        font-family: "JetBrains Mono", Consolas, monospace;
+        font-weight: 600;
+        font-size: 22px;
+        letter-spacing: 4px;
+        color: #8B8173;
+        opacity: 0;
+      }
+
+      [data-composition-id="05-cta"] .btn {
+        display: inline-block;
+        margin-top: 52px;
+        background: #B5532E;
+        border-radius: 12px;
+        padding: 22px 42px;
+        font-family: "Manrope", Helvetica, Arial, sans-serif;
+        font-weight: 700;
+        font-size: 32px;
+        color: #F1ECE3;
+        opacity: 0;
+      }
+
+      [data-composition-id="05-cta"] .url {
+        margin-top: 30px;
+        font-family: "JetBrains Mono", Consolas, monospace;
+        font-weight: 600;
+        font-size: 26px;
+        letter-spacing: 1.6px;
+        color: #B5532E;
+        opacity: 0;
+      }
+
+      [data-composition-id="05-cta"] .vignette {
+        position: absolute; inset: 0; pointer-events: none;
+        background: radial-gradient(ellipse at center, transparent 55%, rgba(31,27,23,0.10) 100%);
+        z-index: 35;
+      }
+      [data-composition-id="05-cta"] .grain {
+        position: absolute; inset: 0; pointer-events: none; opacity: 0.035;
+        background-image:
+          radial-gradient(rgba(31,27,23,0.35) 1px, transparent 1px),
+          radial-gradient(rgba(31,27,23,0.25) 1px, transparent 1px);
+        background-size: 3px 3px, 5px 5px;
+        z-index: 40;
+      }
+    </style>
+
+    <script>
+      (() => {
+        const SLOT = 7;
+        const sel = (q) => `[data-composition-id="05-cta"] ${q}`;
+        const tl = gsap.timeline({ paused: true });
+
+        // Brand lands, then the swash and period resolve in the same order they
+        // did on 00-hook's corner mark — the callback that closes the piece.
+        tl.fromTo(sel('.wordmark'),
+          { y: 40, scale: 0.94, opacity: 0 },
+          { y: 0, scale: 1, opacity: 1, duration: 0.55, ease: 'expo.out' }, 0.12);
+        tl.to(sel('.wm-swash'),
+          { scaleX: 1, duration: 0.50, ease: 'power3.out' }, 0.58);
+        tl.fromTo(sel('.wm-dot'),
+          { scale: 0.3, opacity: 0 },
+          { scale: 1, opacity: 1, duration: 0.30, ease: 'back.out(2.4)' }, 1.02);
+
+        tl.fromTo(sel('.tagline'),
+          { y: 10, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.45, ease: 'power3.out' }, 1.22);
+        tl.fromTo(sel('.btn'),
+          { y: 14, scale: 0.95, opacity: 0 },
+          { y: 0, scale: 1, opacity: 1, duration: 0.45, ease: 'back.out(1.7)' }, 1.62);
+        tl.fromTo(sel('.url'),
+          { y: 8, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.42, ease: 'power3.out' }, 2.02);
+
+        // Outro holds ~4.5s — button breathes so the stillness stays alive.
+        tl.to(sel('.btn'),
+          { scale: 1.03, duration: 1.0, yoyo: true, repeat: 3, ease: 'sine.inOut' }, 2.70);
+
+        tl.to({}, { duration: SLOT }, 0);
+        window.__timelines = window.__timelines || {};
+        window.__timelines['05-cta'] = tl;
+      })();
+    </script>
+  </div>
+</template>

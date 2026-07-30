@@ -1,0 +1,173 @@
+<template id="01-noise-template">
+  <script src="assets/gsap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Manrope:wght@500;700&family=JetBrains+Mono:wght@500;600;700&display=block" rel="stylesheet" />
+
+  <div data-composition-id="01-noise" data-start="0" data-duration="5" data-width="1920" data-height="1080">
+    <div class="stage">
+      <div class="chip-field"></div>
+
+      <div class="scrim"></div>
+      <div class="headline" data-words>Most of it is noise.</div>
+
+      <div class="streak"></div>
+      <div class="vignette"></div>
+      <div class="grain"></div>
+    </div>
+
+    <style>
+      [data-composition-id="01-noise"] {
+        position: absolute; inset: 0; overflow: hidden;
+        background: #F1ECE3;
+        font-family: "Sora", Helvetica, Arial, sans-serif;
+      }
+      [data-composition-id="01-noise"] .stage { position: absolute; inset: 0; }
+
+      [data-composition-id="01-noise"] .chip-field { position: absolute; inset: 0; }
+      [data-composition-id="01-noise"] .chip {
+        position: absolute;
+        background: #FFFFFF;
+        border: 1px solid #C49A70;
+        border-radius: 999px;
+        padding: 11px 22px;
+        font-family: "JetBrains Mono", Consolas, monospace;
+        font-weight: 600;
+        font-size: 21px;
+        letter-spacing: 0.6px;
+        color: #4B433A;
+        white-space: nowrap;
+        opacity: 0;
+        will-change: opacity, transform;
+      }
+
+      [data-composition-id="01-noise"] .scrim {
+        position: absolute; inset: 0;
+        background: radial-gradient(ellipse 60% 34% at 32% 50%, #F1ECE3 42%, rgba(241,236,227,0) 100%);
+        opacity: 0;
+        z-index: 5;
+      }
+
+      [data-composition-id="01-noise"] .headline {
+        position: absolute;
+        top: 50%; left: 100px; right: 100px;
+        transform: translateY(-50%);
+        font-weight: 800;
+        font-size: 112px;
+        line-height: 1.06;
+        letter-spacing: -2.8px;
+        color: #B5532E;
+        white-space: nowrap;
+        z-index: 10;
+      }
+      [data-composition-id="01-noise"] .headline .w {
+        display: inline-block;
+        opacity: 0;
+        transform: translateY(48px);
+        will-change: opacity, transform;
+      }
+
+      [data-composition-id="01-noise"] .streak {
+        position: absolute;
+        top: 50%; left: 0;
+        width: 55%; height: 14px;
+        background: linear-gradient(90deg, transparent, #B5532E, transparent);
+        filter: blur(9px);
+        transform: translateY(-50%);
+        opacity: 0;
+        z-index: 30;
+      }
+      [data-composition-id="01-noise"] .vignette {
+        position: absolute; inset: 0; pointer-events: none;
+        background: radial-gradient(ellipse at center, transparent 55%, rgba(31,27,23,0.10) 100%);
+        z-index: 35;
+      }
+      [data-composition-id="01-noise"] .grain {
+        position: absolute; inset: 0; pointer-events: none; opacity: 0.035;
+        background-image:
+          radial-gradient(rgba(31,27,23,0.35) 1px, transparent 1px),
+          radial-gradient(rgba(31,27,23,0.25) 1px, transparent 1px);
+        background-size: 3px 3px, 5px 5px;
+        z-index: 40;
+      }
+    </style>
+
+    <script>
+      (() => {
+        const SLOT = 5;
+        const sel = (q) => `[data-composition-id="01-noise"] ${q}`;
+        const root = document.querySelector(`[data-composition-id="01-noise"]`);
+
+        // Ordered so every 4th term (the right-hand column) is short and cannot
+        // overflow the frame edge.
+        const TERMS = [
+          'orchestration',   'vector DB',        'fine-tuning',  'RAG',
+          'context window',  'multi-agent',      'eval harness', 'RLHF',
+          'agentic workflow','prompt chaining',  'guardrails',   'MCP',
+          'chain-of-thought','function calling', 'embeddings',   'vibe coding'
+        ];
+
+        // Jittered grid, not free scatter: a pure harmonic scatter clumps and
+        // overlaps. Four columns by four rows guarantees even coverage; the rows
+        // straddle the middle so the headline lands in clear space. Jitter is
+        // harmonic (never Math.random) so renders stay frame-identical.
+        const COL_X = [2, 25, 48, 70];
+        const ROW_Y = [7, 21, 68, 82];
+
+        const field = root.querySelector('.chip-field');
+        const chips = TERMS.map((term, i) => {
+          const el = document.createElement('div');
+          el.className = 'chip';
+          el.textContent = term;
+
+          const col = i % 4;
+          const row = Math.floor(i / 4);
+          const jx = Math.sin(i * 1.7 + 0.3) * 2.4;
+          const jy = Math.cos(i * 2.3 + 0.8) * 1.9;
+          const rot = (Math.sin(i * 2.1 + 0.5) * 6).toFixed(2);
+
+          el.style.left = (COL_X[col] + jx).toFixed(2) + '%';
+          el.style.top = (ROW_Y[row] + jy).toFixed(2) + '%';
+          el.style.transform = `rotate(${rot}deg)`;
+          field.appendChild(el);
+          return el;
+        });
+
+        document.querySelectorAll(sel('[data-words]')).forEach((node) => {
+          node.innerHTML = node.textContent.trim().split(/\s+/)
+            .map((w) => `<span class="w">${w}</span>`).join(' ');
+        });
+
+        const tl = gsap.timeline({ paused: true });
+
+        // Chips burst in fast — the visual noise floor.
+        tl.to(chips,
+          { opacity: 1, duration: 0.26, ease: 'back.out(1.8)', stagger: 0.035 }, 0.08);
+
+        // Scrim opens a readable pocket, chips recede but keep drifting.
+        tl.to(sel('.scrim'),
+          { opacity: 1, duration: 0.40, ease: 'power2.out' }, 1.25);
+        tl.to(chips,
+          { opacity: 0.30, duration: 0.40, ease: 'power2.out' }, 1.25);
+        tl.to(chips,
+          { y: '-=14', duration: 2.2, ease: 'sine.inOut', stagger: { each: 0.05, from: 'edges' } }, 1.30);
+
+        // The verdict.
+        tl.to(sel('.headline .w'),
+          { y: 0, opacity: 1, duration: 0.36, ease: 'expo.out', stagger: 0.05 }, 1.50);
+
+        // Chips collapse inward — noise gets cleared before the turn.
+        tl.to(chips,
+          { xPercent: -18, yPercent: 40, scale: 0.25, opacity: 0,
+            duration: 0.50, ease: 'power3.in', stagger: 0.014 }, 3.30);
+
+        // EXIT — streak into the full-bleed turn.
+        tl.fromTo(sel('.streak'),
+          { xPercent: -120, opacity: 0.9, scaleX: 0.6 },
+          { xPercent: 240, scaleX: 1.4, duration: 0.36, ease: 'power3.in' }, 4.58);
+
+        tl.to({}, { duration: SLOT }, 0);
+        window.__timelines = window.__timelines || {};
+        window.__timelines['01-noise'] = tl;
+      })();
+    </script>
+  </div>
+</template>
