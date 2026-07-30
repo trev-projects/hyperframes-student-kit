@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <title>AI Operated — Issue 04: The Spreadsheet Skill</title>
+    <script src="assets/gsap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Manrope:wght@500;700&family=JetBrains+Mono:wght@500;600;700&display=block" rel="stylesheet" />
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body {
+        width: 1920px; height: 1080px;
+        overflow: hidden;
+        background: #F1ECE3;
+        color: #1F1B17;
+      }
+      .beat-layer {
+        position: absolute; top: 0; left: 0;
+        width: 1920px; height: 1080px;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="ai-operated-04"
+      data-start="0"
+      data-duration="32"
+      data-width="1920"
+      data-height="1080"
+    >
+      <!-- Beat 00 — Cover (0–4s) -->
+      <div class="beat-layer"
+        data-composition-id="00-cover"
+        data-composition-src="compositions/00-cover.html"
+        data-start="0" data-duration="4" data-track-index="0"
+        data-width="1920" data-height="1080"></div>
+
+      <!-- Beat 01 — 01 / News (4–11s) -->
+      <div class="beat-layer"
+        data-composition-id="01-news"
+        data-composition-src="compositions/01-news.html"
+        data-start="4" data-duration="7" data-track-index="0"
+        data-width="1920" data-height="1080"></div>
+
+      <!-- Beat 02 — 02 / The Drop (11–18s) -->
+      <div class="beat-layer"
+        data-composition-id="02-the-drop"
+        data-composition-src="compositions/02-the-drop.html"
+        data-start="11" data-duration="7" data-track-index="0"
+        data-width="1920" data-height="1080"></div>
+
+      <!-- Beat 03 — 03 / In Plain English (18–24s) -->
+      <div class="beat-layer"
+        data-composition-id="03-plain-english"
+        data-composition-src="compositions/03-plain-english.html"
+        data-start="18" data-duration="6" data-track-index="0"
+        data-width="1920" data-height="1080"></div>
+
+      <!-- Beat 04 — 04 / Build It With Us / CTA (24–32s) -->
+      <div class="beat-layer"
+        data-composition-id="04-cta"
+        data-composition-src="compositions/04-cta.html"
+        data-start="24" data-duration="8" data-track-index="0"
+        data-width="1920" data-height="1080"></div>
+
+      <!-- Background music bed — music-only (no VO this issue) -->
+      <audio id="bed"
+        data-start="0" data-duration="32" data-track-index="21" data-volume="0.5"
+        src="assets/music.wav"></audio>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      tl.to({}, { duration: 32 }, 0);
+      window.__timelines["ai-operated-04"] = tl;
+    </script>
+  </body>
+</html>

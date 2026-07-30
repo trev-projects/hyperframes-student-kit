@@ -1,0 +1,194 @@
+<template id="03-plain-english-template">
+  <script src="assets/gsap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Manrope:wght@500;700&family=JetBrains+Mono:wght@500;600;700&display=block" rel="stylesheet" />
+
+  <div data-composition-id="03-plain-english" data-start="0" data-duration="6" data-width="1920" data-height="1080">
+    <div class="stage">
+      <div class="rule rule-top"></div>
+      <div class="eyebrow">03&nbsp;/&nbsp;IN&nbsp;PLAIN&nbsp;ENGLISH</div>
+
+      <div class="take">
+        <div class="take-line tl1" data-split>The skill is the recipe.</div>
+        <div class="take-line tl2" data-split>Code execution is the calculator.</div>
+      </div>
+
+      <!-- Payoff carries the sand swash — a callback to the wordmark on the cover. -->
+      <div class="payoff">
+        <span class="payoff-lead">So you stop getting a confident guess, and start getting a</span>
+        <span class="payoff-wrap">
+          <span class="payoff-swash"></span>
+          <span class="payoff-key">checked answer.</span>
+        </span>
+      </div>
+
+      <div class="footer-mark">AI&nbsp;OPERATED</div>
+
+      <div class="wipe"></div>
+      <div class="vignette"></div>
+      <div class="grain"></div>
+    </div>
+
+    <style>
+      [data-composition-id="03-plain-english"] {
+        position: absolute; inset: 0; overflow: hidden;
+        background: #F1ECE3;
+        font-family: "Sora", Helvetica, Arial, sans-serif;
+      }
+      [data-composition-id="03-plain-english"] .stage { position: absolute; inset: 0; }
+
+      [data-composition-id="03-plain-english"] .rule {
+        position: absolute;
+        left: 100px; right: 100px;
+        height: 1px;
+        background: rgba(31,27,23,0.12);
+        transform: scaleX(0);
+        transform-origin: left center;
+      }
+      [data-composition-id="03-plain-english"] .rule-top { top: 150px; }
+
+      [data-composition-id="03-plain-english"] .eyebrow {
+        position: absolute;
+        top: 182px; left: 100px;
+        font-family: "JetBrains Mono", Consolas, monospace;
+        font-weight: 600;
+        font-size: 20px;
+        letter-spacing: 2.4px;
+        text-transform: uppercase;
+        color: #B5532E;
+        opacity: 0;
+      }
+
+      [data-composition-id="03-plain-english"] .take {
+        position: absolute;
+        top: 50%; left: 100px; right: 100px;
+        transform: translateY(-58%);
+      }
+      [data-composition-id="03-plain-english"] .take-line {
+        font-weight: 800;
+        font-size: 88px;
+        line-height: 1.14;
+        letter-spacing: -2px;
+        white-space: nowrap;
+      }
+      [data-composition-id="03-plain-english"] .tl1 { color: #1F1B17; }
+      [data-composition-id="03-plain-english"] .tl2 { color: #B5532E; }
+      [data-composition-id="03-plain-english"] .take-line .word {
+        display: inline-block; white-space: nowrap;
+      }
+      [data-composition-id="03-plain-english"] .take-line .ch {
+        display: inline-block;
+        opacity: 0;
+        transform: translateY(40px);
+        will-change: opacity, transform;
+      }
+
+      [data-composition-id="03-plain-english"] .payoff {
+        position: absolute;
+        bottom: 210px; left: 100px; right: 100px;
+        font-family: "Manrope", Helvetica, Arial, sans-serif;
+        font-weight: 500;
+        font-size: 34px;
+        line-height: 1.5;
+        color: #4B433A;
+        opacity: 0;
+        white-space: nowrap;
+      }
+      [data-composition-id="03-plain-english"] .payoff-wrap {
+        position: relative;
+        display: inline-block;
+        padding: 0 5px;
+      }
+      [data-composition-id="03-plain-english"] .payoff-swash {
+        position: absolute;
+        left: 0; bottom: 0;
+        width: 100%; height: 30%;
+        background: #DDB892;
+        transform: scaleX(0);
+        transform-origin: left center;
+        z-index: 0;
+      }
+      [data-composition-id="03-plain-english"] .payoff-key {
+        position: relative; z-index: 1;
+        font-weight: 700;
+        color: #1F1B17;
+      }
+
+      [data-composition-id="03-plain-english"] .footer-mark {
+        position: absolute;
+        bottom: 78px; left: 100px;
+        font-family: "JetBrains Mono", Consolas, monospace;
+        font-weight: 500;
+        font-size: 18px;
+        letter-spacing: 2.6px;
+        color: #8B8173;
+        opacity: 0.75;
+      }
+
+      [data-composition-id="03-plain-english"] .wipe {
+        position: absolute; top: 0; left: -100%;
+        width: 100%; height: 100%;
+        background: #B5532E;
+        z-index: 30;
+      }
+      [data-composition-id="03-plain-english"] .vignette {
+        position: absolute; inset: 0; pointer-events: none;
+        background: radial-gradient(ellipse at center, transparent 55%, rgba(31,27,23,0.10) 100%);
+        z-index: 35;
+      }
+      [data-composition-id="03-plain-english"] .grain {
+        position: absolute; inset: 0; pointer-events: none; opacity: 0.035;
+        background-image:
+          radial-gradient(rgba(31,27,23,0.35) 1px, transparent 1px),
+          radial-gradient(rgba(31,27,23,0.25) 1px, transparent 1px);
+        background-size: 3px 3px, 5px 5px;
+        z-index: 40;
+      }
+    </style>
+
+    <script>
+      (() => {
+        const SLOT = 6;
+        const sel = (q) => `[data-composition-id="03-plain-english"] ${q}`;
+
+        document.querySelectorAll(sel('[data-split]')).forEach((node) => {
+          const tokens = node.textContent.split(/(\s+)/);
+          node.innerHTML = tokens.map((tok) => {
+            if (/^\s+$/.test(tok)) return ' ';
+            const chars = tok.split('').map((c) => `<span class="ch">${c}</span>`).join('');
+            return `<span class="word">${chars}</span>`;
+          }).join('');
+        });
+
+        const tl = gsap.timeline({ paused: true });
+
+        tl.to(sel('.rule-top'),
+          { scaleX: 1, duration: 0.65, ease: 'power3.out' }, 0.05);
+        tl.fromTo(sel('.eyebrow'),
+          { x: -10, opacity: 0 },
+          { x: 0, opacity: 1, duration: 0.40, ease: 'power3.out' }, 0.22);
+
+        // Two-part take: setup in ink, payoff line in terracotta.
+        tl.to(sel('.tl1 .ch'),
+          { y: 0, opacity: 1, duration: 0.42, ease: 'power3.out', stagger: 0.014 }, 0.45);
+        tl.to(sel('.tl2 .ch'),
+          { y: 0, opacity: 1, duration: 0.42, ease: 'power3.out', stagger: 0.014 }, 1.35);
+
+        // Payoff fades up, then the sand swash wipes in — wordmark callback.
+        tl.fromTo(sel('.payoff'),
+          { y: 10, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.50, ease: 'power3.out' }, 2.55);
+        tl.to(sel('.payoff-swash'),
+          { scaleX: 1, duration: 0.45, ease: 'power3.out' }, 3.05);
+
+        // EXIT — matches 04-cta's entry.
+        tl.fromTo(sel('.wipe'),
+          { xPercent: 0 },
+          { xPercent: 200, duration: 0.40, ease: 'power3.in' }, 5.55);
+
+        tl.to({}, { duration: SLOT }, 0);
+        window.__timelines = window.__timelines || {};
+        window.__timelines['03-plain-english'] = tl;
+      })();
+    </script>
+  </div>
+</template>

@@ -1,0 +1,214 @@
+<template id="00-cover-template">
+  <script src="assets/gsap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Manrope:wght@500;700&family=JetBrains+Mono:wght@500;600;700&display=block" rel="stylesheet" />
+
+  <div data-composition-id="00-cover" data-start="0" data-duration="4" data-width="1920" data-height="1080">
+    <div class="stage">
+      <!-- Masthead: the AI Operated wordmark. Swash + period are the brand's hero moment. -->
+      <div class="masthead">
+        <span class="wm-ai">AI</span>
+        <span class="wm-wrap">
+          <span class="wm-swash"></span>
+          <span class="wm-op">Operated</span><span class="wm-dot">.</span>
+        </span>
+      </div>
+
+      <div class="rule rule-top"></div>
+      <div class="eyebrow">ISSUE&nbsp;04&nbsp;&middot;&nbsp;THU&nbsp;&middot;&nbsp;JUL&nbsp;30</div>
+
+      <div class="hero">
+        <div class="hero-line hl1" data-split>The free data analyst</div>
+        <div class="hero-line hl2" data-split>hiding in your Claude</div>
+      </div>
+
+      <div class="rule rule-bottom"></div>
+      <div class="tagline">Your AI operating system, every Thursday</div>
+
+      <div class="wipe"></div>
+      <div class="vignette"></div>
+      <div class="grain"></div>
+    </div>
+
+    <style>
+      [data-composition-id="00-cover"] {
+        position: absolute; inset: 0; overflow: hidden;
+        background: #F1ECE3;
+        font-family: "Sora", Helvetica, Arial, sans-serif;
+      }
+      [data-composition-id="00-cover"] .stage { position: absolute; inset: 0; }
+
+      [data-composition-id="00-cover"] .masthead {
+        position: absolute;
+        top: 78px; left: 100px;
+        font-weight: 800;
+        font-size: 44px;
+        letter-spacing: -0.5px;
+        color: #1F1B17;
+        line-height: 1;
+        opacity: 0;
+        white-space: nowrap;
+      }
+      [data-composition-id="00-cover"] .wm-wrap {
+        position: relative;
+        display: inline-block;
+        padding: 0 6px;
+      }
+      [data-composition-id="00-cover"] .wm-swash {
+        position: absolute;
+        left: 0; bottom: 0;
+        width: 100%; height: 26%;
+        background: #DDB892;
+        transform: scaleX(0);
+        transform-origin: left center;
+        z-index: 0;
+      }
+      [data-composition-id="00-cover"] .wm-op,
+      [data-composition-id="00-cover"] .wm-dot {
+        position: relative; z-index: 1;
+      }
+      [data-composition-id="00-cover"] .wm-dot {
+        color: #B5532E;
+        opacity: 0;
+        display: inline-block;
+      }
+
+      [data-composition-id="00-cover"] .rule {
+        position: absolute;
+        left: 100px; right: 100px;
+        height: 1px;
+        background: rgba(31,27,23,0.12);
+        transform: scaleX(0);
+        transform-origin: left center;
+      }
+      [data-composition-id="00-cover"] .rule-top { top: 200px; }
+      [data-composition-id="00-cover"] .rule-bottom { bottom: 210px; }
+
+      [data-composition-id="00-cover"] .eyebrow {
+        position: absolute;
+        top: 232px; left: 100px;
+        font-family: "JetBrains Mono", Consolas, monospace;
+        font-weight: 600;
+        font-size: 20px;
+        letter-spacing: 2.4px;
+        text-transform: uppercase;
+        color: #B5532E;
+        opacity: 0;
+      }
+
+      [data-composition-id="00-cover"] .hero {
+        position: absolute;
+        top: 50%; left: 100px; right: 100px;
+        transform: translateY(-50%);
+      }
+      [data-composition-id="00-cover"] .hero-line {
+        font-weight: 800;
+        font-size: 116px;
+        line-height: 1.06;
+        letter-spacing: -2px;
+        color: #1F1B17;
+      }
+      [data-composition-id="00-cover"] .hero-line .word {
+        display: inline-block;
+        white-space: nowrap;
+      }
+      [data-composition-id="00-cover"] .hero-line .ch {
+        display: inline-block;
+        opacity: 0;
+        transform: translateY(46px);
+        will-change: opacity, transform;
+      }
+
+      [data-composition-id="00-cover"] .tagline {
+        position: absolute;
+        bottom: 148px; left: 100px;
+        font-family: "JetBrains Mono", Consolas, monospace;
+        font-weight: 600;
+        font-size: 19px;
+        letter-spacing: 2.4px;
+        text-transform: uppercase;
+        color: #8B8173;
+        opacity: 0;
+      }
+
+      [data-composition-id="00-cover"] .wipe {
+        position: absolute; top: 0; left: -100%;
+        width: 100%; height: 100%;
+        background: #B5532E;
+        z-index: 30;
+      }
+      [data-composition-id="00-cover"] .vignette {
+        position: absolute; inset: 0; pointer-events: none;
+        background: radial-gradient(ellipse at center, transparent 55%, rgba(31,27,23,0.10) 100%);
+        z-index: 35;
+      }
+      [data-composition-id="00-cover"] .grain {
+        position: absolute; inset: 0; pointer-events: none; opacity: 0.035;
+        background-image:
+          radial-gradient(rgba(31,27,23,0.35) 1px, transparent 1px),
+          radial-gradient(rgba(31,27,23,0.25) 1px, transparent 1px);
+        background-size: 3px 3px, 5px 5px;
+        z-index: 40;
+      }
+    </style>
+
+    <script>
+      (() => {
+        const SLOT = 4;
+        const sel = (q) => `[data-composition-id="00-cover"] ${q}`;
+
+        // Word-safe per-char split — words stay together so lines break only at spaces.
+        document.querySelectorAll(sel('[data-split]')).forEach((node) => {
+          const tokens = node.textContent.split(/(\s+)/);
+          node.innerHTML = tokens.map((tok) => {
+            if (/^\s+$/.test(tok)) return ' ';
+            const chars = tok.split('').map((c) => `<span class="ch">${c}</span>`).join('');
+            return `<span class="word">${chars}</span>`;
+          }).join('');
+        });
+
+        const tl = gsap.timeline({ paused: true });
+
+        // Masthead rises
+        tl.fromTo(sel('.masthead'),
+          { y: -12, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.45, ease: 'power3.out' }, 0.10);
+
+        // Highlighter swash wipes left→right — the signature brand move
+        tl.to(sel('.wm-swash'),
+          { scaleX: 1, duration: 0.50, ease: 'power3.out' }, 0.45);
+
+        // Terracotta period pops in after the swash lands
+        tl.fromTo(sel('.wm-dot'),
+          { scale: 0.4, opacity: 0 },
+          { scale: 1, opacity: 1, duration: 0.30, ease: 'back.out(2.2)' }, 0.90);
+
+        // Hairline rules draw
+        tl.to([sel('.rule-top'), sel('.rule-bottom')],
+          { scaleX: 1, duration: 0.70, ease: 'power3.out', stagger: 0.08 }, 0.30);
+
+        // Eyebrow
+        tl.fromTo(sel('.eyebrow'),
+          { x: -10, opacity: 0 },
+          { x: 0, opacity: 1, duration: 0.40, ease: 'power3.out' }, 0.75);
+
+        // Hero headline chars rise
+        tl.to(sel('.hero-line .ch'),
+          { y: 0, opacity: 1, duration: 0.42, ease: 'power3.out', stagger: 0.012 }, 1.05);
+
+        // Tagline
+        tl.fromTo(sel('.tagline'),
+          { y: 8, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.50, ease: 'power3.out' }, 2.35);
+
+        // EXIT — terracotta block-wipe hands off to 01-news's matching wipe entry.
+        tl.fromTo(sel('.wipe'),
+          { xPercent: 0 },
+          { xPercent: 200, duration: 0.40, ease: 'power3.in' }, 3.55);
+
+        tl.to({}, { duration: SLOT }, 0);
+        window.__timelines = window.__timelines || {};
+        window.__timelines['00-cover'] = tl;
+      })();
+    </script>
+  </div>
+</template>

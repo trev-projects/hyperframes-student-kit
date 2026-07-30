@@ -1,0 +1,217 @@
+<template id="01-news-template">
+  <script src="assets/gsap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Manrope:wght@500;700&family=JetBrains+Mono:wght@500;600;700&display=block" rel="stylesheet" />
+
+  <div data-composition-id="01-news" data-start="0" data-duration="7" data-width="1920" data-height="1080">
+    <div class="stage">
+      <div class="rule rule-top"></div>
+      <div class="eyebrow">01&nbsp;/&nbsp;NEWS</div>
+
+      <div class="headline" data-split>AI News Worth Knowing</div>
+      <div class="subhead">Three that moved this week, and why they matter for your business.</div>
+
+      <div class="rows">
+        <div class="row r1">
+          <div class="row-num">01</div>
+          <div class="row-title">A real Jarvis moment landed this week</div>
+        </div>
+        <div class="row-div rd1"></div>
+        <div class="row r2">
+          <div class="row-num">02</div>
+          <div class="row-title">Claude&rsquo;s flagship got a big upgrade, same price</div>
+        </div>
+        <div class="row-div rd2"></div>
+        <div class="row r3">
+          <div class="row-num">03</div>
+          <div class="row-title">A rogue AI agent, and the industry&rsquo;s response</div>
+        </div>
+      </div>
+
+      <div class="footer-mark">AI&nbsp;OPERATED</div>
+
+      <div class="wipe"></div>
+      <div class="vignette"></div>
+      <div class="grain"></div>
+    </div>
+
+    <style>
+      [data-composition-id="01-news"] {
+        position: absolute; inset: 0; overflow: hidden;
+        background: #F1ECE3;
+        font-family: "Sora", Helvetica, Arial, sans-serif;
+      }
+      [data-composition-id="01-news"] .stage { position: absolute; inset: 0; }
+
+      [data-composition-id="01-news"] .rule {
+        position: absolute;
+        left: 100px; right: 100px;
+        height: 1px;
+        background: rgba(31,27,23,0.12);
+        transform: scaleX(0);
+        transform-origin: left center;
+      }
+      [data-composition-id="01-news"] .rule-top { top: 150px; }
+
+      [data-composition-id="01-news"] .eyebrow {
+        position: absolute;
+        top: 182px; left: 100px;
+        font-family: "JetBrains Mono", Consolas, monospace;
+        font-weight: 600;
+        font-size: 20px;
+        letter-spacing: 2.4px;
+        text-transform: uppercase;
+        color: #B5532E;
+        opacity: 0;
+      }
+
+      [data-composition-id="01-news"] .headline {
+        position: absolute;
+        top: 232px; left: 100px; right: 100px;
+        font-weight: 800;
+        font-size: 84px;
+        line-height: 1.05;
+        letter-spacing: -1.6px;
+        color: #1F1B17;
+      }
+      [data-composition-id="01-news"] .headline .word {
+        display: inline-block; white-space: nowrap;
+      }
+      [data-composition-id="01-news"] .headline .ch {
+        display: inline-block;
+        opacity: 0;
+        transform: translateY(38px);
+        will-change: opacity, transform;
+      }
+
+      [data-composition-id="01-news"] .subhead {
+        position: absolute;
+        top: 346px; left: 100px; right: 100px;
+        font-family: "Manrope", Helvetica, Arial, sans-serif;
+        font-weight: 500;
+        font-size: 30px;
+        line-height: 1.45;
+        color: #8B8173;
+        opacity: 0;
+      }
+
+      [data-composition-id="01-news"] .rows {
+        position: absolute;
+        top: 448px; left: 100px; right: 100px;
+      }
+      [data-composition-id="01-news"] .row {
+        display: flex;
+        align-items: baseline;
+        gap: 28px;
+        opacity: 0;
+        transform: translateX(34px);
+      }
+      [data-composition-id="01-news"] .row-num {
+        font-family: "JetBrains Mono", Consolas, monospace;
+        font-weight: 600;
+        font-size: 26px;
+        color: #B5532E;
+        flex: 0 0 auto;
+        width: 52px;
+      }
+      [data-composition-id="01-news"] .row-title {
+        font-weight: 700;
+        font-size: 46px;
+        line-height: 1.28;
+        letter-spacing: -0.6px;
+        color: #1F1B17;
+      }
+      [data-composition-id="01-news"] .row-div {
+        height: 1px;
+        background: rgba(31,27,23,0.10);
+        margin: 30px 0;
+        transform: scaleX(0);
+        transform-origin: left center;
+      }
+
+      [data-composition-id="01-news"] .footer-mark {
+        position: absolute;
+        bottom: 78px; left: 100px;
+        font-family: "JetBrains Mono", Consolas, monospace;
+        font-weight: 500;
+        font-size: 18px;
+        letter-spacing: 2.6px;
+        color: #8B8173;
+        opacity: 0.75;
+      }
+
+      [data-composition-id="01-news"] .wipe {
+        position: absolute; top: 0; left: -100%;
+        width: 100%; height: 100%;
+        background: #B5532E;
+        z-index: 30;
+      }
+      [data-composition-id="01-news"] .vignette {
+        position: absolute; inset: 0; pointer-events: none;
+        background: radial-gradient(ellipse at center, transparent 55%, rgba(31,27,23,0.10) 100%);
+        z-index: 35;
+      }
+      [data-composition-id="01-news"] .grain {
+        position: absolute; inset: 0; pointer-events: none; opacity: 0.035;
+        background-image:
+          radial-gradient(rgba(31,27,23,0.35) 1px, transparent 1px),
+          radial-gradient(rgba(31,27,23,0.25) 1px, transparent 1px);
+        background-size: 3px 3px, 5px 5px;
+        z-index: 40;
+      }
+    </style>
+
+    <script>
+      (() => {
+        const SLOT = 7;
+        const sel = (q) => `[data-composition-id="01-news"] ${q}`;
+
+        document.querySelectorAll(sel('[data-split]')).forEach((node) => {
+          const tokens = node.textContent.split(/(\s+)/);
+          node.innerHTML = tokens.map((tok) => {
+            if (/^\s+$/.test(tok)) return ' ';
+            const chars = tok.split('').map((c) => `<span class="ch">${c}</span>`).join('');
+            return `<span class="word">${chars}</span>`;
+          }).join('');
+        });
+
+        const tl = gsap.timeline({ paused: true });
+
+        // ENTRY — rule draws first, echoing the cover's rule treatment.
+        tl.to(sel('.rule-top'),
+          { scaleX: 1, duration: 0.65, ease: 'power3.out' }, 0.05);
+        tl.fromTo(sel('.eyebrow'),
+          { x: -10, opacity: 0 },
+          { x: 0, opacity: 1, duration: 0.40, ease: 'power3.out' }, 0.22);
+        tl.to(sel('.headline .ch'),
+          { y: 0, opacity: 1, duration: 0.40, ease: 'power3.out', stagger: 0.012 }, 0.42);
+        tl.fromTo(sel('.subhead'),
+          { y: 10, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.45, ease: 'power3.out' }, 1.05);
+
+        // Three story rows — rule of threes, ~1.05s apart
+        const rows = [
+          { row: '.r1', div: '.rd1', at: 1.45 },
+          { row: '.r2', div: '.rd2', at: 2.50 },
+          { row: '.r3', div: null,   at: 3.55 }
+        ];
+        rows.forEach((r) => {
+          tl.to(sel(r.row),
+            { x: 0, opacity: 1, duration: 0.48, ease: 'expo.out' }, r.at);
+          if (r.div) {
+            tl.to(sel(r.div),
+              { scaleX: 1, duration: 0.50, ease: 'power3.out' }, r.at + 0.30);
+          }
+        });
+
+        // EXIT — matches 02-the-drop's wipe entry.
+        tl.fromTo(sel('.wipe'),
+          { xPercent: 0 },
+          { xPercent: 200, duration: 0.40, ease: 'power3.in' }, 6.55);
+
+        tl.to({}, { duration: SLOT }, 0);
+        window.__timelines = window.__timelines || {};
+        window.__timelines['01-news'] = tl;
+      })();
+    </script>
+  </div>
+</template>

@@ -1,0 +1,210 @@
+<template id="02-the-drop-template">
+  <script src="assets/gsap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Manrope:wght@500;700&family=JetBrains+Mono:wght@500;600;700&display=block" rel="stylesheet" />
+
+  <div data-composition-id="02-the-drop" data-start="0" data-duration="7" data-width="1920" data-height="1080">
+    <div class="stage">
+      <div class="rule rule-top"></div>
+      <div class="eyebrow">02&nbsp;/&nbsp;THE&nbsp;DROP&nbsp;&#9733;</div>
+
+      <div class="headline" data-split>The spreadsheet skill</div>
+      <div class="subhead">The free data analyst already sitting inside your Claude.</div>
+
+      <div class="card">
+        <div class="card-row cr1">
+          <div class="card-label">What it does</div>
+          <div class="card-body">Drop in any spreadsheet and ask in plain English. It cleans the messy data, runs the formulas, builds the charts, and hands the file back.</div>
+        </div>
+        <div class="card-div"></div>
+        <div class="card-row cr2">
+          <div class="card-label">Where it lives</div>
+          <div class="card-body">Claude &rarr; Settings &rarr; Capabilities &rarr; Skills. About 30 seconds, no code.</div>
+        </div>
+      </div>
+
+      <div class="footer-mark">AI&nbsp;OPERATED</div>
+
+      <div class="wipe"></div>
+      <div class="vignette"></div>
+      <div class="grain"></div>
+    </div>
+
+    <style>
+      [data-composition-id="02-the-drop"] {
+        position: absolute; inset: 0; overflow: hidden;
+        background: #F1ECE3;
+        font-family: "Sora", Helvetica, Arial, sans-serif;
+      }
+      [data-composition-id="02-the-drop"] .stage { position: absolute; inset: 0; }
+
+      [data-composition-id="02-the-drop"] .rule {
+        position: absolute;
+        left: 100px; right: 100px;
+        height: 1px;
+        background: rgba(31,27,23,0.12);
+        transform: scaleX(0);
+        transform-origin: left center;
+      }
+      [data-composition-id="02-the-drop"] .rule-top { top: 150px; }
+
+      [data-composition-id="02-the-drop"] .eyebrow {
+        position: absolute;
+        top: 182px; left: 100px;
+        font-family: "JetBrains Mono", Consolas, monospace;
+        font-weight: 600;
+        font-size: 20px;
+        letter-spacing: 2.4px;
+        text-transform: uppercase;
+        color: #B5532E;
+        opacity: 0;
+      }
+
+      [data-composition-id="02-the-drop"] .headline {
+        position: absolute;
+        top: 236px; left: 100px; right: 100px;
+        font-weight: 800;
+        font-size: 132px;
+        line-height: 1.02;
+        letter-spacing: -3px;
+        color: #1F1B17;
+        white-space: nowrap;
+      }
+      [data-composition-id="02-the-drop"] .headline .word {
+        display: inline-block; white-space: nowrap;
+      }
+      [data-composition-id="02-the-drop"] .headline .ch {
+        display: inline-block;
+        opacity: 0;
+        transform: translateY(54px);
+        will-change: opacity, transform;
+      }
+
+      [data-composition-id="02-the-drop"] .subhead {
+        position: absolute;
+        top: 402px; left: 100px; right: 100px;
+        font-family: "Manrope", Helvetica, Arial, sans-serif;
+        font-weight: 500;
+        font-size: 32px;
+        line-height: 1.45;
+        color: #8B8173;
+        opacity: 0;
+      }
+
+      [data-composition-id="02-the-drop"] .card {
+        position: absolute;
+        top: 496px; left: 100px; right: 100px;
+        background: #FFFFFF;
+        border: 1px solid #C49A70;
+        border-radius: 14px;
+        opacity: 0;
+        transform: translateY(24px);
+      }
+      [data-composition-id="02-the-drop"] .card-row {
+        padding: 26px 34px;
+        opacity: 0;
+      }
+      [data-composition-id="02-the-drop"] .card-div {
+        height: 1px;
+        background: #E0D6C4;
+      }
+      [data-composition-id="02-the-drop"] .card-label {
+        font-family: "JetBrains Mono", Consolas, monospace;
+        font-weight: 600;
+        font-size: 18px;
+        letter-spacing: 2.2px;
+        text-transform: uppercase;
+        color: #8B8173;
+      }
+      [data-composition-id="02-the-drop"] .card-body {
+        margin-top: 12px;
+        font-family: "Manrope", Helvetica, Arial, sans-serif;
+        font-weight: 500;
+        font-size: 30px;
+        line-height: 1.5;
+        color: #1F1B17;
+      }
+
+      [data-composition-id="02-the-drop"] .footer-mark {
+        position: absolute;
+        bottom: 78px; left: 100px;
+        font-family: "JetBrains Mono", Consolas, monospace;
+        font-weight: 500;
+        font-size: 18px;
+        letter-spacing: 2.6px;
+        color: #8B8173;
+        opacity: 0.75;
+      }
+
+      [data-composition-id="02-the-drop"] .wipe {
+        position: absolute; top: 0; left: -100%;
+        width: 100%; height: 100%;
+        background: #B5532E;
+        z-index: 30;
+      }
+      [data-composition-id="02-the-drop"] .vignette {
+        position: absolute; inset: 0; pointer-events: none;
+        background: radial-gradient(ellipse at center, transparent 55%, rgba(31,27,23,0.10) 100%);
+        z-index: 35;
+      }
+      [data-composition-id="02-the-drop"] .grain {
+        position: absolute; inset: 0; pointer-events: none; opacity: 0.035;
+        background-image:
+          radial-gradient(rgba(31,27,23,0.35) 1px, transparent 1px),
+          radial-gradient(rgba(31,27,23,0.25) 1px, transparent 1px);
+        background-size: 3px 3px, 5px 5px;
+        z-index: 40;
+      }
+    </style>
+
+    <script>
+      (() => {
+        const SLOT = 7;
+        const sel = (q) => `[data-composition-id="02-the-drop"] ${q}`;
+
+        document.querySelectorAll(sel('[data-split]')).forEach((node) => {
+          const tokens = node.textContent.split(/(\s+)/);
+          node.innerHTML = tokens.map((tok) => {
+            if (/^\s+$/.test(tok)) return ' ';
+            const chars = tok.split('').map((c) => `<span class="ch">${c}</span>`).join('');
+            return `<span class="word">${chars}</span>`;
+          }).join('');
+        });
+
+        const tl = gsap.timeline({ paused: true });
+
+        tl.to(sel('.rule-top'),
+          { scaleX: 1, duration: 0.65, ease: 'power3.out' }, 0.05);
+        tl.fromTo(sel('.eyebrow'),
+          { x: -10, opacity: 0 },
+          { x: 0, opacity: 1, duration: 0.40, ease: 'power3.out' }, 0.22);
+
+        // Hero headline — the issue's centrepiece, biggest type in the piece.
+        tl.to(sel('.headline .ch'),
+          { y: 0, opacity: 1, duration: 0.44, ease: 'power3.out', stagger: 0.016 }, 0.42);
+
+        tl.fromTo(sel('.subhead'),
+          { y: 10, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.45, ease: 'power3.out' }, 1.25);
+
+        // Card lifts in, then its rows reveal in sequence
+        tl.to(sel('.card'),
+          { y: 0, opacity: 1, duration: 0.55, ease: 'power3.out' }, 1.70);
+        tl.fromTo(sel('.cr1'),
+          { y: 10, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.45, ease: 'power3.out' }, 2.05);
+        tl.fromTo(sel('.cr2'),
+          { y: 10, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.45, ease: 'power3.out' }, 3.10);
+
+        // EXIT — matches 03-plain-english's wipe entry.
+        tl.fromTo(sel('.wipe'),
+          { xPercent: 0 },
+          { xPercent: 200, duration: 0.40, ease: 'power3.in' }, 6.55);
+
+        tl.to({}, { duration: SLOT }, 0);
+        window.__timelines = window.__timelines || {};
+        window.__timelines['02-the-drop'] = tl;
+      })();
+    </script>
+  </div>
+</template>

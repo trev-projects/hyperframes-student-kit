@@ -1,0 +1,225 @@
+<template id="04-cta-template">
+  <script src="assets/gsap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Manrope:wght@500;700&family=JetBrains+Mono:wght@500;600;700&display=block" rel="stylesheet" />
+
+  <div data-composition-id="04-cta" data-start="0" data-duration="8" data-width="1920" data-height="1080">
+    <div class="stage">
+      <div class="rule rule-top"></div>
+      <div class="eyebrow">04&nbsp;/&nbsp;BUILD&nbsp;IT&nbsp;WITH&nbsp;US</div>
+
+      <div class="cta-card">
+        <div class="cta-kicker">BUILT&nbsp;BY&nbsp;DIGIWELL</div>
+        <div class="cta-head">Before you dig into the numbers,<br/>find where growth is leaking.</div>
+        <div class="cta-body">Take the free 2-minute AI Growth Scorecard. You&rsquo;ll get your score and the three fixes worth doing first.</div>
+        <div class="cta-btn">Get your free scorecard &rarr;</div>
+      </div>
+
+      <!-- Wordmark returns from the cover — the piece's closing callback. -->
+      <div class="signoff">
+        <div class="wordmark">
+          <span class="wm-ai">AI</span>
+          <span class="wm-wrap">
+            <span class="wm-swash"></span>
+            <span class="wm-op">Operated</span><span class="wm-dot">.</span>
+          </span>
+        </div>
+        <div class="signoff-meta">A DIGIWELL NEWSLETTER&nbsp;&nbsp;&middot;&nbsp;&nbsp;DIGIWELLMARKETING.COM</div>
+      </div>
+
+      <div class="vignette"></div>
+      <div class="grain"></div>
+    </div>
+
+    <style>
+      [data-composition-id="04-cta"] {
+        position: absolute; inset: 0; overflow: hidden;
+        background: #F1ECE3;
+        font-family: "Sora", Helvetica, Arial, sans-serif;
+      }
+      [data-composition-id="04-cta"] .stage { position: absolute; inset: 0; }
+
+      [data-composition-id="04-cta"] .rule {
+        position: absolute;
+        left: 100px; right: 100px;
+        height: 1px;
+        background: rgba(31,27,23,0.12);
+        transform: scaleX(0);
+        transform-origin: left center;
+      }
+      [data-composition-id="04-cta"] .rule-top { top: 150px; }
+
+      [data-composition-id="04-cta"] .eyebrow {
+        position: absolute;
+        top: 182px; left: 100px;
+        font-family: "JetBrains Mono", Consolas, monospace;
+        font-weight: 600;
+        font-size: 20px;
+        letter-spacing: 2.4px;
+        text-transform: uppercase;
+        color: #B5532E;
+        opacity: 0;
+      }
+
+      [data-composition-id="04-cta"] .cta-card {
+        position: absolute;
+        top: 254px; left: 100px; right: 100px;
+        background: #B5532E;
+        border-radius: 18px;
+        padding: 52px 56px 56px;
+        opacity: 0;
+        transform: translateY(28px);
+      }
+      [data-composition-id="04-cta"] .cta-kicker {
+        font-weight: 700;
+        font-size: 19px;
+        letter-spacing: 2.6px;
+        text-transform: uppercase;
+        color: #F4E7DC;
+        opacity: 0;
+      }
+      [data-composition-id="04-cta"] .cta-head {
+        margin-top: 20px;
+        font-weight: 800;
+        font-size: 62px;
+        line-height: 1.16;
+        letter-spacing: -1.4px;
+        color: #F1ECE3;
+        opacity: 0;
+      }
+      [data-composition-id="04-cta"] .cta-body {
+        margin-top: 22px;
+        font-family: "Manrope", Helvetica, Arial, sans-serif;
+        font-weight: 500;
+        font-size: 30px;
+        line-height: 1.5;
+        color: #F8F1E9;
+        max-width: 1180px;
+        opacity: 0;
+      }
+      [data-composition-id="04-cta"] .cta-btn {
+        display: inline-block;
+        margin-top: 34px;
+        background: #DDB892;
+        border-radius: 12px;
+        padding: 20px 34px;
+        font-family: "Manrope", Helvetica, Arial, sans-serif;
+        font-weight: 700;
+        font-size: 30px;
+        color: #1F1B17;
+        opacity: 0;
+      }
+
+      [data-composition-id="04-cta"] .signoff {
+        position: absolute;
+        bottom: 92px; left: 100px;
+      }
+      [data-composition-id="04-cta"] .wordmark {
+        font-weight: 800;
+        font-size: 38px;
+        letter-spacing: -0.5px;
+        color: #1F1B17;
+        line-height: 1;
+        opacity: 0;
+        white-space: nowrap;
+      }
+      [data-composition-id="04-cta"] .wm-wrap {
+        position: relative;
+        display: inline-block;
+        padding: 0 5px;
+      }
+      [data-composition-id="04-cta"] .wm-swash {
+        position: absolute;
+        left: 0; bottom: 0;
+        width: 100%; height: 26%;
+        background: #DDB892;
+        transform: scaleX(0);
+        transform-origin: left center;
+        z-index: 0;
+      }
+      [data-composition-id="04-cta"] .wm-op,
+      [data-composition-id="04-cta"] .wm-dot {
+        position: relative; z-index: 1;
+      }
+      [data-composition-id="04-cta"] .wm-dot {
+        color: #B5532E;
+        opacity: 0;
+        display: inline-block;
+      }
+      [data-composition-id="04-cta"] .signoff-meta {
+        margin-top: 14px;
+        font-family: "JetBrains Mono", Consolas, monospace;
+        font-weight: 500;
+        font-size: 18px;
+        letter-spacing: 2.2px;
+        color: #8B8173;
+        opacity: 0;
+      }
+
+      [data-composition-id="04-cta"] .vignette {
+        position: absolute; inset: 0; pointer-events: none;
+        background: radial-gradient(ellipse at center, transparent 55%, rgba(31,27,23,0.10) 100%);
+        z-index: 35;
+      }
+      [data-composition-id="04-cta"] .grain {
+        position: absolute; inset: 0; pointer-events: none; opacity: 0.035;
+        background-image:
+          radial-gradient(rgba(31,27,23,0.35) 1px, transparent 1px),
+          radial-gradient(rgba(31,27,23,0.25) 1px, transparent 1px);
+        background-size: 3px 3px, 5px 5px;
+        z-index: 40;
+      }
+    </style>
+
+    <script>
+      (() => {
+        const SLOT = 8;
+        const sel = (q) => `[data-composition-id="04-cta"] ${q}`;
+        const tl = gsap.timeline({ paused: true });
+
+        // ENTRY — rule + eyebrow match the rhythm established on beats 01–03.
+        tl.to(sel('.rule-top'),
+          { scaleX: 1, duration: 0.65, ease: 'power3.out' }, 0.05);
+        tl.fromTo(sel('.eyebrow'),
+          { x: -10, opacity: 0 },
+          { x: 0, opacity: 1, duration: 0.40, ease: 'power3.out' }, 0.22);
+
+        // Terracotta card lifts in, contents cascade
+        tl.to(sel('.cta-card'),
+          { y: 0, opacity: 1, duration: 0.60, ease: 'power3.out' }, 0.45);
+        tl.fromTo(sel('.cta-kicker'),
+          { y: 8, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.40, ease: 'power3.out' }, 0.85);
+        tl.fromTo(sel('.cta-head'),
+          { y: 14, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.55, ease: 'power3.out' }, 1.10);
+        tl.fromTo(sel('.cta-body'),
+          { y: 12, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.50, ease: 'power3.out' }, 1.55);
+        tl.fromTo(sel('.cta-btn'),
+          { y: 12, scale: 0.96, opacity: 0 },
+          { y: 0, scale: 1, opacity: 1, duration: 0.45, ease: 'back.out(1.6)' }, 1.95);
+
+        // Wordmark callback — swash then period, same order as the cover.
+        tl.fromTo(sel('.wordmark'),
+          { y: 10, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.45, ease: 'power3.out' }, 2.45);
+        tl.to(sel('.wm-swash'),
+          { scaleX: 1, duration: 0.45, ease: 'power3.out' }, 2.75);
+        tl.fromTo(sel('.wm-dot'),
+          { scale: 0.4, opacity: 0 },
+          { scale: 1, opacity: 1, duration: 0.28, ease: 'back.out(2.2)' }, 3.15);
+        tl.fromTo(sel('.signoff-meta'),
+          { y: 6, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.45, ease: 'power3.out' }, 3.30);
+
+        // Button breathes through the hold so the outro never goes static.
+        tl.to(sel('.cta-btn'),
+          { scale: 1.025, duration: 0.9, yoyo: true, repeat: 3, ease: 'sine.inOut' }, 4.10);
+
+        tl.to({}, { duration: SLOT }, 0);
+        window.__timelines = window.__timelines || {};
+        window.__timelines['04-cta'] = tl;
+      })();
+    </script>
+  </div>
+</template>
