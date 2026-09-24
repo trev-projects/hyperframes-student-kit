@@ -1,0 +1,75 @@
+<template id="s3-turn-template">
+  <script src="assets/gsap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Manrope:wght@500;700&family=JetBrains+Mono:wght@500;600;700&display=block" rel="stylesheet" />
+
+  <div data-composition-id="s3-turn" data-start="0" data-duration="2.4" data-width="1920" data-height="1080">
+    <!-- Iris: a terracotta circle opens from where the signal line exits frame. -->
+    <div class="stage">
+      <div class="content">
+        <div class="kicker">A&nbsp;DIGIWELL&nbsp;NEWSLETTER</div>
+        <div class="line l1"><span class="w">The</span> <span class="w">newsletter</span></div>
+        <div class="line l2"><span class="w">I</span> <span class="w">wish</span> <span class="w">I</span> <span class="w">had.</span></div>
+        <div class="sub">When I started building with agents, it didn&rsquo;t exist.</div>
+      </div>
+      <div class="vignette"></div>
+      <div class="grain"></div>
+    </div>
+
+    <style>
+      [data-composition-id="s3-turn"] { position: absolute; inset: 0; overflow: hidden; background: transparent; font-family: "Sora", Helvetica, Arial, sans-serif; }
+      [data-composition-id="s3-turn"] .stage {
+        position: absolute; inset: 0; background: #B5532E;
+        clip-path: circle(0px at 95% 70%);
+      }
+      [data-composition-id="s3-turn"] .content {
+        width: 100%; height: 100%; padding: 0 100px;
+        display: flex; flex-direction: column; justify-content: center; gap: 0;
+        transform-origin: 20% 50%;
+      }
+      [data-composition-id="s3-turn"] .kicker { font-family: "JetBrains Mono", Consolas, monospace; font-weight: 600; font-size: 24px; letter-spacing: 5px; color: #F4E7DC; margin-bottom: 28px; }
+      [data-composition-id="s3-turn"] .line { font-weight: 800; font-size: 168px; line-height: 1.0; letter-spacing: -6px; color: #F1ECE3; white-space: nowrap; }
+      [data-composition-id="s3-turn"] .w { display: inline-block; }
+      [data-composition-id="s3-turn"] .sub { margin-top: 44px; font-family: "Manrope", Helvetica, Arial, sans-serif; font-weight: 500; font-size: 38px; color: #F8F1E9; }
+
+      [data-composition-id="s3-turn"] .vignette { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse at center, transparent 55%, rgba(31,27,23,0.16) 100%); }
+      [data-composition-id="s3-turn"] .grain { position: absolute; inset: 0; pointer-events: none; opacity: 0.04;
+        background-image: radial-gradient(rgba(31,27,23,0.35) 1px, transparent 1px), radial-gradient(rgba(31,27,23,0.25) 1px, transparent 1px);
+        background-size: 3px 3px, 5px 5px; }
+    </style>
+
+    <script>
+      (() => {
+        const SLOT = 2.4;
+        const ID = 's3-turn';
+        const root = document.querySelector('[data-composition-id="s3-turn"]');
+        const q = (s) => root.querySelector(s);
+        const qa = (s) => root.querySelectorAll(s);
+
+        const tl = gsap.timeline({ paused: true });
+
+        // ENTRY — iris opens from the signal line's exit point in 02.
+        tl.fromTo(q('.stage'),
+          { clipPath: 'circle(0px at 95% 70%)' },
+          { clipPath: 'circle(2400px at 95% 70%)', duration: 0.62, ease: 'expo.inOut' }, 0);
+
+        tl.from(q('.kicker'), { x: -40, opacity: 0, duration: 0.3, ease: 'power3.out' }, 0.40);
+
+        // Word slams — each lands from oversize with blur, 0.1s apart.
+        const words = qa('.w');
+        const at = [0.52, 0.64, 0.84, 0.94, 1.04, 1.14];
+        words.forEach((w, i) => {
+          tl.from(w, { scale: 1.9, opacity: 0, filter: 'blur(16px)', duration: 0.26, ease: 'expo.out' }, at[i]);
+        });
+
+        tl.from(q('.sub'), { y: 26, opacity: 0, duration: 0.36, ease: 'power2.out' }, 1.34);
+
+        // Slow push-in so the hold never goes static.
+        tl.fromTo(q('.content'), { scale: 1 }, { scale: 1.035, duration: 1.9, ease: 'none' }, 0.5);
+
+        tl.to({}, { duration: SLOT }, 0);
+        window.__timelines = window.__timelines || {};
+        window.__timelines[ID] = tl;
+      })();
+    </script>
+  </div>
+</template>

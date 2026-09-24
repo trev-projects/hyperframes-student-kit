@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <title>AI Operated — Trailer v2</title>
+    <script src="assets/gsap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Manrope:wght@500;700&family=JetBrains+Mono:wght@500;600;700&display=block" rel="stylesheet" />
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1920px; height: 1080px; overflow: hidden; background: #F1ECE3; }
+      .beat-layer { position: absolute; top: 0; left: 0; width: 1920px; height: 1080px; }
+    </style>
+  </head>
+  <body>
+    <!-- Scenes overlap by 0.4s on alternating tracks: each incoming scene
+         performs its own transition over the outgoing one (later DOM = on top). -->
+    <div id="root" data-composition-id="ai-operated-trailer-v2"
+      data-start="0" data-duration="16" data-width="1920" data-height="1080">
+
+      <div id="s1" class="beat-layer" data-composition-id="s1-noise"
+        data-composition-src="compositions/s1-noise.html"
+        data-start="0" data-duration="3.4" data-track-index="0"
+        data-width="1920" data-height="1080"></div>
+
+      <div id="s2" class="beat-layer" data-composition-id="s2-signal"
+        data-composition-src="compositions/s2-signal.html"
+        data-start="3.0" data-duration="2.2" data-track-index="1"
+        data-width="1920" data-height="1080"></div>
+
+      <div id="s3" class="beat-layer" data-composition-id="s3-turn"
+        data-composition-src="compositions/s3-turn.html"
+        data-start="4.8" data-duration="2.4" data-track-index="0"
+        data-width="1920" data-height="1080"></div>
+
+      <div id="s4" class="beat-layer" data-composition-id="s4-inside"
+        data-composition-src="compositions/s4-inside.html"
+        data-start="6.8" data-duration="3.6" data-track-index="1"
+        data-width="1920" data-height="1080"></div>
+
+      <div id="s5" class="beat-layer" data-composition-id="s5-cta"
+        data-composition-src="compositions/s5-cta.html"
+        data-start="10.0" data-duration="6.0" data-track-index="0"
+        data-width="1920" data-height="1080"></div>
+
+      <!-- Sound design synthesized by scripts/make-sfx.py, cut-synced. -->
+      <audio id="sfx" data-start="0" data-duration="16" data-track-index="21"
+        data-volume="1" src="assets/sfx.wav"></audio>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      tl.to({}, { duration: 16 }, 0);
+      window.__timelines["ai-operated-trailer-v2"] = tl;
+    </script>
+  </body>
+</html>

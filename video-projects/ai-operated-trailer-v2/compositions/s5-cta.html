@@ -1,0 +1,107 @@
+<template id="s5-cta-template">
+  <script src="assets/gsap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Manrope:wght@500;700&family=JetBrains+Mono:wght@500;600;700&display=block" rel="stylesheet" />
+
+  <div data-composition-id="s5-cta" data-start="0" data-duration="6" data-width="1920" data-height="1080">
+    <!-- Diagonal polygon wipe led by a skewed terracotta slab. -->
+    <div class="stage">
+      <div class="content">
+        <div class="wordmark">
+          <span class="wm-ai"></span>
+          <span class="wm-wrap"><span class="wm-swash"></span><span class="wm-op"></span></span><span class="wm-dot">.</span>
+        </div>
+        <div class="typed"><span class="chars"></span><span class="caret"></span></div>
+        <div class="pill">Subscribe free &rarr;</div>
+        <div class="url">digiwellmarketing.com&nbsp;&nbsp;&middot;&nbsp;&nbsp;every Thursday</div>
+      </div>
+      <div class="vignette"></div>
+      <div class="grain"></div>
+    </div>
+    <div class="slab"></div>
+
+    <style>
+      [data-composition-id="s5-cta"] { position: absolute; inset: 0; overflow: hidden; background: transparent; font-family: "Sora", Helvetica, Arial, sans-serif; }
+      [data-composition-id="s5-cta"] .stage { position: absolute; inset: 0; background: #F1ECE3; clip-path: polygon(0% 0%, 0% 0%, -30% 100%, -30% 100%); }
+      [data-composition-id="s5-cta"] .slab { position: absolute; top: -20%; left: 0; width: 90px; height: 140%; background: #B5532E; transform: translateX(-300px) skewX(-16deg); }
+
+      [data-composition-id="s5-cta"] .content {
+        width: 100%; height: 100%; padding: 0 100px;
+        display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0;
+      }
+      [data-composition-id="s5-cta"] .wordmark { font-weight: 800; font-size: 190px; line-height: 1; letter-spacing: -6px; color: #1F1B17; white-space: nowrap; }
+      [data-composition-id="s5-cta"] .ltr { display: inline-block; }
+      [data-composition-id="s5-cta"] .wm-ai { margin-right: 0; }
+      [data-composition-id="s5-cta"] .wm-wrap { position: relative; display: inline-block; padding: 0 14px; }
+      [data-composition-id="s5-cta"] .wm-swash { position: absolute; left: 0; right: 0; bottom: 14px; height: 19%; background: #DDB892; transform: scaleX(0); transform-origin: left center; }
+      [data-composition-id="s5-cta"] .wm-op { position: relative; z-index: 1; }
+      [data-composition-id="s5-cta"] .wm-dot { display: inline-block; color: #B5532E; }
+
+      [data-composition-id="s5-cta"] .typed {
+        margin-top: 40px; height: 52px;
+        font-family: "JetBrains Mono", Consolas, monospace; font-weight: 600; font-size: 40px; letter-spacing: 0; color: #4B433A;
+        display: flex; align-items: center;
+      }
+      /* Monospace, so a stepped width reveal types exactly one char per step
+         and the caret rides the end of the text. */
+      [data-composition-id="s5-cta"] .chars { display: inline-block; width: 0ch; overflow: hidden; white-space: pre; }
+      [data-composition-id="s5-cta"] .caret { display: inline-block; width: 18px; height: 42px; margin-left: 6px; background: #B5532E; opacity: 0; }
+
+      [data-composition-id="s5-cta"] .pill {
+        margin-top: 56px; background: #B5532E; color: #F1ECE3; border-radius: 999px;
+        padding: 26px 56px; font-family: "Manrope", Helvetica, Arial, sans-serif; font-weight: 700; font-size: 40px;
+      }
+      [data-composition-id="s5-cta"] .url { margin-top: 30px; font-family: "JetBrains Mono", Consolas, monospace; font-weight: 600; font-size: 28px; letter-spacing: 1.5px; color: #B5532E; }
+
+      [data-composition-id="s5-cta"] .vignette { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse at center, transparent 55%, rgba(31,27,23,0.12) 100%); }
+      [data-composition-id="s5-cta"] .grain { position: absolute; inset: 0; pointer-events: none; opacity: 0.035;
+        background-image: radial-gradient(rgba(31,27,23,0.35) 1px, transparent 1px), radial-gradient(rgba(31,27,23,0.25) 1px, transparent 1px);
+        background-size: 3px 3px, 5px 5px; }
+    </style>
+
+    <script>
+      (() => {
+        const SLOT = 6;
+        const ID = 's5-cta';
+        const root = document.querySelector('[data-composition-id="s5-cta"]');
+        const q = (s) => root.querySelector(s);
+
+        const spanify = (el, text) => {
+          el.innerHTML = text.split('').map((c) => `<span class="ltr">${c}</span>`).join('');
+          return Array.from(el.children);
+        };
+        const letters = spanify(q('.wm-ai'), 'AI').concat(spanify(q('.wm-op'), 'Operated'));
+
+        const TYPED = "No hype. Just what's worth testing.";
+        const charsEl = q('.chars');
+        charsEl.textContent = TYPED;
+
+        const tl = gsap.timeline({ paused: true });
+
+        // ENTRY — diagonal wipe over the deck, slab rides the leading edge.
+        tl.fromTo(q('.stage'),
+          { clipPath: 'polygon(0% 0%, 0% 0%, -30% 100%, -30% 100%)' },
+          { clipPath: 'polygon(0% 0%, 130% 0%, 100% 100%, -30% 100%)', duration: 0.52, ease: 'power3.inOut' }, 0);
+        tl.fromTo(q('.slab'), { x: -300 }, { x: 2300, duration: 0.52, ease: 'power3.inOut' }, 0);
+
+        // Wordmark letters drop in, then swash, then the period bounces home.
+        tl.from(letters, { y: -140, rotation: -14, opacity: 0, duration: 0.42, ease: 'back.out(2)', stagger: 0.035 }, 0.42);
+        tl.to(q('.wm-swash'), { scaleX: 1, duration: 0.42, ease: 'power3.out' }, 0.90);
+        tl.from(q('.wm-dot'), { y: -420, duration: 0.6, ease: 'bounce.out' }, 0.95);
+
+        // Typewriter line.
+        tl.set(q('.caret'), { opacity: 1 }, 1.50);
+        tl.to(charsEl, { width: TYPED.length + 'ch', duration: TYPED.length * 0.024,
+          ease: 'steps(' + TYPED.length + ')' }, 1.55);
+        tl.to(q('.caret'), { opacity: 0, duration: 0.01, ease: 'none', yoyo: true, repeat: 7, repeatDelay: 0.38 }, 2.50);
+
+        tl.from(q('.pill'), { scale: 0.6, opacity: 0, duration: 0.42, ease: 'back.out(2.2)' }, 2.45);
+        tl.from(q('.url'), { y: 16, opacity: 0, duration: 0.34, ease: 'power2.out' }, 2.70);
+        tl.to(q('.pill'), { scale: 1.04, duration: 0.7, ease: 'sine.inOut', yoyo: true, repeat: 3 }, 3.10);
+
+        tl.to({}, { duration: SLOT }, 0);
+        window.__timelines = window.__timelines || {};
+        window.__timelines[ID] = tl;
+      })();
+    </script>
+  </div>
+</template>

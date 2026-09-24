@@ -1,0 +1,150 @@
+<template id="s1-noise-template">
+  <script src="assets/gsap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Manrope:wght@500;700&family=JetBrains+Mono:wght@500;600;700&display=block" rel="stylesheet" />
+
+  <div data-composition-id="s1-noise" data-start="0" data-duration="3.4" data-width="1920" data-height="1080">
+    <div class="stage">
+      <div class="rows"></div>
+      <div class="scrim"></div>
+
+      <div class="counter-block">
+        <div class="c-label">NEW&nbsp;AI&nbsp;TOOLS&nbsp;&middot;&nbsp;THIS&nbsp;WEEK</div>
+        <div class="c-num">0</div>
+      </div>
+
+      <div class="verdict">
+        <div class="v1">Most of it is</div>
+        <div class="v2">NOISE.</div>
+      </div>
+
+      <div class="vignette"></div>
+      <div class="grain"></div>
+    </div>
+
+    <style>
+      [data-composition-id="s1-noise"] { position: absolute; inset: 0; overflow: hidden; background: #F1ECE3; font-family: "Sora", Helvetica, Arial, sans-serif; }
+      [data-composition-id="s1-noise"] .stage { position: absolute; inset: 0; }
+
+      [data-composition-id="s1-noise"] .rows {
+        position: absolute; top: -140px; bottom: -140px; left: -300px; right: -300px;
+        display: flex; flex-direction: column; justify-content: space-between;
+        transform: rotate(-6deg);
+        opacity: 0.30;
+      }
+      [data-composition-id="s1-noise"] .row {
+        font-family: "JetBrains Mono", Consolas, monospace; font-weight: 600;
+        font-size: 34px; letter-spacing: 1px; white-space: nowrap; color: #4B433A;
+      }
+      [data-composition-id="s1-noise"] .row.hot { color: #B5532E; }
+
+      [data-composition-id="s1-noise"] .scrim {
+        position: absolute; inset: 0;
+        background: radial-gradient(ellipse 46% 40% at 50% 52%, #F1ECE3 55%, rgba(241,236,227,0) 100%);
+      }
+
+      [data-composition-id="s1-noise"] .counter-block {
+        position: absolute; inset: 0;
+        display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;
+      }
+      [data-composition-id="s1-noise"] .c-label {
+        font-family: "JetBrains Mono", Consolas, monospace; font-weight: 600;
+        font-size: 26px; letter-spacing: 5px; color: #B5532E;
+      }
+      [data-composition-id="s1-noise"] .c-num {
+        font-weight: 800; font-size: 380px; line-height: 0.9; letter-spacing: -14px;
+        color: #1F1B17; font-variant-numeric: tabular-nums;
+      }
+
+      [data-composition-id="s1-noise"] .verdict {
+        position: absolute; inset: 0; padding: 0 100px;
+        display: flex; flex-direction: column; justify-content: center; gap: 0;
+      }
+      [data-composition-id="s1-noise"] .v1 {
+        font-weight: 800; font-size: 110px; line-height: 1; letter-spacing: -3px; color: #1F1B17;
+        opacity: 0;
+      }
+      [data-composition-id="s1-noise"] .v2 {
+        font-weight: 800; font-size: 330px; line-height: 0.95; letter-spacing: -12px; color: #B5532E;
+        opacity: 0; transform-origin: left center; white-space: nowrap;
+      }
+
+      [data-composition-id="s1-noise"] .vignette { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse at center, transparent 55%, rgba(31,27,23,0.12) 100%); }
+      [data-composition-id="s1-noise"] .grain { position: absolute; inset: 0; pointer-events: none; opacity: 0.035;
+        background-image: radial-gradient(rgba(31,27,23,0.35) 1px, transparent 1px), radial-gradient(rgba(31,27,23,0.25) 1px, transparent 1px);
+        background-size: 3px 3px, 5px 5px; }
+    </style>
+
+    <script>
+      (() => {
+        const SLOT = 3.4;
+        const ID = 's1-noise';
+        const root = document.querySelector('[data-composition-id="s1-noise"]');
+        const q = (s) => root.querySelector(s);
+
+        // Jargon marquee — nine rows drifting in alternating directions.
+        const TERMS = ['MCP', 'RAG', 'vector DB', 'fine-tuning', 'orchestration', 'multi-agent',
+          'eval harness', 'context window', 'vibe coding', 'guardrails', 'embeddings',
+          'function calling', 'agentic workflow', 'prompt chaining', 'RLHF', 'chain-of-thought'];
+        const rowsEl = q('.rows');
+        const rows = [];
+        for (let r = 0; r < 9; r++) {
+          const el = document.createElement('div');
+          el.className = 'row' + (r === 3 || r === 7 ? ' hot' : '');
+          const shift = (r * 5) % TERMS.length;
+          const seq = TERMS.slice(shift).concat(TERMS.slice(0, shift));
+          el.textContent = seq.concat(seq).join('   ·   ');
+          rowsEl.appendChild(el);
+          rows.push(el);
+        }
+
+        const tl = gsap.timeline({ paused: true });
+
+        rows.forEach((el, r) => {
+          const dir = r % 2 ? 1 : -1;
+          const dist = 520 + (r % 3) * 180;
+          tl.fromTo(el, { x: dir > 0 ? -dist : 0 }, { x: dir > 0 ? 0 : -dist, duration: SLOT, ease: 'none' }, 0);
+        });
+
+        // Counter slams in and counts to 412.
+        tl.from(q('.counter-block'), { scale: 0.82, opacity: 0, duration: 0.35, ease: 'expo.out' }, 0.10);
+        const numEl = q('.c-num');
+        const count = { v: 0 };
+        tl.to(count, { v: 412, duration: 1.0, ease: 'power3.out',
+          onUpdate: () => { numEl.textContent = Math.round(count.v); } }, 0.15);
+        tl.to(numEl, { scale: 1.07, duration: 0.10, ease: 'power2.out', yoyo: true, repeat: 1 }, 1.12);
+
+        // Counter clears upward; verdict takes the frame.
+        tl.to(q('.counter-block'), { y: -160, opacity: 0, filter: 'blur(14px)', duration: 0.20, ease: 'power2.in' }, 1.40);
+        tl.to(q('.scrim'), { opacity: 0, duration: 0.3, ease: 'power2.out' }, 1.60);
+        tl.to(rowsEl, { opacity: 0.55, duration: 0.3, ease: 'power2.out' }, 1.80);
+        tl.fromTo(q('.v1'), { y: 70, opacity: 0 }, { y: 0, opacity: 1, duration: 0.34, ease: 'expo.out' }, 1.64);
+        tl.fromTo(q('.v2'), { opacity: 0, scale: 1.18 }, { opacity: 1, scale: 1, duration: 0.5, ease: 'power4.out' }, 1.84);
+
+        // Deterministic scramble-decode: glyphs are hashed from (char index, frame),
+        // so every render produces the identical sequence.
+        const FINAL = 'NOISE.';
+        const GLYPHS = '#%&@$*+=?/<>0123456789AEINOSXZ';
+        const v2 = q('.v2');
+        const sc = { t: 0 };
+        const hash = (a, b) => {
+          const s = Math.sin(a * 127.1 + b * 311.7) * 43758.5453;
+          return s - Math.floor(s);
+        };
+        tl.to(sc, { t: 1, duration: 0.72, ease: 'none', onUpdate: () => {
+          const frame = Math.floor(sc.t * 22);
+          const revealed = Math.floor(sc.t * (FINAL.length + 1.5) - 1.5);
+          let out = '';
+          for (let i = 0; i < FINAL.length; i++) {
+            out += i <= revealed ? FINAL[i] : GLYPHS[Math.floor(hash(i, frame) * GLYPHS.length)];
+          }
+          v2.textContent = out;
+        } }, 1.84);
+        tl.set(v2, { textContent: FINAL }, 2.58);
+
+        tl.to({}, { duration: SLOT }, 0);
+        window.__timelines = window.__timelines || {};
+        window.__timelines[ID] = tl;
+      })();
+    </script>
+  </div>
+</template>
