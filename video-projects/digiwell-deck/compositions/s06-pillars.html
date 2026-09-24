@@ -1,0 +1,53 @@
+<template id="s06-pillars-template">
+  <script src="assets/gsap.min.js"></script>
+  <script src="assets/deck.js"></script>
+
+  <div data-composition-id="s06-pillars" data-start="0" data-duration="3.0" data-width="1920" data-height="1080">
+    <div class="dw-slide">
+      <div class="dw-panel">
+        <div class="dw-chrome"><div class="dw-brand">Digiwell<span class="dw-dot">.</span></div><div>WHAT WE BUILD</div><div>06&nbsp;/&nbsp;09</div></div>
+          <div class="dw-rule"></div>
+        <div class="dw-content">
+          <div class="dw-eyebrow">What we build</div>
+          <div class="dw-h-l p-head" data-words>Three systems. One growth engine.</div>
+          <div class="p-row">
+            <div class="dw-card p-card p01"><div class="dw-eyebrow">01</div><div class="dw-h-s p-t">Newsletters</div><div class="dw-body">A weekly letter your list actually opens, written and sent for you.</div></div>
+            <div class="dw-card p-card p02 dw-feature"><div class="dw-eyebrow">02</div><div class="dw-h-s p-t">CRM automation</div><div class="dw-body">Every lead tagged, scored, routed and followed up. Nothing slips.</div></div>
+            <div class="dw-card p-card p03"><div class="dw-eyebrow">03</div><div class="dw-h-s p-t">Nurture flows</div><div class="dw-body">Segmented sequences that move cold leads to buyers on their own.</div></div>
+          </div>
+        </div>
+        <div class="dw-vignette"></div>
+        <div class="dw-grain"></div>
+      </div>
+      <div class="dw-edge"></div>
+    </div>
+
+    <style>
+      [data-composition-id="s06-pillars"] .p-head { margin-top: 18px; }
+      [data-composition-id="s06-pillars"] .p-row { margin-top: 70px; display: flex; gap: 40px; }
+      [data-composition-id="s06-pillars"] .p-card { flex: 1 1 0; height: 360px; padding: 46px 44px; display: flex; flex-direction: column; gap: 22px; }
+      [data-composition-id="s06-pillars"] .p-t { margin-top: 6px; }
+    </style>
+
+    <script>
+      (function () {
+        var SLOT = 3.0;
+        var root = document.querySelector('[data-composition-id="s06-pillars"]');
+        var q = function (s) { return root.querySelector(s); };
+        var qa = function (s) { return root.querySelectorAll(s); };
+        DW.words(root);
+        var tl = gsap.timeline({ paused: true });
+        var t0 = DW.enter(tl, root);
+        // Fragments (deck.json): rest at 1.2 / 1.8 / 2.4 — one card lands per click.
+        DW.rise(tl, q('.dw-eyebrow'), t0, { y: 0, x: -30 });
+        DW.rise(tl, qa('.p-head .dw-w'), t0 + 0.08, { y: 70 });
+        [['.p01', 0.62], ['.p02', 1.25], ['.p03', 1.85]].forEach(function (k) {
+          tl.from(q(k[0]), { y: 90, rotation: -2.5, opacity: 0, duration: 0.5, ease: 'back.out(1.5)' }, k[1]);
+        });
+        DW.hold(tl, SLOT);
+        window.__timelines = window.__timelines || {};
+        window.__timelines["s06-pillars"] = tl;
+      })();
+    </script>
+  </div>
+</template>

@@ -1,0 +1,51 @@
+{
+  "title": "Digiwell Marketing — Growth systems for the AI era",
+  "motionBridge": true,
+  "slides": [
+    {
+      "id": "s01-title",
+      "rests": [1.7],
+      "notes": "Open warm. One line on who you are, then straight into why we're here: growth systems, not more marketing."
+    },
+    {
+      "id": "s02-agenda",
+      "rests": [1.6],
+      "notes": "Twenty minutes. Problem, what we build, how it works, one next step. Promise they'll leave with their scorecard."
+    },
+    {
+      "id": "s03-divider",
+      "rests": [1.3],
+      "notes": "Section 01. Pause here. Ask: how many leads came in last month that nobody followed up with?"
+    },
+    {
+      "id": "s04-statement",
+      "rests": [1.95],
+      "notes": "The core reframe. Let the second line land before speaking again. Traffic is rarely the bottleneck."
+    },
+    {
+      "id": "s05-stat",
+      "rests": [1.5],
+      "notes": "SAMPLE STAT. Swap for a real client result before presenting. Currently frames the 2-minute scorecard."
+    },
+    {
+      "id": "s06-pillars",
+      "rests": [1.2, 1.8, 2.4],
+      "notes": "Three clicks, one card each. Newsletters (attention), CRM automation (nothing slips), nurture flows (conversion)."
+    },
+    {
+      "id": "s07-process",
+      "rests": [2.3],
+      "notes": "Audit, build, launch, optimise. Emphasise done-for-you: they don't need a team to run this."
+    },
+    {
+      "id": "s08-compare",
+      "rests": [1.85],
+      "notes": "Read the left column slowly. Most people will recognise themselves. Then the right column is the offer."
+    },
+    {
+      "id": "s09-cta",
+      "rests": [1.85],
+      "notes": "One ask only: take the scorecard. Put the URL in chat. Stop talking and leave this up."
+    }
+  ]
+}

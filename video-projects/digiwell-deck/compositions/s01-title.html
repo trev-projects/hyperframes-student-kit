@@ -1,0 +1,55 @@
+<template id="s01-title-template">
+  <script src="assets/gsap.min.js"></script>
+  <script src="assets/deck.js"></script>
+
+  <div data-composition-id="s01-title" data-start="0" data-duration="2.3" data-width="1920" data-height="1080">
+    <div class="dw-slide">
+      <div class="dw-panel">
+        <div class="dw-content t-grid">
+          <div class="t-mark"><div class="t-word">Digiwell<span class="dw-dot">.</span></div><div class="t-sub dw-mono">MARKETING</div></div>
+          <div class="t-main">
+            <div class="dw-eyebrow t-eye">Growth partner for the AI era</div>
+            <div class="dw-h-xl t-h1" data-words>Growth systems for</div>
+            <div class="dw-h-xl t-h2"><span class="t-the" data-words>the</span> <span class="dw-hl"><span class="dw-hl-bar"></span><span class="dw-hl-text">AI era.</span></span></div>
+            <div class="dw-lede t-lede">Newsletters, CRM automation and nurture flows that turn cold leads into loyal buyers.</div>
+          </div>
+          <div class="t-foot dw-mono"><span>TREVOR DAVIS &middot; TORONTO, ON</span><span class="dw-accent">DIGIWELLMARKETING.COM</span></div>
+        </div>
+        <div class="dw-vignette"></div>
+        <div class="dw-grain"></div>
+      </div>
+      <div class="dw-edge"></div>
+    </div>
+
+    <style>
+      [data-composition-id="s01-title"] .t-grid { padding: 90px 120px 90px; justify-content: space-between; }
+      [data-composition-id="s01-title"] .t-word { font-weight: 800; font-size: 64px; letter-spacing: -2px; line-height: 1; }
+      [data-composition-id="s01-title"] .t-sub { margin-top: 8px; font-size: 18px; letter-spacing: 7px; color: var(--dw-muted); }
+      [data-composition-id="s01-title"] .t-eye { margin-bottom: 26px; }
+      [data-composition-id="s01-title"] .t-lede { margin-top: 34px; max-width: 1180px; }
+      [data-composition-id="s01-title"] .t-foot { display: flex; justify-content: space-between; font-size: 22px; color: var(--dw-muted); padding-top: 26px; border-top: 1px solid var(--dw-rule); }
+    </style>
+
+    <script>
+      (function () {
+        var SLOT = 2.3;
+        var root = document.querySelector('[data-composition-id="s01-title"]');
+        var q = function (s) { return root.querySelector(s); };
+        var qa = function (s) { return root.querySelectorAll(s); };
+        DW.words(root);
+        var tl = gsap.timeline({ paused: true });
+        var t0 = DW.enter(tl, root);
+        DW.rise(tl, q('.t-mark'), t0, { y: -30 });
+        DW.rise(tl, q('.t-eye'), t0 + 0.12, { y: 0, x: -30 });
+        DW.rise(tl, qa('.t-h1 .dw-w'), t0 + 0.18, { y: 90, stagger: 0.06 });
+        DW.rise(tl, [q('.t-the .dw-w'), q('.t-h2 .dw-hl-text')], t0 + 0.38, { y: 90, stagger: 0.06 });
+        DW.swash(tl, q('.dw-hl-bar'), t0 + 0.72);
+        DW.rise(tl, q('.t-lede'), t0 + 0.62, { y: 24, ease: 'power2.out' });
+        DW.rise(tl, q('.t-foot'), t0 + 0.8, { y: 20, ease: 'power2.out' });
+        DW.hold(tl, SLOT);
+        window.__timelines = window.__timelines || {};
+        window.__timelines["s01-title"] = tl;
+      })();
+    </script>
+  </div>
+</template>

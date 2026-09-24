@@ -1,0 +1,51 @@
+<template id="s02-agenda-template">
+  <script src="assets/gsap.min.js"></script>
+  <script src="assets/deck.js"></script>
+
+  <div data-composition-id="s02-agenda" data-start="0" data-duration="2.2" data-width="1920" data-height="1080">
+    <div class="dw-slide">
+      <div class="dw-panel">
+        <div class="dw-chrome"><div class="dw-brand">Digiwell<span class="dw-dot">.</span></div><div>AGENDA</div><div>02&nbsp;/&nbsp;09</div></div>
+          <div class="dw-rule"></div>
+        <div class="dw-content">
+          <div class="dw-eyebrow">Today</div>
+          <div class="dw-h-l a-head" data-words>Four things in twenty minutes.</div>
+          <div class="a-list">
+            <div class="a-row"><div class="a-num dw-mono">01</div><div class="a-title dw-h-s">The problem</div><div class="a-desc dw-body">Why good businesses leak growth</div></div>
+            <div class="a-row"><div class="a-num dw-mono">02</div><div class="a-title dw-h-s">What we build</div><div class="a-desc dw-body">Newsletters, CRM, nurture</div></div>
+            <div class="a-row"><div class="a-num dw-mono">03</div><div class="a-title dw-h-s">How it works</div><div class="a-desc dw-body">Four steps, done for you</div></div>
+            <div class="a-row"><div class="a-num dw-mono">04</div><div class="a-title dw-h-s">Next step</div><div class="a-desc dw-body">Your free AI Growth Scorecard</div></div>
+          </div>
+        </div>
+        <div class="dw-vignette"></div>
+        <div class="dw-grain"></div>
+      </div>
+      <div class="dw-edge"></div>
+    </div>
+
+    <style>
+      [data-composition-id="s02-agenda"] .a-head { margin-top: 18px; }
+      [data-composition-id="s02-agenda"] .a-list { margin-top: 60px; display: flex; flex-direction: column; }
+      [data-composition-id="s02-agenda"] .a-row { display: grid; grid-template-columns: 110px 640px 1fr; align-items: baseline; padding: 26px 0; border-top: 1px solid var(--dw-rule); }
+      [data-composition-id="s02-agenda"] .a-num { font-size: 28px; color: var(--dw-terra); }
+    </style>
+
+    <script>
+      (function () {
+        var SLOT = 2.2;
+        var root = document.querySelector('[data-composition-id="s02-agenda"]');
+        var q = function (s) { return root.querySelector(s); };
+        var qa = function (s) { return root.querySelectorAll(s); };
+        DW.words(root);
+        var tl = gsap.timeline({ paused: true });
+        var t0 = DW.enter(tl, root);
+        DW.rise(tl, q('.dw-eyebrow'), t0, { y: 0, x: -30 });
+        DW.rise(tl, qa('.a-head .dw-w'), t0 + 0.08, { y: 70 });
+        DW.rise(tl, qa('.a-row'), t0 + 0.42, { y: 0, x: 80, stagger: 0.09, ease: 'power3.out' });
+        DW.hold(tl, SLOT);
+        window.__timelines = window.__timelines || {};
+        window.__timelines["s02-agenda"] = tl;
+      })();
+    </script>
+  </div>
+</template>

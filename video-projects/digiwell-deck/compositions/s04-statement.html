@@ -1,0 +1,47 @@
+<template id="s04-statement-template">
+  <script src="assets/gsap.min.js"></script>
+  <script src="assets/deck.js"></script>
+
+  <div data-composition-id="s04-statement" data-start="0" data-duration="2.55" data-width="1920" data-height="1080">
+    <div class="dw-slide">
+      <div class="dw-panel">
+        <div class="dw-chrome"><div class="dw-brand">Digiwell<span class="dw-dot">.</span></div><div>THE PROBLEM</div><div>04&nbsp;/&nbsp;09</div></div>
+          <div class="dw-rule"></div>
+        <div class="dw-content s-grid">
+          <div class="dw-h-l s-l1" data-words>Most businesses don&rsquo;t have a traffic problem.</div>
+          <div class="dw-h-l s-l2"><span class="s-pre" data-words>They have a</span> <span class="dw-hl"><span class="dw-hl-bar"></span><span class="dw-hl-text">follow-up</span></span> <span class="s-post">problem.</span></div>
+          <div class="dw-lede s-note">The leads are already there. Nobody is talking to them.</div>
+        </div>
+        <div class="dw-vignette"></div>
+        <div class="dw-grain"></div>
+      </div>
+      <div class="dw-edge"></div>
+    </div>
+
+    <style>
+      [data-composition-id="s04-statement"] .s-grid { justify-content: center; padding-top: 150px; }
+      [data-composition-id="s04-statement"] .s-l1 { max-width: 1560px; }
+      [data-composition-id="s04-statement"] .s-l2 { margin-top: 30px; color: var(--dw-terra); }
+      [data-composition-id="s04-statement"] .s-note { margin-top: 56px; }
+    </style>
+
+    <script>
+      (function () {
+        var SLOT = 2.55;
+        var root = document.querySelector('[data-composition-id="s04-statement"]');
+        var q = function (s) { return root.querySelector(s); };
+        var qa = function (s) { return root.querySelectorAll(s); };
+        DW.words(root);
+        var tl = gsap.timeline({ paused: true });
+        var t0 = DW.enter(tl, root);
+        DW.rise(tl, qa('.s-l1 .dw-w'), t0, { y: 80, stagger: 0.04 });
+        DW.rise(tl, [].concat(Array.from(qa('.s-pre .dw-w')), [q('.s-l2 .dw-hl-text'), q('.s-post')]), t0 + 0.5, { y: 80, stagger: 0.06 });
+        DW.swash(tl, q('.dw-hl-bar'), t0 + 0.95);
+        DW.rise(tl, q('.s-note'), t0 + 1.05, { y: 20, ease: 'power2.out' });
+        DW.hold(tl, SLOT);
+        window.__timelines = window.__timelines || {};
+        window.__timelines["s04-statement"] = tl;
+      })();
+    </script>
+  </div>
+</template>

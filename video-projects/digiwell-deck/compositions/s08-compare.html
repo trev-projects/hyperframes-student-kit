@@ -1,0 +1,67 @@
+<template id="s08-compare-template">
+  <script src="assets/gsap.min.js"></script>
+  <script src="assets/deck.js"></script>
+
+  <div data-composition-id="s08-compare" data-start="0" data-duration="2.45" data-width="1920" data-height="1080">
+    <div class="dw-slide">
+      <div class="dw-panel">
+        <div class="dw-chrome"><div class="dw-brand">Digiwell<span class="dw-dot">.</span></div><div>THE DIFFERENCE</div><div>08&nbsp;/&nbsp;09</div></div>
+          <div class="dw-rule"></div>
+        <div class="dw-content">
+          <div class="dw-eyebrow">The difference</div>
+          <div class="dw-h-l cp-head" data-words>From guesswork to a system.</div>
+          <div class="cp-row">
+            <div class="cp-col cp-before"><div class="dw-mono cp-label">WITHOUT A SYSTEM</div><ul class="dw-body">
+<li class="cp-b">Leads go cold after one email</li>
+<li class="cp-b">The newsletter goes out when there&rsquo;s time</li>
+<li class="cp-b">Nobody knows what&rsquo;s working</li>
+            </ul></div>
+            <div class="cp-col cp-after dw-card dw-feature"><div class="dw-mono cp-label">WITH DIGIWELL</div><ul class="dw-body">
+<li class="cp-a">Every lead enters a nurture flow</li>
+<li class="cp-a">A consistent weekly letter, every week</li>
+<li class="cp-a">Dashboards that show what converts</li>
+            </ul></div>
+          </div>
+        </div>
+        <div class="dw-vignette"></div>
+        <div class="dw-grain"></div>
+      </div>
+      <div class="dw-edge"></div>
+    </div>
+
+    <style>
+      [data-composition-id="s08-compare"] .cp-head { margin-top: 18px; }
+      [data-composition-id="s08-compare"] .cp-row { margin-top: 70px; display: grid; grid-template-columns: 1fr 1fr; gap: 50px; }
+      [data-composition-id="s08-compare"] .cp-col { padding: 50px 54px; border-radius: 26px; }
+      [data-composition-id="s08-compare"] .cp-before { border: 1px dashed var(--dw-card-border); }
+      [data-composition-id="s08-compare"] .cp-label { font-size: 22px; letter-spacing: 3px; color: var(--dw-muted); margin-bottom: 26px; }
+      [data-composition-id="s08-compare"] .cp-after .cp-label { color: var(--dw-sand); }
+      [data-composition-id="s08-compare"] ul { list-style: none; display: flex; flex-direction: column; gap: 22px; }
+      [data-composition-id="s08-compare"] li { position: relative; padding-left: 50px; }
+      [data-composition-id="s08-compare"] .cp-b { color: var(--dw-muted); text-decoration: line-through; text-decoration-color: rgba(181,83,46,0.6); text-decoration-thickness: 3px; }
+      [data-composition-id="s08-compare"] .cp-b::before { content: "\2715"; position: absolute; left: 0; color: var(--dw-muted); }
+      [data-composition-id="s08-compare"] .cp-a::before { content: "\2713"; position: absolute; left: 0; color: var(--dw-sand); font-weight: 700; }
+    </style>
+
+    <script>
+      (function () {
+        var SLOT = 2.45;
+        var root = document.querySelector('[data-composition-id="s08-compare"]');
+        var q = function (s) { return root.querySelector(s); };
+        var qa = function (s) { return root.querySelectorAll(s); };
+        DW.words(root);
+        var tl = gsap.timeline({ paused: true });
+        var t0 = DW.enter(tl, root);
+        DW.rise(tl, q('.dw-eyebrow'), t0, { y: 0, x: -30 });
+        DW.rise(tl, qa('.cp-head .dw-w'), t0 + 0.08, { y: 70 });
+        DW.rise(tl, q('.cp-before'), t0 + 0.4, { y: 0, x: -60, ease: 'power3.out' });
+        DW.rise(tl, qa('.cp-b'), t0 + 0.5, { y: 0, x: -24, stagger: 0.08, ease: 'power2.out' });
+        DW.rise(tl, q('.cp-after'), t0 + 0.62, { y: 60, rotation: 1.5, ease: 'back.out(1.4)' });
+        DW.rise(tl, qa('.cp-a'), t0 + 0.8, { y: 0, x: 24, stagger: 0.08, ease: 'power2.out' });
+        DW.hold(tl, SLOT);
+        window.__timelines = window.__timelines || {};
+        window.__timelines["s08-compare"] = tl;
+      })();
+    </script>
+  </div>
+</template>

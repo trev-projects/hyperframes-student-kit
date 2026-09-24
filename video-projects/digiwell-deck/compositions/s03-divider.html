@@ -1,0 +1,47 @@
+<template id="s03-divider-template">
+  <script src="assets/gsap.min.js"></script>
+  <script src="assets/deck.js"></script>
+
+  <div data-composition-id="s03-divider" data-start="0" data-duration="1.9" data-width="1920" data-height="1080">
+    <div class="dw-slide">
+      <div class="dw-panel dw-terra">
+        <div class="dw-chrome"><div class="dw-brand">Digiwell<span class="dw-dot">.</span></div><div>SECTION 01</div><div>03&nbsp;/&nbsp;09</div></div>
+          <div class="dw-rule"></div>
+        <div class="dw-content d-grid">
+          <div class="d-num">01</div>
+          <div class="d-text">
+            <div class="dw-h-xl d-title" data-words>The problem.</div>
+            <div class="dw-lede d-sub">Why good businesses leak growth.</div>
+          </div>
+        </div>
+        <div class="dw-vignette"></div>
+        <div class="dw-grain"></div>
+      </div>
+      <div class="dw-edge dw-sand"></div>
+    </div>
+
+    <style>
+      [data-composition-id="s03-divider"] .d-grid { flex-direction: row; align-items: center; gap: 90px; padding-top: 140px; }
+      [data-composition-id="s03-divider"] .d-num { font-weight: 800; font-size: 520px; line-height: 0.8; letter-spacing: -30px; color: transparent; -webkit-text-stroke: 4px var(--dw-sand); }
+      [data-composition-id="s03-divider"] .d-sub { margin-top: 22px; }
+    </style>
+
+    <script>
+      (function () {
+        var SLOT = 1.9;
+        var root = document.querySelector('[data-composition-id="s03-divider"]');
+        var q = function (s) { return root.querySelector(s); };
+        var qa = function (s) { return root.querySelectorAll(s); };
+        DW.words(root);
+        var tl = gsap.timeline({ paused: true });
+        var t0 = DW.enter(tl, root);
+        DW.rise(tl, q('.d-num'), t0, { y: 0, x: -120, duration: 0.7, ease: 'expo.out' });
+        DW.rise(tl, qa('.d-title .dw-w'), t0 + 0.16, { y: 100, stagger: 0.07 });
+        DW.rise(tl, q('.d-sub'), t0 + 0.42, { y: 24, ease: 'power2.out' });
+        DW.hold(tl, SLOT);
+        window.__timelines = window.__timelines || {};
+        window.__timelines["s03-divider"] = tl;
+      })();
+    </script>
+  </div>
+</template>

@@ -1,0 +1,50 @@
+<template id="s09-cta-template">
+  <script src="assets/gsap.min.js"></script>
+  <script src="assets/deck.js"></script>
+
+  <div data-composition-id="s09-cta" data-start="0" data-duration="2.45" data-width="1920" data-height="1080">
+    <div class="dw-slide">
+      <div class="dw-panel dw-terra">
+        <div class="dw-chrome"><div class="dw-brand">Digiwell<span class="dw-dot">.</span></div><div>NEXT STEP</div><div>09&nbsp;/&nbsp;09</div></div>
+          <div class="dw-rule"></div>
+        <div class="dw-content cta-grid">
+          <div class="dw-eyebrow">Next step</div>
+          <div class="dw-h-xl cta-h" data-words>Find where growth is leaking.</div>
+          <div class="dw-lede cta-lede">Take the free 2-minute AI Growth Scorecard. You get your score and the three fixes worth doing first.</div>
+          <div class="cta-actions"><div class="dw-pill">Get your free scorecard &rarr;</div><div class="dw-mono cta-url">digiwellmarketing.com/scorecard</div></div>
+        </div>
+        <div class="dw-vignette"></div>
+        <div class="dw-grain"></div>
+      </div>
+      <div class="dw-edge dw-sand"></div>
+    </div>
+
+    <style>
+      [data-composition-id="s09-cta"] .cta-grid { justify-content: center; padding-top: 150px; }
+      [data-composition-id="s09-cta"] .cta-h { margin-top: 24px; max-width: 1500px; }
+      [data-composition-id="s09-cta"] .cta-lede { margin-top: 36px; max-width: 1200px; }
+      [data-composition-id="s09-cta"] .cta-actions { margin-top: 60px; display: flex; align-items: center; gap: 44px; }
+      [data-composition-id="s09-cta"] .cta-url { font-size: 28px; color: var(--dw-sand); }
+    </style>
+
+    <script>
+      (function () {
+        var SLOT = 2.45;
+        var root = document.querySelector('[data-composition-id="s09-cta"]');
+        var q = function (s) { return root.querySelector(s); };
+        var qa = function (s) { return root.querySelectorAll(s); };
+        DW.words(root);
+        var tl = gsap.timeline({ paused: true });
+        var t0 = DW.enter(tl, root);
+        DW.rise(tl, q('.dw-eyebrow'), t0, { y: 0, x: -30 });
+        DW.rise(tl, qa('.cta-h .dw-w'), t0 + 0.08, { y: 100, stagger: 0.06 });
+        DW.rise(tl, q('.cta-lede'), t0 + 0.55, { y: 24, ease: 'power2.out' });
+        tl.from(q('.dw-pill'), { scale: 0.6, opacity: 0, duration: 0.45, ease: 'back.out(2.2)' }, t0 + 0.8);
+        DW.rise(tl, q('.cta-url'), t0 + 0.95, { y: 0, x: -20, ease: 'power2.out' });
+        DW.hold(tl, SLOT);
+        window.__timelines = window.__timelines || {};
+        window.__timelines["s09-cta"] = tl;
+      })();
+    </script>
+  </div>
+</template>

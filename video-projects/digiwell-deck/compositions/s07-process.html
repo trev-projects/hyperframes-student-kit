@@ -1,0 +1,61 @@
+<template id="s07-process-template">
+  <script src="assets/gsap.min.js"></script>
+  <script src="assets/deck.js"></script>
+
+  <div data-composition-id="s07-process" data-start="0" data-duration="2.9" data-width="1920" data-height="1080">
+    <div class="dw-slide">
+      <div class="dw-panel">
+        <div class="dw-chrome"><div class="dw-brand">Digiwell<span class="dw-dot">.</span></div><div>HOW IT WORKS</div><div>07&nbsp;/&nbsp;09</div></div>
+          <div class="dw-rule"></div>
+        <div class="dw-content">
+          <div class="dw-eyebrow">How it works</div>
+          <div class="dw-h-l pr-head" data-words>Four steps. Done for you.</div>
+          <div class="pr-track">
+            <div class="pr-line"><div class="pr-fill"></div></div>
+            <div class="pr-step ps1"><div class="pr-node"><span>1</span></div><div class="dw-h-s pr-t">Audit</div><div class="dw-body pr-d">Find the leaks with the Growth Scorecard.</div></div>
+            <div class="pr-step ps2"><div class="pr-node"><span>2</span></div><div class="dw-h-s pr-t">Build</div><div class="dw-body pr-d">We design and wire the systems for you.</div></div>
+            <div class="pr-step ps3"><div class="pr-node"><span>3</span></div><div class="dw-h-s pr-t">Launch</div><div class="dw-body pr-d">Newsletter, CRM and flows go live together.</div></div>
+            <div class="pr-step ps4"><div class="pr-node"><span>4</span></div><div class="dw-h-s pr-t">Optimise</div><div class="dw-body pr-d">Test, measure, and compound what works.</div></div>
+          </div>
+        </div>
+        <div class="dw-vignette"></div>
+        <div class="dw-grain"></div>
+      </div>
+      <div class="dw-edge"></div>
+    </div>
+
+    <style>
+      [data-composition-id="s07-process"] .pr-head { margin-top: 18px; }
+      [data-composition-id="s07-process"] .pr-track { position: relative; margin-top: 100px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; }
+      [data-composition-id="s07-process"] .pr-line { position: absolute; top: 44px; left: 46px; right: 344px; height: 4px; background: var(--dw-rule); }
+      [data-composition-id="s07-process"] .pr-fill { width: 100%; height: 100%; background: var(--dw-terra); transform: scaleX(0); transform-origin: left center; }
+      [data-composition-id="s07-process"] .pr-step { position: relative; }
+      [data-composition-id="s07-process"] .pr-node { width: 92px; height: 92px; border-radius: 50%; background: var(--dw-paper); border: 4px solid var(--dw-terra); display: flex; align-items: center; justify-content: center; font-family: "JetBrains Mono", monospace; font-weight: 700; font-size: 32px; color: var(--dw-terra); }
+      [data-composition-id="s07-process"] .pr-t { margin-top: 34px; }
+      [data-composition-id="s07-process"] .pr-d { margin-top: 14px; max-width: 360px; }
+    </style>
+
+    <script>
+      (function () {
+        var SLOT = 2.9;
+        var root = document.querySelector('[data-composition-id="s07-process"]');
+        var q = function (s) { return root.querySelector(s); };
+        var qa = function (s) { return root.querySelectorAll(s); };
+        DW.words(root);
+        var tl = gsap.timeline({ paused: true });
+        var t0 = DW.enter(tl, root);
+        DW.rise(tl, q('.dw-eyebrow'), t0, { y: 0, x: -30 });
+        DW.rise(tl, qa('.pr-head .dw-w'), t0 + 0.08, { y: 70 });
+        tl.to(q('.pr-fill'), { scaleX: 1, duration: 1.1, ease: 'power2.inOut' }, t0 + 0.45);
+        [1, 2, 3, 4].forEach(function (i) {
+          var at = t0 + 0.45 + (i - 1) * 0.3;
+          tl.from(q('.ps' + i + ' .pr-node'), { scale: 0, duration: 0.4, ease: 'back.out(2.2)' }, at);
+          tl.from(qa('.ps' + i + ' .pr-t, .ps' + i + ' .pr-d'), { y: 30, opacity: 0, duration: 0.4, ease: 'power3.out', stagger: 0.05 }, at + 0.08);
+        });
+        DW.hold(tl, SLOT);
+        window.__timelines = window.__timelines || {};
+        window.__timelines["s07-process"] = tl;
+      })();
+    </script>
+  </div>
+</template>

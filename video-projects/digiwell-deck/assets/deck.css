@@ -1,0 +1,91 @@
+/* Digiwell Marketing — deck system.
+   Brand tokens come from the AI Operated / Digiwell newsletter system (see DESIGN.md).
+   Every layout in compositions/ is built from these classes, so a restyle happens here once. */
+
+/* Self-hosted variable fonts (Latin subset, SIL OFL). The renderer only
+   auto-resolves fonts it bundles, and these must also work offline when presenting. */
+@font-face { font-family: "Sora"; src: url("fonts/Sora.woff2") format("woff2"); font-weight: 100 800; font-display: block; }
+@font-face { font-family: "Manrope"; src: url("fonts/Manrope.woff2") format("woff2"); font-weight: 200 800; font-display: block; }
+@font-face { font-family: "JetBrains Mono"; src: url("fonts/JetBrainsMono.woff2") format("woff2"); font-weight: 100 800; font-display: block; }
+
+:root {
+  --dw-paper: #F1ECE3;
+  --dw-paper-deep: #E8E0CF;
+  --dw-ink: #1F1B17;
+  --dw-body: #4B433A;
+  --dw-muted: #8B8173;
+  --dw-terra: #B5532E;
+  --dw-sand: #DDB892;
+  --dw-card: #FFFFFF;
+  --dw-card-border: #C49A70;
+  --dw-divider: #E0D6C4;
+  --dw-rule: rgba(31, 27, 23, 0.12);
+  --dw-on-terra: #F1ECE3;
+  --dw-on-terra-soft: #F4E7DC;
+}
+
+.dw-slide { position: absolute; inset: 0; overflow: hidden; background: transparent; font-family: "Sora", Helvetica, Arial, sans-serif; color: var(--dw-ink); }
+
+/* The panel is the slide surface. Its clip-path wipe (deck.js DW.enter) IS the
+   transition: each slide sweeps in over the previous one from the right. */
+.dw-panel { position: absolute; inset: 0; background: var(--dw-paper); clip-path: inset(0% 0% 0% 100%); }
+.dw-panel.dw-terra { background: var(--dw-terra); color: var(--dw-on-terra); }
+.dw-edge { position: absolute; top: 0; bottom: 0; left: 0; width: 14px; background: var(--dw-terra); transform: translateX(1920px); z-index: 50; }
+.dw-edge.dw-sand { background: var(--dw-sand); }
+
+.dw-content {
+  position: relative; width: 100%; height: 100%; box-sizing: border-box;
+  padding: 170px 120px 110px;
+  display: flex; flex-direction: column;
+}
+
+/* Standard chrome: brand mark, section label, slide counter, hairline rule. */
+.dw-chrome {
+  position: absolute; top: 64px; left: 120px; right: 120px;
+  display: flex; align-items: center; justify-content: space-between;
+  font-family: "JetBrains Mono", Consolas, monospace; font-weight: 600; font-size: 20px; letter-spacing: 3px;
+  color: var(--dw-muted); z-index: 5;
+}
+.dw-brand { font-family: "Sora", Helvetica, Arial, sans-serif; font-weight: 800; font-size: 26px; letter-spacing: -0.5px; color: var(--dw-ink); }
+.dw-dot { color: var(--dw-terra); }
+.dw-terra .dw-brand { color: var(--dw-on-terra); }
+.dw-terra .dw-dot { color: var(--dw-sand); }
+.dw-terra .dw-chrome { color: var(--dw-on-terra-soft); }
+.dw-rule { position: absolute; top: 118px; left: 120px; right: 120px; height: 1px; background: var(--dw-rule); z-index: 5; }
+.dw-terra .dw-rule { background: rgba(241, 236, 227, 0.25); }
+
+/* Type scale */
+.dw-eyebrow { font-family: "JetBrains Mono", Consolas, monospace; font-weight: 600; font-size: 24px; letter-spacing: 4px; text-transform: uppercase; color: var(--dw-terra); }
+.dw-terra .dw-eyebrow { color: var(--dw-sand); }
+.dw-h-xl { font-weight: 800; font-size: 150px; line-height: 0.98; letter-spacing: -5px; }
+.dw-h-l  { font-weight: 800; font-size: 118px; line-height: 1.0;  letter-spacing: -4px; }
+.dw-h-m  { font-weight: 800; font-size: 84px;  line-height: 1.04; letter-spacing: -2.6px; }
+.dw-h-s  { font-weight: 800; font-size: 52px;  line-height: 1.08; letter-spacing: -1.4px; }
+.dw-lede { font-family: "Manrope", Helvetica, Arial, sans-serif; font-weight: 500; font-size: 38px; line-height: 1.45; color: var(--dw-body); }
+.dw-body { font-family: "Manrope", Helvetica, Arial, sans-serif; font-weight: 500; font-size: 30px; line-height: 1.5; color: var(--dw-body); }
+.dw-mono { font-family: "JetBrains Mono", Consolas, monospace; font-weight: 600; letter-spacing: 2px; }
+.dw-accent { color: var(--dw-terra); }
+.dw-terra .dw-lede, .dw-terra .dw-body { color: var(--dw-on-terra-soft); }
+
+/* Words split by DW.words() so they can rise individually without breaking mid-word. */
+.dw-w { display: inline-block; }
+
+/* Sand highlighter — the brand's signature mark, wiped in by DW.swash(). */
+.dw-hl { position: relative; display: inline-block; padding: 0 0.08em; margin: 0 -0.08em; }
+.dw-hl-bar { position: absolute; left: 0; right: 0; bottom: 0.1em; height: 0.2em; background: var(--dw-sand); transform: scaleX(0); transform-origin: left center; }
+.dw-hl-text { position: relative; z-index: 1; }
+
+.dw-card { background: var(--dw-card); border: 1px solid var(--dw-card-border); border-radius: 26px; box-shadow: 0 30px 70px -40px rgba(31, 27, 23, 0.45); }
+.dw-card.dw-feature { background: var(--dw-terra); border-color: var(--dw-terra); color: var(--dw-on-terra); }
+.dw-feature .dw-body { color: var(--dw-on-terra-soft); }
+.dw-feature .dw-eyebrow { color: var(--dw-sand); }
+
+.dw-pill { display: inline-block; background: var(--dw-terra); color: var(--dw-on-terra); border-radius: 999px; padding: 26px 54px; font-family: "Manrope", Helvetica, Arial, sans-serif; font-weight: 700; font-size: 36px; }
+.dw-terra .dw-pill { background: var(--dw-sand); color: var(--dw-ink); }
+
+/* Texture on every slide: paper grain + soft vignette. */
+.dw-grain { position: absolute; inset: 0; pointer-events: none; opacity: 0.035; z-index: 40;
+  background-image: radial-gradient(rgba(31,27,23,0.35) 1px, transparent 1px), radial-gradient(rgba(31,27,23,0.25) 1px, transparent 1px);
+  background-size: 3px 3px, 5px 5px; }
+.dw-vignette { position: absolute; inset: 0; pointer-events: none; z-index: 39;
+  background: radial-gradient(ellipse at center, transparent 58%, rgba(31,27,23,0.10) 100%); }
