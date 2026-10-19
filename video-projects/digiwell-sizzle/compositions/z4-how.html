@@ -1,0 +1,171 @@
+<template id="z4-how-template">
+  <script src="assets/gsap.min.js"></script>
+  <script src="assets/sz.js"></script>
+
+  <div data-composition-id="z4-how" data-start="0" data-duration="10.4" data-width="1920" data-height="1080">
+    <!-- Cover wipe up from the bottom with a sand leading edge. -->
+    <div class="sz-stage sz-paper panel">
+      <div class="wrap">
+        <div class="top">
+          <div class="sz-eyebrow eye">How we work</div>
+          <div class="rail">
+            <div class="seg"><div class="bar"><div class="fill f1"></div></div><div class="lab sz-mono">FIT</div></div>
+            <div class="seg"><div class="bar"><div class="fill f2"></div></div><div class="lab sz-mono">SCOPE</div></div>
+            <div class="seg"><div class="bar"><div class="fill f3"></div></div><div class="lab sz-mono">TEST</div></div>
+            <div class="seg"><div class="bar"><div class="fill f4"></div></div><div class="lab sz-mono">HANDOVER</div></div>
+          </div>
+        </div>
+
+        <div class="area">
+          <!-- 01 Fit conversation -->
+          <div class="step st1">
+            <div class="tx"><div class="num sz-mono">STEP 01</div><div class="sz-h title" data-words>Fit conversation</div><div class="sz-lede desc">Where things stand, and whether there&rsquo;s a useful first project.</div></div>
+            <div class="vis sz-card">
+              <div class="bb l b1">Where do things stand right now?</div>
+              <div class="bb r b2">Here&rsquo;s what we&rsquo;ve got.</div>
+              <div class="bb l b3">Is there a useful first project?</div>
+            </div>
+          </div>
+          <!-- 02 Scoped build -->
+          <div class="step st2">
+            <div class="tx"><div class="num sz-mono">STEP 02</div><div class="sz-h title" data-words>Scoped build</div><div class="sz-lede desc">One journey, agreed in writing, built in the tools you already use.</div></div>
+            <div class="vis sz-card">
+              <div class="v-head sz-mono">SCOPE &middot; IN WRITING</div>
+              <div class="v-title">One journey</div>
+              <div class="row r1"><span class="tick">&#10003;</span>Built in the tools you already use</div>
+              <div class="row r2"><span class="tick">&#10003;</span>One accountable owner</div>
+              <div class="row r3"><span class="tick">&#10003;</span>Agreed before work starts</div>
+              <div class="sign"><div class="sig-line"></div><div class="sig-lab sz-mono">AGREED</div></div>
+            </div>
+          </div>
+          <!-- 03 Test and sign-off -->
+          <div class="step st3">
+            <div class="tx"><div class="num sz-mono">STEP 03</div><div class="sz-h title" data-words>Test and sign&#8209;off</div><div class="sz-lede desc">Tested end to end. Nothing goes live without your sign&#8209;off.</div></div>
+            <div class="vis sz-card">
+              <div class="v-head sz-mono">TEST RUN</div>
+              <div class="row t1"><span class="tick">&#10003;</span>Every link</div>
+              <div class="row t2"><span class="tick">&#10003;</span>Every trigger</div>
+              <div class="row t3"><span class="tick">&#10003;</span>Every branch</div>
+              <div class="stamp sz-mono">SIGNED OFF</div>
+            </div>
+          </div>
+          <!-- 04 Handover -->
+          <div class="step st4">
+            <div class="tx"><div class="num sz-mono">STEP 04</div><div class="sz-h title" data-words>Handover</div><div class="sz-lede desc">Documented and handed over. Ongoing help is scoped separately.</div></div>
+            <div class="vis sz-card hand">
+              <div class="zones"><div class="zone z-a sz-mono">DIGIWELL</div><div class="zone z-b sz-mono">YOU</div></div>
+              <div class="doc"><div class="doc-ico">&#9636;</div><div class="doc-t">Handover doc</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="sz-vignette"></div>
+      <div class="sz-grain"></div>
+    </div>
+    <div class="sz-edge edge"></div>
+
+    <style>
+      /* Self-hosted faces (also in assets/sz.css); declared here so each scene lints standalone. */
+      @font-face { font-family: "Sora"; src: url("assets/fonts/Sora.woff2") format("woff2"); font-weight: 100 800; font-display: block; }
+      @font-face { font-family: "Manrope"; src: url("assets/fonts/Manrope.woff2") format("woff2"); font-weight: 200 800; font-display: block; }
+      @font-face { font-family: "JetBrains Mono"; src: url("assets/fonts/JetBrainsMono.woff2") format("woff2"); font-weight: 100 800; font-display: block; }
+      [data-composition-id="z4-how"] { position: absolute; inset: 0; overflow: hidden; }
+      [data-composition-id="z4-how"] .panel { clip-path: inset(100% 0% 0% 0%); }
+      [data-composition-id="z4-how"] .edge { left: 0; right: 0; top: 0; height: 16px; background: var(--dw-sand); transform: translateY(2000px); }
+      [data-composition-id="z4-how"] .wrap { width: 100%; height: 100%; padding: 100px 120px 90px; display: flex; flex-direction: column; }
+      [data-composition-id="z4-how"] .top { display: flex; align-items: center; justify-content: space-between; gap: 60px; }
+      [data-composition-id="z4-how"] .rail { display: flex; gap: 16px; }
+      [data-composition-id="z4-how"] .seg { width: 170px; }
+      [data-composition-id="z4-how"] .bar { height: 8px; border-radius: 4px; background: var(--dw-rule); overflow: hidden; }
+      [data-composition-id="z4-how"] .fill { width: 100%; height: 100%; background: var(--dw-terra); transform: scaleX(0); transform-origin: left center; }
+      [data-composition-id="z4-how"] .lab { margin-top: 12px; font-size: 18px; letter-spacing: 3px; color: var(--dw-muted); }
+
+      [data-composition-id="z4-how"] .area { position: relative; flex: 1 1 auto; }
+      [data-composition-id="z4-how"] .step { position: absolute; inset: 0; display: grid; grid-template-columns: 1fr 760px; gap: 90px; align-items: center; opacity: 0; }
+      [data-composition-id="z4-how"] .num { font-size: 24px; letter-spacing: 5px; color: var(--dw-terra); }
+      [data-composition-id="z4-how"] .title { margin-top: 18px; font-size: 100px; }
+      [data-composition-id="z4-how"] .desc { margin-top: 28px; max-width: 760px; }
+      [data-composition-id="z4-how"] .vis { position: relative; padding: 44px 46px; display: flex; flex-direction: column; gap: 22px; min-height: 440px; justify-content: center; }
+
+      [data-composition-id="z4-how"] .bb { font-family: "Manrope", sans-serif; font-weight: 600; font-size: 32px; line-height: 1.35; padding: 22px 30px; border-radius: 28px; max-width: 82%; }
+      [data-composition-id="z4-how"] .bb.l { align-self: flex-start; background: var(--dw-paper-deep); border-bottom-left-radius: 8px; }
+      [data-composition-id="z4-how"] .bb.r { align-self: flex-end; background: var(--dw-terra); color: var(--dw-on-terra); border-bottom-right-radius: 8px; }
+
+      [data-composition-id="z4-how"] .v-head { font-size: 20px; letter-spacing: 4px; color: var(--dw-muted); }
+      [data-composition-id="z4-how"] .v-title { font-weight: 800; font-size: 46px; margin-top: -6px; }
+      [data-composition-id="z4-how"] .row { display: flex; align-items: center; gap: 20px; font-family: "Manrope", sans-serif; font-weight: 600; font-size: 32px; }
+      [data-composition-id="z4-how"] .tick { flex: 0 0 48px; height: 48px; border-radius: 50%; background: var(--dw-terra); color: var(--dw-on-terra); display: flex; align-items: center; justify-content: center; font-size: 26px; font-weight: 800; }
+      [data-composition-id="z4-how"] .sign { display: flex; align-items: center; gap: 22px; margin-top: 14px; }
+      [data-composition-id="z4-how"] .sig-line { flex: 1 1 auto; height: 3px; background: var(--dw-ink); transform: scaleX(0); transform-origin: left center; }
+      [data-composition-id="z4-how"] .sig-lab { font-size: 22px; letter-spacing: 4px; color: var(--dw-terra); }
+      [data-composition-id="z4-how"] .stamp { position: absolute; right: 44px; bottom: 50px; font-size: 34px; letter-spacing: 5px; color: var(--dw-terra); border: 5px solid var(--dw-terra); border-radius: 14px; padding: 14px 24px; transform: rotate(-8deg); }
+
+      [data-composition-id="z4-how"] .zones { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+      [data-composition-id="z4-how"] .zone { height: 300px; border-radius: 20px; border: 2px dashed var(--dw-card-border); display: flex; align-items: flex-start; justify-content: center; padding-top: 24px; font-size: 22px; letter-spacing: 4px; color: var(--dw-muted); }
+      [data-composition-id="z4-how"] .doc { position: absolute; left: 80px; top: 130px; width: 250px; height: 190px; border-radius: 16px; background: var(--dw-terra); color: var(--dw-on-terra); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; box-shadow: 0 24px 50px -24px rgba(31,27,23,0.6); }
+      [data-composition-id="z4-how"] .doc-ico { font-size: 50px; line-height: 1; }
+      [data-composition-id="z4-how"] .doc-t { font-weight: 700; font-size: 28px; }
+
+      /* 9:16 */
+      [data-composition-id="z4-how"].v .wrap { padding: 130px 80px 120px; }
+      [data-composition-id="z4-how"].v .top { flex-direction: column; align-items: flex-start; gap: 34px; }
+      [data-composition-id="z4-how"].v .seg { width: 215px; }
+      [data-composition-id="z4-how"].v .step { grid-template-columns: 1fr; grid-template-rows: auto auto; align-content: center; gap: 70px; }
+      [data-composition-id="z4-how"].v .title { font-size: 96px; }
+      [data-composition-id="z4-how"].v .doc { left: 120px; }
+    </style>
+
+    <script>
+      (function () {
+        var SLOT = 10.4;
+        var root = document.querySelector('[data-composition-id="z4-how"]');
+        var q = function (s) { return root.querySelector(s); };
+        var qa = function (s) { return root.querySelectorAll(s); };
+        var V = SZ.fmt(root);
+        SZ.words(root);
+        var tl = gsap.timeline({ paused: true });
+
+        // ENTRY: paper covers the journey scene from the bottom, sand edge on the seam.
+        tl.fromTo(q('.panel'), { clipPath: 'inset(100% 0% 0% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: 0.5, ease: 'power3.inOut' }, 0);
+        tl.fromTo(q('.edge'), { y: +root.getAttribute('data-height') }, { y: -16, duration: 0.5, ease: 'power3.inOut' }, 0);
+        tl.from(q('.eye'), { x: -30, opacity: 0, duration: 0.35, ease: 'power3.out' }, 0.30);
+        tl.from(qa('.seg'), { y: -16, opacity: 0, duration: 0.3, ease: 'power2.out', stagger: 0.05 }, 0.35);
+
+        var S = [0.45, 2.9, 5.35, 7.8];
+        S.forEach(function (s, i) {
+          var n = i + 1, st = '.st' + n;
+          var next = S[i + 1];
+          tl.set(q(st), { opacity: 1 }, s);
+          tl.from(q(st + ' .num'), { x: -30, opacity: 0, duration: 0.3, ease: 'power3.out' }, s);
+          tl.from(qa(st + ' .title .sz-w'), { y: 70, opacity: 0, duration: 0.42, ease: 'expo.out', stagger: 0.06 }, s + 0.06);
+          tl.from(q(st + ' .desc'), { y: 20, opacity: 0, duration: 0.38, ease: 'power2.out' }, s + 0.30);
+          tl.from(q(st + ' .vis'), { y: 50, opacity: 0, rotation: V ? 0 : 1.5, duration: 0.45, ease: 'back.out(1.4)' }, s + 0.18);
+          tl.to(q('.f' + n), { scaleX: 1, duration: (next || SLOT - 0.2) - s, ease: 'none' }, s);
+          if (next) tl.to(q(st), { y: -60, opacity: 0, duration: 0.25, ease: 'power2.in' }, next - 0.25);
+        });
+
+        // 01 chat
+        tl.from(q('.b1'), { x: -40, opacity: 0, duration: 0.35, ease: 'back.out(1.6)' }, S[0] + 0.55);
+        tl.from(q('.b2'), { x: 40, opacity: 0, duration: 0.35, ease: 'back.out(1.6)' }, S[0] + 0.95);
+        tl.from(q('.b3'), { x: -40, opacity: 0, duration: 0.35, ease: 'back.out(1.6)' }, S[0] + 1.35);
+        // 02 scope
+        tl.from(qa('.st2 .row'), { x: 30, opacity: 0, duration: 0.3, ease: 'power3.out', stagger: 0.25 }, S[1] + 0.55);
+        tl.from(qa('.st2 .tick'), { scale: 0, duration: 0.3, ease: 'back.out(2.6)', stagger: 0.25 }, S[1] + 0.62);
+        tl.to(q('.sig-line'), { scaleX: 1, duration: 0.45, ease: 'power2.inOut' }, S[1] + 1.35);
+        tl.from(q('.sig-lab'), { opacity: 0, x: 20, duration: 0.3, ease: 'power2.out' }, S[1] + 1.65);
+        // 03 test
+        tl.from(qa('.st3 .row'), { x: 30, opacity: 0, duration: 0.3, ease: 'power3.out', stagger: 0.25 }, S[2] + 0.55);
+        tl.from(qa('.st3 .tick'), { scale: 0, duration: 0.3, ease: 'back.out(2.6)', stagger: 0.25 }, S[2] + 0.62);
+        tl.from(q('.stamp'), { scale: 1.9, opacity: 0, rotation: -24, duration: 0.32, ease: 'power4.in' }, S[2] + 1.20);
+        // 04 handover: the doc moves from Digiwell to you
+        tl.from(q('.doc'), { scale: 0.6, opacity: 0, duration: 0.35, ease: 'back.out(1.8)' }, S[3] + 0.55);
+        tl.to(q('.doc'), { x: ((V ? 920 : 760) - 92 - 30) / 2 + 30, duration: 0.7, ease: 'power3.inOut' }, S[3] + 1.0);
+        tl.to(q('.z-b'), { borderColor: '#B5532E', color: '#B5532E', borderStyle: 'solid', duration: 0.25, ease: 'none' }, S[3] + 1.6);
+
+        SZ.hold(tl, SLOT);
+        window.__timelines = window.__timelines || {};
+        window.__timelines["z4-how"] = tl;
+      })();
+    </script>
+  </div>
+</template>

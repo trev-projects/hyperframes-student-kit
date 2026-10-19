@@ -1,0 +1,95 @@
+<template id="z1-hook-template">
+  <script src="assets/gsap.min.js"></script>
+  <script src="assets/sz.js"></script>
+
+  <div data-composition-id="z1-hook" data-start="0" data-duration="5.8" data-width="1920" data-height="1080">
+    <div class="sz-stage sz-paper">
+      <div class="wrap">
+        <div class="txt">
+          <div class="sz-eyebrow eye">Email follow-up</div>
+          <div class="sz-h l1" data-words>People raise their hand.</div>
+          <div class="sz-h l2"><span class="l2a" data-words>Then they hear</span> <span class="l2b sz-w">nothing</span> <span class="l2c sz-w">useful.</span></div>
+        </div>
+        <div class="ui">
+          <div class="sz-card card c1">
+            <div class="ico">&#9993;</div>
+            <div class="meta"><div class="t">New subscriber</div><div class="s">Joined your newsletter</div></div>
+            <div class="chip sz-mono">JUST NOW</div>
+          </div>
+          <div class="sz-card card c2">
+            <div class="ico">?</div>
+            <div class="meta"><div class="t">New enquiry</div><div class="s">&ldquo;Do you work with businesses like mine?&rdquo;</div></div>
+            <div class="chip sz-mono">JUST NOW</div>
+          </div>
+          <div class="days sz-mono"><span class="d-lab">DAY</span><span class="d-num">1</span><span class="d-state">No follow-up sent</span></div>
+        </div>
+      </div>
+      <div class="sz-vignette"></div>
+      <div class="sz-grain"></div>
+    </div>
+
+    <style>
+      /* Self-hosted faces (also in assets/sz.css); declared here so each scene lints standalone. */
+      @font-face { font-family: "Sora"; src: url("assets/fonts/Sora.woff2") format("woff2"); font-weight: 100 800; font-display: block; }
+      @font-face { font-family: "Manrope"; src: url("assets/fonts/Manrope.woff2") format("woff2"); font-weight: 200 800; font-display: block; }
+      @font-face { font-family: "JetBrains Mono"; src: url("assets/fonts/JetBrainsMono.woff2") format("woff2"); font-weight: 100 800; font-display: block; }
+      [data-composition-id="z1-hook"] { position: absolute; inset: 0; overflow: hidden; }
+      [data-composition-id="z1-hook"] .wrap { width: 100%; height: 100%; padding: 0 120px; display: flex; align-items: center; gap: 90px; }
+      [data-composition-id="z1-hook"] .txt { flex: 1 1 0; }
+      [data-composition-id="z1-hook"] .eye { margin-bottom: 26px; }
+      [data-composition-id="z1-hook"] .sz-h { font-size: 104px; }
+      [data-composition-id="z1-hook"] .l2 { margin-top: 36px; }
+      [data-composition-id="z1-hook"] .l2b, [data-composition-id="z1-hook"] .l2c { color: var(--dw-terra); }
+      [data-composition-id="z1-hook"] .ui { flex: 0 0 720px; display: flex; flex-direction: column; gap: 26px; }
+      [data-composition-id="z1-hook"] .card { display: flex; align-items: center; gap: 24px; padding: 28px 30px; }
+      [data-composition-id="z1-hook"] .ico { flex: 0 0 68px; height: 68px; border-radius: 50%; background: var(--dw-terra); color: var(--dw-on-terra); display: flex; align-items: center; justify-content: center; font-size: 34px; font-weight: 800; }
+      [data-composition-id="z1-hook"] .meta { flex: 1 1 auto; min-width: 0; }
+      [data-composition-id="z1-hook"] .t { font-weight: 700; font-size: 34px; }
+      [data-composition-id="z1-hook"] .s { margin-top: 4px; font-family: "Manrope", sans-serif; font-weight: 500; font-size: 26px; color: var(--dw-body); }
+      [data-composition-id="z1-hook"] .chip { flex: 0 0 auto; font-size: 16px; letter-spacing: 2px; color: var(--dw-muted); background: var(--dw-paper-deep); border-radius: 999px; padding: 10px 16px; }
+      [data-composition-id="z1-hook"] .days { align-self: flex-start; display: flex; align-items: baseline; gap: 16px; border: 2px dashed var(--dw-card-border); border-radius: 999px; padding: 18px 30px; font-size: 26px; letter-spacing: 3px; }
+      [data-composition-id="z1-hook"] .d-lab { color: var(--dw-terra); }
+      [data-composition-id="z1-hook"] .d-num { color: var(--dw-terra); font-size: 40px; min-width: 2ch; font-variant-numeric: tabular-nums; }
+      [data-composition-id="z1-hook"] .d-state { color: var(--dw-muted); letter-spacing: 1px; }
+
+      /* 9:16 */
+      [data-composition-id="z1-hook"].v .wrap { flex-direction: column; justify-content: center; align-items: stretch; padding: 0 80px; gap: 80px; }
+      [data-composition-id="z1-hook"].v .txt { flex: 0 0 auto; }
+      [data-composition-id="z1-hook"].v .sz-h { font-size: 100px; }
+      [data-composition-id="z1-hook"].v .ui { flex: 0 0 auto; }
+    </style>
+
+    <script>
+      (function () {
+        var SLOT = 5.8;
+        var root = document.querySelector('[data-composition-id="z1-hook"]');
+        var q = function (s) { return root.querySelector(s); };
+        var qa = function (s) { return root.querySelectorAll(s); };
+        SZ.fmt(root);
+        SZ.words(root);
+        var tl = gsap.timeline({ paused: true });
+
+        tl.from(q('.eye'), { x: -30, opacity: 0, duration: 0.4, ease: 'power3.out' }, 0.15);
+        tl.from(qa('.l1 .sz-w'), { y: 80, opacity: 0, duration: 0.5, ease: 'expo.out', stagger: 0.07 }, 0.30);
+
+        // Interest arrives: two notifications pop in.
+        tl.from(q('.c1'), { x: 120, opacity: 0, scale: 0.92, duration: 0.5, ease: 'back.out(1.6)' }, 0.90);
+        tl.from(q('.c2'), { x: 120, opacity: 0, scale: 0.92, duration: 0.5, ease: 'back.out(1.6)' }, 1.25);
+
+        // ...then time passes and nothing goes out. Cards go cold.
+        tl.from(q('.days'), { y: 30, opacity: 0, duration: 0.4, ease: 'power3.out' }, 2.05);
+        var num = q('.d-num'), d = { v: 1 };
+        tl.to(d, { v: 23, duration: 1.3, ease: 'power1.in', onUpdate: function () { num.textContent = Math.round(d.v); } }, 2.15);
+        tl.to([q('.c1'), q('.c2')], { opacity: 0.45, filter: 'grayscale(1)', duration: 0.6, ease: 'power2.out' }, 2.30);
+
+        tl.from(qa('.l2a .sz-w'), { y: 70, opacity: 0, duration: 0.45, ease: 'expo.out', stagger: 0.06 }, 3.20);
+        tl.from([q('.l2b'), q('.l2c')], { y: 70, opacity: 0, duration: 0.5, ease: 'expo.out', stagger: 0.08 }, 3.55);
+        tl.to(q('.l2'), { x: 8, duration: 0.05, yoyo: true, repeat: 5, ease: 'none' }, 4.05);
+
+        SZ.hold(tl, SLOT);
+        window.__timelines = window.__timelines || {};
+        window.__timelines["z1-hook"] = tl;
+      })();
+    </script>
+  </div>
+</template>
