@@ -1,6 +1,6 @@
 # Digiwell deck: copy v2 (aligned to the 2026-09-12 positioning)
 
-**Status: draft for Trevor's approval. Not built yet.** The live deck is still v1.
+**Status: built (2026-10-19).** This copy is live in `compositions/`. Open questions below still stand; defaults used: no proof, no highlighted card, no slide 10.
 
 **Source:** `DECK-REFRESH-PROMPT.md` (its positioning summary, gap analysis and guardrails). The canon
 files it cites (`business/positioning.md`, `business/messaging-2026-09.md`, `CLAUDE.md` voice rules) live in

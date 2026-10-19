@@ -1,0 +1,54 @@
+<template id="s05-questions-template">
+  <script src="assets/gsap.min.js"></script>
+  <script src="assets/deck.js"></script>
+
+  <div data-composition-id="s05-questions" data-start="0" data-duration="3.3" data-width="1920" data-height="1080">
+    <div class="dw-slide">
+      <div class="dw-panel">
+        <div class="dw-chrome"><div class="dw-brand">Digiwell<span class="dw-dot">.</span></div><div>THE PROBLEM</div><div>05&nbsp;/&nbsp;09</div></div>
+          <div class="dw-rule"></div>
+        <div class="dw-content">
+          <div class="dw-eyebrow">Three questions worth asking</div>
+          <div class="dw-h-l qn-head" data-words>Where does follow-up break?</div>
+          <div class="qn-list">
+            <div class="qn-row qr1"><div class="qn-num dw-mono">01</div><div class="qn-q">What happens after someone subscribes?</div></div>
+            <div class="qn-row qr2"><div class="qn-num dw-mono">02</div><div class="qn-q">What happens after someone enquires?</div></div>
+            <div class="qn-row qr3"><div class="qn-num dw-mono">03</div><div class="qn-q">Who owns the newsletter?</div></div>
+          </div>
+        </div>
+        <div class="dw-vignette"></div>
+        <div class="dw-grain"></div>
+      </div>
+      <div class="dw-edge"></div>
+    </div>
+
+    <style>
+      [data-composition-id="s05-questions"] .qn-head { margin-top: 18px; }
+      [data-composition-id="s05-questions"] .qn-list { margin-top: 70px; display: flex; flex-direction: column; }
+      [data-composition-id="s05-questions"] .qn-row { display: grid; grid-template-columns: 110px 1fr; align-items: baseline; padding: 34px 0; border-top: 1px solid var(--dw-rule); }
+      [data-composition-id="s05-questions"] .qn-num { font-size: 28px; color: var(--dw-terra); }
+      [data-composition-id="s05-questions"] .qn-q { font-weight: 800; font-size: 64px; line-height: 1.08; letter-spacing: -1.8px; }
+    </style>
+
+    <script>
+      (function () {
+        var SLOT = 3.3;
+        var root = document.querySelector('[data-composition-id="s05-questions"]');
+        var q = function (s) { return root.querySelector(s); };
+        var qa = function (s) { return root.querySelectorAll(s); };
+        DW.words(root);
+        var tl = gsap.timeline({ paused: true });
+        var t0 = DW.enter(tl, root);
+        // Fragments (deck.json): rest at 1.5 / 2.1 / 2.7, one question per click.
+        DW.rise(tl, q('.dw-eyebrow'), t0, { y: 0, x: -30 });
+        DW.rise(tl, qa('.qn-head .dw-w'), t0 + 0.08, { y: 70 });
+        [['.qr1', 0.95], ['.qr2', 1.55], ['.qr3', 2.15]].forEach(function (k) {
+          tl.from(q(k[0]), { x: 90, opacity: 0, duration: 0.5, ease: 'expo.out' }, k[1]);
+        });
+        DW.hold(tl, SLOT);
+        window.__timelines = window.__timelines || {};
+        window.__timelines["s05-questions"] = tl;
+      })();
+    </script>
+  </div>
+</template>

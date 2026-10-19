@@ -45,12 +45,12 @@ and rebuild.
 **Order, timing and speaker notes** live in `deck.json`:
 
 ```json
-{ "id": "s06-pillars", "rests": [1.2, 1.8, 2.4], "notes": "Three clicks, one card each…" }
+{ "id": "s06-journeys", "rests": [1.2, 1.8, 2.4], "notes": "One card per click…" }
 ```
 
 - `id` must match the file `compositions/<id>.html` and its `data-composition-id`.
 - `rests` are the local times the presenter stops on. **One rest = a normal slide.
-  Several = click-by-click builds** (s06 reveals one card per click).
+  Several = click-by-click builds** (s05 and s06 reveal one item per click).
 - Put each rest just after that step's animation finishes.
 
 After any `deck.json` change:
@@ -79,10 +79,10 @@ The build refuses to run if a slide file is missing, its id doesn't match, or it
 | `s02-agenda` | Agenda | Numbered rows |
 | `s03-divider` | Section divider | Terracotta, outlined section number |
 | `s04-statement` | Big statement | Two-line reframe, highlighter on the key phrase |
-| `s05-stat` | Hero number | Count-up. **Sample stat, so swap in a real client result** |
-| `s06-pillars` | Three-up | Builds one card per click |
+| `s05-questions` | Three questions | One question per click. Use a hero number here only once real, approved proof exists |
+| `s06-journeys` | Three-up choice | One card per click. Add `dw-feature` to a card to highlight a recommended default |
 | `s07-process` | Process | Four nodes on a drawn line |
-| `s08-compare` | Before / after | Struck-through vs. checked |
+| `s08-compare` | Without / with | Lived pain (struck through) vs. what you can count on |
 | `s09-cta` | CTA | Terracotta, pill button, URL |
 
 Shared styling lives in `assets/deck.css` (tokens + type scale) and shared motion lives in
