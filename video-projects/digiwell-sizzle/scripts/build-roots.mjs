@@ -14,7 +14,7 @@ import { writeFileSync, mkdirSync, rmSync, cpSync, readFileSync, readdirSync } f
 const SCENES = [
   { id: 'z1-hook',    start: 0.0,  dur: 5.8 },
   { id: 'z2-thesis',  start: 5.4,  dur: 4.2 },
-  { id: 'z3-journey', start: 9.2,  dur: 6.4 },
+  { id: 'z3-services', start: 9.2,  dur: 6.4 },
   { id: 'z4-how',     start: 15.2, dur: 10.4 },
   { id: 'z5-commit',  start: 25.2, dur: 3.6 },
   { id: 'z6-cta',     start: 28.4, dur: 5.6 }

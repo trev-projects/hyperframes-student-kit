@@ -81,7 +81,7 @@ for i in range(N):
 # ---- z1 hook (0-5.8) --------------------------------------------------------
 for w in range(4):
     thump(0.30 + w * 0.07, gain=0.18)
-for t0 in (0.90, 1.25):                                  # notifications
+for t0 in (0.90, 1.20, 1.50):                            # list, newsletter, sequence cards
     tick(t0, gain=0.24, freq=1800); tick(t0 + 0.07, gain=0.18, freq=2400)
 t, step = 2.15, 0.16                                     # day counter, accelerating
 while t < 3.45:
@@ -102,16 +102,15 @@ for w in range(4):
     tick(7.0 + w * 0.07, gain=0.1, freq=2200)
 thump(7.5, gain=0.5); chime(7.55, gain=0.16)
 
-# ---- z3 journey (9.2-15.6) --------------------------------------------------
+# ---- z3 services (9.2-15.6) -------------------------------------------------
 whoosh(9.15)
 kick(9.45)
-for w in range(3):
-    tick(10.25 + w * 0.12, gain=0.2, freq=1600)
-for t0 in (10.8, 11.2, 11.6):                            # selector browses
-    tick(t0, gain=0.16, freq=2600)
-for t0 in (12.8, 13.1, 13.4, 13.7):                      # follow-up emails land
-    thump(t0, gain=0.3); tick(t0 + 0.02, gain=0.14, freq=2000)
-chime(13.95, gain=0.14)
+for i in range(4):                                       # four service cards deal in
+    thump(10.2 + i * 0.15, gain=0.28); tick(10.22 + i * 0.15, gain=0.14, freq=1700)
+for i in range(4):                                       # highlight walks the services
+    tick(11.1 + i * 0.35, gain=0.18, freq=2600)
+thump(12.6, gain=0.4)                                    # "Start with the one that matters most."
+chime(12.95, gain=0.16)
 
 # ---- z4 how we work (15.2-25.6) ---------------------------------------------
 whoosh(15.15)

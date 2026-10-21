@@ -15,9 +15,9 @@ no stats, no outcome promises, no AI-agency language, no em dashes.
 
 | Time | Scene | On screen |
 |---|---|---|
-| 0–5.8 | Hook | People raise their hand. (New subscriber / New enquiry) Day counter: "No follow-up sent". Then they hear nothing useful. |
-| 5.4–9.6 | Thesis | It's not a ~~traffic~~ problem. It's a **follow-up** problem. |
-| 9.2–15.6 | One journey | Start with one journey. Welcome and nurture / Enquiry follow-up / Newsletter loop. Pick the one that matters most. Interest → a real conversation. |
+| 0–5.8 | Hook | People join your list. (New subscriber / Newsletter still in drafts / Welcome sequence not set up) Day counter: "Nothing sent". Then your email goes quiet. |
+| 5.4–9.6 | Thesis | It's not a ~~traffic~~ problem. It's an **email** problem. |
+| 9.2–15.6 | What we do | Email strategy and implementation. Email strategy / Newsletters / Welcome and nurture / Implementation. Start with the one that matters most. |
 | 15.2–25.6 | How we work | Fit conversation → Scoped build → Test and sign-off (SIGNED OFF) → Handover |
 | 25.2–28.8 | Commitments | One owner. Your tools. Your data. Tested before it goes live. |
 | 28.4–34 | CTA | Let's talk about your email. digiwellmarketing.com |
