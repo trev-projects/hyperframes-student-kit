@@ -1,6 +1,6 @@
 # Digiwell Marketing — "How we work" sizzle
 
-34 seconds, no voiceover, synthesized sound design. One source, two cuts:
+38 seconds, no voiceover, synthesized sound design. One source, two cuts:
 
 | File | Format | Use |
 |---|---|---|
@@ -8,19 +8,26 @@
 | `exports/digiwell-how-we-work-9x16.mp4` | 1080×1920 | Reels, Shorts, TikTok, LinkedIn/IG stories |
 | `exports/poster-16x9.jpg` | still | Poster frame for the web embed |
 
-Copy follows the 2026-09-12 email positioning (same canon as `digiwell-deck/deck-copy-v2.md`):
-no stats, no outcome promises, no AI-agency language, no em dashes.
+**Brand: Cedar Night** (the live site's look, from the Digiwell Video Studio). Ground `#0E1714` with cedar
+glows, cream `#F7F4EE` type, mint accents (`#7FB69E` lines, `#C3E2D3` italic accent words). Headlines in
+**Newsreader** (the studio's suggested heading face; swap the family in `assets/sz.css` and the
+`FONTFACE` block of `scripts/_write_scenes.py` to try Fraunces or another), Inter caps kickers, Manrope
+body. The wordmark is always **Fraunces "Digiwell" with the hand-drawn mint underline**.
+
+**Positioning:** email strategy, copy and implementation for coaches, consultants, authors and course
+creators. No stats, no outcome guarantees, no AI-agency language, no em dashes.
 
 ## The cut
 
 | Time | Scene | On screen |
 |---|---|---|
-| 0–5.8 | Hook | People join your list. (New subscriber / Newsletter still in drafts / Welcome sequence not set up) Day counter: "Nothing sent". Then your email goes quiet. |
-| 5.4–9.6 | Thesis | It's not a ~~traffic~~ problem. It's an **email** problem. |
-| 9.2–15.6 | What we do | Email strategy and implementation. Email strategy / Newsletters / Welcome and nurture / Implementation. Start with the one that matters most. |
-| 15.2–25.6 | How we work | Fit conversation → Scoped build → Test and sign-off (SIGNED OFF) → Handover |
-| 25.2–28.8 | Commitments | One owner. Your tools. Your data. Tested before it goes live. |
-| 28.4–34 | CTA | Let's talk about your email. digiwellmarketing.com |
+| 0–5.8 | Hook | For coaches, consultants, authors and course creators. You've already earned *the audience.* (new subscriber / newsletter in drafts / welcome sequence off, "Day 23, nothing sent") Then the list *goes quiet.* |
+| 5.4–9.6 | Thesis | It's not a ~~traffic~~ problem. It's an *email* problem. |
+| 9.2–15.6 | Services | Email strategy, copy and implementation. Turn the audience you've already earned *into more business.* Strategy / Copy / Implementation. *Start with the one that matters most.* |
+| 15.2–25.6 | How we work | Fit conversation → Scoped build → Test and sign-off → Handover |
+| 25.2–29.4 | Proof | "Trevor completely gets our *space and messaging.*" Dave, Breakthrough Academy |
+| 29.0–32.6 | Commitments | One owner. Your tools. Your data. Tested before it *goes live.* |
+| 32.2–38 | CTA | Digiwell. Let's talk about *your email.* digiwellmarketing.com/contact |
 
 ## Website embed
 
@@ -36,7 +43,8 @@ Muted autoplay loop. Browsers only autoplay muted video, and the piece reads wit
 
 ```bash
 cd video-projects/digiwell-sizzle
-# edit compositions/z*.html (copy, timing) or scripts/build-roots.mjs (scene order/timing)
+python3 scripts/_write_scenes.py     # scenes are generated: edit copy/layout/timing HERE, it overwrites compositions/
+# scene order and start times live in scripts/build-roots.mjs
 python3 scripts/make-sfx.py          # only if you retime beats: event times live here
 node scripts/build-roots.mjs         # writes index.html (16:9) + build/vertical/ (9:16)
 npx hyperframes lint && (cd build/vertical && npx hyperframes lint)

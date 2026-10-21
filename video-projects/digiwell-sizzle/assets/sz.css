@@ -1,46 +1,64 @@
-/* Digiwell sizzle — shared brand layer for both formats (16:9 index.html, 9:16 vertical.html).
-   Tokens match the deck (video-projects/digiwell-deck/assets/deck.css). */
+/* Digiwell — Cedar Night brand layer (from the live site's video studio).
+   Ground #0E1714 with cedar glows, cream type, mint accents. Headlines in
+   Newsreader (accent words italic + mint), kickers in Inter caps, body in
+   Manrope. The wordmark is always Fraunces with a hand-drawn mint underline. */
 
-@font-face { font-family: "Sora"; src: url("fonts/Sora.woff2") format("woff2"); font-weight: 100 800; font-display: block; }
+@font-face { font-family: "Newsreader"; src: url("fonts/Newsreader.woff2") format("woff2"); font-weight: 200 800; font-style: normal; font-display: block; }
+@font-face { font-family: "Newsreader"; src: url("fonts/Newsreader-Italic.woff2") format("woff2"); font-weight: 200 800; font-style: italic; font-display: block; }
+@font-face { font-family: "Fraunces"; src: url("fonts/Fraunces.woff2") format("woff2"); font-weight: 100 900; font-display: block; }
+@font-face { font-family: "Inter"; src: url("fonts/Inter.woff2") format("woff2"); font-weight: 100 900; font-display: block; }
 @font-face { font-family: "Manrope"; src: url("fonts/Manrope.woff2") format("woff2"); font-weight: 200 800; font-display: block; }
-@font-face { font-family: "JetBrains Mono"; src: url("fonts/JetBrainsMono.woff2") format("woff2"); font-weight: 100 800; font-display: block; }
 
 :root {
-  --dw-paper: #F1ECE3;
-  --dw-paper-deep: #E8E0CF;
-  --dw-ink: #1F1B17;
-  --dw-body: #4B433A;
-  --dw-muted: #8B8173;
-  --dw-terra: #B5532E;
-  --dw-sand: #DDB892;
-  --dw-card: #FFFFFF;
-  --dw-card-border: #C49A70;
-  --dw-rule: rgba(31, 27, 23, 0.12);
-  --dw-on-terra: #F1ECE3;
-  --dw-on-terra-soft: #F4E7DC;
+  --cn-bg: #0E1714;
+  --cn-raise: #111C18;
+  --cn-surf: #15231F;
+  --cn-surf-2: #1A2B26;
+  --cn-line: rgba(214, 232, 223, 0.14);
+  --cn-line-2: rgba(214, 232, 223, 0.26);
+  --cn-text: #F7F4EE;
+  --cn-text-2: #D3D8D2;
+  --cn-text-3: #A7B5AE;
+  --cn-mint: #7FB69E;
+  --cn-mint-2: #9CCAB5;
+  --cn-mint-3: #C3E2D3;
+  --cn-cedar: #2F5D50;
+  --cn-cedar-deep: #1C3A32;
+  --cn-warm: #E9DCC6;
 }
 
-.sz-stage { position: absolute; inset: 0; overflow: hidden; font-family: "Sora", Helvetica, Arial, sans-serif; color: var(--dw-ink); }
-.sz-paper { background: var(--dw-paper); }
-.sz-terra { background: var(--dw-terra); color: var(--dw-on-terra); }
-.sz-ink { background: var(--dw-ink); color: var(--dw-paper); }
+/* Ground: near-black cedar with a lit corner and a deep pool, as on the site. */
+.cn-stage { position: absolute; inset: 0; overflow: hidden; color: var(--cn-text); font-family: "Manrope", system-ui, sans-serif;
+  background:
+    radial-gradient(1600px 1600px at 82% 5%, rgba(61,117,101,0.42), rgba(61,117,101,0) 72%),
+    radial-gradient(1200px 1200px at 5% 100%, rgba(28,58,50,0.60), rgba(28,58,50,0) 70%),
+    var(--cn-bg); }
+.cn-stage.cn-deep { background:
+    radial-gradient(1500px 1500px at 50% 0%, rgba(127,182,158,0.18), rgba(127,182,158,0) 70%),
+    var(--cn-cedar-deep); }
+.cn-stage.cn-surf { background:
+    radial-gradient(1400px 1400px at 85% 10%, rgba(61,117,101,0.30), rgba(61,117,101,0) 70%),
+    var(--cn-surf); }
 
-.sz-h { font-weight: 800; line-height: 1.02; letter-spacing: -0.03em; }
-.sz-eyebrow { font-family: "JetBrains Mono", Consolas, monospace; font-weight: 600; font-size: 26px; letter-spacing: 5px; text-transform: uppercase; color: var(--dw-terra); }
-.sz-lede { font-family: "Manrope", Helvetica, Arial, sans-serif; font-weight: 500; font-size: 36px; line-height: 1.45; color: var(--dw-body); }
-.sz-mono { font-family: "JetBrains Mono", Consolas, monospace; font-weight: 600; }
-.sz-w { display: inline-block; }
+.cn-kick { font-family: "Inter", system-ui, sans-serif; font-weight: 600; font-size: 24px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--cn-mint-2); }
+.cn-h { font-family: "Newsreader", Georgia, serif; font-weight: 600; line-height: 1.08; letter-spacing: -0.01em; color: var(--cn-text); }
+.cn-h .acc, .cn-acc { font-style: italic; font-weight: 500; color: var(--cn-mint-3); }
+.cn-body { font-family: "Manrope", system-ui, sans-serif; font-weight: 500; font-size: 34px; line-height: 1.45; color: var(--cn-text-2); }
+.cn-w { display: inline-block; }
+.cn-grp { display: inline-block; white-space: nowrap; }
 
-.sz-hl { position: relative; display: inline-block; padding: 0 0.08em; margin: 0 -0.08em; }
-.sz-hl-bar { position: absolute; left: 0; right: 0; bottom: 0.1em; height: 0.2em; background: var(--dw-sand); transform: scaleX(0); transform-origin: left center; }
-.sz-hl-text { position: relative; z-index: 1; }
+.cn-card { background: var(--cn-surf); border: 1px solid var(--cn-line-2); border-radius: 18px; box-shadow: 0 30px 60px -30px rgba(0,0,0,0.6); }
+.cn-pill { display: inline-flex; align-items: center; background: var(--cn-text); color: var(--cn-bg); border-radius: 999px; font-family: "Manrope", sans-serif; font-weight: 700; }
 
-.sz-card { background: var(--dw-card); border: 1px solid var(--dw-card-border); border-radius: 24px; box-shadow: 0 30px 70px -40px rgba(31, 27, 23, 0.45); }
+/* Wordmark: Fraunces + hand-drawn underline (SVG, revealed with a clip wipe). */
+.cn-mark { position: relative; display: inline-block; font-family: "Fraunces", Georgia, serif; font-weight: 600; color: var(--cn-text); line-height: 1; }
+.cn-mark svg { position: absolute; left: 0; width: 100%; bottom: -0.32em; height: 0.34em; overflow: visible; }
+.cn-mark path { fill: none; stroke: var(--cn-mint); stroke-linecap: round; stroke-width: 0.065em; vector-effect: non-scaling-stroke; }
 
-.sz-edge { position: absolute; z-index: 50; }
+.cn-corner { position: absolute; top: 64px; left: 110px; font-size: 40px; z-index: 30; }
 
-.sz-grain { position: absolute; inset: 0; pointer-events: none; opacity: 0.035; z-index: 40;
-  background-image: radial-gradient(rgba(31,27,23,0.35) 1px, transparent 1px), radial-gradient(rgba(31,27,23,0.25) 1px, transparent 1px);
-  background-size: 3px 3px, 5px 5px; }
-.sz-vignette { position: absolute; inset: 0; pointer-events: none; z-index: 39;
-  background: radial-gradient(ellipse at center, transparent 58%, rgba(31,27,23,0.12) 100%); }
+.cn-edge { position: absolute; z-index: 50; background: var(--cn-mint); }
+
+.cn-grain { position: absolute; inset: 0; pointer-events: none; opacity: 0.06; z-index: 40; mix-blend-mode: overlay;
+  background-image: radial-gradient(rgba(255,255,255,0.55) 1px, transparent 1px), radial-gradient(rgba(255,255,255,0.35) 1px, transparent 1px), radial-gradient(rgba(0,0,0,0.5) 1px, transparent 1px);
+  background-size: 3px 3px, 5px 5px, 7px 7px; background-position: 0 0, 1px 2px, 3px 1px; }

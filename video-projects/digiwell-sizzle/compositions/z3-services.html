@@ -3,48 +3,45 @@
   <script src="assets/sz.js"></script>
 
   <div data-composition-id="z3-services" data-start="0" data-duration="6.4" data-width="1920" data-height="1080">
-    <!-- Paper panel wipes in from the right with a terracotta leading edge. -->
-    <div class="sz-stage sz-paper panel">
+    <div class="cn-stage  st">
+      <div class="cn-mark cn-corner"></div>
       <div class="wrap">
-        <div class="sz-eyebrow eye">What we do</div>
-        <div class="sz-h head"><span data-words>Email strategy</span> <span class="nw"><span data-words>and implementation.</span></span></div>
+        <div class="cn-kick eye">Email strategy, copy and implementation</div>
+        <div class="cn-h head" data-words>Turn the audience you&rsquo;ve already earned <span class="acc">into more business.</span></div>
         <div class="cards">
-          <div class="sz-card svc s1"><div class="ico">&#9678;</div><div class="t">Email strategy</div><div class="d">What to send, to whom, and when.</div></div>
-          <div class="sz-card svc s2"><div class="ico">&#9636;</div><div class="t">Newsletters</div><div class="d">A newsletter with an owner and a rhythm.</div></div>
-          <div class="sz-card svc s3"><div class="ico">&#8635;</div><div class="t">Welcome and nurture</div><div class="d">Sequences that introduce you properly, in order.</div></div>
-          <div class="sz-card svc s4"><div class="ico">&#10003;</div><div class="t">Implementation</div><div class="d">Built, tested and handed over in the tools you already use.</div></div>
+          <div class="cn-card svc s1"><div class="ico">&#9678;</div><div class="t">Strategy</div><div class="d">What to send, to whom, and when.</div></div>
+          <div class="cn-card svc s2"><div class="ico">&#9998;</div><div class="t">Copy</div><div class="d">Welcome emails, nurture and newsletters, written for your readers.</div></div>
+          <div class="cn-card svc s3"><div class="ico">&#10003;</div><div class="t">Implementation</div><div class="d">Built and tested in the tools you already use.</div></div>
         </div>
-        <div class="cap"><span class="sz-hl"><span class="sz-hl-bar"></span><span class="sz-hl-text">Start with the one that matters most.</span></span></div>
+        <div class="cap">Start with the one that matters most.</div>
       </div>
-      <div class="sz-vignette"></div>
-      <div class="sz-grain"></div>
+      <div class="cn-grain"></div>
     </div>
-    <div class="sz-edge edge"></div>
-
+    <div class="cn-edge edge"></div>
     <style>
       /* Self-hosted faces (also in assets/sz.css); declared here so each scene lints standalone. */
-      @font-face { font-family: "Sora"; src: url("assets/fonts/Sora.woff2") format("woff2"); font-weight: 100 800; font-display: block; }
+      @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader.woff2") format("woff2"); font-weight: 200 800; font-style: normal; font-display: block; }
+      @font-face { font-family: "Newsreader"; src: url("assets/fonts/Newsreader-Italic.woff2") format("woff2"); font-weight: 200 800; font-style: italic; font-display: block; }
+      @font-face { font-family: "Fraunces"; src: url("assets/fonts/Fraunces.woff2") format("woff2"); font-weight: 100 900; font-display: block; }
+      @font-face { font-family: "Inter"; src: url("assets/fonts/Inter.woff2") format("woff2"); font-weight: 100 900; font-display: block; }
       @font-face { font-family: "Manrope"; src: url("assets/fonts/Manrope.woff2") format("woff2"); font-weight: 200 800; font-display: block; }
-      @font-face { font-family: "JetBrains Mono"; src: url("assets/fonts/JetBrainsMono.woff2") format("woff2"); font-weight: 100 800; font-display: block; }
       [data-composition-id="z3-services"] { position: absolute; inset: 0; overflow: hidden; }
-      [data-composition-id="z3-services"] .panel { clip-path: inset(0% 0% 0% 100%); }
-      [data-composition-id="z3-services"] .edge { top: 0; bottom: 0; left: 0; width: 14px; background: var(--dw-terra); transform: translateX(2200px); }
-      [data-composition-id="z3-services"] .wrap { width: 100%; height: 100%; padding: 0 120px; display: flex; flex-direction: column; justify-content: center; }
-      [data-composition-id="z3-services"] .head { margin-top: 18px; font-size: 100px; max-width: 1500px; }
-      [data-composition-id="z3-services"] .nw { display: inline-block; white-space: nowrap; }
-      [data-composition-id="z3-services"] .cards { margin-top: 64px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; }
-      [data-composition-id="z3-services"] .svc { padding: 36px 34px 40px; display: flex; flex-direction: column; gap: 16px; min-height: 330px; }
-      [data-composition-id="z3-services"] .ico { width: 66px; height: 66px; border-radius: 50%; background: var(--dw-terra); color: var(--dw-on-terra); display: flex; align-items: center; justify-content: center; font-size: 32px; font-weight: 800; margin-bottom: 8px; }
-      [data-composition-id="z3-services"] .t { font-weight: 800; font-size: 38px; line-height: 1.08; letter-spacing: -0.02em; }
-      [data-composition-id="z3-services"] .d { font-family: "Manrope", sans-serif; font-weight: 500; font-size: 27px; line-height: 1.45; color: var(--dw-body); }
-      [data-composition-id="z3-services"] .cap { margin-top: 48px; font-family: "Manrope", sans-serif; font-weight: 700; font-size: 38px; color: var(--dw-ink); }
-
-      /* 9:16 */
+      [data-composition-id="z3-services"].v .cn-corner { top: 120px; left: 80px; }
+      [data-composition-id="z3-services"] .st { clip-path: inset(0% 0% 0% 100%); }
+      [data-composition-id="z3-services"] .edge { top: 0; bottom: 0; left: 0; width: 8px; }
+      [data-composition-id="z3-services"] .wrap { width: 100%; height: 100%; padding: 80px 110px 0; display: flex; flex-direction: column; justify-content: center; }
+      [data-composition-id="z3-services"] .head { margin-top: 20px; font-size: 86px; max-width: 1560px; }
+      [data-composition-id="z3-services"] .cards { margin-top: 56px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+      [data-composition-id="z3-services"] .svc { padding: 34px 36px 38px; display: flex; flex-direction: column; gap: 14px; min-height: 270px; }
+      [data-composition-id="z3-services"] .ico { width: 60px; height: 60px; border-radius: 50%; background: var(--cn-cedar); color: var(--cn-mint-3); display: flex; align-items: center; justify-content: center; font-size: 28px; font-weight: 800; margin-bottom: 6px; }
+      [data-composition-id="z3-services"] .t { font-family: "Newsreader", Georgia, serif; font-weight: 600; font-size: 46px; line-height: 1.05; color: var(--cn-text); }
+      [data-composition-id="z3-services"] .d { font-weight: 500; font-size: 26px; line-height: 1.45; color: var(--cn-text-2); }
+      [data-composition-id="z3-services"] .cap { margin-top: 40px; font-family: "Newsreader", Georgia, serif; font-style: italic; font-weight: 500; font-size: 42px; color: var(--cn-mint-3); }
       [data-composition-id="z3-services"].v .wrap { padding: 0 80px; }
-      [data-composition-id="z3-services"].v .head { font-size: 80px; }
-      [data-composition-id="z3-services"].v .cards { grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 70px; }
-      [data-composition-id="z3-services"].v .svc { min-height: 380px; padding: 34px 30px; }
-      [data-composition-id="z3-services"].v .cap { margin-top: 60px; font-size: 40px; }
+      [data-composition-id="z3-services"].v .head { font-size: 84px; }
+      [data-composition-id="z3-services"].v .cards { grid-template-columns: 1fr; gap: 22px; margin-top: 60px; }
+      [data-composition-id="z3-services"].v .svc { min-height: 0; padding: 30px 32px; }
+      [data-composition-id="z3-services"].v .cap { margin-top: 50px; }
     </style>
 
     <script>
@@ -53,38 +50,26 @@
         var root = document.querySelector('[data-composition-id="z3-services"]');
         var q = function (s) { return root.querySelector(s); };
         var qa = function (s) { return root.querySelectorAll(s); };
-        SZ.fmt(root);
+        var V = SZ.fmt(root);
+        var W = +root.getAttribute('data-width'), H = +root.getAttribute('data-height');
+        SZ.marks(root);
         SZ.words(root);
         var tl = gsap.timeline({ paused: true });
-
-        // ENTRY: panel wipe right-to-left; the edge rides the seam.
-        tl.fromTo(q('.panel'), { clipPath: 'inset(0% 0% 0% 100%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: 0.5, ease: 'power3.inOut' }, 0);
-        tl.fromTo(q('.edge'), { x: +root.getAttribute('data-width') }, { x: -14, duration: 0.5, ease: 'power3.inOut' }, 0);
-
-        tl.from(q('.eye'), { x: -30, opacity: 0, duration: 0.4, ease: 'power3.out' }, 0.40);
-        tl.from(qa('.head .sz-w'), { y: 80, opacity: 0, duration: 0.5, ease: 'expo.out', stagger: 0.06 }, 0.50);
-
-        // Four services deal in, 0.15s apart.
-        [1, 2, 3, 4].forEach(function (n, i) {
-          tl.from(q('.s' + n), { y: 80, rotation: i % 2 ? 2 : -2, opacity: 0, duration: 0.5, ease: 'back.out(1.5)' }, 1.00 + i * 0.15);
+        // ENTRY: panel wipes in from the right, mint edge on the seam.
+        tl.fromTo(q('.st'), { clipPath: 'inset(0% 0% 0% 100%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: 0.55, ease: 'power3.inOut' }, 0);
+        tl.fromTo(q('.edge'), { x: W }, { x: -8, duration: 0.55, ease: 'power3.inOut' }, 0);
+        tl.from(q('.eye'), { y: 16, opacity: 0, duration: 0.45, ease: 'power3.out' }, 0.40);
+        tl.from(qa('.head .cn-w'), { y: 50, opacity: 0, duration: 0.55, ease: 'power3.out', stagger: 0.04 }, 0.50);
+        [1, 2, 3].forEach(function (n, i) {
+          tl.from(q('.s' + n), { y: 50, opacity: 0, duration: 0.55, ease: 'power3.out' }, 1.00 + i * 0.15);
         });
-
-        // A highlight walks the four services; each lights up in turn.
-        [1, 2, 3, 4].forEach(function (n, i) {
-          var at = 1.90 + i * 0.35;
-          tl.to(q('.s' + n), { backgroundColor: '#B5532E', borderColor: '#B5532E', y: -14, duration: 0.14, ease: 'power2.out' }, at);
-          tl.to(qa('.s' + n + ' .t, .s' + n + ' .d'), { color: '#F1ECE3', duration: 0.14, ease: 'power2.out' }, at);
-          tl.to(q('.s' + n + ' .ico'), { backgroundColor: '#F1ECE3', color: '#B5532E', duration: 0.14, ease: 'power2.out' }, at);
-          tl.to(q('.s' + n), { backgroundColor: '#FFFFFF', borderColor: '#C49A70', y: 0, duration: 0.2, ease: 'power2.in' }, at + 0.26);
-          tl.to(q('.s' + n + ' .t'), { color: '#1F1B17', duration: 0.2, ease: 'power2.in' }, at + 0.26);
-          tl.to(q('.s' + n + ' .d'), { color: '#4B433A', duration: 0.2, ease: 'power2.in' }, at + 0.26);
-          tl.to(q('.s' + n + ' .ico'), { backgroundColor: '#B5532E', color: '#F1ECE3', duration: 0.2, ease: 'power2.in' }, at + 0.26);
+        // A soft mint focus walks the three services.
+        [1, 2, 3].forEach(function (n, i) {
+          var at = 1.90 + i * 0.40, el = q('.s' + n);
+          tl.to(el, { y: -10, borderColor: '#7FB69E', boxShadow: '0 0 0 2px rgba(127,182,158,0.9), 0 30px 60px -30px rgba(0,0,0,0.6)', duration: 0.2, ease: 'power2.out' }, at);
+          tl.to(el, { y: 0, borderColor: 'rgba(214,232,223,0.26)', boxShadow: '0 0 0 0px rgba(127,182,158,0), 0 30px 60px -30px rgba(0,0,0,0.6)', duration: 0.3, ease: 'power2.in' }, at + 0.32);
         });
-
-        // One build at a time: the canon is one journey per engagement.
-        tl.from(q('.cap .sz-hl-text'), { y: 30, opacity: 0, duration: 0.45, ease: 'expo.out' }, 3.40);
-        tl.fromTo(q('.cap .sz-hl-bar'), { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: 'power3.out' }, 3.75);
-
+        tl.from(q('.cap'), { y: 20, opacity: 0, duration: 0.5, ease: 'power3.out' }, 3.20);
         SZ.hold(tl, SLOT);
         window.__timelines = window.__timelines || {};
         window.__timelines["z3-services"] = tl;

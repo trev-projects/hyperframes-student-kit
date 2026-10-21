@@ -14,7 +14,7 @@ from array import array
 from pathlib import Path
 
 SR = 44100
-DUR = 34.0
+DUR = 38.0
 N = int(SR * DUR)
 buf = array("f", [0.0]) * N
 
@@ -104,39 +104,45 @@ thump(7.5, gain=0.5); chime(7.55, gain=0.16)
 
 # ---- z3 services (9.2-15.6) -------------------------------------------------
 whoosh(9.15)
-kick(9.45)
-for i in range(4):                                       # four service cards deal in
-    thump(10.2 + i * 0.15, gain=0.28); tick(10.22 + i * 0.15, gain=0.14, freq=1700)
-for i in range(4):                                       # highlight walks the services
-    tick(11.1 + i * 0.35, gain=0.18, freq=2600)
-thump(12.6, gain=0.4)                                    # "Start with the one that matters most."
-chime(12.95, gain=0.16)
+kick(9.45, gain=0.6)
+for i in range(3):                                       # three services land
+    thump(10.2 + i * 0.15, gain=0.26); tick(10.22 + i * 0.15, gain=0.12, freq=1700)
+for i in range(3):                                       # mint focus walks them
+    tick(11.1 + i * 0.4, gain=0.16, freq=2600)
+thump(12.4, gain=0.35)
+chime(12.75, gain=0.14)
 
 # ---- z4 how we work (15.2-25.6) ---------------------------------------------
 whoosh(15.15)
-kick(15.45)
+kick(15.45, gain=0.6)
 for t0 in (15.65, 18.1, 20.55, 23.0):                    # each step lands
-    thump(t0, gain=0.42); whoosh(t0 - 0.28, 0.25, 0.22)
+    thump(t0, gain=0.38); whoosh(t0 - 0.3, 0.28, 0.2)
 for t0 in (16.2, 16.6, 17.0):                            # chat bubbles
-    tick(t0, gain=0.16, freq=1900)
+    tick(t0, gain=0.15, freq=1900)
 for t0 in (18.72, 18.97, 19.22, 20.82, 21.07, 21.32):    # ticks
-    tick(t0, gain=0.18, freq=2300)
-kick(21.95, gain=0.75)                                   # SIGNED OFF stamp
-whoosh(23.95, 0.7, 0.3)                                  # handover slide
-chime(24.6, gain=0.14)
+    tick(t0, gain=0.16, freq=2300)
+kick(21.95, gain=0.65)                                   # SIGNED OFF stamp
+whoosh(23.95, 0.75, 0.28)                                # handover slide
+chime(24.6, gain=0.13)
 
-# ---- z5 commitments (25.2-28.8) ---------------------------------------------
-whoosh(25.15, 0.48, 0.5)
-for t0 in (25.65, 26.15, 26.65, 27.15):
-    kick(t0, gain=0.55)
+# ---- z5 proof (25.2-29.4) ---------------------------------------------------
+whoosh(25.1, 0.7, 0.25)                                  # slow dissolve
+thump(25.55, gain=0.3)
+chime(26.0, gain=0.12)
+tick(26.75, gain=0.1, freq=1500)
 
-# ---- z6 CTA (28.4-34) ------------------------------------------------------
-sweep(27.85, 0.55, 200, 900, 0.12)
-whoosh(28.35, 0.5, 0.45)
-kick(28.65)
-tick(29.55, gain=0.18, freq=1400)
-thump(29.9, gain=0.4)
-chime(30.0, gain=0.3)
+# ---- z6 commitments (29.0-32.6) ---------------------------------------------
+whoosh(28.95, 0.55, 0.45)
+for t0 in (29.45, 29.95, 30.45, 30.95):
+    kick(t0, gain=0.45)
+
+# ---- z7 CTA (32.2-38) --------------------------------------------------------
+sweep(31.65, 0.55, 200, 900, 0.1)
+whoosh(32.15, 0.55, 0.4)
+kick(32.45, gain=0.6)
+sweep(32.9, 0.7, 500, 1100, 0.06)                        # underline draws on
+thump(33.9, gain=0.35)
+chime(34.0, gain=0.28)
 
 # ---- Normalize + write -----------------------------------------------------
 peak = max(abs(v) for v in buf) or 1.0
