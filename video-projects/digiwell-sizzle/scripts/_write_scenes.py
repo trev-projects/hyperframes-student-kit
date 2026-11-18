@@ -302,6 +302,48 @@ files["z4-how"] = shell("z4-how", 10.4, '''      <div class="wrap">
         tl.to(q('.z-b'), { borderColor: '#7FB69E', color: '#C3E2D3', borderStyle: 'solid', duration: 0.3, ease: 'none' }, S[3] + 1.6);''',
   outside='    <div class="cn-edge edge"></div>')
 
+# 4b — Founder: real footage from the Toronto Tech Week 2026 workshop -------------
+files["z4b-founder"] = shell("z4b-founder", 4.2, '''      <div class="clipwrap"><div class="push">
+        <video id="wk" src="assets/workshop.mp4" muted playsinline
+          data-start="0" data-duration="3.76" data-track-index="2"></video>
+      </div><div class="shade"></div></div>
+      <div class="wrap">
+        <div class="txt">
+          <div class="cn-kick eye">Toronto Tech Week 2026</div>
+          <div class="cn-h name">Trevor Davis</div>
+          <div class="role">Founder, Digiwell Marketing</div>
+          <div class="cn-body line">Leading a workshop with <span class="nb">StartGBC at</span> George&nbsp;Brown&nbsp;Polytechnic.</div>
+        </div>
+      </div>''',
+'''      $ .st { clip-path: inset(50% 0% 50% 0%); background: url("assets/cedar-plate-16x9.jpg") center / cover no-repeat, var(--cn-bg); }
+      $ .wrap { position: relative; z-index: 5; width: 100%; height: 100%; padding: 0 110px; display: flex; align-items: center; }
+      $ .txt { width: 860px; }
+      $ .name { margin-top: 22px; font-size: 128px; }
+      $ .role { margin-top: 18px; font-weight: 700; font-size: 38px; color: var(--cn-mint-3); }
+      $ .line { margin-top: 34px; max-width: 760px; }
+      $ .nb { white-space: nowrap; }
+      $ .clipwrap { position: absolute; z-index: 4; right: 150px; top: 120px; width: 672px; height: 840px; border-radius: 22px; overflow: hidden; border: 1px solid var(--cn-line-2); box-shadow: 0 0 0 1px rgba(127,182,158,0.35), 0 50px 90px -40px rgba(0,0,0,0.8); }
+      $ .push { position: absolute; inset: 0; transform-origin: 55% 30%; }
+      $ video { width: 100%; height: 100%; object-fit: cover; object-position: 50% 22%; display: block; }
+      $ .shade { position: absolute; inset: 0; pointer-events: none; background: linear-gradient(180deg, rgba(14,23,20,0) 60%, rgba(14,23,20,0.45) 100%); }
+      $.v .clipwrap { inset: 0; width: auto; height: auto; border-radius: 0; border: 0; box-shadow: none; }
+      $.v video { object-position: 50% 30%; }
+      $.v .shade { background: linear-gradient(180deg, rgba(14,23,20,0.55) 0%, rgba(14,23,20,0) 16%, rgba(14,23,20,0) 38%, rgba(14,23,20,0.86) 53%, rgba(14,23,20,0.97) 62%, rgba(14,23,20,0.98) 100%); }
+      $.v .wrap { align-items: flex-end; padding: 0 80px 470px; }
+      $.v .txt { width: auto; }
+      $.v .name { font-size: 112px; }
+      $.v .role { font-size: 36px; }''',
+'''        // ENTRY: horizontal split opens from the centre line.
+        tl.fromTo(q('.st'), { clipPath: 'inset(50% 0% 50% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: 0.55, ease: 'expo.inOut' }, 0);
+        if (!V) tl.from(q('.clipwrap'), { y: 60, opacity: 0, duration: 0.7, ease: 'power3.out' }, 0.2);
+        tl.fromTo(q('.push'), { scale: 1.0 }, { scale: 1.07, duration: SLOT, ease: 'none' }, 0);
+        tl.from(q('.eye'), { y: 16, opacity: 0, duration: 0.45, ease: 'power3.out' }, 0.45);
+        tl.from(q('.name'), { y: 50, opacity: 0, duration: 0.6, ease: 'power3.out' }, 0.55);
+        tl.from(q('.role'), { y: 24, opacity: 0, duration: 0.5, ease: 'power3.out' }, 0.85);
+        tl.from(q('.line'), { y: 20, opacity: 0, duration: 0.5, ease: 'power3.out' }, 1.10);
+        // The clip is 3.76s; ease the footage out before it ends so the dissolve never shows an empty frame.
+        tl.to(q('.push'), { opacity: 0, duration: 0.4, ease: 'power1.in' }, 3.32);''')
+
 # 5 — Proof ------------------------------------------------------------------------
 files["z5-proof"] = shell("z5-proof", 4.2, '''      <div class="wrap">
         <div class="qm">&ldquo;</div>

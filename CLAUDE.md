@@ -130,6 +130,10 @@ When Nate says "new RVL issue", "this week on RVL", or gives a `newsletter.rvl.t
 - **Evergreen pitch:** `video-projects/rvl-trailer/` is a separate non-weekly deliverable (channel trailer). Don't confuse with a weekly issue.
 - **Brand is locked:** acid lime `#c3f53b` on `#0a0a0a`, Archivo Black display + JetBrains Mono numerics + Space Grotesk body. This brand *overrides* `MOTION_PHILOSOPHY.md` for RVL work — do not add perspective grids, chrome gradients, vignettes, or amber whips to RVL videos.
 
+### Digiwell Marketing — brand kit
+
+For anything Digiwell (Trevor's email strategy business: sizzles, reels, decks, overlays, thumbnails), use the **`digiwell-brand`** skill and read `brand/digiwell/README.md` first. Cedar Night palette, Newsreader/Fraunces/Inter/Manrope, copy guardrails and approved claims live there. Reference build: `video-projects/digiwell-sizzle/`. This brand overrides `MOTION_PHILOSOPHY.md`'s look.
+
 ### What lives at the workspace root
 
 - **Motion-graphics philosophy:** `MOTION_PHILOSOPHY.md` (gold-standard aesthetic, deconstructed Infinite Payments spot — read before brainstorming any composition)

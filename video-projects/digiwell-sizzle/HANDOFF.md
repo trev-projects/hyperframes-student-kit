@@ -1,6 +1,6 @@
 # Digiwell Marketing — "How we work" sizzle
 
-38 seconds, no voiceover, synthesized sound design. One source, two cuts:
+42 seconds, no voiceover, synthesized sound design. One source, two cuts:
 
 | File | Format | Use |
 |---|---|---|
@@ -14,6 +14,8 @@ glows, cream `#F7F4EE` type, mint accents (`#7FB69E` lines, `#C3E2D3` italic acc
 `FONTFACE` block of `scripts/_write_scenes.py` to try Fraunces or another), Inter caps kickers, Manrope
 body. The wordmark is always **Fraunces "Digiwell" with the hand-drawn mint underline**.
 
+**Brand kit:** `brand/digiwell/` at the workspace root (tokens, fonts, textures, footage, copy rules).
+
 **Positioning:** email strategy, copy and implementation for coaches, consultants, authors and course
 creators. No stats, no outcome guarantees, no AI-agency language, no em dashes.
 
@@ -25,9 +27,10 @@ creators. No stats, no outcome guarantees, no AI-agency language, no em dashes.
 | 5.4–9.6 | Thesis | It's not a ~~traffic~~ problem. It's an *email* problem. |
 | 9.2–15.6 | Services | Email strategy, copy and implementation. Turn the audience you've already earned *into more business.* Strategy / Copy / Implementation. *Start with the one that matters most.* |
 | 15.2–25.6 | How we work | Fit conversation → Scoped build → Test and sign-off → Handover |
-| 25.2–29.4 | Proof | "Trevor completely gets our *space and messaging.*" Dave, Breakthrough Academy |
-| 29.0–32.6 | Commitments | One owner. Your tools. Your data. Tested before it *goes live.* |
-| 32.2–38 | CTA | Digiwell. Let's talk about *your email.* digiwellmarketing.com/contact |
+| 25.2–29.4 | Founder | Real footage: Trevor teaching at Toronto Tech Week 2026. *Trevor Davis, Founder, Digiwell Marketing.* "Leading a workshop with StartGBC at George Brown Polytechnic." (16:9 framed panel over the AI-generated cedar plate; 9:16 full-bleed with lower third) |
+| 29.0–33.2 | Proof | "Trevor completely gets our *space and messaging.*" Dave, Breakthrough Academy |
+| 32.8–36.4 | Commitments | One owner. Your tools. Your data. Tested before it *goes live.* |
+| 36.0–41.8 | CTA | Digiwell. Let's talk about *your email.* digiwellmarketing.com/contact |
 
 ## Website embed
 

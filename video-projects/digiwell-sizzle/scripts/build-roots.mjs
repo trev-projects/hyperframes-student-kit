@@ -16,11 +16,12 @@ const SCENES = [
   { id: 'z2-thesis',   start: 5.4,  dur: 4.2 },
   { id: 'z3-services', start: 9.2,  dur: 6.4 },
   { id: 'z4-how',      start: 15.2, dur: 10.4 },
-  { id: 'z5-proof',    start: 25.2, dur: 4.2 },
-  { id: 'z6-commit',   start: 29.0, dur: 3.6 },
-  { id: 'z7-cta',      start: 32.2, dur: 5.8 }
+  { id: 'z4b-founder', start: 25.2, dur: 4.2 },
+  { id: 'z5-proof',    start: 29.0, dur: 4.2 },
+  { id: 'z6-commit',   start: 32.8, dur: 3.6 },
+  { id: 'z7-cta',      start: 36.0, dur: 5.8 }
 ];
-const TOTAL = 38;
+const TOTAL = 41.8;
 
 const FORMATS = [
   { file: 'index.html', w: 1920, h: 1080, label: '16:9' },

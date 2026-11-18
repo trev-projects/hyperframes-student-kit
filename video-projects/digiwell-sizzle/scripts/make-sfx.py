@@ -14,7 +14,7 @@ from array import array
 from pathlib import Path
 
 SR = 44100
-DUR = 38.0
+DUR = 41.8
 N = int(SR * DUR)
 buf = array("f", [0.0]) * N
 
@@ -125,24 +125,30 @@ kick(21.95, gain=0.65)                                   # SIGNED OFF stamp
 whoosh(23.95, 0.75, 0.28)                                # handover slide
 chime(24.6, gain=0.13)
 
-# ---- z5 proof (25.2-29.4) ---------------------------------------------------
-whoosh(25.1, 0.7, 0.25)                                  # slow dissolve
-thump(25.55, gain=0.3)
-chime(26.0, gain=0.12)
-tick(26.75, gain=0.1, freq=1500)
+# ---- z4b founder (25.2-29.4) -----------------------------------------------
+whoosh(25.1, 0.55, 0.4)                                  # split opens
+thump(25.45, gain=0.4)
+tick(25.75, gain=0.12, freq=1600)                        # name lands
+chime(26.1, gain=0.12)
 
-# ---- z6 commitments (29.0-32.6) ---------------------------------------------
-whoosh(28.95, 0.55, 0.45)
+# ---- z5 proof (29.0-33.2) ---------------------------------------------------
+whoosh(28.90, 0.7, 0.25)                                  # slow dissolve
+thump(29.35, gain=0.3)
+chime(29.80, gain=0.12)
+tick(30.55, gain=0.1, freq=1500)
+
+# ---- z6 commitments (32.8-36.4) ---------------------------------------------
+whoosh(32.75, 0.55, 0.45)
 for t0 in (29.45, 29.95, 30.45, 30.95):
     kick(t0, gain=0.45)
 
-# ---- z7 CTA (32.2-38) --------------------------------------------------------
-sweep(31.65, 0.55, 200, 900, 0.1)
-whoosh(32.15, 0.55, 0.4)
-kick(32.45, gain=0.6)
-sweep(32.9, 0.7, 500, 1100, 0.06)                        # underline draws on
-thump(33.9, gain=0.35)
-chime(34.0, gain=0.28)
+# ---- z7 CTA (36.0-41.8) --------------------------------------------------------
+sweep(35.45, 0.55, 200, 900, 0.1)
+whoosh(35.95, 0.55, 0.4)
+kick(36.25, gain=0.6)
+sweep(36.70, 0.7, 500, 1100, 0.06)                        # underline draws on
+thump(37.70, gain=0.35)
+chime(37.80, gain=0.28)
 
 # ---- Normalize + write -----------------------------------------------------
 peak = max(abs(v) for v in buf) or 1.0
